@@ -1,3 +1,3 @@
 # Hashes of file build rules.
-f775b679b1db56b495b2cef5e30e3e8e goddess/source/GoddessStructDictionary.cxx
-ecdf181cc04beda96b97573503257ab9 goddess/source/ORRUBADictionary.cxx
+a9b3b1ab48451212113230a72772925f goddess/source/GoddessStructDictionary.cxx
+0093f224fe95e89cbec19eafc04c17d9 goddess/source/ORRUBADictionary.cxx

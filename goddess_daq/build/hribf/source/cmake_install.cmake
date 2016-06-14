@@ -1,8 +1,8 @@
-# Install script for directory: /media/mhall12/Zeus/goddess_daq/hribf/source
+# Install script for directory: /media/mhall12/Zeus/Analysis/goddess_daq/hribf/source
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/media/mhall12/Zeus/goddess_daq/exec")
+  SET(CMAKE_INSTALL_PREFIX "/media/mhall12/Zeus/Analysis/goddess_daq/exec")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,25 +33,25 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  IF(EXISTS "$ENV{DESTDIR}/media/mhall12/Zeus/goddess_daq/exec/hribfConvert" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/media/mhall12/Zeus/goddess_daq/exec/hribfConvert")
+  IF(EXISTS "$ENV{DESTDIR}/media/mhall12/Zeus/Analysis/goddess_daq/exec/hribfConvert" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/media/mhall12/Zeus/Analysis/goddess_daq/exec/hribfConvert")
     FILE(RPATH_CHECK
-         FILE "$ENV{DESTDIR}/media/mhall12/Zeus/goddess_daq/exec/hribfConvert"
+         FILE "$ENV{DESTDIR}/media/mhall12/Zeus/Analysis/goddess_daq/exec/hribfConvert"
          RPATH "")
   ENDIF()
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/media/mhall12/Zeus/goddess_daq/exec/hribfConvert")
+   "/media/mhall12/Zeus/Analysis/goddess_daq/exec/hribfConvert")
   IF (CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   ENDIF (CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
   IF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   ENDIF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-FILE(INSTALL DESTINATION "/media/mhall12/Zeus/goddess_daq/exec" TYPE EXECUTABLE FILES "/media/mhall12/Zeus/goddess_daq/build/hribf/source/hribfConvert")
-  IF(EXISTS "$ENV{DESTDIR}/media/mhall12/Zeus/goddess_daq/exec/hribfConvert" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/media/mhall12/Zeus/goddess_daq/exec/hribfConvert")
+FILE(INSTALL DESTINATION "/media/mhall12/Zeus/Analysis/goddess_daq/exec" TYPE EXECUTABLE FILES "/media/mhall12/Zeus/Analysis/goddess_daq/build/hribf/source/hribfConvert")
+  IF(EXISTS "$ENV{DESTDIR}/media/mhall12/Zeus/Analysis/goddess_daq/exec/hribfConvert" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/media/mhall12/Zeus/Analysis/goddess_daq/exec/hribfConvert")
     IF(CMAKE_INSTALL_DO_STRIP)
-      EXECUTE_PROCESS(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/media/mhall12/Zeus/goddess_daq/exec/hribfConvert")
+      EXECUTE_PROCESS(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/media/mhall12/Zeus/Analysis/goddess_daq/exec/hribfConvert")
     ENDIF(CMAKE_INSTALL_DO_STRIP)
   ENDIF()
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

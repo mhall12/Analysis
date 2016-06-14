@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/mhall12/Zeus/goddess_daq
+CMAKE_SOURCE_DIR = /media/mhall12/Zeus/Analysis/goddess_daq
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/mhall12/Zeus/goddess_daq/build
+CMAKE_BINARY_DIR = /media/mhall12/Zeus/Analysis/goddess_daq/build
 
 # Include any dependencies generated for this target.
 include source/CMakeFiles/GEBSort_nogeb.dir/depend.make
@@ -51,17 +51,17 @@ include source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o: ../source/GEBSort.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o -c /media/mhall12/Zeus/goddess_daq/source/GEBSort.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBSort.cxx
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/GEBSort.cxx > CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBSort.cxx > CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/GEBSort.cxx -o CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBSort.cxx -o CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o.requires
@@ -74,17 +74,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o.provides.build: source/CMakeFi
 
 source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o: ../source/GTPrint.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o -c /media/mhall12/Zeus/goddess_daq/source/GTPrint.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/GTPrint.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/GTPrint.c > CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/GTPrint.c > CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/GTPrint.c -o CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/GTPrint.c -o CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o.requires
@@ -97,17 +97,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o.provides.build: source/CMakeFile
 
 source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o: ../source/time_stamp.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o -c /media/mhall12/Zeus/goddess_daq/source/time_stamp.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/time_stamp.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/time_stamp.c > CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/time_stamp.c > CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/time_stamp.c -o CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/time_stamp.c -o CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o.requires
@@ -120,17 +120,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o.provides.build: source/CMakeF
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o: ../source/GEBHeader.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o -c /media/mhall12/Zeus/goddess_daq/source/GEBHeader.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBHeader.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/GEBHeader.c > CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBHeader.c > CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/GEBHeader.c -o CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBHeader.c -o CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o.requires
@@ -143,17 +143,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o.provides.build: source/CMakeFi
 
 source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o: ../source/get_a_seed.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o -c /media/mhall12/Zeus/goddess_daq/source/get_a_seed.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/get_a_seed.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/get_a_seed.c > CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/get_a_seed.c > CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/get_a_seed.c -o CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/get_a_seed.c -o CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o.requires
@@ -166,17 +166,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o.provides.build: source/CMakeF
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o: ../source/bin_mode1.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_mode1.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode1.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_mode1.c > CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode1.c > CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_mode1.c -o CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode1.c -o CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o.requires
@@ -189,17 +189,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o.provides.build: source/CMakeFi
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o: ../source/bin_mode3.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_mode3.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode3.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_mode3.c > CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode3.c > CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_mode3.c -o CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode3.c -o CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o.requires
@@ -212,17 +212,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o.provides.build: source/CMakeFi
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o: ../source/bin_mode2.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_mode2.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode2.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_mode2.c > CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode2.c > CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_mode2.c -o CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode2.c -o CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o.requires
@@ -235,17 +235,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o.provides.build: source/CMakeFi
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o: ../source/bin_template.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_template.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_template.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_template.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_template.c > CMakeFiles/GEBSort_nogeb.dir/bin_template.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_template.c > CMakeFiles/GEBSort_nogeb.dir/bin_template.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_template.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_template.c -o CMakeFiles/GEBSort_nogeb.dir/bin_template.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_template.c -o CMakeFiles/GEBSort_nogeb.dir/bin_template.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o.requires
@@ -258,17 +258,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o.provides.build: source/CMak
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o: ../source/bin_dgs.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_dgs.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgs.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_dgs.c > CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgs.c > CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_dgs.c -o CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgs.c -o CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o.requires
@@ -281,17 +281,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o.provides.build: source/CMakeFile
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o: ../source/bin_god.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_god.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_god.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_god.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_god.c > CMakeFiles/GEBSort_nogeb.dir/bin_god.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_god.c > CMakeFiles/GEBSort_nogeb.dir/bin_god.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_god.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_god.c -o CMakeFiles/GEBSort_nogeb.dir/bin_god.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_god.c -o CMakeFiles/GEBSort_nogeb.dir/bin_god.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o.requires
@@ -304,17 +304,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o.provides.build: source/CMakeFile
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o: ../source/bin_dgod.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_dgod.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgod.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_dgod.c > CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgod.c > CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_dgod.c -o CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgod.c -o CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o.requires
@@ -327,17 +327,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o.provides.build: source/CMakeFil
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o: ../source/bin_agod.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_agod.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_agod.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_agod.c > CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_agod.c > CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_agod.c -o CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_agod.c -o CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o.requires
@@ -350,17 +350,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o.provides.build: source/CMakeFil
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o: ../source/bin_dfma.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_dfma.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dfma.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_dfma.c > CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dfma.c > CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_dfma.c -o CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dfma.c -o CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o.requires
@@ -373,17 +373,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o.provides.build: source/CMakeFil
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o: ../source/bin_gtcal.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o -c /media/mhall12/Zeus/goddess_daq/source/bin_gtcal.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_gtcal.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/bin_gtcal.c > CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_gtcal.c > CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/bin_gtcal.c -o CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_gtcal.c -o CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o.requires
@@ -396,17 +396,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o.provides.build: source/CMakeFi
 
 source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o: ../source/spe_fun.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o -c /media/mhall12/Zeus/goddess_daq/source/spe_fun.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/spe_fun.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/spe_fun.c > CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/spe_fun.c > CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/spe_fun.c -o CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/spe_fun.c -o CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o.requires
@@ -419,17 +419,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o.provides.build: source/CMakeFile
 
 source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o: ../source/str_decomp.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o -c /media/mhall12/Zeus/goddess_daq/source/str_decomp.c
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/str_decomp.c
 
 source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/str_decomp.c > CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/str_decomp.c > CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/str_decomp.c -o CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/str_decomp.c -o CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o.requires
@@ -442,17 +442,17 @@ source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o.provides.build: source/CMakeF
 
 source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o: source/CMakeFiles/GEBSort_nogeb.dir/flags.make
 source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o: ../source/GoddessData.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o -c /media/mhall12/Zeus/goddess_daq/source/GoddessData.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/source/GoddessData.cxx
 
 source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/source/GoddessData.cxx > CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/source/GoddessData.cxx > CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.i
 
 source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/source/GoddessData.cxx -o CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/source/GoddessData.cxx -o CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.s
 
 source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o.requires:
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o.requires
@@ -486,19 +486,19 @@ GEBSort_nogeb_OBJECTS = \
 
 # External object files for target GEBSort_nogeb
 GEBSort_nogeb_EXTERNAL_OBJECTS = \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o" \
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o"
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o" \
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o"
 
 source/GEBSort_nogeb: source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o
 source/GEBSort_nogeb: source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o
@@ -548,7 +548,7 @@ source/GEBSort_nogeb: /home/mhall12/root/lib/libMathCore.so
 source/GEBSort_nogeb: /home/mhall12/root/lib/libThread.so
 source/GEBSort_nogeb: source/CMakeFiles/GEBSort_nogeb.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable GEBSort_nogeb"
-	cd /media/mhall12/Zeus/goddess_daq/build/source && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GEBSort_nogeb.dir/link.txt --verbose=$(VERBOSE)
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GEBSort_nogeb.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 source/CMakeFiles/GEBSort_nogeb.dir/build: source/GEBSort_nogeb
@@ -575,10 +575,10 @@ source/CMakeFiles/GEBSort_nogeb.dir/requires: source/CMakeFiles/GEBSort_nogeb.di
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/requires
 
 source/CMakeFiles/GEBSort_nogeb.dir/clean:
-	cd /media/mhall12/Zeus/goddess_daq/build/source && $(CMAKE_COMMAND) -P CMakeFiles/GEBSort_nogeb.dir/cmake_clean.cmake
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/source && $(CMAKE_COMMAND) -P CMakeFiles/GEBSort_nogeb.dir/cmake_clean.cmake
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/clean
 
 source/CMakeFiles/GEBSort_nogeb.dir/depend:
-	cd /media/mhall12/Zeus/goddess_daq/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/mhall12/Zeus/goddess_daq /media/mhall12/Zeus/goddess_daq/source /media/mhall12/Zeus/goddess_daq/build /media/mhall12/Zeus/goddess_daq/build/source /media/mhall12/Zeus/goddess_daq/build/source/CMakeFiles/GEBSort_nogeb.dir/DependInfo.cmake --color=$(COLOR)
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/mhall12/Zeus/Analysis/goddess_daq /media/mhall12/Zeus/Analysis/goddess_daq/source /media/mhall12/Zeus/Analysis/goddess_daq/build /media/mhall12/Zeus/Analysis/goddess_daq/build/source /media/mhall12/Zeus/Analysis/goddess_daq/build/source/CMakeFiles/GEBSort_nogeb.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : source/CMakeFiles/GEBSort_nogeb.dir/depend
 

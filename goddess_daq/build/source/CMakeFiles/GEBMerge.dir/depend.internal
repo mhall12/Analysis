@@ -6,14 +6,14 @@ source/CMakeFiles/GEBMerge.dir/GEBMerge.c.o
  ../include/GTMerge_readnew.h
  ../include/ctk.h
  ../include/gdecomp.h
- /media/mhall12/Zeus/goddess_daq/source/GEBMerge.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBMerge.c
 source/CMakeFiles/GEBMerge.dir/get_a_seed.c.o
- /media/mhall12/Zeus/goddess_daq/source/get_a_seed.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/get_a_seed.c
 source/CMakeFiles/GEBMerge.dir/printEvent.c.o
  ../include/ctk.h
  ../include/gdecomp.h
- /media/mhall12/Zeus/goddess_daq/source/printEvent.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/printEvent.c
 source/CMakeFiles/GEBMerge.dir/spe_fun.c.o
- /media/mhall12/Zeus/goddess_daq/source/spe_fun.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/spe_fun.c
 source/CMakeFiles/GEBMerge.dir/time_stamp.c.o
- /media/mhall12/Zeus/goddess_daq/source/time_stamp.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/time_stamp.c

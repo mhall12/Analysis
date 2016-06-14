@@ -102,15 +102,15 @@ unistd.h
 sys/types.h
 -
 
-/media/mhall12/Zeus/goddess_daq/hribf/source/hribfBuffer.cxx
+/media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/hribfBuffer.cxx
 hribfBuffer.h
-/media/mhall12/Zeus/goddess_daq/hribf/source/hribfBuffer.h
+/media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/hribfBuffer.h
 sstream
 -
 
-/media/mhall12/Zeus/goddess_daq/hribf/source/ldfConvert.cxx
+/media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/ldfConvert.cxx
 hribfBuffer.h
-/media/mhall12/Zeus/goddess_daq/hribf/source/hribfBuffer.h
+/media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/hribfBuffer.h
 string
 -
 iostream
@@ -120,7 +120,7 @@ fstream
 cmath
 -
 
-/media/mhall12/Zeus/goddess_daq/hribf/source/mainBuffer.cxx
+/media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/mainBuffer.cxx
 mainBuffer.h
-/media/mhall12/Zeus/goddess_daq/hribf/source/mainBuffer.h
+/media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/mainBuffer.h
 

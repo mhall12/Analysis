@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/mhall12/Zeus/goddess_daq
+CMAKE_SOURCE_DIR = /media/mhall12/Zeus/Analysis/goddess_daq
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/mhall12/Zeus/goddess_daq/build
+CMAKE_BINARY_DIR = /media/mhall12/Zeus/Analysis/goddess_daq/build
 
 # Include any dependencies generated for this target.
 include goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/depend.make
@@ -59,23 +59,23 @@ goddess/source/ORRUBADictionary.cxx: ../goddess/include/QQQ5.h
 goddess/source/ORRUBADictionary.cxx: ../goddess/include/IonChamber.h
 goddess/source/ORRUBADictionary.cxx: ../goddess/include/LiquidScint.h
 goddess/source/ORRUBADictionary.cxx: ../goddess/include/ORRUBALinkDef.h
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ORRUBADictionary.cxx"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /home/mhall12/root/bin/rootcint -cint -f ORRUBADictionary.cxx -c -I/home/mhall12/root/include -I/media/mhall12/Zeus/goddess_daq/include -I/media/mhall12/Zeus/goddess_daq/goddess/include /media/mhall12/Zeus/goddess_daq/goddess/include/ORRUBA.h /media/mhall12/Zeus/goddess_daq/goddess/include/Detector.h /media/mhall12/Zeus/goddess_daq/goddess/include/siDet.h /media/mhall12/Zeus/goddess_daq/goddess/include/orrubaDet.h /media/mhall12/Zeus/goddess_daq/goddess/include/superX3.h /media/mhall12/Zeus/goddess_daq/goddess/include/BB10.h /media/mhall12/Zeus/goddess_daq/goddess/include/QQQ5.h /media/mhall12/Zeus/goddess_daq/goddess/include/IonChamber.h /media/mhall12/Zeus/goddess_daq/goddess/include/LiquidScint.h /media/mhall12/Zeus/goddess_daq/goddess/include/ORRUBALinkDef.h
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /home/mhall12/root/bin/rootcint -cint -f ORRUBADictionary.cxx -c -I/home/mhall12/root/include -I/media/mhall12/Zeus/Analysis/goddess_daq/include -I/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/ORRUBA.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/Detector.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/siDet.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/orrubaDet.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/superX3.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/BB10.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/QQQ5.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/IonChamber.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/LiquidScint.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/ORRUBALinkDef.h
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o: ../goddess/source/SolidVector.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/SolidVector.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/SolidVector.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/SolidVector.cxx > CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/SolidVector.cxx > CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/SolidVector.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/SolidVector.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o.requires
@@ -88,17 +88,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o.provides.build: go
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o: ../goddess/source/Detector.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/Detector.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/Detector.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/Detector.cxx > CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/Detector.cxx > CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/Detector.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/Detector.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o.requires
@@ -111,17 +111,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o.provides.build: godde
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o: ../goddess/source/siDet.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/siDet.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/siDet.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/siDet.cxx > CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/siDet.cxx > CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/siDet.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/siDet.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o.requires
@@ -134,17 +134,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o.provides.build: goddess/
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o: ../goddess/source/orrubaDet.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/orrubaDet.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/orrubaDet.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/orrubaDet.cxx > CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/orrubaDet.cxx > CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/orrubaDet.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/orrubaDet.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o.requires
@@ -157,17 +157,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o.provides.build: godd
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o: ../goddess/source/ORRUBA.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/ORRUBA.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/ORRUBA.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/ORRUBA.cxx > CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/ORRUBA.cxx > CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/ORRUBA.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/ORRUBA.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o.requires
@@ -180,17 +180,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o.provides.build: goddess
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o: ../goddess/source/superX3.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/superX3.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/superX3.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/superX3.cxx > CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/superX3.cxx > CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/superX3.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/superX3.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o.requires
@@ -203,17 +203,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o.provides.build: goddes
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o: ../goddess/source/BB10.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/BB10.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/BB10.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/BB10.cxx > CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/BB10.cxx > CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/BB10.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/BB10.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o.requires
@@ -226,17 +226,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o.provides.build: goddess/s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o: ../goddess/source/QQQ5.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/QQQ5.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/QQQ5.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/QQQ5.cxx > CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/QQQ5.cxx > CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/QQQ5.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/QQQ5.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o.requires
@@ -249,17 +249,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o.provides.build: goddess/s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o: ../goddess/source/GoddessConfig.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/GoddessConfig.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/GoddessConfig.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/GoddessConfig.cxx > CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/GoddessConfig.cxx > CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/GoddessConfig.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/GoddessConfig.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o.requires
@@ -272,17 +272,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o.provides.build: 
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o: ../goddess/source/IonChamber.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/IonChamber.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/IonChamber.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/IonChamber.cxx > CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/IonChamber.cxx > CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/IonChamber.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/IonChamber.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o.requires
@@ -295,17 +295,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o.provides.build: god
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o: ../goddess/source/LiquidScint.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o -c /media/mhall12/Zeus/goddess_daq/goddess/source/LiquidScint.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/LiquidScint.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/goddess/source/LiquidScint.cxx > CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/LiquidScint.cxx > CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/goddess/source/LiquidScint.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/LiquidScint.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o.requires
@@ -318,17 +318,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o.provides.build: go
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o: goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o: goddess/source/ORRUBADictionary.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o -c /media/mhall12/Zeus/goddess_daq/build/goddess/source/ORRUBADictionary.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/ORRUBADictionary.cxx
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/build/goddess/source/ORRUBADictionary.cxx > CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/ORRUBADictionary.cxx > CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.i
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/build/goddess/source/ORRUBADictionary.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/ORRUBADictionary.cxx -o CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.s
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o.requires
@@ -373,10 +373,10 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/requires: goddess/source/CMakeFiles/
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/requires
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/clean:
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && $(CMAKE_COMMAND) -P CMakeFiles/ORRUBA_OBJECT.dir/cmake_clean.cmake
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && $(CMAKE_COMMAND) -P CMakeFiles/ORRUBA_OBJECT.dir/cmake_clean.cmake
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/clean
 
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/depend: goddess/source/ORRUBADictionary.cxx
-	cd /media/mhall12/Zeus/goddess_daq/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/mhall12/Zeus/goddess_daq /media/mhall12/Zeus/goddess_daq/goddess/source /media/mhall12/Zeus/goddess_daq/build /media/mhall12/Zeus/goddess_daq/build/goddess/source /media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/DependInfo.cmake --color=$(COLOR)
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/mhall12/Zeus/Analysis/goddess_daq /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source /media/mhall12/Zeus/Analysis/goddess_daq/build /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/depend
 

@@ -38,7 +38,7 @@
 namespace std {} using namespace std;
 
 // Header files passed as explicit arguments
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/GoddessStruct.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessStruct.h"
 
 // Header files passed via #pragma extra_include
 
@@ -432,15 +432,15 @@ namespace ROOT {
 namespace {
   void TriggerDictionaryInitialization_GoddessStructDictionary_Impl() {
     static const char* headers[] = {
-"/media/mhall12/Zeus/goddess_daq/goddess/include/GoddessStruct.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessStruct.h",
 0
     };
     static const char* includePaths[] = {
 "/home/mhall12/root/include",
-"/media/mhall12/Zeus/goddess_daq/include",
-"/media/mhall12/Zeus/goddess_daq/goddess/include",
+"/media/mhall12/Zeus/Analysis/goddess_daq/include",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include",
 "/home/mhall12/root/include",
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/",
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/",
 0
     };
     static const char* fwdDeclCode = R"DICTFWDDCLS(
@@ -449,9 +449,9 @@ namespace {
 #pragma clang diagnostic ignored "-Wignored-attributes"
 #pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 extern int __Cling_Autoloading_Map;
-struct __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/GoddessStruct.h")))  GamData;
-struct __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/GoddessStruct.h")))  SiData;
-struct __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/GoddessStruct.h")))  IonData;
+struct __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessStruct.h")))  GamData;
+struct __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessStruct.h")))  SiData;
+struct __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessStruct.h")))  IonData;
 namespace std{template <typename _Tp> class __attribute__((annotate("$clingAutoload$string")))  allocator;
 }
 )DICTFWDDCLS";
@@ -463,7 +463,7 @@ namespace std{template <typename _Tp> class __attribute__((annotate("$clingAutol
 #endif
 
 #define _BACKWARD_BACKWARD_WARNING_H
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/GoddessStruct.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessStruct.h"
 
 #undef  _BACKWARD_BACKWARD_WARNING_H
 )DICTPAYLOAD";

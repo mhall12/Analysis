@@ -14,7 +14,7 @@ hribf/source/CMakeFiles/hribfConvert.dir/hribfBuffer.cxx.o
  /home/mhall12/root/include/TSchemaHelper.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/hribf/source/hribfBuffer.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/hribfBuffer.cxx
 hribf/source/CMakeFiles/hribfConvert.dir/ldfConvert.cxx.o
  ../hribf/include/hribfBuffer.h
  ../hribf/include/mainBuffer.h
@@ -28,7 +28,7 @@ hribf/source/CMakeFiles/hribfConvert.dir/ldfConvert.cxx.o
  /home/mhall12/root/include/TSchemaHelper.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/hribf/source/ldfConvert.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/ldfConvert.cxx
 hribf/source/CMakeFiles/hribfConvert.dir/mainBuffer.cxx.o
  ../hribf/include/mainBuffer.h
  /home/mhall12/root/include/DllImport.h
@@ -41,4 +41,4 @@ hribf/source/CMakeFiles/hribfConvert.dir/mainBuffer.cxx.o
  /home/mhall12/root/include/TSchemaHelper.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/hribf/source/mainBuffer.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/hribf/source/mainBuffer.cxx

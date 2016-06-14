@@ -3,7 +3,7 @@
 
 source/CMakeFiles/GEBSort_nogeb.dir/GEBHeader.c.o
  ../include/GTMerge.h
- /media/mhall12/Zeus/goddess_daq/source/GEBHeader.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBHeader.c
 source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o
  ../goddess/include/BB10.h
  ../goddess/include/Detector.h
@@ -127,7 +127,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/GEBSort.cxx.o
  /home/mhall12/root/include/mmprivate.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/GEBSort.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/GEBSort.cxx
 source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -167,7 +167,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/GTPrint.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/GTPrint.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/GTPrint.c
 source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o
  ../goddess/include/BB10.h
  ../goddess/include/Detector.h
@@ -264,7 +264,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/GoddessData.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/GoddessData.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/GoddessData.cxx
 source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -326,7 +326,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_agod.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_agod.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_agod.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -413,7 +413,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_dfma.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_dfma.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dfma.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -475,7 +475,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_dgod.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_dgod.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgod.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -562,7 +562,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_dgs.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_dgs.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_dgs.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o
  ../goddess/include/Detector.h
  ../goddess/include/GoddessConfig.h
@@ -655,7 +655,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_god.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_god.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_god.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -741,7 +741,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_gtcal.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_gtcal.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_gtcal.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -827,7 +827,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_mode1.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_mode1.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode1.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -913,7 +913,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_mode2.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_mode2.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode2.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -999,7 +999,7 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_mode3.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_mode3.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_mode3.c
 source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o
  ../include/GEBSort.h
  ../include/GTMerge.h
@@ -1085,12 +1085,12 @@ source/CMakeFiles/GEBSort_nogeb.dir/bin_template.c.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/source/bin_template.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/bin_template.c
 source/CMakeFiles/GEBSort_nogeb.dir/get_a_seed.c.o
- /media/mhall12/Zeus/goddess_daq/source/get_a_seed.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/get_a_seed.c
 source/CMakeFiles/GEBSort_nogeb.dir/spe_fun.c.o
- /media/mhall12/Zeus/goddess_daq/source/spe_fun.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/spe_fun.c
 source/CMakeFiles/GEBSort_nogeb.dir/str_decomp.c.o
- /media/mhall12/Zeus/goddess_daq/source/str_decomp.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/str_decomp.c
 source/CMakeFiles/GEBSort_nogeb.dir/time_stamp.c.o
- /media/mhall12/Zeus/goddess_daq/source/time_stamp.c
+ /media/mhall12/Zeus/Analysis/goddess_daq/source/time_stamp.c

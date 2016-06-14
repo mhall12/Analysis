@@ -38,15 +38,15 @@
 namespace std {} using namespace std;
 
 // Header files passed as explicit arguments
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/ORRUBA.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/Detector.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/siDet.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/orrubaDet.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/superX3.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/BB10.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/QQQ5.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/IonChamber.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/LiquidScint.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/ORRUBA.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/Detector.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/siDet.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/orrubaDet.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/superX3.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/BB10.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/QQQ5.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/IonChamber.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/LiquidScint.h"
 
 // Header files passed via #pragma extra_include
 
@@ -1298,23 +1298,23 @@ namespace ROOT {
 namespace {
   void TriggerDictionaryInitialization_ORRUBADictionary_Impl() {
     static const char* headers[] = {
-"/media/mhall12/Zeus/goddess_daq/goddess/include/ORRUBA.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/Detector.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/siDet.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/orrubaDet.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/superX3.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/BB10.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/QQQ5.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/IonChamber.h",
-"/media/mhall12/Zeus/goddess_daq/goddess/include/LiquidScint.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/ORRUBA.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/Detector.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/siDet.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/orrubaDet.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/superX3.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/BB10.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/QQQ5.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/IonChamber.h",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/LiquidScint.h",
 0
     };
     static const char* includePaths[] = {
 "/home/mhall12/root/include",
-"/media/mhall12/Zeus/goddess_daq/include",
-"/media/mhall12/Zeus/goddess_daq/goddess/include",
+"/media/mhall12/Zeus/Analysis/goddess_daq/include",
+"/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include",
 "/home/mhall12/root/include",
-"/media/mhall12/Zeus/goddess_daq/build/goddess/source/",
+"/media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/",
 0
     };
     static const char* fwdDeclCode = R"DICTFWDDCLS(
@@ -1323,15 +1323,15 @@ namespace {
 #pragma clang diagnostic ignored "-Wignored-attributes"
 #pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 extern int __Cling_Autoloading_Map;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/Detector.h")))  Detector;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/siDet.h")))  siDet;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/orrubaDet.h")))  orrubaDet;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/superX3.h")))  superX3;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/BB10.h")))  BB10;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/QQQ5.h")))  QQQ5;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/IonChamber.h")))  IonChamber;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/LiquidScint.h")))  LiquidScint;
-class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/goddess_daq/goddess/include/ORRUBA.h")))  ORRUBA;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/Detector.h")))  Detector;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/siDet.h")))  siDet;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/orrubaDet.h")))  orrubaDet;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/superX3.h")))  superX3;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/BB10.h")))  BB10;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/QQQ5.h")))  QQQ5;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/IonChamber.h")))  IonChamber;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/LiquidScint.h")))  LiquidScint;
+class __attribute__((annotate("$clingAutoload$/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/ORRUBA.h")))  ORRUBA;
 namespace std{template <typename _Tp> class __attribute__((annotate("$clingAutoload$string")))  allocator;
 }
 )DICTFWDDCLS";
@@ -1343,15 +1343,15 @@ namespace std{template <typename _Tp> class __attribute__((annotate("$clingAutol
 #endif
 
 #define _BACKWARD_BACKWARD_WARNING_H
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/ORRUBA.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/Detector.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/siDet.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/orrubaDet.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/superX3.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/BB10.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/QQQ5.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/IonChamber.h"
-#include "/media/mhall12/Zeus/goddess_daq/goddess/include/LiquidScint.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/ORRUBA.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/Detector.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/siDet.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/orrubaDet.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/superX3.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/BB10.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/QQQ5.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/IonChamber.h"
+#include "/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/LiquidScint.h"
 
 #undef  _BACKWARD_BACKWARD_WARNING_H
 )DICTPAYLOAD";

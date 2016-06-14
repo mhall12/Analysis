@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/mhall12/Zeus/goddess_daq
+CMAKE_SOURCE_DIR = /media/mhall12/Zeus/Analysis/goddess_daq
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/mhall12/Zeus/goddess_daq/build
+CMAKE_BINARY_DIR = /media/mhall12/Zeus/Analysis/goddess_daq/build
 
 # Include any dependencies generated for this target.
 include goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/depend.make
@@ -51,23 +51,23 @@ include goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/flags.make
 
 goddess/source/GoddessStructDictionary.cxx: ../goddess/include/GoddessStruct.h
 goddess/source/GoddessStructDictionary.cxx: ../goddess/include/GoddessLinkDef.h
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating GoddessStructDictionary.cxx"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /home/mhall12/root/bin/rootcint -cint -f GoddessStructDictionary.cxx -c -I/home/mhall12/root/include -I/media/mhall12/Zeus/goddess_daq/include -I/media/mhall12/Zeus/goddess_daq/goddess/include /media/mhall12/Zeus/goddess_daq/goddess/include/GoddessStruct.h /media/mhall12/Zeus/goddess_daq/goddess/include/GoddessLinkDef.h
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /home/mhall12/root/bin/rootcint -cint -f GoddessStructDictionary.cxx -c -I/home/mhall12/root/include -I/media/mhall12/Zeus/Analysis/goddess_daq/include -I/media/mhall12/Zeus/Analysis/goddess_daq/goddess/include /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessStruct.h /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/GoddessLinkDef.h
 
 goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o: goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/flags.make
 goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o: goddess/source/GoddessStructDictionary.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /media/mhall12/Zeus/Analysis/goddess_daq/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o -c /media/mhall12/Zeus/goddess_daq/build/goddess/source/GoddessStructDictionary.cxx
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o -c /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/GoddessStructDictionary.cxx
 
 goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.i"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/goddess_daq/build/goddess/source/GoddessStructDictionary.cxx > CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.i
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/GoddessStructDictionary.cxx > CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.i
 
 goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.s"
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/goddess_daq/build/goddess/source/GoddessStructDictionary.cxx -o CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.s
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/GoddessStructDictionary.cxx -o CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.s
 
 goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o.requires:
 .PHONY : goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/GoddessStructDictionary.cxx.o.requires
@@ -90,10 +90,10 @@ goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/requires: goddess/source/CMak
 .PHONY : goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/requires
 
 goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/clean:
-	cd /media/mhall12/Zeus/goddess_daq/build/goddess/source && $(CMAKE_COMMAND) -P CMakeFiles/GoddessStruct_OBJECT.dir/cmake_clean.cmake
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source && $(CMAKE_COMMAND) -P CMakeFiles/GoddessStruct_OBJECT.dir/cmake_clean.cmake
 .PHONY : goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/clean
 
 goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/depend: goddess/source/GoddessStructDictionary.cxx
-	cd /media/mhall12/Zeus/goddess_daq/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/mhall12/Zeus/goddess_daq /media/mhall12/Zeus/goddess_daq/goddess/source /media/mhall12/Zeus/goddess_daq/build /media/mhall12/Zeus/goddess_daq/build/goddess/source /media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/DependInfo.cmake --color=$(COLOR)
+	cd /media/mhall12/Zeus/Analysis/goddess_daq/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/mhall12/Zeus/Analysis/goddess_daq /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source /media/mhall12/Zeus/Analysis/goddess_daq/build /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir/depend
 

@@ -1,8 +1,8 @@
-# Install script for directory: /media/mhall12/Zeus/goddess_daq/hribf
+# Install script for directory: /media/mhall12/Zeus/Analysis/goddess_daq/hribf
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/media/mhall12/Zeus/goddess_daq/exec")
+  SET(CMAKE_INSTALL_PREFIX "/media/mhall12/Zeus/Analysis/goddess_daq/exec")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,7 +34,7 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/media/mhall12/Zeus/goddess_daq/build/hribf/source/cmake_install.cmake")
+  INCLUDE("/media/mhall12/Zeus/Analysis/goddess_daq/build/hribf/source/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

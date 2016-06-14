@@ -45,7 +45,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/BB10.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/BB10.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/BB10.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o
  ../goddess/include/Detector.h
  /home/mhall12/root/include/DllImport.h
@@ -63,7 +63,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/Detector.cxx.o
  /home/mhall12/root/include/TVersionCheck.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/Detector.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/Detector.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o
  ../goddess/include/BB10.h
  ../goddess/include/Detector.h
@@ -123,7 +123,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/GoddessConfig.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/GoddessConfig.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/GoddessConfig.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o
  ../goddess/include/Detector.h
  ../goddess/include/IonChamber.h
@@ -142,7 +142,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/IonChamber.cxx.o
  /home/mhall12/root/include/TVersionCheck.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/IonChamber.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/IonChamber.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o
  ../goddess/include/Detector.h
  ../goddess/include/LiquidScint.h
@@ -161,7 +161,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/LiquidScint.cxx.o
  /home/mhall12/root/include/TVersionCheck.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/LiquidScint.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/LiquidScint.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o
  ../goddess/include/ORRUBA.h
  /home/mhall12/root/include/DllImport.h
@@ -201,7 +201,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBA.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/ORRUBA.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/ORRUBA.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o
  /home/mhall12/root/include/DllImport.h
  /home/mhall12/root/include/ESTLType.h
@@ -265,17 +265,17 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/ORRUBADictionary.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/build/goddess/source/ORRUBADictionary.cxx
- /media/mhall12/Zeus/goddess_daq/goddess/include/BB10.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/Detector.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/IonChamber.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/LiquidScint.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/ORRUBA.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/QQQ5.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/SolidVector.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/orrubaDet.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/siDet.h
- /media/mhall12/Zeus/goddess_daq/goddess/include/superX3.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/build/goddess/source/ORRUBADictionary.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/BB10.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/Detector.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/IonChamber.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/LiquidScint.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/ORRUBA.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/QQQ5.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/SolidVector.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/orrubaDet.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/siDet.h
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/include/superX3.h
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o
  ../goddess/include/Detector.h
  ../goddess/include/QQQ5.h
@@ -320,7 +320,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/QQQ5.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/QQQ5.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/QQQ5.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o
  ../goddess/include/SolidVector.h
  /home/mhall12/root/include/DllImport.h
@@ -360,7 +360,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/SolidVector.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/SolidVector.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/SolidVector.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o
  ../goddess/include/Detector.h
  ../goddess/include/SolidVector.h
@@ -403,7 +403,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/orrubaDet.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/orrubaDet.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/orrubaDet.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o
  ../goddess/include/Detector.h
  ../goddess/include/siDet.h
@@ -422,7 +422,7 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/siDet.cxx.o
  /home/mhall12/root/include/TVersionCheck.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/siDet.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/siDet.cxx
 goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o
  ../goddess/include/Detector.h
  ../goddess/include/SolidVector.h
@@ -467,4 +467,4 @@ goddess/source/CMakeFiles/ORRUBA_OBJECT.dir/superX3.cxx.o
  /home/mhall12/root/include/libcpp_string_view.h
  /home/mhall12/root/include/snprintf.h
  /home/mhall12/root/include/strlcpy.h
- /media/mhall12/Zeus/goddess_daq/goddess/source/superX3.cxx
+ /media/mhall12/Zeus/Analysis/goddess_daq/goddess/source/superX3.cxx
