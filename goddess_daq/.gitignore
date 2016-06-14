@@ -6,3 +6,4 @@
 
 #Ignore rootfiles folders.
 goddess_daq/exec/rootfiles
+goddess_daq/exec/log
