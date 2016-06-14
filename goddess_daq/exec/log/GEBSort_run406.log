@@ -1,0 +1,3176 @@
+we have 9 arguments
+1... -input
+will take input from disk
+
+4... -rootfile
+rootfile name specified on command line
+__will store spectra in rootfile: rootfiles/run406.root
+will recreate root file
+7... -chat
+time(seconds)        unlimited
+file(blocks)         unlimited
+data(kbytes)         unlimited
+stack(kbytes)        8192
+coredump(blocks)     0
+memory(kbytes)       unlimited
+locked memory(kbytes) 64
+process              63458
+nofiles              1024
+vmemory(kbytes)      unlimited
+locks                unlimited
+will read sorting instructions from chatfile: chatfiles/GEBSort.chat
+
+executing UserDeclare.h code
+
+
+GEBsort running on: Thu Mar 17 13:17:30 2016
+
+
+initializing
+
+crmat.LINUX is open (input) binary format
+read 7936 bytes into Pars.crmat
+read in AGATA rotation and translation data
+AGATA_crmat.dat is open for reading
+read 180 AGATA rotational/translational matrices
+chat file: <chatfiles/GEBSort.chat> open
+
+will dump to output file every 900 minutes
+will sort a max of 1000000000000 events
+will print details of the first 10 events
+will use Pars.Beta (v/c) correction of 0.000000
+will sort using a time window of 500
+WARNING: could not open CCcal file "CCenergy.cal", quit
+will use beam direction 0.000000 0.000000 1.000000
+vector length= 1.000000, normalizing
+will use beam direction 0.000000 0.000000 1.000000
+Pars.ndetlimlo=2,Pars.ndetlimhi=8
+will require mult bt: 1 20
+will skip rest of chat file
+
+chat file: <chatfiles/GEBSort.chat> closed
+processed 19 sort instructions and 90 lines
+
+checking proper input of chat file...
+input file "/media/ds1/merged//GEBMerged_run406.gtd_000" is open, inData=4
+siz=16;ptgd[i]->type=19; ptgd[i]->length=  24; ptgd[i]->timestamp=83915466671
+start TS is 83915466671
+reopened input file, inData=4 
+input source is set up, supposedly
+
+executing ShareMemFileUserInit.h code
+
+deleted \rm -f GEBSort.command
+root file <rootfiles/run406.root>
+base=<rootfiles/run406.root:/>
+
+executing UserInit.h code
+
+MAXDETPOS=120
+
+mapping - started
+1010 2 2 BGO
+
+mapping - complete!!
+
+sup_dgs 0 
+
+sup_dgs 1 
+
+sup_dgs 2 
+
+sup_dgs 3 
+
+sup_dgs 4 
+
+sup_dgs 5 
+
+sup_dgs 6 
+
+sup_dgs 7 
+
+sup_dgs 8 
+
+sup_dgs 9 
+
+sup_dgs 10 
+
+sup_dgs 11 
+
+sup_dgs 12 
+
+sup_dgs 13 
+
+sup_dgs 14 
+
+sup_dgs 15 
+
+sup_dgs 16 
+
+sup_dgs 17 
+
+sup_dgs 18 
+
+sup_dgs 19 
+
+sup_dgs 20 
+
+sup_dgs 21 
+
+sup_dgs 22 
+
+sup_dgs 23 
+
+sup_dgs 24 
+
+sup_dgs 25 
+
+sup_dgs 26 
+
+sup_dgs 27 
+
+sup_dgs 28 
+
+sup_dgs 29 
+
+sup_dgs 30 
+
+sup_dgs 31 
+
+sup_dgs 32 
+
+sup_dgs 33 
+
+sup_dgs 34 
+
+sup_dgs 35 
+
+sup_dgs 36 
+
+sup_dgs 37 
+
+sup_dgs 38 
+
+sup_dgs 39 
+
+sup_dgs 40 
+
+sup_dgs 41 
+
+sup_dgs 42 
+
+sup_dgs 43 
+
+sup_dgs 44 
+
+sup_dgs 45 
+
+sup_dgs 46 
+
+sup_dgs 47 
+
+sup_dgs 48 
+
+sup_dgs 49 
+
+sup_dgs 50 
+
+sup_dgs 51 
+
+sup_dgs 52 
+
+sup_dgs 53 
+
+sup_dgs 54 
+
+sup_dgs 55 
+
+sup_dgs 56 
+
+sup_dgs 57 
+
+sup_dgs 58 
+
+sup_dgs 59 
+
+sup_dgs 60 
+
+sup_dgs 61 
+
+sup_dgs 62 
+
+sup_dgs 63 
+
+sup_dgs 64 
+
+sup_dgs 65 
+
+sup_dgs 66 
+
+sup_dgs 67 
+
+sup_dgs 68 
+
+sup_dgs 69 
+
+sup_dgs 70 
+
+sup_dgs 71 
+
+sup_dgs 72 
+
+sup_dgs 73 
+
+sup_dgs 74 
+
+sup_dgs 75 
+
+sup_dgs 76 
+
+sup_dgs 77 
+
+sup_dgs 78 
+
+sup_dgs 79 
+
+sup_dgs 80 
+
+sup_dgs 81 
+
+sup_dgs 82 
+
+sup_dgs 83 
+
+sup_dgs 84 
+
+sup_dgs 85 
+
+sup_dgs 86 
+
+sup_dgs 87 
+
+sup_dgs 88 
+
+sup_dgs 89 
+
+sup_dgs 90 
+
+sup_dgs 91 
+
+sup_dgs 92 
+
+sup_dgs 93 
+
+sup_dgs 94 
+
+sup_dgs 95 
+
+sup_dgs 96 
+
+sup_dgs 97 
+
+sup_dgs 98 
+
+sup_dgs 99 
+
+sup_dgs 100 
+
+sup_dgs 101 
+
+sup_dgs 102 
+
+sup_dgs 103 
+
+sup_dgs 104 
+
+sup_dgs 105 
+
+sup_dgs 106 
+
+sup_dgs 107 
+
+sup_dgs 108 
+
+sup_dgs 109 
+
+sup_dgs 110 
+0 350.000000 0.000000 0.000000 0.000000 
+1 0.000000 1.000000 0.000000 1.000000 
+2 1151.800049 0.865000 0.000000 1.000000 
+3 0.000000 1.000000 0.000000 1.000000 
+4 0.000000 1.000000 0.000000 1.000000 
+5 0.000000 1.000000 0.000000 1.000000 
+6 0.000000 1.000000 0.000000 1.000000 
+7 1263.400024 0.862000 1.350000 0.976036 
+8 0.000000 1.000000 0.000000 1.000000 
+9 0.000000 1.000000 0.000000 1.000000 
+10 0.000000 1.000000 0.000000 1.000000 
+11 1302.699951 0.858000 2.770000 1.223113 
+12 1136.500000 0.862000 1.820000 0.884090 
+13 1197.599976 0.861000 2.660000 0.921018 
+14 0.000000 1.000000 0.000000 1.000000 
+15 1488.699951 0.860000 2.320000 1.132020 
+16 2335.000000 0.862000 1.480000 0.984171 
+17 1105.599976 0.861000 3.670000 1.055096 
+18 1263.699951 0.861000 4.570000 1.038865 
+19 1276.000000 0.861000 2.560000 1.071005 
+20 1918.500000 0.863000 2.480000 0.888036 
+21 1112.500000 0.864000 2.380000 0.991382 
+22 2496.600098 0.862000 4.150000 1.034389 
+23 1232.199951 0.862000 2.190000 1.098228 
+24 1246.099976 0.860000 2.610000 1.119488 
+25 3537.600098 0.860000 2.740000 1.033349 
+26 1502.300049 0.858000 3.430000 0.895496 
+27 1420.000000 0.861000 1.110000 1.102778 
+28 945.099976 0.861000 2.060000 1.088917 
+29 1177.199951 0.858000 2.770000 1.086467 
+30 1236.599976 0.862000 2.670000 1.063118 
+31 1252.800049 0.861000 1.820000 1.018661 
+32 1084.699951 0.863000 3.150000 1.064928 
+33 1250.099976 0.862000 2.520000 1.089397 
+34 1696.699951 0.863000 4.160000 1.086731 
+35 1318.599976 0.861000 2.680000 1.167149 
+36 1129.900024 0.863000 1.630000 1.038212 
+37 1332.400024 0.859000 1.910000 1.059314 
+38 0.000000 0.864000 3.730000 1.072700 
+39 1234.900024 0.862000 2.190000 1.049314 
+40 1260.900024 0.862000 1.840000 1.069042 
+41 1132.400024 0.864000 2.390000 0.932198 
+42 1104.599976 0.859000 2.900000 1.017046 
+43 1212.500000 0.863000 3.110000 1.096507 
+44 1179.500000 0.858000 3.010000 1.055321 
+45 1261.699951 0.862000 1.850000 1.091607 
+46 0.000000 0.860000 -13.656000 1.076690 
+47 1323.800049 0.862000 2.130000 1.106863 
+48 1198.599976 0.860000 2.170000 1.038903 
+49 1162.699951 0.862000 2.410000 1.043024 
+50 582.000000 0.859000 3.000000 1.048260 
+51 0.000000 1.000000 0.000000 1.000000 
+52 1145.400024 0.862000 2.110000 1.041926 
+53 0.000000 1.000000 0.000000 1.000000 
+54 2036.400024 0.859000 -14.660000 1.075451 
+55 1123.900024 0.864000 2.960000 1.080855 
+56 588.500000 0.861000 2.310000 1.079462 
+57 1154.099976 0.861000 2.040000 1.045132 
+58 0.000000 1.000000 0.000000 1.000000 
+59 1208.400024 0.860000 2.050000 1.055598 
+60 345.000000 0.861000 3.120000 1.024527 
+61 1184.699951 0.861000 3.120000 1.088542 
+62 1126.400024 0.861000 3.000000 1.107622 
+63 1619.800049 0.861000 2.630000 0.772539 
+64 1166.699951 0.862000 3.050000 1.099560 
+65 1256.400024 0.863000 1.760000 1.057510 
+66 1100.099976 0.861000 3.290000 1.074217 
+67 1207.599976 0.862000 3.360000 1.164928 
+68 1401.800049 0.865000 4.090000 1.022349 
+69 1136.900024 0.861000 2.490000 1.082179 
+70 1227.099976 0.861000 2.600000 1.060964 
+71 1369.199951 0.864000 4.670000 1.263559 
+72 0.000000 0.862000 0.000000 1.000000 
+73 1122.599976 0.862000 3.340000 1.263304 
+74 1213.400024 0.863000 1.050000 1.330291 
+75 1235.000000 0.861000 2.350000 0.839134 
+76 1183.599976 0.862000 3.480000 1.087612 
+77 954.400024 0.861000 3.700000 1.015313 
+78 0.000000 1.000000 0.000000 1.000000 
+79 4180.000000 0.864000 3.220000 1.009113 
+80 1108.599976 0.860000 2.090000 0.996045 
+81 1146.000000 0.862000 2.000000 1.025775 
+82 0.000000 0.862000 2.910000 1.070436 
+83 985.299988 0.862000 3.090000 1.054712 
+84 0.000000 0.862000 1.920000 1.082049 
+85 1003.500000 0.862000 3.500000 1.062748 
+86 0.000000 0.862000 3.490000 1.003200 
+87 1100.199951 0.862000 1.470000 1.262591 
+88 1081.099976 0.861000 3.720000 1.089157 
+89 0.000000 1.000000 0.000000 1.000000 
+90 1040.900024 0.858000 2.180000 0.872566 
+91 1127.500000 0.860000 1.690000 1.191992 
+92 1217.400024 0.861000 1.670000 1.020711 
+93 1359.400024 0.863000 4.290000 0.941108 
+94 1750.099976 0.862000 2.280000 0.881789 
+95 1197.500000 0.862000 1.610000 1.010882 
+96 1229.599976 0.861000 3.860000 1.025682 
+97 1063.199951 0.861000 3.780000 0.989981 
+98 1275.099976 0.862000 5.120000 1.162858 
+99 1881.400024 0.861000 3.760000 1.027080 
+100 1464.699951 0.862000 3.100000 1.054288 
+101 0.000000 0.862000 2.200000 1.054106 
+102 1249.900024 0.861000 2.840000 0.938557 
+103 4023.100098 0.864000 2.220000 0.912943 
+104 2960.100098 0.862000 3.080000 0.948797 
+105 2127.500000 0.864000 4.670000 1.181792 
+106 1682.000000 0.861000 3.280000 0.927276 
+107 1138.900024 0.860000 2.070000 0.999171 
+108 1693.900024 0.862000 2.410000 0.985551 
+109 0.000000 0.862000 2.670000 1.262177 
+110 0.000000 0.857000 -3.950000 1.005913 
+
+sup_dgs done!!
+GoddessConfig::ReadPosition isn't implemeted yet. Filename was goddess.position
+Registering QQQ5 detector: 
+3121-1, LocID: UA-E1, pDAQ: 16-1, nDAQ: 16-329
+ Upstream: U, Sector: 0, Depth: 1
+ Position: -1.96264e-07, 4.49, 93.345, RotZ: 90, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 0, 3.70111e-05
+ En. p-type channel 1, 1 order calib.: 0, 3.73255e-05
+ En. p-type channel 2, 1 order calib.: 0, 3.95974e-05
+ En. p-type channel 3, 1 order calib.: 0, 3.61726e-05
+ En. p-type channel 4, 1 order calib.: 0, 3.51064e-05
+ En. p-type channel 5, 1 order calib.: 0, 3.55323e-05
+ En. p-type channel 6, 1 order calib.: 0, 3.9156e-05
+ En. p-type channel 7, 1 order calib.: 0, 3.87672e-05
+ En. p-type channel 8, 1 order calib.: 0, 3.77671e-05
+ En. p-type channel 9, 1 order calib.: 0, 4.23926e-05
+ En. p-type channel 10, 1 order calib.: 0, 4.28059e-05
+ En. p-type channel 11, 1 order calib.: 0, 3.93314e-05
+ En. p-type channel 12, 1 order calib.: 0, 3.99803e-05
+ En. p-type channel 13, 1 order calib.: 0, 4.2444e-05
+ En. p-type channel 14, 1 order calib.: 0, 1
+ En. p-type channel 15, 1 order calib.: 0, 3.85968e-05
+ En. p-type channel 16, 1 order calib.: 0, 3.8365e-05
+ En. p-type channel 17, 1 order calib.: 0, 3.92435e-05
+ En. p-type channel 18, 1 order calib.: 0, 3.95527e-05
+ En. p-type channel 19, 1 order calib.: 0, 3.69525e-05
+ En. p-type channel 20, 1 order calib.: 0, 3.7465e-05
+ En. p-type channel 21, 1 order calib.: 0, 3.83861e-05
+ En. p-type channel 22, 1 order calib.: 0, 3.51064e-05
+ En. p-type channel 23, 1 order calib.: 0, 4.07456e-05
+ En. p-type channel 24, 1 order calib.: 0, 3.68364e-05
+ En. p-type channel 25, 1 order calib.: 0, 4.02324e-05
+ En. p-type channel 26, 1 order calib.: 0, 4.5289e-05
+ En. p-type channel 27, 1 order calib.: 0, 3.77872e-05
+ En. p-type channel 28, 1 order calib.: 0, 1
+ En. p-type channel 29, 1 order calib.: 0, 4.28842e-05
+ En. p-type channel 30, 1 order calib.: 0, 4.04173e-05
+ En. p-type channel 31, 1 order calib.: 0, 3.76861e-05
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering QQQ5 detector: 
+3121-8, LocID: UB-E1, pDAQ: 16-33, nDAQ: 16-333
+ Upstream: U, Sector: 1, Depth: 1
+ Position: 4.49, 0, 93.345, RotZ: 0, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 0, 3.55684e-05
+ En. p-type channel 1, 1 order calib.: 0, 3.69916e-05
+ En. p-type channel 2, 1 order calib.: 0, 3.87244e-05
+ En. p-type channel 3, 1 order calib.: 0, 3.64921e-05
+ En. p-type channel 4, 1 order calib.: 0, 3.75852e-05
+ En. p-type channel 5, 1 order calib.: 0, 3.58039e-05
+ En. p-type channel 6, 1 order calib.: 0, 3.79505e-05
+ En. p-type channel 7, 1 order calib.: 0, 3.53536e-05
+ En. p-type channel 8, 1 order calib.: 0, 4.32273e-05
+ En. p-type channel 9, 1 order calib.: 0, 3.8365e-05
+ En. p-type channel 10, 1 order calib.: 0, 3.73454e-05
+ En. p-type channel 11, 1 order calib.: 0, 4.50567e-05
+ En. p-type channel 12, 1 order calib.: 0, 4.12478e-05
+ En. p-type channel 13, 1 order calib.: 0, 4.16637e-05
+ En. p-type channel 14, 1 order calib.: 0, 4.37386e-05
+ En. p-type channel 15, 1 order calib.: 0, 3.95751e-05
+ En. p-type channel 16, 1 order calib.: 0, 1
+ En. p-type channel 17, 1 order calib.: 0, 3.99123e-05
+ En. p-type channel 18, 1 order calib.: 0, 4.00489e-05
+ En. p-type channel 19, 1 order calib.: 0, 4.19122e-05
+ En. p-type channel 20, 1 order calib.: 0, 3.66825e-05
+ En. p-type channel 21, 1 order calib.: 0, 4.07456e-05
+ En. p-type channel 22, 1 order calib.: 0, 3.71284e-05
+ En. p-type channel 23, 1 order calib.: 0, 3.45709e-05
+ En. p-type channel 24, 1 order calib.: 0, 3.93093e-05
+ En. p-type channel 25, 1 order calib.: 0, 3.93093e-05
+ En. p-type channel 26, 1 order calib.: 0, 3.98895e-05
+ En. p-type channel 27, 1 order calib.: 0, 3.79917e-05
+ En. p-type channel 28, 1 order calib.: 0, 1
+ En. p-type channel 29, 1 order calib.: 0, 1
+ En. p-type channel 30, 1 order calib.: 0, 1
+ En. p-type channel 31, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 0.00154856
+ En. n-type channel 2, 1 order calib.: 0, 0.00160766
+ En. n-type channel 3, 1 order calib.: 0, 0.00178816
+Registering QQQ5 detector: 
+3121-2, LocID: UC-E1, pDAQ: 19-1, nDAQ: 19-273
+ Upstream: U, Sector: 2, Depth: 1
+ Position: -1.96264e-07, -4.49, 93.345, RotZ: -90, RotPhi: 0
+Setting p-type thresholds to:
+  130 130 130 130 130 130 165 130 
+  130 130 130 130 130 130 130 130 
+  130 130 130 130 130 141 130 130 
+  150 130 130 155 130 130 130 130 
+Setting n-type thresholds to:
+  225 250 234 130 
+ En. p-type channel 0, 1 order calib.: 0, 0.00160722
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 0.00182981
+ En. p-type channel 3, 1 order calib.: 0, 0.0017675
+ En. p-type channel 4, 1 order calib.: 0, 0.00155228
+ En. p-type channel 5, 1 order calib.: 0, 0.00166284
+ En. p-type channel 6, 1 order calib.: 0, 0.00181326
+ En. p-type channel 7, 1 order calib.: 0, 0.00169287
+ En. p-type channel 8, 1 order calib.: 0, 0.00156314
+ En. p-type channel 9, 1 order calib.: 0, 0.00162337
+ En. p-type channel 10, 1 order calib.: 0, 0.00165999
+ En. p-type channel 11, 1 order calib.: 0, 0.0016166
+ En. p-type channel 12, 1 order calib.: 0, 0.00180537
+ En. p-type channel 13, 1 order calib.: 0, 0.00162428
+ En. p-type channel 14, 1 order calib.: 0, 0.0015866
+ En. p-type channel 15, 1 order calib.: 0, 0.00157371
+ En. p-type channel 16, 1 order calib.: 0, 0.00166761
+ En. p-type channel 17, 1 order calib.: 0, 0.00163249
+ En. p-type channel 18, 1 order calib.: 0, 0.00155311
+ En. p-type channel 19, 1 order calib.: 0, 0.00176001
+ En. p-type channel 20, 1 order calib.: 0, 0.00162792
+ En. p-type channel 21, 1 order calib.: 0, 0.00157159
+ En. p-type channel 22, 1 order calib.: 0, 0.00168112
+ En. p-type channel 23, 1 order calib.: 0, 0.00157159
+ En. p-type channel 24, 1 order calib.: 0, 0.00157371
+ En. p-type channel 25, 1 order calib.: 0, 0.00150021
+ En. p-type channel 26, 1 order calib.: 0, 0.00163801
+ En. p-type channel 27, 1 order calib.: 0, 0.00161078
+ En. p-type channel 28, 1 order calib.: 0, 0.00168746
+ En. p-type channel 29, 1 order calib.: 0, 0.00156566
+ En. p-type channel 30, 1 order calib.: 0, 1
+ En. p-type channel 31, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 0.006991
+ En. n-type channel 1, 1 order calib.: 0, 0.007222
+ En. n-type channel 2, 1 order calib.: 0, 0.007425
+ En. n-type channel 3, 1 order calib.: 0, 0.007347
+Registering QQQ5 detector: 
+3121-7, LocID: UD-E1, pDAQ: 19-33, nDAQ: 19-277
+ Upstream: U, Sector: 3, Depth: 1
+ Position: -4.49, 3.92528e-07, 93.345, RotZ: -180, RotPhi: 0
+Setting p-type thresholds to:
+  130 130 130 130 130 130 130 130 
+  130 130 130 130 130 130 130 130 
+  130 130 200 130 130 141 130 130 
+  150 130 130 155 165 130 130 130 
+Setting n-type thresholds to:
+  200 150 155 190 
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 0.00176214
+ En. p-type channel 2, 1 order calib.: 0, 0.00174416
+ En. p-type channel 3, 1 order calib.: 0, 0.00171585
+ En. p-type channel 4, 1 order calib.: 0, 0.00163663
+ En. p-type channel 5, 1 order calib.: 0, 0.00178926
+ En. p-type channel 6, 1 order calib.: 0, 0.00168209
+ En. p-type channel 7, 1 order calib.: 0, 0.00177127
+ En. p-type channel 8, 1 order calib.: 0, 0.00174207
+ En. p-type channel 9, 1 order calib.: 0, 0.00176267
+ En. p-type channel 10, 1 order calib.: 0, 0.00161078
+ En. p-type channel 11, 1 order calib.: 0, 0.00165104
+ En. p-type channel 12, 1 order calib.: 0, 0.00171282
+ En. p-type channel 13, 1 order calib.: 0, 0.00181269
+ En. p-type channel 14, 1 order calib.: 0, 0.00170628
+ En. p-type channel 15, 1 order calib.: 0, 0.00171788
+ En. p-type channel 16, 1 order calib.: 0, 0.00170428
+ En. p-type channel 17, 1 order calib.: 0, 0.00172297
+ En. p-type channel 18, 1 order calib.: 0, 0.00170029
+ En. p-type channel 19, 1 order calib.: 0, 0.00167627
+ En. p-type channel 20, 1 order calib.: 0, 0.00169435
+ En. p-type channel 21, 1 order calib.: 0, 0.00177019
+ En. p-type channel 22, 1 order calib.: 0, 0.00170829
+ En. p-type channel 23, 1 order calib.: 0, 0.00171484
+ En. p-type channel 24, 1 order calib.: 0, 0.00179923
+ En. p-type channel 25, 1 order calib.: 0, 0.00181495
+ En. p-type channel 26, 1 order calib.: 0, 1
+ En. p-type channel 27, 1 order calib.: 0, 0.00165574
+ En. p-type channel 28, 1 order calib.: 0, 0.00170328
+ En. p-type channel 29, 1 order calib.: 0, 0.00177668
+ En. p-type channel 30, 1 order calib.: 0, 0.00174207
+ En. p-type channel 31, 1 order calib.: 0, 0.00180146
+ En. n-type channel 0, 1 order calib.: 0, 0.0070695
+ En. n-type channel 1, 1 order calib.: 0, 0.007208
+ En. n-type channel 2, 1 order calib.: 0, 0.007064
+ En. n-type channel 3, 1 order calib.: 0, 0.007085
+Registering QQQ5 detector: 
+3027-19, LocID: DA-dE, pDAQ: 19-241, nDAQ: 16-337
+ Upstream: D, Sector: 0, Depth: 0
+ Position: -1.96264e-07, 4.49, 93.345, RotZ: 90, RotPhi: 0
+Setting p-type thresholds to:
+  455 481 500 515 520 330 325 280 
+  288 250 258 240 215 217 225 215 
+  190 200 200 110 190 160 145 155 
+  180 190 175 180 200 175 165 165 
+ En. p-type channel 0, 1 order calib.: 0, 0.00171534
+ En. p-type channel 1, 1 order calib.: 0, 0.00174815
+ En. p-type channel 2, 1 order calib.: 0, 0.00172801
+ En. p-type channel 3, 1 order calib.: 0, 0.00170038
+ En. p-type channel 4, 1 order calib.: 0, 0.00172038
+ En. p-type channel 5, 1 order calib.: 0, 0.00172801
+ En. p-type channel 6, 1 order calib.: 0, 0.00171433
+ En. p-type channel 7, 1 order calib.: 0, 0.00174398
+ En. p-type channel 8, 1 order calib.: 0, 0.00175919
+ En. p-type channel 9, 1 order calib.: 0, 0.00180534
+ En. p-type channel 10, 1 order calib.: 0, 0.00178441
+ En. p-type channel 11, 1 order calib.: 0, 0.00168957
+ En. p-type channel 12, 1 order calib.: 0, 0.00184346
+ En. p-type channel 13, 1 order calib.: 0, 0.0017645
+ En. p-type channel 14, 1 order calib.: 0, 0.00175024
+ En. p-type channel 15, 1 order calib.: 0, 0.00174242
+ En. p-type channel 16, 1 order calib.: 0, 1
+ En. p-type channel 17, 1 order calib.: 0, 0.00179534
+ En. p-type channel 18, 1 order calib.: 0, 0.00170829
+ En. p-type channel 19, 1 order calib.: 0, 1
+ En. p-type channel 20, 1 order calib.: 0, 0.00173428
+ En. p-type channel 21, 1 order calib.: 0, 0.0017113
+ En. p-type channel 22, 1 order calib.: 0, 0.00175129
+ En. p-type channel 23, 1 order calib.: 0, 0.00187478
+ En. p-type channel 24, 1 order calib.: 0, 0.00170137
+ En. p-type channel 25, 1 order calib.: 0, 0.00173056
+ En. p-type channel 26, 1 order calib.: 0, 0.00178605
+ En. p-type channel 27, 1 order calib.: 0, 0.00171032
+ En. p-type channel 28, 1 order calib.: 0, 0.00168325
+ En. p-type channel 29, 1 order calib.: 0, 0.00177898
+ En. p-type channel 30, 1 order calib.: 0, 0.00178115
+ En. p-type channel 31, 1 order calib.: 0, 0.00169055
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 0.0193777
+ En. n-type channel 2, 1 order calib.: 0, 0.0514451
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering QQQ5 detector: 
+3121-5, LocID: DA-E1, pDAQ: 19-161, nDAQ: 19-281
+ Upstream: D, Sector: 0, Depth: 1
+ Position: -1.96264e-07, 4.49, 93.345, RotZ: 90, RotPhi: 0
+Setting p-type thresholds to:
+  0 0 135 148 160 154 121 174 
+  160 161 150 170 163 160 163 150 
+  168 177 178 225 200 195 117 179 
+  250 152 127 134 200 157 126 175 
+Setting n-type thresholds to:
+  170 147 140 140 
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 1
+ En. p-type channel 7, 1 order calib.: 0, 1
+ En. p-type channel 8, 1 order calib.: 0, 1
+ En. p-type channel 9, 1 order calib.: 0, 1
+ En. p-type channel 10, 1 order calib.: 0, 1
+ En. p-type channel 11, 1 order calib.: 0, 1
+ En. p-type channel 12, 1 order calib.: 0, 1
+ En. p-type channel 13, 1 order calib.: 0, 1
+ En. p-type channel 14, 1 order calib.: 0, 1
+ En. p-type channel 15, 1 order calib.: 0, 1
+ En. p-type channel 16, 1 order calib.: 0, 1
+ En. p-type channel 17, 1 order calib.: 0, 1
+ En. p-type channel 18, 1 order calib.: 0, 1
+ En. p-type channel 19, 1 order calib.: 0, 1
+ En. p-type channel 20, 1 order calib.: 0, 1
+ En. p-type channel 21, 1 order calib.: 0, 1
+ En. p-type channel 22, 1 order calib.: 0, 1
+ En. p-type channel 23, 1 order calib.: 0, 1
+ En. p-type channel 24, 1 order calib.: 0, 1
+ En. p-type channel 25, 1 order calib.: 0, 1
+ En. p-type channel 26, 1 order calib.: 0, 1
+ En. p-type channel 27, 1 order calib.: 0, 1
+ En. p-type channel 28, 1 order calib.: 0, 1
+ En. p-type channel 29, 1 order calib.: 0, 1
+ En. p-type channel 30, 1 order calib.: 0, 1
+ En. p-type channel 31, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering QQQ5 detector: 
+3121-3, LocID: DA-E2, pDAQ: 19-193, nDAQ: 19-285
+ Upstream: D, Sector: 0, Depth: 2
+ Position: -1.96264e-07, 4.49, 93.345, RotZ: 90, RotPhi: 0
+Setting p-type thresholds to:
+  0 0 0 0 135 0 117 119 
+  132 123 123 121 145 124 119 129 
+  127 133 121 119 122 131 120 133 
+  118 124 120 119 119 122 126 180 
+Setting n-type thresholds to:
+  0 140 150 200 
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 1
+ En. p-type channel 7, 1 order calib.: 0, 1
+ En. p-type channel 8, 1 order calib.: 0, 1
+ En. p-type channel 9, 1 order calib.: 0, 1
+ En. p-type channel 10, 1 order calib.: 0, 1
+ En. p-type channel 11, 1 order calib.: 0, 1
+ En. p-type channel 12, 1 order calib.: 0, 1
+ En. p-type channel 13, 1 order calib.: 0, 1
+ En. p-type channel 14, 1 order calib.: 0, 1
+ En. p-type channel 15, 1 order calib.: 0, 1
+ En. p-type channel 16, 1 order calib.: 0, 1
+ En. p-type channel 17, 1 order calib.: 0, 1
+ En. p-type channel 18, 1 order calib.: 0, 1
+ En. p-type channel 19, 1 order calib.: 0, 1
+ En. p-type channel 20, 1 order calib.: 0, 1
+ En. p-type channel 21, 1 order calib.: 0, 1
+ En. p-type channel 22, 1 order calib.: 0, 1
+ En. p-type channel 23, 1 order calib.: 0, 1
+ En. p-type channel 24, 1 order calib.: 0, 1
+ En. p-type channel 25, 1 order calib.: 0, 1
+ En. p-type channel 26, 1 order calib.: 0, 1
+ En. p-type channel 27, 1 order calib.: 0, 1
+ En. p-type channel 28, 1 order calib.: 0, 1
+ En. p-type channel 29, 1 order calib.: 0, 1
+ En. p-type channel 30, 1 order calib.: 0, 1
+ En. p-type channel 31, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering QQQ5 detector: 
+3027-4, LocID: DC-dE, pDAQ: 16-217, nDAQ: 16-341
+ Upstream: D, Sector: 2, Depth: 0
+ Position: -1.96264e-07, -4.49, 93.345, RotZ: -90, RotPhi: 0
+Setting p-type thresholds to:
+  0 0 0 0 135 0 117 119 
+  132 123 123 121 145 124 119 129 
+  127 133 121 119 122 131 120 133 
+  118 124 120 119 119 122 126 180 
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 3.62235e-05
+ En. p-type channel 2, 1 order calib.: 0, 3.97893e-05
+ En. p-type channel 3, 1 order calib.: 0, 3.94537e-05
+ En. p-type channel 4, 1 order calib.: 0, 3.73349e-05
+ En. p-type channel 5, 1 order calib.: 0, 4.57387e-05
+ En. p-type channel 6, 1 order calib.: 0, 3.96699e-05
+ En. p-type channel 7, 1 order calib.: 0, 4.22257e-05
+ En. p-type channel 8, 1 order calib.: 0, 4.11753e-05
+ En. p-type channel 9, 1 order calib.: 0, 2.12339e-05
+ En. p-type channel 10, 1 order calib.: 0, 2.08573e-05
+ En. p-type channel 11, 1 order calib.: 0, 2.03935e-05
+ En. p-type channel 12, 1 order calib.: 0, 1.89925e-05
+ En. p-type channel 13, 1 order calib.: 0, 4.0941e-05
+ En. p-type channel 14, 1 order calib.: 0, 3.8695e-05
+ En. p-type channel 15, 1 order calib.: 0, 3.77926e-05
+ En. p-type channel 16, 1 order calib.: 0, 1
+ En. p-type channel 17, 1 order calib.: 0, 3.78303e-05
+ En. p-type channel 18, 1 order calib.: 0, 3.88571e-05
+ En. p-type channel 19, 1 order calib.: 0, 3.79453e-05
+ En. p-type channel 20, 1 order calib.: 0, 3.81035e-05
+ En. p-type channel 21, 1 order calib.: 0, 3.64164e-05
+ En. p-type channel 22, 1 order calib.: 0, 4.11692e-05
+ En. p-type channel 23, 1 order calib.: 0, 3.51185e-05
+ En. p-type channel 24, 1 order calib.: 0, 4.00067e-05
+ En. p-type channel 25, 1 order calib.: 0, 3.51556e-05
+ En. p-type channel 26, 1 order calib.: 0, 3.77477e-05
+ En. p-type channel 27, 1 order calib.: 0, 4.14348e-05
+ En. p-type channel 28, 1 order calib.: 0, 3.41593e-05
+ En. p-type channel 29, 1 order calib.: 0, 3.95891e-05
+ En. p-type channel 30, 1 order calib.: 0, 1
+ En. p-type channel 31, 1 order calib.: 0, 3.35658e-05
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering QQQ5 detector: 
+3121-4, LocID: DC-E1, pDAQ: 16-249, nDAQ: 16-361
+ Upstream: D, Sector: 2, Depth: 1
+ Position: -1.96264e-07, -4.49, 93.345, RotZ: -90, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 1
+ En. p-type channel 7, 1 order calib.: 0, 1
+ En. p-type channel 8, 1 order calib.: 0, 1
+ En. p-type channel 9, 1 order calib.: 0, 1
+ En. p-type channel 10, 1 order calib.: 0, 1
+ En. p-type channel 11, 1 order calib.: 0, 1
+ En. p-type channel 12, 1 order calib.: 0, 1
+ En. p-type channel 13, 1 order calib.: 0, 1
+ En. p-type channel 14, 1 order calib.: 0, 1
+ En. p-type channel 15, 1 order calib.: 0, 1
+ En. p-type channel 16, 1 order calib.: 0, 1
+ En. p-type channel 17, 1 order calib.: 0, 1
+ En. p-type channel 18, 1 order calib.: 0, 1
+ En. p-type channel 19, 1 order calib.: 0, 1
+ En. p-type channel 20, 1 order calib.: 0, 1
+ En. p-type channel 21, 1 order calib.: 0, 1
+ En. p-type channel 22, 1 order calib.: 0, 1
+ En. p-type channel 23, 1 order calib.: 0, 1
+ En. p-type channel 24, 1 order calib.: 0, 1
+ En. p-type channel 25, 1 order calib.: 0, 1
+ En. p-type channel 26, 1 order calib.: 0, 1
+ En. p-type channel 27, 1 order calib.: 0, 1
+ En. p-type channel 28, 1 order calib.: 0, 1
+ En. p-type channel 29, 1 order calib.: 0, 1
+ En. p-type channel 30, 1 order calib.: 0, 1
+ En. p-type channel 31, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+3031-15, LocID: U1-E1, pDAQ: 16-65, nDAQ: 16-281
+ Upstream: U, Sector: 1, Depth: 1
+1.0472 Position: 47.625, 82.4889, -46.6725, RotZ: 150, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 11087.7, 1.0106
+ En. p-type channel 1, 1 order calib.: 14225.9, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 4.73e-05
+ En. p-type channel 2, 1 order calib.: 7972, 1.1717
+ En. p-type channel 3, 1 order calib.: 12172.5, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 4.51e-05
+ En. p-type channel 4, 1 order calib.: 2257, 1.0031
+ En. p-type channel 5, 1 order calib.: 2538, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 3.815e-05
+ En. p-type channel 6, 1 order calib.: 2134, 1.0969
+ En. p-type channel 7, 1 order calib.: 4237, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 4.154e-05
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 4.09203e-05
+ En. n-type channel 2, 1 order calib.: 0, 4.31734e-05
+ En. n-type channel 3, 1 order calib.: 0, 3.8211e-05
+Registering superX3 detector: 
+N0SN, LocID: U2-E1, pDAQ: 16-73, nDAQ: 16-285
+ Upstream: U, Sector: 2, Depth: 1
+0.523599 Position: 82.4889, 47.625, -46.6725, RotZ: 120, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 16871, 0.8283
+ En. p-type channel 1, 1 order calib.: 18588, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 5.6876e-05
+ En. p-type channel 2, 1 order calib.: 15521, 0.9414
+ En. p-type channel 3, 1 order calib.: 18912, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 5.80256e-05
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 15540, 0.8937
+ En. p-type channel 7, 1 order calib.: 16503, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 5.2072e-05
+ En. n-type channel 0, 1 order calib.: 0, 3.4406e-05
+ En. n-type channel 1, 1 order calib.: 0, 3.76702e-05
+ En. n-type channel 2, 1 order calib.: 0, 4.06513e-05
+ En. n-type channel 3, 1 order calib.: 0, 3.88688e-05
+Registering superX3 detector: 
+2911-10, LocID: U3-E1, pDAQ: 16-81, nDAQ: 16-289
+ Upstream: U, Sector: 3, Depth: 1
+0 Position: 95.25, 0, -46.6725, RotZ: 90, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 106.6, 1.041
+ En. p-type channel 3, 1 order calib.: 111.7, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 4404.5, 0.88456
+ En. p-type channel 5, 1 order calib.: 9293.7, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 4.953e-05
+ En. p-type channel 6, 1 order calib.: 16710, 1.03374
+ En. p-type channel 7, 1 order calib.: 16537, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 5.5957e-05
+ En. n-type channel 0, 1 order calib.: 0, 4.59658e-05
+ En. n-type channel 1, 1 order calib.: 0, 3.91076e-05
+ En. n-type channel 2, 1 order calib.: 0, 4.17499e-05
+ En. n-type channel 3, 1 order calib.: 0, 4.13749e-05
+Registering superX3 detector: 
+2911-8, LocID: U4-E1, pDAQ: 16-89, nDAQ: 16-293
+ Upstream: U, Sector: 4, Depth: 1
+5.75959 Position: 82.4889, -47.625, -46.6725, RotZ: 60, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 9279, 1.0277
+ En. p-type channel 3, 1 order calib.: 14067, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 14673, 0.8054
+ En. p-type channel 5, 1 order calib.: 10063, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 12424, 0.98705
+ En. p-type channel 7, 1 order calib.: 9848, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 3.83519e-05
+ En. n-type channel 1, 1 order calib.: 0, 3.54403e-05
+ En. n-type channel 2, 1 order calib.: 0, 3.90771e-05
+ En. n-type channel 3, 1 order calib.: 0, 1.36341e-05
+Registering superX3 detector: 
+3041-24, LocID: U5-E1, pDAQ: 16-97, nDAQ: 16-345
+ Upstream: U, Sector: 5, Depth: 1
+5.23599 Position: 47.625, -82.4889, -46.6725, RotZ: 30, RotPhi: 0
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 33535.9, 0.9867
+ En. p-type channel 3, 1 order calib.: 31624.7, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 8.0619e-06
+ En. p-type channel 4, 1 order calib.: 32712, 1.0273
+ En. p-type channel 5, 1 order calib.: 33694, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 8.64515e-05
+ En. p-type channel 6, 1 order calib.: 34962.5, 1.0238
+ En. p-type channel 7, 1 order calib.: 36082.8, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 7.6459e-05
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+2951-18, LocID: U7-E1, pDAQ: 19-113, nDAQ: 19-289
+ Upstream: U, Sector: 7, Depth: 1
+4.18879 Position: -47.625, -82.4889, -46.6725, RotZ: 330, RotPhi: 0
+Setting p-type thresholds to:
+  147 0 153 140 165 0 158 140 
+Setting n-type thresholds to:
+  127 127 127 127 
+ En. p-type channel 0, 1 order calib.: 70.79, 1.07696
+ En. p-type channel 1, 1 order calib.: 79.57, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 76.16, 0.963689
+ En. p-type channel 3, 1 order calib.: 96, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 86.987, 0.934939
+ En. p-type channel 5, 1 order calib.: 86.2453, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 70.684, 0.989527
+ En. p-type channel 7, 1 order calib.: 58.4764, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 0.00742155
+ En. n-type channel 1, 1 order calib.: 0, 0.00750491
+ En. n-type channel 2, 1 order calib.: 0, 0.00707558
+ En. n-type channel 3, 1 order calib.: 0, 0.00750103
+Registering superX3 detector: 
+3031-17, LocID: U9-E1, pDAQ: 19-81, nDAQ: 19-297
+ Upstream: U, Sector: 9, Depth: 1
+3.14159 Position: -95.25, 1.43823e-05, -46.6725, RotZ: 270, RotPhi: 0
+Setting p-type thresholds to:
+  182 185 180 177 196 191 199 173 
+Setting n-type thresholds to:
+  130 130 130 130 
+ En. p-type channel 0, 1 order calib.: 77.34, 0.91
+ En. p-type channel 1, 1 order calib.: 104.92, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 97.56, 1.11287
+ En. p-type channel 3, 1 order calib.: 114.63, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 88.94, 0.9658
+ En. p-type channel 5, 1 order calib.: 86.94, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 57.17, 0.94106
+ En. p-type channel 7, 1 order calib.: 90.026, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 0.00715043
+ En. n-type channel 1, 1 order calib.: 0, 0.00763501
+ En. n-type channel 2, 1 order calib.: 0, 0.00758817
+ En. n-type channel 3, 1 order calib.: 0, 0.0072188
+Registering superX3 detector: 
+2911-11, LocID: U10-E1, pDAQ: 19-89, nDAQ: 19-301
+ Upstream: U, Sector: 10, Depth: 1
+2.61799 Position: -82.4889, 47.625, -46.6725, RotZ: 240, RotPhi: 0
+Setting p-type thresholds to:
+  127 127 127 127 127 127 127 127 
+Setting n-type thresholds to:
+  130 130 130 130 
+ En. p-type channel 0, 1 order calib.: 94, 1.0776
+ En. p-type channel 1, 1 order calib.: 106.4, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 0.003183
+ En. p-type channel 2, 1 order calib.: 89.9, 0.9852
+ En. p-type channel 3, 1 order calib.: 108, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 0.003484
+ En. p-type channel 4, 1 order calib.: 92.5, 0.8512
+ En. p-type channel 5, 1 order calib.: 111.2, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 0.003185
+ En. p-type channel 6, 1 order calib.: 99.4, 0.9659
+ En. p-type channel 7, 1 order calib.: 107.3, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 0.003226
+ En. n-type channel 0, 1 order calib.: 0, 0.0076632
+ En. n-type channel 1, 1 order calib.: 0, 0.00776868
+ En. n-type channel 2, 1 order calib.: 0, 0.007622
+ En. n-type channel 3, 1 order calib.: 0, 0.00767939
+Registering superX3 detector: 
+2911-18, LocID: U11-E1, pDAQ: 19-97, nDAQ: 19-321
+ Upstream: U, Sector: 11, Depth: 1
+2.09439 Position: -47.625, 82.4889, -46.6725, RotZ: 210, RotPhi: 0
+Setting p-type thresholds to:
+  248 170 200 200 200 232 231 232 
+Setting n-type thresholds to:
+  130 130 170 180 
+ En. p-type channel 0, 1 order calib.: 86.4, 0.9895
+ En. p-type channel 1, 1 order calib.: 99.2, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 0.003186
+ En. p-type channel 2, 1 order calib.: 88.2, 0.9469
+ En. p-type channel 3, 1 order calib.: 105.3, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 0.003484
+ En. p-type channel 4, 1 order calib.: 96.3, 1.0572
+ En. p-type channel 5, 1 order calib.: 88.3, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 0.003189
+ En. p-type channel 6, 1 order calib.: 85.5, 0.9237
+ En. p-type channel 7, 1 order calib.: 87.2, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 0.003225
+ En. n-type channel 0, 1 order calib.: 0, 0.00201201
+ En. n-type channel 1, 1 order calib.: 0, 0.00173273
+ En. n-type channel 2, 1 order calib.: 0, 0.00201956
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+3015-19, LocID: U0-E1, pDAQ: 19-105, nDAQ: 19-333
+ Upstream: U, Sector: 0, Depth: 1
+1.5708 Position: -4.16351e-06, 95.25, -46.6725, RotZ: 180, RotPhi: 0
+Setting p-type thresholds to:
+  255 0 220 230 233 240 238 216 
+Setting n-type thresholds to:
+  130 130 135 130 
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 0.002999
+ En. p-type channel 4, 1 order calib.: 75.7, 1.0123
+ En. p-type channel 5, 1 order calib.: 73.1, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 0.003148
+ En. p-type channel 6, 1 order calib.: 73.8, 0.8738
+ En. p-type channel 7, 1 order calib.: 85.15, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 0.003466
+ En. n-type channel 0, 1 order calib.: 0, 0.00743389
+ En. n-type channel 1, 1 order calib.: 0, 0.00714604
+ En. n-type channel 2, 1 order calib.: 0, 0.00689842
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+3041-25, LocID: D1-E1, pDAQ: 16-129, nDAQ: 16-297
+ Upstream: D, Sector: 1, Depth: 1
+1.0472 Position: 47.625, 82.4889, 46.6725, RotZ: 150, RotPhi: 180
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 48440, 1.0972
+ En. p-type channel 5, 1 order calib.: 4156, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 13700, 0.7925
+ En. p-type channel 7, 1 order calib.: 17482, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 0.000174223
+ En. n-type channel 1, 1 order calib.: 0, 0.000147176
+ En. n-type channel 2, 1 order calib.: 0, 0.000154371
+ En. n-type channel 3, 1 order calib.: 0, 0.000148849
+Registering superX3 detector: 
+3041-23, LocID: D2-E1, pDAQ: 16-137, nDAQ: 16-301
+ Upstream: D, Sector: 2, Depth: 1
+0.523599 Position: 82.4889, 47.625, 46.6725, RotZ: 120, RotPhi: 180
+ En. p-type channel 0, 1 order calib.: 7122, 0.9565
+ En. p-type channel 1, 1 order calib.: 9236, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 8187, 0.9924
+ En. p-type channel 3, 1 order calib.: 11570, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 3452, 1.184
+ En. p-type channel 5, 1 order calib.: 4274, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 9395, 0.9585
+ En. p-type channel 7, 1 order calib.: 81210, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 0.000146601
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 0.000156192
+ En. n-type channel 3, 1 order calib.: 0, 0.000154125
+Registering superX3 detector: 
+2911-7, LocID: D3-E1, pDAQ: 16-145, nDAQ: 16-305
+ Upstream: D, Sector: 3, Depth: 1
+0 Position: 95.25, 0, 46.6725, RotZ: 90, RotPhi: 180
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 1
+ En. p-type channel 7, 1 order calib.: 0, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+3015-17, LocID: D4-E1, pDAQ: 16-153, nDAQ: 16-309
+ Upstream: D, Sector: 4, Depth: 1
+5.75959 Position: 82.4889, -47.625, 46.6725, RotZ: 60, RotPhi: 180
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 1
+ En. p-type channel 7, 1 order calib.: 0, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+2951-5, LocID: D5-E1, pDAQ: 16-161, nDAQ: 19-353
+ Upstream: D, Sector: 5, Depth: 1
+5.23599 Position: 47.625, -82.4889, 46.6725, RotZ: 30, RotPhi: 180
+ En. p-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 1, 1 order calib.: 0, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 1
+ En. p-type channel 7, 1 order calib.: 0, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+2519-19, LocID: D6-E1, pDAQ: 16-169, nDAQ: 16-357
+ Upstream: D, Sector: 6, Depth: 1
+4.71239 Position: 1.13584e-06, -95.25, 46.6725, RotZ: 1.00179e-05, RotPhi: 180
+ En. p-type channel 0, 1 order calib.: 14435, 1.0545
+ En. p-type channel 1, 1 order calib.: 15435, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 3, 1 order calib.: 0, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 16080, 1.185
+ En. p-type channel 5, 1 order calib.: 13206, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 13639, 0.7207
+ En. p-type channel 7, 1 order calib.: 15764, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+2951-7, LocID: D7-E1, pDAQ: 19-121, nDAQ: 19-305
+ Upstream: D, Sector: 7, Depth: 1
+4.18879 Position: -47.625, -82.4889, 46.6725, RotZ: 330, RotPhi: 180
+Setting p-type thresholds to:
+  248 160 248 152 152 240 192 248 
+Setting n-type thresholds to:
+  216 130 136 167 
+ En. p-type channel 0, 1 order calib.: 70.868, 1.0924
+ En. p-type channel 1, 1 order calib.: 78.26, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 82.896, 0.86795
+ En. p-type channel 3, 1 order calib.: 106.84, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 81.24, 0.968
+ En. p-type channel 5, 1 order calib.: 79.97, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 61.87, 1.0313
+ En. p-type channel 7, 1 order calib.: 75.53, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 0.0122077
+ En. n-type channel 1, 1 order calib.: 0, 0.0121694
+ En. n-type channel 2, 1 order calib.: 0, 0.0122825
+ En. n-type channel 3, 1 order calib.: 0, 0.011718
+Registering superX3 detector: 
+2951-8, LocID: D8-E1, pDAQ: 19-129, nDAQ: 19-309
+ Upstream: D, Sector: 8, Depth: 1
+3.66519 Position: -82.4889, -47.625, 46.6725, RotZ: 300, RotPhi: 180
+Setting p-type thresholds to:
+  200 176 192 176 184 216 160 184 
+Setting n-type thresholds to:
+  152 144 128 192 
+ En. p-type channel 0, 1 order calib.: 61.12, 0.9
+ En. p-type channel 1, 1 order calib.: 77.95, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 68.34, 1.101
+ En. p-type channel 3, 1 order calib.: 84.3, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 72.63, 1.5694
+ En. p-type channel 5, 1 order calib.: 67.62, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 76.24, 0.8286
+ En. p-type channel 7, 1 order calib.: 98.44, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+2911-21, LocID: D9-E1, pDAQ: 19-137, nDAQ: 19-313
+ Upstream: D, Sector: 9, Depth: 1
+3.14159 Position: -95.25, 1.43823e-05, 46.6725, RotZ: 270, RotPhi: 180
+Setting p-type thresholds to:
+  208 176 200 192 192 192 192 184 
+Setting n-type thresholds to:
+  280 184 352 216 
+ En. p-type channel 0, 1 order calib.: 86.1, 0.8812
+ En. p-type channel 1, 1 order calib.: 106.3, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 80.4, 1.013
+ En. p-type channel 3, 1 order calib.: 95.9, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 85.8, 0.9496
+ En. p-type channel 5, 1 order calib.: 76.5, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 76.8, 0.884
+ En. p-type channel 7, 1 order calib.: 92.2, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+3015-20, LocID: D10-E1, pDAQ: 19-145, nDAQ: 19-317
+ Upstream: D, Sector: 10, Depth: 1
+2.61799 Position: -82.4889, 47.625, 46.6725, RotZ: 240, RotPhi: 180
+Setting p-type thresholds to:
+  176 136 208 176 184 200 200 184 
+Setting n-type thresholds to:
+  224 144 136 208 
+ En. p-type channel 0, 1 order calib.: 78.1, 1.041
+ En. p-type channel 1, 1 order calib.: 77.9, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 66.1, 1.025
+ En. p-type channel 3, 1 order calib.: 68.9, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 44.34, 0.853
+ En. p-type channel 5, 1 order calib.: 66.75, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 45.9, 1.0523
+ En. p-type channel 7, 1 order calib.: 73.2, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering superX3 detector: 
+2951-6, LocID: D11-E1, pDAQ: 19-153, nDAQ: 19-329
+ Upstream: D, Sector: 11, Depth: 1
+2.09439 Position: -47.625, 82.4889, 46.6725, RotZ: 210, RotPhi: 180
+Setting p-type thresholds to:
+  200 137 215 151 167 215 160 191 
+Setting n-type thresholds to:
+  169 136 144 256 
+ En. p-type channel 0, 1 order calib.: 70.9, 1.081
+ En. p-type channel 1, 1 order calib.: 75.2, 1
+ En. resStrip-type channel 0, 1 order calib.: 0, 1
+ En. p-type channel 2, 1 order calib.: 67.04, 0.885
+ En. p-type channel 3, 1 order calib.: 104.54, 1
+ En. resStrip-type channel 1, 1 order calib.: 0, 1
+ En. p-type channel 4, 1 order calib.: 71.75, 1.001
+ En. p-type channel 5, 1 order calib.: 63.91, 1
+ En. resStrip-type channel 2, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 72.35, 1.086
+ En. p-type channel 7, 1 order calib.: 82.4, 1
+ En. resStrip-type channel 3, 1 order calib.: 0, 1
+ En. n-type channel 0, 1 order calib.: 0, 1
+ En. n-type channel 1, 1 order calib.: 0, 1
+ En. n-type channel 2, 1 order calib.: 0, 1
+ En. n-type channel 3, 1 order calib.: 0, 1
+Registering BB10 detector: 
+2507-9, LocID: D3-dE, pDAQ: 16-185
+ Upstream: D, Sector: 3, Depth: 0
+0 Position: 95.25, 0, 46.6725, RotZ: 90, RotPhi: 180
+Setting p-type thresholds to:
+  0 0 0 0 0 0 0 0 
+ En. p-type channel 0, 1 order calib.: 0, 5.177e-05
+ En. p-type channel 1, 1 order calib.: 0, 5.84727e-05
+ En. p-type channel 2, 1 order calib.: 0, 5.70928e-05
+ En. p-type channel 3, 1 order calib.: 0, 5.44786e-05
+ En. p-type channel 4, 1 order calib.: 0, 5.45184e-05
+ En. p-type channel 5, 1 order calib.: 0, 5.29401e-05
+ En. p-type channel 6, 1 order calib.: 0, 4.93506e-05
+ En. p-type channel 7, 1 order calib.: 0, 5.2495e-05
+Registering BB10 detector: 
+2507-8, LocID: D4-dE, pDAQ: 16-201
+ Upstream: D, Sector: 4, Depth: 0
+5.75959 Position: 82.4889, -47.625, 46.6725, RotZ: 60, RotPhi: 180
+Setting p-type thresholds to:
+  0 0 0 0 0 0 0 0 
+ En. p-type channel 0, 1 order calib.: 0, 4.86774e-05
+ En. p-type channel 1, 1 order calib.: 0, 5.40465e-05
+ En. p-type channel 2, 1 order calib.: 0, 4.90918e-05
+ En. p-type channel 3, 1 order calib.: 0, 4.79614e-05
+ En. p-type channel 4, 1 order calib.: 0, 6.11933e-05
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 4.65612e-05
+ En. p-type channel 7, 1 order calib.: 0, 5.23485e-05
+Registering BB10 detector: 
+2507-13, LocID: D8-dE, pDAQ: 16-209
+ Upstream: D, Sector: 8, Depth: 0
+3.66519 Position: -82.4889, -47.625, 46.6725, RotZ: 300, RotPhi: 180
+Setting p-type thresholds to:
+  0 0 0 0 0 0 0 0 
+ En. p-type channel 0, 1 order calib.: 0, 5.8956e-05
+ En. p-type channel 1, 1 order calib.: 0, 5.50002e-05
+ En. p-type channel 2, 1 order calib.: 0, 5.67622e-05
+ En. p-type channel 3, 1 order calib.: 0, 5.54445e-05
+ En. p-type channel 4, 1 order calib.: 0, 5.32924e-05
+ En. p-type channel 5, 1 order calib.: 0, 5.58767e-05
+ En. p-type channel 6, 1 order calib.: 0, 5.25112e-05
+ En. p-type channel 7, 1 order calib.: 0, 5.99637e-05
+Registering BB10 detector: 
+2507-11, LocID: D9-dE, pDAQ: 19-65
+ Upstream: D, Sector: 9, Depth: 0
+3.14159 Position: -95.25, 1.43823e-05, 46.6725, RotZ: 270, RotPhi: 180
+Setting p-type thresholds to:
+  320 266 232 230 232 208 200 207 
+ En. p-type channel 0, 1 order calib.: 0, 0.00251549
+ En. p-type channel 1, 1 order calib.: 0, 0.00239329
+ En. p-type channel 2, 1 order calib.: 0, 0.00240318
+ En. p-type channel 3, 1 order calib.: 0, 0.00256998
+ En. p-type channel 4, 1 order calib.: 0, 0.00248751
+ En. p-type channel 5, 1 order calib.: 0, 0.00236794
+ En. p-type channel 6, 1 order calib.: 0, 0.00262215
+ En. p-type channel 7, 1 order calib.: 0, 0.00264481
+Registering BB10 detector: 
+2507-14, LocID: D10-dE, pDAQ: 19-73
+ Upstream: D, Sector: 10, Depth: 0
+2.61799 Position: -82.4889, 47.625, 46.6725, RotZ: 240, RotPhi: 180
+Setting p-type thresholds to:
+  300 235 200 207 0 0 0 0 
+ En. p-type channel 0, 1 order calib.: 0, 0.00241216
+ En. p-type channel 1, 1 order calib.: 0, 0.0026092
+ En. p-type channel 2, 1 order calib.: 0, 0.00239823
+ En. p-type channel 3, 1 order calib.: 0, 0.00242929
+ En. p-type channel 4, 1 order calib.: 0, 1
+ En. p-type channel 5, 1 order calib.: 0, 1
+ En. p-type channel 6, 1 order calib.: 0, 1
+ En. p-type channel 7, 1 order calib.: 0, 1
+Registering liquidScint detector: 
+Registering liquidScint detector: 
+Registering ion detector: 
+ Anodes: 2, Scint PMTs: 4 dE: 1 anodes, Eres 1
+rootfiles/run406.root:/hists
+ we have define the following spectra:
+Collection name='THashList', class='THashList', size=2
+ TH1.Print Name  = enRawA, Entries= 0, Total sum= 0
+TH1.Print Name  = enRawD, Entries= 0, Total sum= 0
+TH1.Print Name  = enCalA, Entries= 0, Total sum= 0
+TH1.Print Name  = enCalD, Entries= 0, Total sum= 0
+TH1.Print Name  = analogMult, Entries= 0, Total sum= 0
+TH1.Print Name  = analogADCMult, Entries= 0, Total sum= 0
+TH1.Print Name  = digitalMult, Entries= 0, Total sum= 0
+TH1.Print Name  = detPosMult, Entries= 0, Total sum= 0
+TH1.Print Name  = detMult, Entries= 0, Total sum= 0
+TH1.Print Name  = hitEndcapUp, Entries= 0, Total sum= 0
+TH1.Print Name  = hitEndcapDown, Entries= 0, Total sum= 0
+TH1.Print Name  = sX3HitPattern, Entries= 0, Total sum= 0
+ ******************************************************************************
+*Tree    :god       : GODDESS Tree                                           *
+*Entries :        0 : Total =           15958 bytes  File  Size =          0 *
+*        :          : Tree compression factor =   1.00                       *
+******************************************************************************
+*Br    0 :timestamp : timestamp/l                                            *
+*Entries :        0 : Total  Size=        498 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    1 :gam       : Int_t gam_                                             *
+*Entries :        0 : Total  Size=       3117 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    2 :gam.en    : Float_t en[gam_]                                       *
+*Entries :        0 : Total  Size=        554 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    3 :gam.type  : Int_t type[gam_]                                       *
+*Entries :        0 : Total  Size=        562 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    4 :gam.num   : Int_t num[gam_]                                        *
+*Entries :        0 : Total  Size=        558 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    5 :gam.time  : UInt_t time[gam_]                                      *
+*Entries :        0 : Total  Size=        562 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    6 :si        : Int_t si_                                              *
+*Entries :        0 : Total  Size=       8581 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    7 :si.dE     : Float_t dE[si_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    8 :si.E1     : Float_t E1[si_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    9 :si.E2     : Float_t E2[si_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   10 :si.pos    : TVector3 pos[si_]                                      *
+*Entries :        0 : Total  Size=        552 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   11 :si.sector : Int_t sector[si_]                                      *
+*Entries :        0 : Total  Size=        564 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   12 :si.barrel : Bool_t barrel[si_]                                     *
+*Entries :        0 : Total  Size=        564 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   13 :si.upstream : Bool_t upstream[si_]                                 *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   14 :si.sectorStr : string sectorStr[si_]                               *
+*Entries :        0 : Total  Size=        576 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   15 :si.time   : UInt_t time[si_]                                       *
+*Entries :        0 : Total  Size=        556 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   16 :si.PstripdE : Int_t PstripdE[si_]                                  *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   17 :si.PstripE1 : Int_t PstripE1[si_]                                  *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   18 :si.PstripE2 : Int_t PstripE2[si_]                                  *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   19 :si.Nstrip : Int_t Nstrip[si_]                                      *
+*Entries :        0 : Total  Size=        564 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   20 :si.depth  : Int_t depth[si_]                                       *
+*Entries :        0 : Total  Size=        560 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   21 :ic        : Int_t ic_                                              *
+*Entries :        0 : Total  Size=       4193 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   22 :ic.dE     : Float_t dE[ic_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   23 :ic.resE   : Float_t resE[ic_]                                      *
+*Entries :        0 : Total  Size=        556 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   24 :ic.E      : Float_t E[ic_]                                         *
+*Entries :        0 : Total  Size=        544 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   25 :ic.scintE[4] : Float_t scintE[ic_]                                 *
+*Entries :        0 : Total  Size=        567 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   26 :ic.scintT[4] : Float_t scintT[ic_]                                 *
+*Entries :        0 : Total  Size=        567 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   27 :ic.time   : UInt_t time[ic_]                                       *
+*Entries :        0 : Total  Size=        556 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   28 :test      : test/I                                                 *
+*Entries :        0 : Total  Size=        470 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+ we have define the following spectra:
+Collection name='THashList', class='THashList', size=2
+ TH1.Print Name  = enRawA, Entries= 0, Total sum= 0
+TH1.Print Name  = enRawD, Entries= 0, Total sum= 0
+TH1.Print Name  = enCalA, Entries= 0, Total sum= 0
+TH1.Print Name  = enCalD, Entries= 0, Total sum= 0
+TH1.Print Name  = analogMult, Entries= 0, Total sum= 0
+TH1.Print Name  = analogADCMult, Entries= 0, Total sum= 0
+TH1.Print Name  = digitalMult, Entries= 0, Total sum= 0
+TH1.Print Name  = detPosMult, Entries= 0, Total sum= 0
+TH1.Print Name  = detMult, Entries= 0, Total sum= 0
+TH1.Print Name  = hitEndcapUp, Entries= 0, Total sum= 0
+TH1.Print Name  = hitEndcapDown, Entries= 0, Total sum= 0
+TH1.Print Name  = sX3HitPattern, Entries= 0, Total sum= 0
+ ******************************************************************************
+*Tree    :god       : GODDESS Tree                                           *
+*Entries :        0 : Total =           15958 bytes  File  Size =          0 *
+*        :          : Tree compression factor =   1.00                       *
+******************************************************************************
+*Br    0 :timestamp : timestamp/l                                            *
+*Entries :        0 : Total  Size=        498 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    1 :gam       : Int_t gam_                                             *
+*Entries :        0 : Total  Size=       3117 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    2 :gam.en    : Float_t en[gam_]                                       *
+*Entries :        0 : Total  Size=        554 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    3 :gam.type  : Int_t type[gam_]                                       *
+*Entries :        0 : Total  Size=        562 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    4 :gam.num   : Int_t num[gam_]                                        *
+*Entries :        0 : Total  Size=        558 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    5 :gam.time  : UInt_t time[gam_]                                      *
+*Entries :        0 : Total  Size=        562 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    6 :si        : Int_t si_                                              *
+*Entries :        0 : Total  Size=       8581 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    7 :si.dE     : Float_t dE[si_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    8 :si.E1     : Float_t E1[si_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    9 :si.E2     : Float_t E2[si_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   10 :si.pos    : TVector3 pos[si_]                                      *
+*Entries :        0 : Total  Size=        552 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   11 :si.sector : Int_t sector[si_]                                      *
+*Entries :        0 : Total  Size=        564 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   12 :si.barrel : Bool_t barrel[si_]                                     *
+*Entries :        0 : Total  Size=        564 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   13 :si.upstream : Bool_t upstream[si_]                                 *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   14 :si.sectorStr : string sectorStr[si_]                               *
+*Entries :        0 : Total  Size=        576 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   15 :si.time   : UInt_t time[si_]                                       *
+*Entries :        0 : Total  Size=        556 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   16 :si.PstripdE : Int_t PstripdE[si_]                                  *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   17 :si.PstripE1 : Int_t PstripE1[si_]                                  *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   18 :si.PstripE2 : Int_t PstripE2[si_]                                  *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   19 :si.Nstrip : Int_t Nstrip[si_]                                      *
+*Entries :        0 : Total  Size=        564 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   20 :si.depth  : Int_t depth[si_]                                       *
+*Entries :        0 : Total  Size=        560 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   21 :ic        : Int_t ic_                                              *
+*Entries :        0 : Total  Size=       4193 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   22 :ic.dE     : Float_t dE[ic_]                                        *
+*Entries :        0 : Total  Size=        548 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   23 :ic.resE   : Float_t resE[ic_]                                      *
+*Entries :        0 : Total  Size=        556 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   24 :ic.E      : Float_t E[ic_]                                         *
+*Entries :        0 : Total  Size=        544 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   25 :ic.scintE[4] : Float_t scintE[ic_]                                 *
+*Entries :        0 : Total  Size=        567 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   26 :ic.scintT[4] : Float_t scintT[ic_]                                 *
+*Entries :        0 : Total  Size=        567 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   27 :ic.time   : UInt_t time[ic_]                                       *
+*Entries :        0 : Total  Size=        556 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   28 :test      : test/I                                                 *
+*Entries :        0 : Total  Size=        470 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+ we have define the following spectra:
+Collection name='THashList', class='THashList', size=4
+  TH1.Print Name  = enRawA, Entries= 0, Total sum= 0
+TH1.Print Name  = enRawD, Entries= 0, Total sum= 0
+TH1.Print Name  = enCalA, Entries= 0, Total sum= 0
+TH1.Print Name  = enCalD, Entries= 0, Total sum= 0
+TH1.Print Name  = analogMult, Entries= 0, Total sum= 0
+TH1.Print Name  = analogADCMult, Entries= 0, Total sum= 0
+TH1.Print Name  = digitalMult, Entries= 0, Total sum= 0
+TH1.Print Name  = detPosMult, Entries= 0, Total sum= 0
+TH1.Print Name  = detMult, Entries= 0, Total sum= 0
+TH1.Print Name  = hitEndcapUp, Entries= 0, Total sum= 0
+TH1.Print Name  = hitEndcapDown, Entries= 0, Total sum= 0
+TH1.Print Name  = sX3HitPattern, Entries= 0, Total sum= 0
+  we have define the following ROOT spectra:
+GRETINA detector angles
+mod  1, crystal 0 [  4]: ( 10.07   3.58  15.10) pol   35.30 ,  azi   13.35; modCCdopfac 1.0000
+mod  1, crystal 1 [  5]: ( 10.11   9.19  12.47) pol   47.60 ,  azi   36.39; modCCdopfac 1.0000
+mod  1, crystal 2 [  6]: (  5.44   7.69  15.92) pol   30.60 ,  azi   25.77; modCCdopfac 1.0000
+mod  1, crystal 3 [  7]: (  4.99   1.78  17.72) pol   16.65 ,  azi    5.72; modCCdopfac 1.0000
+mod  2, crystal 0 [  8]: ( -0.29  10.69  15.10) pol   35.30 ,  azi   35.29; modCCdopfac 1.0000
+mod  2, crystal 1 [  9]: ( -5.62  12.45  12.47) pol   47.60 ,  azi   44.95; modCCdopfac 1.0000
+mod  2, crystal 2 [ 10]: ( -5.63   7.55  15.92) pol   30.60 ,  azi   25.36; modCCdopfac 1.0000
+mod  2, crystal 3 [ 11]: ( -0.15   5.30  17.72) pol   16.65 ,  azi   16.64; modCCdopfac 1.0000
+mod  3, crystal 0 [ 12]: (-10.25   3.02  15.10) pol   35.30 ,  azi   11.32; modCCdopfac 1.0000
+mod  3, crystal 1 [ 13]: (-13.58  -1.50  12.47) pol   47.60 ,  azi   -6.85; modCCdopfac 1.0000
+mod  3, crystal 2 [ 14]: ( -8.92  -3.02  15.92) pol   30.60 ,  azi  -10.75; modCCdopfac 1.0000
+mod  3, crystal 3 [ 15]: ( -5.08   1.50  17.72) pol   16.65 ,  azi    4.83; modCCdopfac 1.0000
+mod  4, crystal 0 [ 16]: ( -6.04  -8.82  15.10) pol   35.30 ,  azi  -30.29; modCCdopfac 1.0000
+mod  4, crystal 1 [ 17]: ( -2.77 -13.38  12.47) pol   47.60 ,  azi  -47.00; modCCdopfac 1.0000
+mod  4, crystal 2 [ 18]: (  0.12  -9.42  15.92) pol   30.60 ,  azi  -30.60; modCCdopfac 1.0000
+mod  4, crystal 3 [ 19]: ( -3.00  -4.37  17.72) pol   16.65 ,  azi  -13.86; modCCdopfac 1.0000
+mod  5, crystal 0 [ 20]: (  6.52  -8.47  15.10) pol   35.30 ,  azi  -29.30; modCCdopfac 1.0000
+mod  5, crystal 1 [ 21]: ( 11.87  -6.77  12.47) pol   47.60 ,  azi  -28.49; modCCdopfac 1.0000
+mod  5, crystal 2 [ 22]: (  8.99  -2.80  15.92) pol   30.60 ,  azi   -9.96; modCCdopfac 1.0000
+mod  5, crystal 3 [ 23]: (  3.23  -4.20  17.72) pol   16.65 ,  azi  -13.33; modCCdopfac 1.0000
+mod  6, crystal 0 [ 24]: (  4.54  16.51   7.02) pol   67.71 ,  azi   66.97; modCCdopfac 1.0000
+mod  6, crystal 1 [ 25]: ( -0.33  15.15  10.61) pol   55.02 ,  azi   55.01; modCCdopfac 1.0000
+mod  6, crystal 2 [ 26]: (  5.05  13.00  12.16) pol   48.92 ,  azi   46.92; modCCdopfac 1.0000
+mod  6, crystal 3 [ 27]: (  9.66  13.57   8.06) pol   64.18 ,  azi   59.29; modCCdopfac 1.0000
+mod  7, crystal 0 [ 28]: (-14.30   9.42   7.02) pol   67.71 ,  azi   53.31; modCCdopfac 1.0000
+mod  7, crystal 1 [ 29]: (-14.51   4.37  10.61) pol   55.02 ,  azi   22.40; modCCdopfac 1.0000
+mod  7, crystal 2 [ 30]: (-10.80   8.82  12.16) pol   48.92 ,  azi   35.96; modCCdopfac 1.0000
+mod  7, crystal 3 [ 31]: ( -9.92  13.38   8.06) pol   64.18 ,  azi   58.94; modCCdopfac 1.0000
+mod  8, crystal 0 [ 32]: (-13.37 -10.69   7.02) pol   67.71 ,  azi  -56.71; modCCdopfac 1.0000
+mod  8, crystal 1 [ 33]: ( -8.64 -12.45  10.61) pol   55.02 ,  azi  -49.58; modCCdopfac 1.0000
+mod  8, crystal 2 [ 34]: (-11.73  -7.55  12.16) pol   48.92 ,  azi  -31.84; modCCdopfac 1.0000
+mod  8, crystal 3 [ 35]: (-15.79  -5.30   8.06) pol   64.18 ,  azi  -33.33; modCCdopfac 1.0000
+mod  9, crystal 0 [ 36]: (  6.03 -16.02   7.02) pol   67.71 ,  azi  -66.35; modCCdopfac 1.0000
+mod  9, crystal 1 [ 37]: (  9.17 -12.07  10.61) pol   55.02 ,  azi  -48.69; modCCdopfac 1.0000
+mod  9, crystal 2 [ 38]: (  3.56 -13.48  12.16) pol   48.92 ,  azi  -47.96; modCCdopfac 1.0000
+mod  9, crystal 3 [ 39]: (  0.16 -16.65   8.06) pol   64.18 ,  azi  -64.18; modCCdopfac 1.0000
+mod 10, crystal 0 [ 40]: ( 17.10   0.79   7.02) pol   67.71 ,  azi    6.39; modCCdopfac 1.0000
+mod 10, crystal 1 [ 41]: ( 14.31   4.99  10.61) pol   55.02 ,  azi   25.21; modCCdopfac 1.0000
+mod 10, crystal 2 [ 42]: ( 13.92  -0.79  12.16) pol   48.92 ,  azi   -3.70; modCCdopfac 1.0000
+mod 10, crystal 3 [ 43]: ( 15.89  -4.99   8.06) pol   64.18 ,  azi  -31.79; modCCdopfac 1.0000
+mod 11, crystal 0 [ 44]: ( 18.26   2.80   0.92) pol   87.15 ,  azi   71.78; modCCdopfac 1.0000
+mod 11, crystal 1 [ 45]: ( 17.30   4.20  -5.04) pol  105.79 ,  azi  140.16; modCCdopfac 1.0000
+mod 11, crystal 2 [ 46]: ( 16.42   8.47  -0.92) pol   92.85 ,  azi   96.20; modCCdopfac 1.0000
+mod 11, crystal 3 [ 47]: ( 16.46   6.77   5.04) pol   74.21 ,  azi   53.36; modCCdopfac 1.0000
+mod 12, crystal 0 [ 48]: ( 12.46  13.48  -2.26) pol   97.01 ,  azi   99.50; modCCdopfac 1.0000
+mod 12, crystal 1 [ 49]: (  7.28  16.65  -3.46) pol  100.78 ,  azi  101.74; modCCdopfac 1.0000
+mod 12, crystal 2 [ 50]: (  8.97  16.02   2.26) pol   82.99 ,  azi   81.98; modCCdopfac 1.0000
+mod 12, crystal 3 [ 51]: ( 13.59  12.07   3.46) pol   79.22 ,  azi   74.00; modCCdopfac 1.0000
+mod 13, crystal 0 [ 52]: (  2.98  18.23   0.92) pol   87.15 ,  azi   87.11; modCCdopfac 1.0000
+mod 13, crystal 1 [ 53]: (  1.35  17.75  -5.04) pol  105.79 ,  azi  105.84; modCCdopfac 1.0000
+mod 13, crystal 2 [ 54]: ( -2.98  18.23  -0.92) pol   92.85 ,  azi   92.89; modCCdopfac 1.0000
+mod 13, crystal 3 [ 55]: ( -1.35  17.75   5.04) pol   74.21 ,  azi   74.16; modCCdopfac 1.0000
+mod 14, crystal 0 [ 56]: ( -8.97  16.02  -2.26) pol   97.01 ,  azi   98.02; modCCdopfac 1.0000
+mod 14, crystal 1 [ 57]: (-13.59  12.07  -3.46) pol  100.78 ,  azi  106.00; modCCdopfac 1.0000
+mod 14, crystal 2 [ 58]: (-12.46  13.48   2.26) pol   82.99 ,  azi   80.50; modCCdopfac 1.0000
+mod 14, crystal 3 [ 59]: ( -7.28  16.65   3.46) pol   79.22 ,  azi   78.26; modCCdopfac 1.0000
+mod 15, crystal 0 [ 60]: (-16.42   8.47   0.92) pol   87.15 ,  azi   83.80; modCCdopfac 1.0000
+mod 15, crystal 1 [ 61]: (-16.46   6.77  -5.04) pol  105.79 ,  azi  126.64; modCCdopfac 1.0000
+mod 15, crystal 2 [ 62]: (-18.26   2.80  -0.92) pol   92.85 ,  azi  108.22; modCCdopfac 1.0000
+mod 15, crystal 3 [ 63]: (-17.30   4.20   5.04) pol   74.21 ,  azi   39.84; modCCdopfac 1.0000
+mod 16, crystal 0 [ 64]: (-18.01  -3.58  -2.26) pol   97.01 ,  azi -122.21; modCCdopfac 1.0000
+mod 16, crystal 1 [ 65]: (-15.68  -9.19  -3.46) pol  100.78 ,  azi -110.62; modCCdopfac 1.0000
+mod 16, crystal 2 [ 66]: (-16.68  -7.69   2.26) pol   82.99 ,  azi  -73.64; modCCdopfac 1.0000
+mod 16, crystal 3 [ 67]: (-18.09  -1.78   3.46) pol   79.22 ,  azi  -27.18; modCCdopfac 1.0000
+mod 17, crystal 0 [ 68]: (-13.13 -13.00   0.92) pol   87.15 ,  azi  -85.95; modCCdopfac 1.0000
+mod 17, crystal 1 [ 69]: (-11.53 -13.57  -5.04) pol  105.79 ,  azi -110.36; modCCdopfac 1.0000
+mod 17, crystal 2 [ 70]: ( -8.30 -16.51  -0.92) pol   92.85 ,  azi  -93.19; modCCdopfac 1.0000
+mod 17, crystal 3 [ 71]: ( -9.34 -15.15   5.04) pol   74.21 ,  azi  -71.62; modCCdopfac 1.0000
+mod 18, crystal 0 [ 72]: ( -2.16 -18.23  -2.26) pol   97.01 ,  azi  -97.05; modCCdopfac 1.0000
+mod 18, crystal 1 [ 73]: (  3.90 -17.75  -3.46) pol  100.78 ,  azi -101.03; modCCdopfac 1.0000
+mod 18, crystal 2 [ 74]: (  2.16 -18.23   2.26) pol   82.99 ,  azi  -82.95; modCCdopfac 1.0000
+mod 18, crystal 3 [ 75]: ( -3.90 -17.75   3.46) pol   79.22 ,  azi  -78.97; modCCdopfac 1.0000
+mod 19, crystal 0 [ 76]: (  8.30 -16.51   0.92) pol   87.15 ,  azi  -86.81; modCCdopfac 1.0000
+mod 19, crystal 1 [ 77]: (  9.34 -15.15  -5.04) pol  105.79 ,  azi -108.38; modCCdopfac 1.0000
+mod 19, crystal 2 [ 78]: ( 13.13 -13.00  -0.92) pol   92.85 ,  azi  -94.05; modCCdopfac 1.0000
+mod 19, crystal 3 [ 79]: ( 11.53 -13.57   5.04) pol   74.21 ,  azi  -69.64; modCCdopfac 1.0000
+mod 20, crystal 0 [ 80]: ( 16.68  -7.69  -2.26) pol   97.01 ,  azi -106.36; modCCdopfac 1.0000
+mod 20, crystal 1 [ 81]: ( 18.09  -1.78  -3.46) pol  100.78 ,  azi -152.82; modCCdopfac 1.0000
+mod 20, crystal 2 [ 82]: ( 18.01  -3.58   2.26) pol   82.99 ,  azi  -57.79; modCCdopfac 1.0000
+mod 20, crystal 3 [ 83]: ( 15.68  -9.19   3.46) pol   79.22 ,  azi  -69.38; modCCdopfac 1.0000
+mod 21, crystal 0 [ 84]: ( 14.30   9.42  -7.02) pol  112.29 ,  azi  126.69; modCCdopfac 1.0000
+mod 21, crystal 1 [ 85]: ( 14.51   4.37 -10.61) pol  124.98 ,  azi  157.60; modCCdopfac 1.0000
+mod 21, crystal 2 [ 86]: ( 10.80   8.82 -12.16) pol  131.08 ,  azi  144.04; modCCdopfac 1.0000
+mod 21, crystal 3 [ 87]: (  9.92  13.38  -8.06) pol  115.82 ,  azi  121.06; modCCdopfac 1.0000
+mod 22, crystal 0 [ 88]: ( -4.54  16.51  -7.02) pol  112.29 ,  azi  113.03; modCCdopfac 1.0000
+mod 22, crystal 1 [ 89]: (  0.33  15.15 -10.61) pol  124.98 ,  azi  124.99; modCCdopfac 1.0000
+mod 22, crystal 2 [ 90]: ( -5.05  13.00 -12.16) pol  131.08 ,  azi  133.08; modCCdopfac 1.0000
+mod 22, crystal 3 [ 91]: ( -9.66  13.57  -8.06) pol  115.82 ,  azi  120.71; modCCdopfac 1.0000
+mod 23, crystal 0 [ 92]: (-17.10   0.79  -7.02) pol  112.29 ,  azi  173.61; modCCdopfac 1.0000
+mod 23, crystal 1 [ 93]: (-14.31   4.99 -10.61) pol  124.98 ,  azi  154.79; modCCdopfac 1.0000
+mod 23, crystal 2 [ 94]: (-13.92  -0.79 -12.16) pol  131.08 ,  azi -176.30; modCCdopfac 1.0000
+mod 23, crystal 3 [ 95]: (-15.89  -4.99  -8.06) pol  115.82 ,  azi -148.21; modCCdopfac 1.0000
+mod 24, crystal 0 [ 96]: ( -6.03 -16.02  -7.02) pol  112.29 ,  azi -113.65; modCCdopfac 1.0000
+mod 24, crystal 1 [ 97]: ( -9.17 -12.07 -10.61) pol  124.98 ,  azi -131.31; modCCdopfac 1.0000
+mod 24, crystal 2 [ 98]: ( -3.56 -13.48 -12.16) pol  131.08 ,  azi -132.04; modCCdopfac 1.0000
+mod 24, crystal 3 [ 99]: ( -0.16 -16.65  -8.06) pol  115.82 ,  azi -115.82; modCCdopfac 1.0000
+mod 25, crystal 0 [100]: ( 13.37 -10.69  -7.02) pol  112.29 ,  azi -123.29; modCCdopfac 1.0000
+mod 25, crystal 1 [101]: (  8.64 -12.45 -10.61) pol  124.98 ,  azi -130.42; modCCdopfac 1.0000
+mod 25, crystal 2 [102]: ( 11.73  -7.55 -12.16) pol  131.08 ,  azi -148.16; modCCdopfac 1.0000
+mod 25, crystal 3 [103]: ( 15.79  -5.30  -8.06) pol  115.82 ,  azi -146.67; modCCdopfac 1.0000
+mod 26, crystal 0 [104]: (  0.29  10.69 -15.10) pol  144.70 ,  azi  144.71; modCCdopfac 1.0000
+mod 26, crystal 1 [105]: (  5.62  12.45 -12.47) pol  132.40 ,  azi  135.05; modCCdopfac 1.0000
+mod 26, crystal 2 [106]: (  5.63   7.55 -15.92) pol  149.40 ,  azi  154.64; modCCdopfac 1.0000
+mod 26, crystal 3 [107]: (  0.15   5.30 -17.72) pol  163.35 ,  azi  163.36; modCCdopfac 1.0000
+mod 27, crystal 0 [108]: (-10.07   3.58 -15.10) pol  144.70 ,  azi  166.65; modCCdopfac 1.0000
+mod 27, crystal 1 [109]: (-10.11   9.19 -12.47) pol  132.40 ,  azi  143.61; modCCdopfac 1.0000
+mod 27, crystal 2 [110]: ( -5.44   7.69 -15.92) pol  149.40 ,  azi  154.23; modCCdopfac 1.0000
+mod 27, crystal 3 [111]: ( -4.99   1.78 -17.72) pol  163.35 ,  azi  174.28; modCCdopfac 1.0000
+mod 28, crystal 0 [112]: ( -6.52  -8.47 -15.10) pol  144.70 ,  azi -150.70; modCCdopfac 1.0000
+mod 28, crystal 1 [113]: (-11.87  -6.77 -12.47) pol  132.40 ,  azi -151.51; modCCdopfac 1.0000
+mod 28, crystal 2 [114]: ( -8.99  -2.80 -15.92) pol  149.40 ,  azi -170.04; modCCdopfac 1.0000
+mod 28, crystal 3 [115]: ( -3.23  -4.20 -17.72) pol  163.35 ,  azi -166.67; modCCdopfac 1.0000
+mod 29, crystal 0 [116]: (  6.04  -8.82 -15.10) pol  144.70 ,  azi -149.71; modCCdopfac 1.0000
+mod 29, crystal 1 [117]: (  2.77 -13.38 -12.47) pol  132.40 ,  azi -133.00; modCCdopfac 1.0000
+mod 29, crystal 2 [118]: ( -0.12  -9.42 -15.92) pol  149.40 ,  azi -149.40; modCCdopfac 1.0000
+mod 29, crystal 3 [119]: (  3.00  -4.37 -17.72) pol  163.35 ,  azi -166.14; modCCdopfac 1.0000
+mod 30, crystal 0 [120]: ( 10.25   3.02 -15.10) pol  144.70 ,  azi  168.68; modCCdopfac 1.0000
+mod 30, crystal 1 [121]: ( 13.58  -1.50 -12.47) pol  132.40 ,  azi -173.15; modCCdopfac 1.0000
+mod 30, crystal 2 [122]: (  8.92  -3.02 -15.92) pol  149.40 ,  azi -169.25; modCCdopfac 1.0000
+mod 30, crystal 3 [123]: (  5.08   1.50 -17.72) pol  163.35 ,  azi  175.17; modCCdopfac 1.0000
+setup signal catcher
+started sorting... from disk...
+
+buf_read called, asked for 16 byte, have 0 bytes left in buffer, bpos=500000
+__forced to read data because nbytes=16 > bleft=0
+read new buffer of size 500000 bytes, bpos=0, bleft=500000
+buf=0x0x24281270 rbuf=0x0x7f70c1e94010 partread:0 bpos:0 nbytes:16 nbytes - partread:16 bleft:500000
+buf_read done:bpos=16,bleft=499984
+got initial header, TS=83915466671
+buf_read called, asked for 24 byte, have 499984 bytes left in buffer, bpos=16
+simple transfer: now: bleft=499984, bpos=16
+transfer of 24 bytes, set bleft=499960, set bpos=40
+buf_read done:bpos=40,bleft=499960
+read initial payload of siz=24 into event position 1
+__ptgd[0]->type=19; ptgd[0]->length=  24; ptgd[0]->timestamp=83915466671
+initial ii=1, nn=1
+buf_read called, asked for 16 byte, have 499960 bytes left in buffer, bpos=40
+simple transfer: now: bleft=499960, bpos=40
+transfer of 16 bytes, set bleft=499944, set bpos=56
+buf_read done:bpos=56,bleft=499944
+ev#     0 GEB_TYPE_DGS            64Bytes TS=99086211689 curTS=83915466671 dTS= 15170745018
+buf_read called, asked for 64 byte, have 499944 bytes left in buffer, bpos=56
+simple transfer: now: bleft=499944, bpos=56
+transfer of 64 bytes, set bleft=499880, set bpos=120
+buf_read done:bpos=120,bleft=499880
+t0=83915466671
+first event: GEB_event.mult=1
+   0/ 0: (19,GEB_TYPE_AGOD        ) TS=         83915466671; dT=0
+GEBGetEv returned st=0
+we have read 120 bytes; CurEvNo=1
+
++++++++++++++++++++++++++++++++
+*start event # 1 with multiplicity 1 looks like this:
+ 0> 19, GEB_TYPE_AGOD        , TS=83915466671
+entered bin_dgs:
+
+
+CurEvNo: 1exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 1
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 499880 bytes left in buffer, bpos=120
+simple transfer: now: bleft=499880, bpos=120
+transfer of 16 bytes, set bleft=499864, set bpos=136
+buf_read done:bpos=136,bleft=499864
+ev#     1 GEB_TYPE_DGS            64Bytes TS=99086211692 curTS=99086211689 dTS= 3
+buf_read called, asked for 64 byte, have 499864 bytes left in buffer, bpos=136
+simple transfer: now: bleft=499864, bpos=136
+transfer of 64 bytes, set bleft=499800, set bpos=200
+buf_read done:bpos=200,bleft=499800
+buf_read called, asked for 16 byte, have 499800 bytes left in buffer, bpos=200
+simple transfer: now: bleft=499800, bpos=200
+transfer of 16 bytes, set bleft=499784, set bpos=216
+buf_read done:bpos=216,bleft=499784
+ev#     1 GEB_TYPE_DGS            64Bytes TS=99086618505 curTS=99086211689 dTS= 406816
+buf_read called, asked for 64 byte, have 499784 bytes left in buffer, bpos=216
+simple transfer: now: bleft=499784, bpos=216
+transfer of 64 bytes, set bleft=499720, set bpos=280
+buf_read done:bpos=280,bleft=499720
+GEBGetEv returned st=0
+we have read 280 bytes; CurEvNo=2
+
++++++++++++++++++++++++++++++++
+*start event # 2 with multiplicity 2 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99086211689
+ 1> 14, GEB_TYPE_DGS         , TS=99086211692
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99086211689
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403703961, 0x18100899; |0001|1000|0001|0000|0000|1000|1001|1001|
+  1[doc:   2]:    301963881, 0x11ff9a69; |0001|0001|1111|1111|1001|1010|0110|1001|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   3807773184, 0xe2f60200; |1110|0010|1111|0110|0000|0010|0000|0000|
+  4[doc:   5]:      1511931, 0x001711fb; |0000|0000|0001|0111|0001|0001|1111|1011|
+  5[doc:   6]:      2824589, 0x002b198d; |0000|0000|0010|1011|0001|1001|1000|1101|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:    856603338, 0x330ebaca; |0011|0011|0000|1110|1011|1010|1100|1010|
+  8[doc:   9]:   2594443793, 0x9aa41211; |1001|1010|1010|0100|0001|0010|0001|0001|
+  9[doc:  10]:         3190, 0x00000c76; |0000|0000|0000|0000|0000|1100|0111|0110|
+ 10[doc:  11]:    211946836, 0x0ca20d54; |0000|1100|1010|0010|0000|1101|0101|0100|
+ 11[doc:  12]:    181144258, 0x0acc0ac2; |0000|1010|1100|1100|0000|1010|1100|0010|
+ 12[doc:  13]:     85986664, 0x05200d68; |0000|0101|0010|0000|0000|1101|0110|1000|
+ 13[doc:  14]:    180947654, 0x0ac90ac6; |0000|1010|1100|1001|0000|1010|1100|0110|
+ 14[doc:  15]:    181209802, 0x0acd0aca; |0000|1010|1100|1101|0000|1010|1100|1010|
+ 15[doc:  16]:    180882127, 0x0ac80acf; |0000|1010|1100|1000|0000|1010|1100|1111|
+exit DGSEvDecompose_v3:
+bin_mode1,  1> 14, GEB_TYPE_DGS         , TS=99086211692
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672138869, 0x28100675; |0010|1000|0001|0000|0000|0110|0111|0101|
+  1[doc:   2]:    301963884, 0x11ff9a6c; |0001|0001|1111|1111|1001|1010|0110|1100|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   3820749312, 0xe3bc0200; |1110|0011|1011|1100|0000|0010|0000|0000|
+  4[doc:   5]:      1511932, 0x001711fc; |0000|0000|0001|0111|0001|0001|1111|1100|
+  5[doc:   6]:      1252976, 0x00131e70; |0000|0000|0001|0011|0001|1110|0111|0000|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   4026960369, 0xf00689f1; |1111|0000|0000|0110|1000|1001|1111|0001|
+  8[doc:   9]:   2595228244, 0x9ab00a54; |1001|1010|1011|0000|0000|1010|0101|0100|
+  9[doc:  10]:         1306, 0x0000051a; |0000|0000|0000|0000|0000|0101|0001|1010|
+ 10[doc:  11]:     86443958, 0x052707b6; |0000|0101|0010|0111|0000|0111|1011|0110|
+ 11[doc:  12]:     80020681, 0x04c504c9; |0000|0100|1100|0101|0000|0100|1100|1001|
+ 12[doc:  13]:     73009093, 0x045a07c5; |0000|0100|0101|1010|0000|0111|1100|0101|
+ 13[doc:  14]:     80413894, 0x04cb04c6; |0000|0100|1100|1011|0000|0100|1100|0110|
+ 14[doc:  15]:     80086214, 0x04c604c6; |0000|0100|1100|0110|0000|0100|1100|0110|
+ 15[doc:  16]:     80282824, 0x04c904c8; |0000|0100|1100|1001|0000|0100|1100|1000|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 2
+ DGSEvent[0].event_timestamp: 99086211689
+ DGSEvent[1].event_timestamp: 99086211692we have 2 gamma rays
+ 0> chan_id=9; board_id=137; id =1379; tpe=1; tid=79; EventTS=99086211689; ehi=832.173340 
+we have 2 gamma rays
+ 1> chan_id=5; board_id=103; id =1035; tpe=1; tid=12; EventTS=99086211692; ehi=642.610413 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 2
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 499720 bytes left in buffer, bpos=280
+simple transfer: now: bleft=499720, bpos=280
+transfer of 16 bytes, set bleft=499704, set bpos=296
+buf_read done:bpos=296,bleft=499704
+ev#     2 GEB_TYPE_DGS            64Bytes TS=99086618508 curTS=99086618505 dTS= 3
+buf_read called, asked for 64 byte, have 499704 bytes left in buffer, bpos=296
+simple transfer: now: bleft=499704, bpos=296
+transfer of 64 bytes, set bleft=499640, set bpos=360
+buf_read done:bpos=360,bleft=499640
+buf_read called, asked for 16 byte, have 499640 bytes left in buffer, bpos=360
+simple transfer: now: bleft=499640, bpos=360
+transfer of 16 bytes, set bleft=499624, set bpos=376
+buf_read done:bpos=376,bleft=499624
+ev#     2 GEB_TYPE_DGS            64Bytes TS=99086618521 curTS=99086618505 dTS= 16
+buf_read called, asked for 64 byte, have 499624 bytes left in buffer, bpos=376
+simple transfer: now: bleft=499624, bpos=376
+transfer of 64 bytes, set bleft=499560, set bpos=440
+buf_read done:bpos=440,bleft=499560
+buf_read called, asked for 16 byte, have 499560 bytes left in buffer, bpos=440
+simple transfer: now: bleft=499560, bpos=440
+transfer of 16 bytes, set bleft=499544, set bpos=456
+buf_read done:bpos=456,bleft=499544
+ev#     2 GEB_TYPE_DGS            64Bytes TS=99086618521 curTS=99086618505 dTS= 16
+buf_read called, asked for 64 byte, have 499544 bytes left in buffer, bpos=456
+simple transfer: now: bleft=499544, bpos=456
+transfer of 64 bytes, set bleft=499480, set bpos=520
+buf_read done:bpos=520,bleft=499480
+buf_read called, asked for 16 byte, have 499480 bytes left in buffer, bpos=520
+simple transfer: now: bleft=499480, bpos=520
+transfer of 16 bytes, set bleft=499464, set bpos=536
+buf_read done:bpos=536,bleft=499464
+ev#     2 GEB_TYPE_DGS            64Bytes TS=99086618521 curTS=99086618505 dTS= 16
+buf_read called, asked for 64 byte, have 499464 bytes left in buffer, bpos=536
+simple transfer: now: bleft=499464, bpos=536
+transfer of 64 bytes, set bleft=499400, set bpos=600
+buf_read done:bpos=600,bleft=499400
+buf_read called, asked for 16 byte, have 499400 bytes left in buffer, bpos=600
+simple transfer: now: bleft=499400, bpos=600
+transfer of 16 bytes, set bleft=499384, set bpos=616
+buf_read done:bpos=616,bleft=499384
+ev#     2 GEB_TYPE_DGS            64Bytes TS=99086749586 curTS=99086618505 dTS= 131081
+buf_read called, asked for 64 byte, have 499384 bytes left in buffer, bpos=616
+simple transfer: now: bleft=499384, bpos=616
+transfer of 64 bytes, set bleft=499320, set bpos=680
+buf_read done:bpos=680,bleft=499320
+GEBGetEv returned st=0
+we have read 680 bytes; CurEvNo=3
+
++++++++++++++++++++++++++++++++
+*start event # 3 with multiplicity 5 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99086618505
+ 1> 14, GEB_TYPE_DGS         , TS=99086618508
+ 2> 14, GEB_TYPE_DGS         , TS=99086618521
+ 3> 14, GEB_TYPE_DGS         , TS=99086618521
+ 4> 14, GEB_TYPE_DGS         , TS=99086618521
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99086618505
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672139318, 0x28100836; |0010|1000|0001|0000|0000|1000|0011|0110|
+  1[doc:   2]:    302370697, 0x1205cf89; |0001|0010|0000|0101|1100|1111|1000|1001|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:    120259072, 0x072b0200; |0000|0111|0010|1011|0000|0010|0000|0000|
+  4[doc:   5]:      1306432, 0x0013ef40; |0000|0000|0001|0011|1110|1111|0100|0000|
+  5[doc:   6]:      1255949, 0x00132a0d; |0000|0000|0001|0011|0010|1010|0000|1101|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   2936441854, 0xaf068bfe; |1010|1111|0000|0110|1000|1011|1111|1110|
+  8[doc:   9]:   3485537181, 0xcfc1139d; |1100|1111|1100|0001|0001|0011|1001|1101|
+  9[doc:  10]:         2181, 0x00000885; |0000|0000|0000|0000|0000|1000|1000|0101|
+ 10[doc:  11]:    149622490, 0x08eb0eda; |0000|1000|1110|1011|0000|1110|1101|1010|
+ 11[doc:  12]:     80151758, 0x04c704ce; |0000|0100|1100|0111|0000|0100|1100|1110|
+ 12[doc:  13]:     80285447, 0x04c90f07; |0000|0100|1100|1001|0000|1111|0000|0111|
+ 13[doc:  14]:     80086217, 0x04c604c9; |0000|0100|1100|0110|0000|0100|1100|1001|
+ 14[doc:  15]:     80086217, 0x04c604c9; |0000|0100|1100|0110|0000|0100|1100|1001|
+ 15[doc:  16]:     80479434, 0x04cc04ca; |0000|0100|1100|1100|0000|0100|1100|1010|
+exit DGSEvDecompose_v3:
+bin_mode1,  1> 14, GEB_TYPE_DGS         , TS=99086618508
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403704018, 0x181008d2; |0001|1000|0001|0000|0000|1000|1101|0010|
+  1[doc:   2]:    302370700, 0x1205cf8c; |0001|0010|0000|0101|1100|1111|1000|1100|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:    928580096, 0x37590200; |0011|0111|0101|1001|0000|0010|0000|0000|
+  4[doc:   5]:      1511938, 0x00171202; |0000|0000|0001|0111|0001|0010|0000|0010|
+  5[doc:   6]:      8624573, 0x008399bd; |0000|0000|1000|0011|1001|1001|1011|1101|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   1026359006, 0x3d2cfede; |0011|1101|0010|1100|1111|1110|1101|1110|
+  8[doc:   9]:   3484626378, 0xcfb32dca; |1100|1111|1011|0011|0010|1101|1100|1010|
+  9[doc:  10]:         8594, 0x00002192; |0000|0000|0000|0000|0010|0001|1001|0010|
+ 10[doc:  11]:    576659884, 0x225f21ac; |0010|0010|0101|1111|0010|0001|1010|1100|
+ 11[doc:  12]:    551756007, 0x20e320e7; |0010|0000|1110|0011|0010|0000|1110|0111|
+ 12[doc:  13]:     96215409, 0x05bc2171; |0000|0101|1011|1100|0010|0001|0111|0001|
+ 13[doc:  14]:    552411369, 0x20ed20e9; |0010|0000|1110|1101|0010|0000|1110|1001|
+ 14[doc:  15]:    552607981, 0x20f020ed; |0010|0000|1111|0000|0010|0000|1110|1101|
+ 15[doc:  16]:    552214766, 0x20ea20ee; |0010|0000|1110|1010|0010|0000|1110|1110|
+exit DGSEvDecompose_v3:
+bin_mode1,  2> 14, GEB_TYPE_DGS         , TS=99086618521
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672138866, 0x28100672; |0010|1000|0001|0000|0000|0110|0111|0010|
+  1[doc:   2]:    302370713, 0x1205cf99; |0001|0010|0000|0101|1100|1111|1001|1001|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   2958754304, 0xb05b0200; |1011|0000|0101|1011|0000|0010|0000|0000|
+  4[doc:   5]:      1511938, 0x00171202; |0000|0000|0001|0111|0001|0010|0000|0010|
+  5[doc:   6]:      9006954, 0x00896f6a; |0000|0000|1000|1001|0110|1111|0110|1010|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   3543071869, 0xd32efc7d; |1101|0011|0010|1110|1111|1100|0111|1101|
+  8[doc:   9]:   3484626731, 0xcfb32f2b; |1100|1111|1011|0011|0010|1111|0010|1011|
+  9[doc:  10]:         8836, 0x00002284; |0000|0000|0000|0000|0010|0010|1000|0100|
+ 10[doc:  11]:    582165130, 0x22b3228a; |0010|0010|1011|0011|0010|0010|1000|1010|
+ 11[doc:  12]:    576856665, 0x22622259; |0010|0010|0110|0010|0010|0010|0101|1001|
+ 12[doc:  13]:     82649736, 0x04ed2288; |0000|0100|1110|1101|0010|0010|1000|1000|
+ 13[doc:  14]:    576463451, 0x225c225b; |0010|0010|0101|1100|0010|0010|0101|1011|
+ 14[doc:  15]:    577053279, 0x2265225f; |0010|0010|0110|0101|0010|0010|0101|1111|
+ 15[doc:  16]:    576987749, 0x22642265; |0010|0010|0110|0100|0010|0010|0110|0101|
+exit DGSEvDecompose_v3:
+bin_mode1,  3> 14, GEB_TYPE_DGS         , TS=99086618521
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672138866, 0x28100672; |0010|1000|0001|0000|0000|0110|0111|0010|
+  1[doc:   2]:    302370713, 0x1205cf99; |0001|0010|0000|0101|1100|1111|1001|1001|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   2958754304, 0xb05b0200; |1011|0000|0101|1011|0000|0010|0000|0000|
+  4[doc:   5]:      1511938, 0x00171202; |0000|0000|0001|0111|0001|0010|0000|0010|
+  5[doc:   6]:      9006954, 0x00896f6a; |0000|0000|1000|1001|0110|1111|0110|1010|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   3543071869, 0xd32efc7d; |1101|0011|0010|1110|1111|1100|0111|1101|
+  8[doc:   9]:   3484626731, 0xcfb32f2b; |1100|1111|1011|0011|0010|1111|0010|1011|
+  9[doc:  10]:         8836, 0x00002284; |0000|0000|0000|0000|0010|0010|1000|0100|
+ 10[doc:  11]:    582165130, 0x22b3228a; |0010|0010|1011|0011|0010|0010|1000|1010|
+ 11[doc:  12]:    576856665, 0x22622259; |0010|0010|0110|0010|0010|0010|0101|1001|
+ 12[doc:  13]:     82649736, 0x04ed2288; |0000|0100|1110|1101|0010|0010|1000|1000|
+ 13[doc:  14]:    576463451, 0x225c225b; |0010|0010|0101|1100|0010|0010|0101|1011|
+ 14[doc:  15]:    577053279, 0x2265225f; |0010|0010|0110|0101|0010|0010|0101|1111|
+ 15[doc:  16]:    576987749, 0x22642265; |0010|0010|0110|0100|0010|0010|0110|0101|
+exit DGSEvDecompose_v3:
+bin_mode1,  4> 14, GEB_TYPE_DGS         , TS=99086618521
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672139187, 0x281007b3; |0010|1000|0001|0000|0000|0111|1011|0011|
+  1[doc:   2]:    302370713, 0x1205cf99; |0001|0010|0000|0101|1100|1111|1001|1001|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:    624820736, 0x253e0200; |0010|0101|0011|1110|0000|0010|0000|0000|
+  4[doc:   5]:      1511940, 0x00171204; |0000|0000|0001|0111|0001|0010|0000|0100|
+  5[doc:   6]:      9296753, 0x008ddb71; |0000|0000|1000|1101|1101|1011|0111|0001|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   1496350039, 0x59307d57; |0101|1001|0011|0000|0111|1101|0101|0111|
+  8[doc:   9]:   3484954811, 0xcfb830bb; |1100|1111|1011|1000|0011|0000|1011|1011|
+  9[doc:  10]:         9071, 0x0000236f; |0000|0000|0000|0000|0010|0011|0110|1111|
+ 10[doc:  11]:    595076035, 0x237823c3; |0010|0011|0111|1000|0010|0011|1100|0011|
+ 11[doc:  12]:    594879347, 0x23752373; |0010|0011|0111|0101|0010|0011|0111|0011|
+ 12[doc:  13]:     82453402, 0x04ea239a; |0000|0100|1110|1010|0010|0011|1001|1010|
+ 13[doc:  14]:    594879347, 0x23752373; |0010|0011|0111|0101|0010|0011|0111|0011|
+ 14[doc:  15]:    595338102, 0x237c2376; |0010|0011|0111|1100|0010|0011|0111|0110|
+ 15[doc:  16]:    595469185, 0x237e2381; |0010|0011|0111|1110|0010|0011|1000|0001|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 3
+ DGSEvent[0].event_timestamp: 99086618505
+ DGSEvent[1].event_timestamp: 99086618508
+ DGSEvent[2].event_timestamp: 99086618521
+ DGSEvent[3].event_timestamp: 99086618521
+ DGSEvent[4].event_timestamp: 99086618521we have 5 gamma rays
+ 0> chan_id=6; board_id=131; id =1316; tpe=1; tid=43; EventTS=99086618505; ehi=2686.022949 
+we have 5 gamma rays
+ 1> chan_id=2; board_id=141; id =1412; tpe=2; tid=95; EventTS=99086618508; ehi=52005.000000 
+we have 5 gamma rays
+ 2> chan_id=2; board_id=103; id =1032; tpe=2; tid=16; EventTS=99086618521; ehi=11920.000000 
+we have 5 gamma rays
+ 3> chan_id=2; board_id=103; id =1032; tpe=2; tid=16; EventTS=99086618521; ehi=11920.000000 
+we have 5 gamma rays
+ 4> chan_id=3; board_id=123; id =1233; tpe=2; tid=7; EventTS=99086618521; ehi=15790.000000 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 3
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 499320 bytes left in buffer, bpos=680
+simple transfer: now: bleft=499320, bpos=680
+transfer of 16 bytes, set bleft=499304, set bpos=696
+buf_read done:bpos=696,bleft=499304
+ev#     3 GEB_TYPE_DGS            64Bytes TS=99086749613 curTS=99086749586 dTS= 27
+buf_read called, asked for 64 byte, have 499304 bytes left in buffer, bpos=696
+simple transfer: now: bleft=499304, bpos=696
+transfer of 64 bytes, set bleft=499240, set bpos=760
+buf_read done:bpos=760,bleft=499240
+buf_read called, asked for 16 byte, have 499240 bytes left in buffer, bpos=760
+simple transfer: now: bleft=499240, bpos=760
+transfer of 16 bytes, set bleft=499224, set bpos=776
+buf_read done:bpos=776,bleft=499224
+ev#     3 GEB_TYPE_DGS            64Bytes TS=99086827240 curTS=99086749586 dTS= 77654
+buf_read called, asked for 64 byte, have 499224 bytes left in buffer, bpos=776
+simple transfer: now: bleft=499224, bpos=776
+transfer of 64 bytes, set bleft=499160, set bpos=840
+buf_read done:bpos=840,bleft=499160
+GEBGetEv returned st=0
+we have read 840 bytes; CurEvNo=4
+
++++++++++++++++++++++++++++++++
+*start event # 4 with multiplicity 2 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99086749586
+ 1> 14, GEB_TYPE_DGS         , TS=99086749613
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99086749586
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672138933, 0x281006b5; |0010|1000|0001|0000|0000|0110|1011|0101|
+  1[doc:   2]:    302501778, 0x1207cf92; |0001|0010|0000|0111|1100|1111|1001|0010|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   3505979904, 0xd0f90200; |1101|0000|1111|1001|0000|0010|0000|0000|
+  4[doc:   5]:      1306416, 0x0013ef30; |0000|0000|0001|0011|1110|1111|0011|0000|
+  5[doc:   6]:      1281582, 0x00138e2e; |0000|0000|0001|0011|1000|1110|0010|1110|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:    268873832, 0x1006b068; |0001|0000|0000|0110|1011|0000|0110|1000|
+  8[doc:   9]:   3485272075, 0xcfbd080b; |1100|1111|1011|1101|0000|1000|0000|1011|
+  9[doc:  10]:         2037, 0x000007f5; |0000|0000|0000|0000|0000|0111|1111|0101|
+ 10[doc:  11]:    139593202, 0x085205f2; |0000|1000|0101|0010|0000|0101|1111|0010|
+ 11[doc:  12]:     81921258, 0x04e204ea; |0000|0100|1110|0010|0000|0100|1110|1010|
+ 12[doc:  13]:     82052600, 0x04e405f8; |0000|0100|1110|0100|0000|0101|1111|1000|
+ 13[doc:  14]:     82248933, 0x04e704e5; |0000|0100|1110|0111|0000|0100|1110|0101|
+ 14[doc:  15]:     82380009, 0x04e904e9; |0000|0100|1110|1001|0000|0100|1110|1001|
+ 15[doc:  16]:     82380006, 0x04e904e6; |0000|0100|1110|1001|0000|0100|1110|0110|
+exit DGSEvDecompose_v3:
+bin_mode1,  1> 14, GEB_TYPE_DGS         , TS=99086749613
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403703448, 0x18100698; |0001|1000|0001|0000|0000|0110|1001|1000|
+  1[doc:   2]:    302501805, 0x1207cfad; |0001|0010|0000|0111|1100|1111|1010|1101|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   1187054080, 0x46c10200; |0100|0110|1100|0001|0000|0010|0000|0000|
+  4[doc:   5]:      1511943, 0x00171207; |0000|0000|0001|0111|0001|0010|0000|0111|
+  5[doc:   6]:      1111292, 0x0010f4fc; |0000|0000|0001|0000|1111|0100|1111|1100|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   3288714126, 0xc405cb8e; |1100|0100|0000|0101|1100|1011|1000|1110|
+  8[doc:   9]:   3486779042, 0xcfd406a2; |1100|1111|1101|0100|0000|0110|1010|0010|
+  9[doc:  10]:         1628, 0x0000065c; |0000|0000|0000|0000|0000|0110|0101|1100|
+ 10[doc:  11]:    110888162, 0x069c04e2; |0000|0110|1001|1100|0000|0100|1110|0010|
+ 11[doc:  12]:     71304254, 0x0440043e; |0000|0100|0100|0000|0000|0100|0011|1110|
+ 12[doc:  13]:     71042283, 0x043c04eb; |0000|0100|0011|1100|0000|0100|1110|1011|
+ 13[doc:  14]:     71369791, 0x0441043f; |0000|0100|0100|0001|0000|0100|0011|1111|
+ 14[doc:  15]:     71173187, 0x043e0443; |0000|0100|0011|1110|0000|0100|0100|0011|
+ 15[doc:  16]:     70648891, 0x0436043b; |0000|0100|0011|0110|0000|0100|0011|1011|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 4
+ DGSEvent[0].event_timestamp: 99086749586
+ DGSEvent[1].event_timestamp: 99086749613we have 2 gamma rays
+ 0> chan_id=5; board_id=107; id =1075; tpe=1; tid=32; EventTS=99086749586; ehi=273.194824 
+we have 2 gamma rays
+ 1> chan_id=8; board_id=105; id =1058; tpe=1; tid=28; EventTS=99086749613; ehi=173.064194 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 4
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 499160 bytes left in buffer, bpos=840
+simple transfer: now: bleft=499160, bpos=840
+transfer of 16 bytes, set bleft=499144, set bpos=856
+buf_read done:bpos=856,bleft=499144
+ev#     4 GEB_TYPE_DGS            68Bytes TS=99086827240 curTS=99086827240 dTS= 0
+buf_read called, asked for 68 byte, have 499144 bytes left in buffer, bpos=856
+simple transfer: now: bleft=499144, bpos=856
+transfer of 68 bytes, set bleft=499076, set bpos=924
+buf_read done:bpos=924,bleft=499076
+buf_read called, asked for 16 byte, have 499076 bytes left in buffer, bpos=924
+simple transfer: now: bleft=499076, bpos=924
+transfer of 16 bytes, set bleft=499060, set bpos=940
+buf_read done:bpos=940,bleft=499060
+ev#     4 GEB_TYPE_DGS            64Bytes TS=99086827245 curTS=99086827240 dTS= 5
+buf_read called, asked for 64 byte, have 499060 bytes left in buffer, bpos=940
+simple transfer: now: bleft=499060, bpos=940
+transfer of 64 bytes, set bleft=498996, set bpos=1004
+buf_read done:bpos=1004,bleft=498996
+buf_read called, asked for 16 byte, have 498996 bytes left in buffer, bpos=1004
+simple transfer: now: bleft=498996, bpos=1004
+transfer of 16 bytes, set bleft=498980, set bpos=1020
+buf_read done:bpos=1020,bleft=498980
+ev#     4 GEB_TYPE_DGS            64Bytes TS=99086885564 curTS=99086827240 dTS= 58324
+buf_read called, asked for 64 byte, have 498980 bytes left in buffer, bpos=1020
+simple transfer: now: bleft=498980, bpos=1020
+transfer of 64 bytes, set bleft=498916, set bpos=1084
+buf_read done:bpos=1084,bleft=498916
+GEBGetEv returned st=0
+we have read 1084 bytes; CurEvNo=5
+
++++++++++++++++++++++++++++++++
+*start event # 5 with multiplicity 3 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99086827240
+ 1> 14, GEB_TYPE_DGS         , TS=99086827240
+ 2> 14, GEB_TYPE_DGS         , TS=99086827245
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99086827240
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672138937, 0x281006b9; |0010|1000|0001|0000|0000|0110|1011|1001|
+  1[doc:   2]:    302579432, 0x1208fee8; |0001|0010|0000|1000|1111|1110|1110|1000|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   2308309504, 0x89960200; |1000|1001|1001|0110|0000|0010|0000|0000|
+  4[doc:   5]:      1511934, 0x001711fe; |0000|0000|0001|0111|0001|0001|1111|1110|
+  5[doc:   6]:      1428468, 0x0015cbf4; |0000|0000|0001|0101|1100|1011|1111|0100|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:     67597449, 0x04077489; |0000|0100|0000|0111|0111|0100|1000|1001|
+  8[doc:   9]:   4280486555, 0xff230a9b; |1111|1111|0010|0011|0000|1010|1001|1011|
+  9[doc:  10]:         1624, 0x00000658; |0000|0000|0000|0000|0000|0110|0101|1000|
+ 10[doc:  11]:    107677667, 0x066b07e3; |0000|0110|0110|1011|0000|0111|1110|0011|
+ 11[doc:  12]:     91293050, 0x0571057a; |0000|0101|0111|0001|0000|0101|0111|1010|
+ 12[doc:  13]:     88147951, 0x054107ef; |0000|0101|0100|0001|0000|0111|1110|1111|
+ 13[doc:  14]:     91227506, 0x05700572; |0000|0101|0111|0000|0000|0101|0111|0010|
+ 14[doc:  15]:     91161969, 0x056f0571; |0000|0101|0110|1111|0000|0101|0111|0001|
+ 15[doc:  16]:     91096429, 0x056e056d; |0000|0101|0110|1110|0000|0101|0110|1101|
+exit DGSEvDecompose_v3:
+bin_mode1,  1> 14, GEB_TYPE_DGS         , TS=99086827240
+entered DGSEvDecompose_v3:
+event len=17 (68 bytes) >
+  0[doc:   1]:    672138937, 0x281006b9; |0010|1000|0001|0000|0000|0110|1011|1001|
+  1[doc:   2]:    302579432, 0x1208fee8; |0001|0010|0000|1000|1111|1110|1110|1000|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   2308309504, 0x89960200; |1000|1001|1001|0110|0000|0010|0000|0000|
+  4[doc:   5]:      1511934, 0x001711fe; |0000|0000|0001|0111|0001|0001|1111|1110|
+  5[doc:   6]:      1428468, 0x0015cbf4; |0000|0000|0001|0101|1100|1011|1111|0100|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:     67597449, 0x04077489; |0000|0100|0000|0111|0111|0100|1000|1001|
+  8[doc:   9]:   4280486555, 0xff230a9b; |1111|1111|0010|0011|0000|1010|1001|1011|
+  9[doc:  10]:         1624, 0x00000658; |0000|0000|0000|0000|0000|0110|0101|1000|
+ 10[doc:  11]:    107677667, 0x066b07e3; |0000|0110|0110|1011|0000|0111|1110|0011|
+ 11[doc:  12]:     91293050, 0x0571057a; |0000|0101|0111|0001|0000|0101|0111|1010|
+ 12[doc:  13]:     88147951, 0x054107ef; |0000|0101|0100|0001|0000|0111|1110|1111|
+ 13[doc:  14]:     91227506, 0x05700572; |0000|0101|0111|0000|0000|0101|0111|0010|
+ 14[doc:  15]:     91161969, 0x056f0571; |0000|0101|0110|1111|0000|0101|0111|0001|
+ 15[doc:  16]:     91096429, 0x056e056d; |0000|0101|0110|1110|0000|0101|0110|1101|
+ 16[doc:  17]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+exit DGSEvDecompose_v3:
+bin_mode1,  2> 14, GEB_TYPE_DGS         , TS=99086827245
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672139381, 0x28100875; |0010|1000|0001|0000|0000|1000|0111|0101|
+  1[doc:   2]:    302579437, 0x1208feed; |0001|0010|0000|1000|1111|1110|1110|1101|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   1719992832, 0x66850200; |0110|0110|1000|0101|0000|0010|0000|0000|
+  4[doc:   5]:      1306412, 0x0013ef2c; |0000|0000|0001|0011|1110|1111|0010|1100|
+  5[doc:   6]:      1300758, 0x0013d916; |0000|0000|0001|0011|1101|1001|0001|0110|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   3892758438, 0xe806c7a6; |1110|1000|0000|0110|1100|0111|1010|0110|
+  8[doc:   9]:   4279830528, 0xff190800; |1111|1111|0001|1001|0000|1000|0000|0000|
+  9[doc:  10]:         1813, 0x00000715; |0000|0000|0000|0000|0000|0111|0001|0101|
+ 10[doc:  11]:    123209187, 0x075805e3; |0000|0111|0101|1000|0000|0101|1110|0011|
+ 11[doc:  12]:     83428598, 0x04f904f6; |0000|0100|1111|1001|0000|0100|1111|0110|
+ 12[doc:  13]:     83035632, 0x04f305f0; |0000|0100|1111|0011|0000|0101|1111|0000|
+ 13[doc:  14]:     83428600, 0x04f904f8; |0000|0100|1111|1001|0000|0100|1111|1000|
+ 14[doc:  15]:     83625210, 0x04fc04fa; |0000|0100|1111|1100|0000|0100|1111|1010|
+ 15[doc:  16]:     83297532, 0x04f704fc; |0000|0100|1111|0111|0000|0100|1111|1100|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 5
+ DGSEvent[0].event_timestamp: 99086827240
+ DGSEvent[1].event_timestamp: 99086827240
+ DGSEvent[2].event_timestamp: 99086827245we have 3 gamma rays
+ 0> chan_id=9; board_id=107; id =1079; tpe=1; tid=40; EventTS=99086827240; ehi=639.954895 
+we have 3 gamma rays
+ 1> chan_id=9; board_id=107; id =1079; tpe=1; tid=40; EventTS=99086827240; ehi=639.954895 
+we have 3 gamma rays
+ 2> chan_id=5; board_id=135; id =1355; tpe=1; tid=61; EventTS=99086827245; ehi=252.233643 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 5
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 498916 bytes left in buffer, bpos=1084
+simple transfer: now: bleft=498916, bpos=1084
+transfer of 16 bytes, set bleft=498900, set bpos=1100
+buf_read done:bpos=1100,bleft=498900
+ev#     5 GEB_TYPE_DGS            64Bytes TS=99086886213 curTS=99086885564 dTS= 649
+buf_read called, asked for 64 byte, have 498900 bytes left in buffer, bpos=1100
+simple transfer: now: bleft=498900, bpos=1100
+transfer of 64 bytes, set bleft=498836, set bpos=1164
+buf_read done:bpos=1164,bleft=498836
+GEBGetEv returned st=0
+we have read 1164 bytes; CurEvNo=6
+
++++++++++++++++++++++++++++++++
+*start event # 6 with multiplicity 1 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99086885564
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99086885564
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672138868, 0x28100674; |0010|1000|0001|0000|0000|0110|0111|0100|
+  1[doc:   2]:    302637756, 0x1209e2bc; |0001|0010|0000|1001|1110|0010|1011|1100|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:    756023808, 0x2d100200; |0010|1101|0001|0000|0000|0010|0000|0000|
+  4[doc:   5]:      1511945, 0x00171209; |0000|0000|0001|0111|0001|0010|0000|1001|
+  5[doc:   6]:      8659028, 0x00842054; |0000|0000|1000|0100|0010|0000|0101|0100|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   3308071014, 0xc52d2866; |1100|0101|0010|1101|0010|1000|0110|0110|
+  8[doc:   9]:   3805359403, 0xe2d12d2b; |1110|0010|1101|0001|0010|1101|0010|1011|
+  9[doc:  10]:         8536, 0x00002158; |0000|0000|0000|0000|0010|0001|0101|1000|
+ 10[doc:  11]:    566632719, 0x21c6210f; |0010|0001|1100|0110|0010|0001|0000|1111|
+ 11[doc:  12]:    553722122, 0x2101210a; |0010|0001|0000|0001|0010|0001|0000|1010|
+ 12[doc:  13]:     88547593, 0x05472109; |0000|0101|0100|0111|0010|0001|0000|1001|
+ 13[doc:  14]:    553328902, 0x20fb2106; |0010|0000|1111|1011|0010|0001|0000|0110|
+ 14[doc:  15]:    553197817, 0x20f920f9; |0010|0000|1111|1001|0010|0000|1111|1001|
+ 15[doc:  16]:    553722109, 0x210120fd; |0010|0001|0000|0001|0010|0000|1111|1101|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 6
+ DGSEvent[0].event_timestamp: 99086885564we have 1 gamma rays
+ 0> chan_id=4; board_id=103; id =1034; tpe=2; tid=20; EventTS=99086885564; ehi=678.000000 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 6
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 498836 bytes left in buffer, bpos=1164
+simple transfer: now: bleft=498836, bpos=1164
+transfer of 16 bytes, set bleft=498820, set bpos=1180
+buf_read done:bpos=1180,bleft=498820
+ev#     6 GEB_TYPE_DGS            64Bytes TS=99087039159 curTS=99086886213 dTS= 152946
+buf_read called, asked for 64 byte, have 498820 bytes left in buffer, bpos=1180
+simple transfer: now: bleft=498820, bpos=1180
+transfer of 64 bytes, set bleft=498756, set bpos=1244
+buf_read done:bpos=1244,bleft=498756
+GEBGetEv returned st=0
+we have read 1244 bytes; CurEvNo=7
+
++++++++++++++++++++++++++++++++
+*start event # 7 with multiplicity 1 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99086886213
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99086886213
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403703760, 0x181007d0; |0001|1000|0001|0000|0000|0111|1101|0000|
+  1[doc:   2]:    302638405, 0x1209e545; |0001|0010|0000|1001|1110|0101|0100|0101|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   1412432384, 0x54300200; |0101|0100|0011|0000|0000|0010|0000|0000|
+  4[doc:   5]:      1511945, 0x00171209; |0000|0000|0001|0111|0001|0010|0000|1001|
+  5[doc:   6]:      9051542, 0x008a1d96; |0000|0000|1000|1010|0001|1101|1001|0110|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:    909063120, 0x362f33d0; |0011|0110|0010|1111|0011|0011|1101|0000|
+  8[doc:   9]:   3852218628, 0xe59c3104; |1110|0101|1001|1100|0011|0001|0000|0100|
+  9[doc:  10]:         8844, 0x0000228c; |0000|0000|0000|0000|0010|0010|1000|1100|
+ 10[doc:  11]:    579937339, 0x2291243b; |0010|0010|1001|0001|0010|0100|0011|1011|
+ 11[doc:  12]:    579150474, 0x2285228a; |0010|0010|1000|0101|0010|0010|1000|1010|
+ 12[doc:  13]:    102704177, 0x061f2431; |0000|0110|0001|1111|0010|0100|0011|0001|
+ 13[doc:  14]:    578626169, 0x227d2279; |0010|0010|0111|1101|0010|0010|0111|1001|
+ 14[doc:  15]:    579478145, 0x228a2281; |0010|0010|1000|1010|0010|0010|1000|0001|
+ 15[doc:  16]:    579674762, 0x228d228a; |0010|0010|1000|1101|0010|0010|1000|1010|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 7
+ DGSEvent[0].event_timestamp: 99086886213we have 1 gamma rays
+ 0> chan_id=0; board_id=125; id =1250; tpe=2; tid=11; EventTS=99086886213; ehi=118835.000000 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 7
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 498756 bytes left in buffer, bpos=1244
+simple transfer: now: bleft=498756, bpos=1244
+transfer of 16 bytes, set bleft=498740, set bpos=1260
+buf_read done:bpos=1260,bleft=498740
+ev#     7 GEB_TYPE_DGS            64Bytes TS=99087039169 curTS=99087039159 dTS= 10
+buf_read called, asked for 64 byte, have 498740 bytes left in buffer, bpos=1260
+simple transfer: now: bleft=498740, bpos=1260
+transfer of 64 bytes, set bleft=498676, set bpos=1324
+buf_read done:bpos=1324,bleft=498676
+buf_read called, asked for 16 byte, have 498676 bytes left in buffer, bpos=1324
+simple transfer: now: bleft=498676, bpos=1324
+transfer of 16 bytes, set bleft=498660, set bpos=1340
+buf_read done:bpos=1340,bleft=498660
+ev#     7 GEB_TYPE_DGS            64Bytes TS=99087064690 curTS=99087039159 dTS= 25531
+buf_read called, asked for 64 byte, have 498660 bytes left in buffer, bpos=1340
+simple transfer: now: bleft=498660, bpos=1340
+transfer of 64 bytes, set bleft=498596, set bpos=1404
+buf_read done:bpos=1404,bleft=498596
+GEBGetEv returned st=0
+we have read 1404 bytes; CurEvNo=8
+
++++++++++++++++++++++++++++++++
+*start event # 8 with multiplicity 2 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99087039159
+ 1> 14, GEB_TYPE_DGS         , TS=99087039169
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99087039159
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672139129, 0x28100779; |0010|1000|0001|0000|0000|0111|0111|1001|
+  1[doc:   2]:    302791351, 0x120c3ab7; |0001|0010|0000|1100|0011|1010|1011|0111|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   1958806016, 0x74c10200; |0111|0100|1100|0001|0000|0010|0000|0000|
+  4[doc:   5]:      1511943, 0x00171207; |0000|0000|0001|0111|0001|0010|0000|0111|
+  5[doc:   6]:      1350227, 0x00149a53; |0000|0000|0001|0100|1001|1010|0101|0011|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   2013727261, 0x78070a1d; |0111|1000|0000|0111|0000|1010|0001|1101|
+  8[doc:   9]:    988744041, 0x3aef0969; |0011|1010|1110|1111|0000|1001|0110|1001|
+  9[doc:  10]:         1802, 0x0000070a; |0000|0000|0000|0000|0000|0111|0000|1010|
+ 10[doc:  11]:    122095358, 0x074706fe; |0000|0111|0100|0111|0000|0110|1111|1110|
+ 11[doc:  12]:     86639912, 0x052a0528; |0000|0101|0010|1010|0000|0101|0010|1000|
+ 12[doc:  13]:     86378246, 0x05260706; |0000|0101|0010|0110|0000|0111|0000|0110|
+ 13[doc:  14]:     86705455, 0x052b052f; |0000|0101|0010|1011|0000|0101|0010|1111|
+ 14[doc:  15]:     86836528, 0x052d0530; |0000|0101|0010|1101|0000|0101|0011|0000|
+ 15[doc:  16]:     86508842, 0x0528052a; |0000|0101|0010|1000|0000|0101|0010|1010|
+exit DGSEvDecompose_v3:
+bin_mode1,  1> 14, GEB_TYPE_DGS         , TS=99087039169
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403703830, 0x18100816; |0001|1000|0001|0000|0000|1000|0001|0110|
+  1[doc:   2]:    302791361, 0x120c3ac1; |0001|0010|0000|1100|0011|1010|1100|0001|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   1079378432, 0x40560200; |0100|0000|0101|0110|0000|0010|0000|0000|
+  4[doc:   5]:      1511945, 0x00171209; |0000|0000|0001|0111|0001|0010|0000|1001|
+  5[doc:   6]:      1364663, 0x0014d2b7; |0000|0000|0001|0100|1101|0010|1011|0111|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   2433162804, 0x91071e34; |1001|0001|0000|0111|0001|1110|0011|0100|
+  8[doc:   9]:    987236241, 0x3ad80791; |0011|1010|1101|1000|0000|0111|1001|0001|
+  9[doc:  10]:         1847, 0x00000737; |0000|0000|0000|0000|0000|0111|0011|0111|
+ 10[doc:  11]:    125437328, 0x077a0590; |0000|0111|0111|1010|0000|0101|1001|0000|
+ 11[doc:  12]:     87098679, 0x05310537; |0000|0101|0011|0001|0000|0101|0011|0111|
+ 12[doc:  13]:     87360906, 0x0535058a; |0000|0101|0011|0101|0000|0101|1000|1010|
+ 13[doc:  14]:     87688506, 0x053a053a; |0000|0101|0011|1010|0000|0101|0011|1010|
+ 14[doc:  15]:     87950649, 0x053e0539; |0000|0101|0011|1110|0000|0101|0011|1001|
+ 15[doc:  16]:     87426361, 0x05360539; |0000|0101|0011|0110|0000|0101|0011|1001|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 8
+ DGSEvent[0].event_timestamp: 99087039159
+ DGSEvent[1].event_timestamp: 99087039169we have 2 gamma rays
+ 0> chan_id=9; board_id=119; id =1199; tpe=1; tid=100; EventTS=99087039159; ehi=471.130554 
+we have 2 gamma rays
+ 1> chan_id=6; board_id=129; id =1296; tpe=1; tid=33; EventTS=99087039169; ehi=93.991692 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 8
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 498596 bytes left in buffer, bpos=1404
+simple transfer: now: bleft=498596, bpos=1404
+transfer of 16 bytes, set bleft=498580, set bpos=1420
+buf_read done:bpos=1420,bleft=498580
+ev#     8 GEB_TYPE_DGS            64Bytes TS=99087064690 curTS=99087064690 dTS= 0
+buf_read called, asked for 64 byte, have 498580 bytes left in buffer, bpos=1420
+simple transfer: now: bleft=498580, bpos=1420
+transfer of 64 bytes, set bleft=498516, set bpos=1484
+buf_read done:bpos=1484,bleft=498516
+buf_read called, asked for 16 byte, have 498516 bytes left in buffer, bpos=1484
+simple transfer: now: bleft=498516, bpos=1484
+transfer of 16 bytes, set bleft=498500, set bpos=1500
+buf_read done:bpos=1500,bleft=498500
+ev#     8 GEB_TYPE_DGS            64Bytes TS=99087324941 curTS=99087064690 dTS= 260251
+buf_read called, asked for 64 byte, have 498500 bytes left in buffer, bpos=1500
+simple transfer: now: bleft=498500, bpos=1500
+transfer of 64 bytes, set bleft=498436, set bpos=1564
+buf_read done:bpos=1564,bleft=498436
+GEBGetEv returned st=0
+we have read 1564 bytes; CurEvNo=9
+
++++++++++++++++++++++++++++++++
+*start event # 9 with multiplicity 2 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99087064690
+ 1> 14, GEB_TYPE_DGS         , TS=99087064690
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99087064690
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403704019, 0x181008d3; |0001|1000|0001|0000|0000|1000|1101|0011|
+  1[doc:   2]:    302816882, 0x120c9e72; |0001|0010|0000|1100|1001|1110|0111|0010|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   3910337024, 0xe9130200; |1110|1001|0001|0011|0000|0010|0000|0000|
+  4[doc:   5]:      1511946, 0x0017120a; |0000|0000|0001|0111|0001|0010|0000|1010|
+  5[doc:   6]:      9086575, 0x008aa66f; |0000|0000|1000|1010|1010|0110|0110|1111|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   1747934805, 0x682f5e55; |0110|1000|0010|1111|0101|1110|0101|0101|
+  8[doc:   9]:   2664903605, 0x9ed733b5; |1001|1110|1101|0111|0011|0011|1011|0101|
+  9[doc:  10]:         9169, 0x000023d1; |0000|0000|0000|0000|0010|0011|1101|0001|
+ 10[doc:  11]:    623716079, 0x252d26ef; |0010|0101|0010|1101|0010|0110|1110|1111|
+ 11[doc:  12]:    581771940, 0x22ad22a4; |0010|0010|1010|1101|0010|0010|1010|0100|
+ 12[doc:  13]:    107423473, 0x066726f1; |0000|0110|0110|0111|0010|0110|1111|0001|
+ 13[doc:  14]:    581378730, 0x22a722aa; |0010|0010|1010|0111|0010|0010|1010|1010|
+ 14[doc:  15]:    581313188, 0x22a622a4; |0010|0010|1010|0110|0010|0010|1010|0100|
+ 15[doc:  16]:    581378724, 0x22a722a4; |0010|0010|1010|0111|0010|0010|1010|0100|
+exit DGSEvDecompose_v3:
+bin_mode1,  1> 14, GEB_TYPE_DGS         , TS=99087064690
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403704019, 0x181008d3; |0001|1000|0001|0000|0000|1000|1101|0011|
+  1[doc:   2]:    302816882, 0x120c9e72; |0001|0010|0000|1100|1001|1110|0111|0010|
+  2[doc:   3]:   1887502359, 0x70810017; |0111|0000|1000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   3910337024, 0xe9130200; |1110|1001|0001|0011|0000|0010|0000|0000|
+  4[doc:   5]:      1511946, 0x0017120a; |0000|0000|0001|0111|0001|0010|0000|1010|
+  5[doc:   6]:      9086575, 0x008aa66f; |0000|0000|1000|1010|1010|0110|0110|1111|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   1747934805, 0x682f5e55; |0110|1000|0010|1111|0101|1110|0101|0101|
+  8[doc:   9]:   2664903605, 0x9ed733b5; |1001|1110|1101|0111|0011|0011|1011|0101|
+  9[doc:  10]:         9169, 0x000023d1; |0000|0000|0000|0000|0010|0011|1101|0001|
+ 10[doc:  11]:    623716079, 0x252d26ef; |0010|0101|0010|1101|0010|0110|1110|1111|
+ 11[doc:  12]:    581771940, 0x22ad22a4; |0010|0010|1010|1101|0010|0010|1010|0100|
+ 12[doc:  13]:    107423473, 0x066726f1; |0000|0110|0110|0111|0010|0110|1111|0001|
+ 13[doc:  14]:    581378730, 0x22a722aa; |0010|0010|1010|0111|0010|0010|1010|1010|
+ 14[doc:  15]:    581313188, 0x22a622a4; |0010|0010|1010|0110|0010|0010|1010|0100|
+ 15[doc:  16]:    581378724, 0x22a722a4; |0010|0010|1010|0111|0010|0010|1010|0100|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 9
+ DGSEvent[0].event_timestamp: 99087064690
+ DGSEvent[1].event_timestamp: 99087064690we have 2 gamma rays
+ 0> chan_id=3; board_id=141; id =1413; tpe=2; tid=97; EventTS=99087064690; ehi=284337.000000 
+we have 2 gamma rays
+ 1> chan_id=3; board_id=141; id =1413; tpe=2; tid=97; EventTS=99087064690; ehi=284337.000000 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 9
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 498436 bytes left in buffer, bpos=1564
+simple transfer: now: bleft=498436, bpos=1564
+transfer of 16 bytes, set bleft=498420, set bpos=1580
+buf_read done:bpos=1580,bleft=498420
+ev#     9 GEB_TYPE_DGS            64Bytes TS=99087324942 curTS=99087324941 dTS= 1
+buf_read called, asked for 64 byte, have 498420 bytes left in buffer, bpos=1580
+simple transfer: now: bleft=498420, bpos=1580
+transfer of 64 bytes, set bleft=498356, set bpos=1644
+buf_read done:bpos=1644,bleft=498356
+buf_read called, asked for 16 byte, have 498356 bytes left in buffer, bpos=1644
+simple transfer: now: bleft=498356, bpos=1644
+transfer of 16 bytes, set bleft=498340, set bpos=1660
+buf_read done:bpos=1660,bleft=498340
+ev#     9 GEB_TYPE_DGS            68Bytes TS=99087324942 curTS=99087324941 dTS= 1
+buf_read called, asked for 68 byte, have 498340 bytes left in buffer, bpos=1660
+simple transfer: now: bleft=498340, bpos=1660
+transfer of 68 bytes, set bleft=498272, set bpos=1728
+buf_read done:bpos=1728,bleft=498272
+buf_read called, asked for 16 byte, have 498272 bytes left in buffer, bpos=1728
+simple transfer: now: bleft=498272, bpos=1728
+transfer of 16 bytes, set bleft=498256, set bpos=1744
+buf_read done:bpos=1744,bleft=498256
+ev#     9 GEB_TYPE_DGS            64Bytes TS=99087324945 curTS=99087324941 dTS= 4
+buf_read called, asked for 64 byte, have 498256 bytes left in buffer, bpos=1744
+simple transfer: now: bleft=498256, bpos=1744
+transfer of 64 bytes, set bleft=498192, set bpos=1808
+buf_read done:bpos=1808,bleft=498192
+buf_read called, asked for 16 byte, have 498192 bytes left in buffer, bpos=1808
+simple transfer: now: bleft=498192, bpos=1808
+transfer of 16 bytes, set bleft=498176, set bpos=1824
+buf_read done:bpos=1824,bleft=498176
+ev#     9 GEB_TYPE_DGS            64Bytes TS=99087426124 curTS=99087324941 dTS= 101183
+buf_read called, asked for 64 byte, have 498176 bytes left in buffer, bpos=1824
+simple transfer: now: bleft=498176, bpos=1824
+transfer of 64 bytes, set bleft=498112, set bpos=1888
+buf_read done:bpos=1888,bleft=498112
+GEBGetEv returned st=0
+we have read 1888 bytes; CurEvNo=10
+
++++++++++++++++++++++++++++++++
+*start event # 10 with multiplicity 4 looks like this:
+ 0> 14, GEB_TYPE_DGS         , TS=99087324941
+ 1> 14, GEB_TYPE_DGS         , TS=99087324942
+ 2> 14, GEB_TYPE_DGS         , TS=99087324942
+ 3> 14, GEB_TYPE_DGS         , TS=99087324945
+entered bin_dgs:
+bin_mode1,  0> 14, GEB_TYPE_DGS         , TS=99087324941
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403703641, 0x18100759; |0001|1000|0001|0000|0000|0111|0101|1001|
+  1[doc:   2]:    303077133, 0x1210970d; |0001|0010|0001|0000|1001|0111|0000|1101|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:    817365504, 0x30b80200; |0011|0000|1011|1000|0000|0010|0000|0000|
+  4[doc:   5]:      1511948, 0x0017120c; |0000|0000|0001|0111|0001|0010|0000|1100|
+  5[doc:   6]:      1154229, 0x00119cb5; |0000|0000|0001|0001|1001|1100|1011|0101|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   2936407615, 0xaf06063f; |1010|1111|0000|0110|0000|0110|0011|1111|
+  8[doc:   9]:   2538277341, 0x974b09dd; |1001|0111|0100|1011|0000|1001|1101|1101|
+  9[doc:  10]:         2352, 0x00000930; |0000|0000|0000|0000|0000|1001|0011|0000|
+ 10[doc:  11]:    164431717, 0x09cd0765; |0000|1001|1100|1101|0000|0111|0110|0101|
+ 11[doc:  12]:     73991276, 0x0469046c; |0000|0100|0110|1001|0000|0100|0110|1100|
+ 12[doc:  13]:     73992055, 0x04690777; |0000|0100|0110|1001|0000|0111|0111|0111|
+ 13[doc:  14]:     73598065, 0x04630471; |0000|0100|0110|0011|0000|0100|0111|0001|
+ 14[doc:  15]:     73925751, 0x04680477; |0000|0100|0110|1000|0000|0100|0111|0111|
+ 15[doc:  16]:     74056815, 0x046a046f; |0000|0100|0110|1010|0000|0100|0110|1111|
+exit DGSEvDecompose_v3:
+bin_mode1,  1> 14, GEB_TYPE_DGS         , TS=99087324942
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    403703765, 0x181007d5; |0001|1000|0001|0000|0000|0111|1101|0101|
+  1[doc:   2]:    303077134, 0x1210970e; |0001|0010|0001|0000|1001|0111|0000|1110|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   1917387264, 0x72490200; |0111|0010|0100|1001|0000|0010|0000|0000|
+  4[doc:   5]:      1306435, 0x0013ef43; |0000|0000|0001|0011|1110|1111|0100|0011|
+  5[doc:   6]:      1358038, 0x0014b8d6; |0000|0000|0001|0100|1011|1000|1101|0110|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   3808892331, 0xe30715ab; |1110|0011|0000|0111|0001|0101|1010|1011|
+  8[doc:   9]:   2538212778, 0x974a0daa; |1001|0111|0100|1010|0000|1101|1010|1010|
+  9[doc:  10]:         1622, 0x00000656; |0000|0000|0000|0000|0000|0110|0101|0110|
+ 10[doc:  11]:    108268107, 0x06740a4b; |0000|0110|0111|0100|0000|1010|0100|1011|
+ 11[doc:  12]:     86770986, 0x052c052a; |0000|0101|0010|1100|0000|0101|0010|1010|
+ 12[doc:  13]:     86968951, 0x052f0a77; |0000|0101|0010|1111|0000|1010|0111|0111|
+ 13[doc:  14]:     87426362, 0x0536053a; |0000|0101|0011|0110|0000|0101|0011|1010|
+ 14[doc:  15]:     86836522, 0x052d052a; |0000|0101|0010|1101|0000|0101|0010|1010|
+ 15[doc:  16]:     87229749, 0x05330535; |0000|0101|0011|0011|0000|0101|0011|0101|
+exit DGSEvDecompose_v3:
+bin_mode1,  2> 14, GEB_TYPE_DGS         , TS=99087324942
+entered DGSEvDecompose_v3:
+event len=17 (68 bytes) >
+  0[doc:   1]:    403703765, 0x181007d5; |0001|1000|0001|0000|0000|0111|1101|0101|
+  1[doc:   2]:    303077134, 0x1210970e; |0001|0010|0001|0000|1001|0111|0000|1110|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:   1917387264, 0x72490200; |0111|0010|0100|1001|0000|0010|0000|0000|
+  4[doc:   5]:      1306435, 0x0013ef43; |0000|0000|0001|0011|1110|1111|0100|0011|
+  5[doc:   6]:      1358038, 0x0014b8d6; |0000|0000|0001|0100|1011|1000|1101|0110|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   3808892331, 0xe30715ab; |1110|0011|0000|0111|0001|0101|1010|1011|
+  8[doc:   9]:   2538212778, 0x974a0daa; |1001|0111|0100|1010|0000|1101|1010|1010|
+  9[doc:  10]:         1622, 0x00000656; |0000|0000|0000|0000|0000|0110|0101|0110|
+ 10[doc:  11]:    108268107, 0x06740a4b; |0000|0110|0111|0100|0000|1010|0100|1011|
+ 11[doc:  12]:     86770986, 0x052c052a; |0000|0101|0010|1100|0000|0101|0010|1010|
+ 12[doc:  13]:     86968951, 0x052f0a77; |0000|0101|0010|1111|0000|1010|0111|0111|
+ 13[doc:  14]:     87426362, 0x0536053a; |0000|0101|0011|0110|0000|0101|0011|1010|
+ 14[doc:  15]:     86836522, 0x052d052a; |0000|0101|0010|1101|0000|0101|0010|1010|
+ 15[doc:  16]:     87229749, 0x05330535; |0000|0101|0011|0011|0000|0101|0011|0101|
+ 16[doc:  17]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+exit DGSEvDecompose_v3:
+bin_mode1,  3> 14, GEB_TYPE_DGS         , TS=99087324945
+entered DGSEvDecompose_v3:
+event len=16 (64 bytes) >
+  0[doc:   1]:    672139257, 0x281007f9; |0010|1000|0001|0000|0000|0111|1111|1001|
+  1[doc:   2]:    303077137, 0x12109711; |0001|0010|0001|0000|1001|0111|0001|0001|
+  2[doc:   3]:   1895890967, 0x71010017; |0111|0001|0000|0001|0000|0000|0001|0111|
+  3[doc:   4]:    829686272, 0x31740200; |0011|0001|0111|0100|0000|0010|0000|0000|
+  4[doc:   5]:      1511948, 0x0017120c; |0000|0000|0001|0111|0001|0010|0000|1100|
+  5[doc:   6]:      1296890, 0x0013c9fa; |0000|0000|0001|0011|1100|1001|1111|1010|
+  6[doc:   7]:            0, 0x00000000; |0000|0000|0000|0000|0000|0000|0000|0000|
+  7[doc:   8]:   1141293813, 0x4406c2f5; |0100|0100|0000|0110|1100|0010|1111|0101|
+  8[doc:   9]:   2538014855, 0x97470887; |1001|0111|0100|0111|0000|1000|1000|0111|
+  9[doc:  10]:         1406, 0x0000057e; |0000|0000|0000|0000|0000|0101|0111|1110|
+ 10[doc:  11]:     93259346, 0x058f0652; |0000|0101|1000|1111|0000|0110|0101|0010|
+ 11[doc:  12]:     83100915, 0x04f404f3; |0000|0100|1111|0100|0000|0100|1111|0011|
+ 12[doc:  13]:     82839131, 0x04f0065b; |0000|0100|1111|0000|0000|0110|0101|1011|
+ 13[doc:  14]:     82969842, 0x04f204f2; |0000|0100|1111|0010|0000|0100|1111|0010|
+ 14[doc:  15]:     83166453, 0x04f504f5; |0000|0100|1111|0101|0000|0100|1111|0101|
+ 15[doc:  16]:     83035380, 0x04f304f4; |0000|0100|1111|0011|0000|0100|1111|0100|
+exit DGSEvDecompose_v3:
+
+
+CurEvNo: 10
+ DGSEvent[0].event_timestamp: 99087324941
+ DGSEvent[1].event_timestamp: 99087324942
+ DGSEvent[2].event_timestamp: 99087324942
+ DGSEvent[3].event_timestamp: 99087324945we have 4 gamma rays
+ 0> chan_id=9; board_id=117; id =1179; tpe=1; tid=90; EventTS=99087324941; ehi=629.299255 
+we have 4 gamma rays
+ 1> chan_id=5; board_id=125; id =1255; tpe=1; tid=11; EventTS=99087324942; ehi=1509.580811 
+we have 4 gamma rays
+ 2> chan_id=5; board_id=125; id =1255; tpe=1; tid=11; EventTS=99087324942; ehi=1509.580811 
+we have 4 gamma rays
+ 3> chan_id=9; board_id=127; id =1279; tpe=1; tid=29; EventTS=99087324945; ehi=362.328339 
+exit bin_dgs
+entered bin_god:
+exit bin_dgod
+entered bin_agod:
+exit bin_agod
+*end of event # 10
++++++++++++++++++++++++++++++++
+buf_read called, asked for 16 byte, have 498112 bytes left in buffer, bpos=1888
+simple transfer: now: bleft=498112, bpos=1888
+transfer of 16 bytes, set bleft=498096, set bpos=1904
+buf_read done:bpos=1904,bleft=498096
+ev#    10 GEB_TYPE_DGS            68Bytes TS=99087426126 curTS=99087426124 dTS= 2
+buf_read called, asked for 68 byte, have 498096 bytes left in buffer, bpos=1904
+simple transfer: now: bleft=498096, bpos=1904
+transfer of 68 bytes, set bleft=498028, set bpos=1972
+buf_read done:bpos=1972,bleft=498028
+buf_read called, asked for 16 byte, have 498028 bytes left in buffer, bpos=1972
+simple transfer: now: bleft=498028, bpos=1972
+transfer of 16 bytes, set bleft=498012, set bpos=1988
+buf_read done:bpos=1988,bleft=498012
+ev#    10 GEB_TYPE_DGS            64Bytes TS=99087577598 curTS=99087426124 dTS= 151474
+buf_read called, asked for 64 byte, have 498012 bytes left in buffer, bpos=1988
+simple transfer: now: bleft=498012, bpos=1988
+transfer of 64 bytes, set bleft=497948, set bpos=2052
+buf_read done:bpos=2052,bleft=497948
+
+
+CurEvNo: 11
+ DGSEvent[0].event_timestamp: 99087426124
+ DGSEvent[1].event_timestamp: 99087426126
+
+CurEvNo: 12
+ DGSEvent[0].event_timestamp: 99087577598
+ DGSEvent[1].event_timestamp: 99087577598
+ DGSEvent[2].event_timestamp: 99087577599
+ DGSEvent[3].event_timestamp: 99087577602
+ DGSEvent[4].event_timestamp: 99087577602
+
+CurEvNo: 13
+ DGSEvent[0].event_timestamp: 99087702344
+ DGSEvent[1].event_timestamp: 99087702348
+ DGSEvent[2].event_timestamp: 99087702349
+ DGSEvent[3].event_timestamp: 99087702359
+ DGSEvent[4].event_timestamp: 99087702359
+
+CurEvNo: 14
+ DGSEvent[0].event_timestamp: 99088018627
+ DGSEvent[1].event_timestamp: 99088018644
+ DGSEvent[2].event_timestamp: 99088018853
+ DGSEvent[3].event_timestamp: 99088019027
+ DGSEvent[4].event_timestamp: 99088019028
+
+CurEvNo: 15
+ DGSEvent[0].event_timestamp: 99088049090
+ DGSEvent[1].event_timestamp: 99088049097
+ DGSEvent[2].event_timestamp: 99088049097
+
+CurEvNo: 16
+ DGSEvent[0].event_timestamp: 99088137486
+ DGSEvent[1].event_timestamp: 99088137486
+ DGSEvent[2].event_timestamp: 99088137493
+
+CurEvNo: 17
+ DGSEvent[0].event_timestamp: 99088212655
+ DGSEvent[1].event_timestamp: 99088212657
+ DGSEvent[2].event_timestamp: 99088212657
+ DGSEvent[3].event_timestamp: 99088212923
+
+CurEvNo: 18
+ DGSEvent[0].event_timestamp: 99088258369
+ DGSEvent[1].event_timestamp: 99088258371
+ DGSEvent[2].event_timestamp: 99088258371
+
+CurEvNo: 19
+ DGSEvent[0].event_timestamp: 99088550657
+ DGSEvent[1].event_timestamp: 99088550658
+
+CurEvNo: 20
+ DGSEvent[0].event_timestamp: 99088646180
+
+CurEvNo: 21
+ DGSEvent[0].event_timestamp: 99088974980
+ DGSEvent[1].event_timestamp: 99088975430
+ DGSEvent[2].event_timestamp: 99088975430
+ DGSEvent[3].event_timestamp: 99088975434
+ DGSEvent[4].event_timestamp: 99088975434
+
+CurEvNo: 22
+ DGSEvent[0].event_timestamp: 99088981942
+ DGSEvent[1].event_timestamp: 99088981942
+ DGSEvent[2].event_timestamp: 99088981942
+
+CurEvNo: 23
+ DGSEvent[0].event_timestamp: 99088982540
+ DGSEvent[1].event_timestamp: 99088982540
+ DGSEvent[2].event_timestamp: 99088982542
+ DGSEvent[3].event_timestamp: 99088982612
+
+CurEvNo: 24
+ DGSEvent[0].event_timestamp: 99089126412
+ DGSEvent[1].event_timestamp: 99089126663
+ DGSEvent[2].event_timestamp: 99089126663
+ DGSEvent[3].event_timestamp: 99089126663
+
+CurEvNo: 25
+ DGSEvent[0].event_timestamp: 99089167642
+ DGSEvent[1].event_timestamp: 99089167646
+
+CurEvNo: 26
+ DGSEvent[0].event_timestamp: 99089250514
+ DGSEvent[1].event_timestamp: 99089250520
+
+CurEvNo: 27
+ DGSEvent[0].event_timestamp: 99089394894
+ DGSEvent[1].event_timestamp: 99089394915
+
+CurEvNo: 28
+ DGSEvent[0].event_timestamp: 99089456147
+ DGSEvent[1].event_timestamp: 99089456148
+
+CurEvNo: 29
+ DGSEvent[0].event_timestamp: 99089776438
+ DGSEvent[1].event_timestamp: 99089776456
+
+CurEvNo: 30
+ DGSEvent[0].event_timestamp: 99089845195
+ DGSEvent[1].event_timestamp: 99089845196
+ DGSEvent[2].event_timestamp: 99089845196
+
+CurEvNo: 31
+ DGSEvent[0].event_timestamp: 99089868113
+ DGSEvent[1].event_timestamp: 99089868135
+ DGSEvent[2].event_timestamp: 99089868214
+ DGSEvent[3].event_timestamp: 99089868219
+ DGSEvent[4].event_timestamp: 99089868229
+
+CurEvNo: 32
+ DGSEvent[0].event_timestamp: 99089960917
+ DGSEvent[1].event_timestamp: 99089960922
+ DGSEvent[2].event_timestamp: 99089960933
+
+CurEvNo: 33
+ DGSEvent[0].event_timestamp: 99090202973
+ DGSEvent[1].event_timestamp: 99090202973
+ DGSEvent[2].event_timestamp: 99090202976
+
+CurEvNo: 34
+ DGSEvent[0].event_timestamp: 99090403727
+ DGSEvent[1].event_timestamp: 99090403733
+
+CurEvNo: 35
+ DGSEvent[0].event_timestamp: 99090493969
+ DGSEvent[1].event_timestamp: 99090493971
+ DGSEvent[2].event_timestamp: 99090493971
+ DGSEvent[3].event_timestamp: 99090493974
+
+CurEvNo: 36
+ DGSEvent[0].event_timestamp: 99090499020
+ DGSEvent[1].event_timestamp: 99090499034
+
+CurEvNo: 37
+ DGSEvent[0].event_timestamp: 99090499534
+
+CurEvNo: 38
+ DGSEvent[0].event_timestamp: 99090670761
+ DGSEvent[1].event_timestamp: 99090670762
+
+CurEvNo: 39
+ DGSEvent[0].event_timestamp: 99090902080
+ DGSEvent[1].event_timestamp: 99090902086
+
+CurEvNo: 40
+ DGSEvent[0].event_timestamp: 99090980610
+ DGSEvent[1].event_timestamp: 99090980613
+
+CurEvNo: 41
+ DGSEvent[0].event_timestamp: 99090986782
+ DGSEvent[1].event_timestamp: 99090986789
+ DGSEvent[2].event_timestamp: 99090986801
+
+CurEvNo: 42
+ DGSEvent[0].event_timestamp: 99091106879
+ DGSEvent[1].event_timestamp: 99091106882
+
+CurEvNo: 43
+ DGSEvent[0].event_timestamp: 99091214620
+ DGSEvent[1].event_timestamp: 99091214623
+ DGSEvent[2].event_timestamp: 99091214627
+
+CurEvNo: 44
+ DGSEvent[0].event_timestamp: 99091326701
+ DGSEvent[1].event_timestamp: 99091326704
+ DGSEvent[2].event_timestamp: 99091326704
+ DGSEvent[3].event_timestamp: 99091327190
+
+CurEvNo: 45
+ DGSEvent[0].event_timestamp: 99091338944
+ DGSEvent[1].event_timestamp: 99091339059
+ DGSEvent[2].event_timestamp: 99091339357
+
+CurEvNo: 46
+ DGSEvent[0].event_timestamp: 99091360944
+ DGSEvent[1].event_timestamp: 99091360944
+ DGSEvent[2].event_timestamp: 99091360963
+
+CurEvNo: 47
+ DGSEvent[0].event_timestamp: 99091387950
+ DGSEvent[1].event_timestamp: 99091388024
+ DGSEvent[2].event_timestamp: 99091388026
+
+CurEvNo: 48
+ DGSEvent[0].event_timestamp: 99091941408
+ DGSEvent[1].event_timestamp: 99091941409
+
+CurEvNo: 49
+ DGSEvent[0].event_timestamp: 99092092976
+ DGSEvent[1].event_timestamp: 99092093289
+ DGSEvent[2].event_timestamp: 99092093292
+
+CurEvNo: 50
+ DGSEvent[0].event_timestamp: 99092093630
+
+CurEvNo: 51
+ DGSEvent[0].event_timestamp: 99092586766
+ DGSEvent[1].event_timestamp: 99092586768
+
+CurEvNo: 52
+ DGSEvent[0].event_timestamp: 99092920184
+ DGSEvent[1].event_timestamp: 99092920185
+ DGSEvent[2].event_timestamp: 99092920187
+ DGSEvent[3].event_timestamp: 99092920191
+ DGSEvent[4].event_timestamp: 99092920210
+
+CurEvNo: 53
+ DGSEvent[0].event_timestamp: 99093103663
+ DGSEvent[1].event_timestamp: 99093103663
+ DGSEvent[2].event_timestamp: 99093103669
+
+CurEvNo: 54
+ DGSEvent[0].event_timestamp: 99093135393
+ DGSEvent[1].event_timestamp: 99093135395
+ DGSEvent[2].event_timestamp: 99093135397
+ DGSEvent[3].event_timestamp: 99093135425
+
+CurEvNo: 55
+ DGSEvent[0].event_timestamp: 99093209179
+ DGSEvent[1].event_timestamp: 99093209579
+ DGSEvent[2].event_timestamp: 99093209580
+ DGSEvent[3].event_timestamp: 99093209580
+
+CurEvNo: 56
+ DGSEvent[0].event_timestamp: 99093393519
+ DGSEvent[1].event_timestamp: 99093393524
+
+CurEvNo: 57
+ DGSEvent[0].event_timestamp: 99093574083
+ DGSEvent[1].event_timestamp: 99093574084
+
+CurEvNo: 58
+ DGSEvent[0].event_timestamp: 99093726018
+ DGSEvent[1].event_timestamp: 99093726022
+ DGSEvent[2].event_timestamp: 99093726025
+
+CurEvNo: 59
+ DGSEvent[0].event_timestamp: 99093869643
+ DGSEvent[1].event_timestamp: 99093869645
+
+CurEvNo: 60
+ DGSEvent[0].event_timestamp: 99094321840
+ DGSEvent[1].event_timestamp: 99094322159
+ DGSEvent[2].event_timestamp: 99094322160
+ DGSEvent[3].event_timestamp: 99094322180
+
+CurEvNo: 61
+ DGSEvent[0].event_timestamp: 99094627453
+ DGSEvent[1].event_timestamp: 99094627454
+
+CurEvNo: 62
+ DGSEvent[0].event_timestamp: 99094722031
+ DGSEvent[1].event_timestamp: 99094722032
+ DGSEvent[2].event_timestamp: 99094722033
+ DGSEvent[3].event_timestamp: 99094722064
+ DGSEvent[4].event_timestamp: 99094722064
+ DGSEvent[5].event_timestamp: 99094722064
+ DGSEvent[6].event_timestamp: 99094722070
+ DGSEvent[7].event_timestamp: 99094722076
+
+CurEvNo: 63
+ DGSEvent[0].event_timestamp: 99094848060
+ DGSEvent[1].event_timestamp: 99094848065
+ DGSEvent[2].event_timestamp: 99094848300
+ DGSEvent[3].event_timestamp: 99094848338
+
+CurEvNo: 64
+ DGSEvent[0].event_timestamp: 99094975992
+ DGSEvent[1].event_timestamp: 99094976004
+
+CurEvNo: 65
+ DGSEvent[0].event_timestamp: 99095228230
+ DGSEvent[1].event_timestamp: 99095228232
+ DGSEvent[2].event_timestamp: 99095228234
+ DGSEvent[3].event_timestamp: 99095228235
+
+CurEvNo: 66
+ DGSEvent[0].event_timestamp: 99095743453
+ DGSEvent[1].event_timestamp: 99095743547
+ DGSEvent[2].event_timestamp: 99095743548
+ DGSEvent[3].event_timestamp: 99095743565
+
+CurEvNo: 67
+ DGSEvent[0].event_timestamp: 99095791058
+ DGSEvent[1].event_timestamp: 99095791058
+ DGSEvent[2].event_timestamp: 99095791061
+
+CurEvNo: 68
+ DGSEvent[0].event_timestamp: 99095855573
+ DGSEvent[1].event_timestamp: 99095855575
+
+CurEvNo: 69
+ DGSEvent[0].event_timestamp: 99095981108
+ DGSEvent[1].event_timestamp: 99095981114
+ DGSEvent[2].event_timestamp: 99095981118
+ DGSEvent[3].event_timestamp: 99095981512
+
+CurEvNo: 70
+ DGSEvent[0].event_timestamp: 99096133908
+ DGSEvent[1].event_timestamp: 99096133908
+
+CurEvNo: 71
+ DGSEvent[0].event_timestamp: 99096134935
+ DGSEvent[1].event_timestamp: 99096135084
+
+CurEvNo: 72
+ DGSEvent[0].event_timestamp: 99096480376
+ DGSEvent[1].event_timestamp: 99096480377
+ DGSEvent[2].event_timestamp: 99096480377
+ DGSEvent[3].event_timestamp: 99096480377
+ DGSEvent[4].event_timestamp: 99096480378
+ DGSEvent[5].event_timestamp: 99096480379
+ DGSEvent[6].event_timestamp: 99096480380
+ DGSEvent[7].event_timestamp: 99096480380
+ DGSEvent[8].event_timestamp: 99096480380
+ DGSEvent[9].event_timestamp: 99096480381
+ DGSEvent[10].event_timestamp: 99096480381
+ DGSEvent[11].event_timestamp: 99096480383
+ DGSEvent[12].event_timestamp: 99096480383
+ DGSEvent[13].event_timestamp: 99096480388
+ DGSEvent[14].event_timestamp: 99096480395
+
+CurEvNo: 73
+ DGSEvent[0].event_timestamp: 99096808321
+ DGSEvent[1].event_timestamp: 99096808322
+ DGSEvent[2].event_timestamp: 99096808323
+ DGSEvent[3].event_timestamp: 99096808634
+
+CurEvNo: 74
+ DGSEvent[0].event_timestamp: 99096924842
+ DGSEvent[1].event_timestamp: 99096924844
+ DGSEvent[2].event_timestamp: 99096924868
+ DGSEvent[3].event_timestamp: 99096924958
+
+CurEvNo: 75
+ DGSEvent[0].event_timestamp: 99096964341
+ DGSEvent[1].event_timestamp: 99096964344
+
+CurEvNo: 76
+ DGSEvent[0].event_timestamp: 99097016827
+ DGSEvent[1].event_timestamp: 99097016830
+ DGSEvent[2].event_timestamp: 99097016837
+
+CurEvNo: 77
+ DGSEvent[0].event_timestamp: 99097088015
+ DGSEvent[1].event_timestamp: 99097088018
+ DGSEvent[2].event_timestamp: 99097088023
+ DGSEvent[3].event_timestamp: 99097088025
+
+CurEvNo: 78
+ DGSEvent[0].event_timestamp: 99097188531
+ DGSEvent[1].event_timestamp: 99097188533
+ DGSEvent[2].event_timestamp: 99097188533
+ DGSEvent[3].event_timestamp: 99097188919
+ DGSEvent[4].event_timestamp: 99097188925
+
+CurEvNo: 79
+ DGSEvent[0].event_timestamp: 99097211033
+ DGSEvent[1].event_timestamp: 99097211034
+ DGSEvent[2].event_timestamp: 99097211034
+ DGSEvent[3].event_timestamp: 99097211043
+
+CurEvNo: 80
+ DGSEvent[0].event_timestamp: 99097280731
+ DGSEvent[1].event_timestamp: 99097280731
+
+CurEvNo: 81
+ DGSEvent[0].event_timestamp: 99097470804
+ DGSEvent[1].event_timestamp: 99097470809
+ DGSEvent[2].event_timestamp: 99097470815
+
+CurEvNo: 82
+ DGSEvent[0].event_timestamp: 99097565445
+ DGSEvent[1].event_timestamp: 99097565446
+
+CurEvNo: 83
+ DGSEvent[0].event_timestamp: 99097656581
+ DGSEvent[1].event_timestamp: 99097656591
+
+CurEvNo: 84
+ DGSEvent[0].event_timestamp: 99098059966
+ DGSEvent[1].event_timestamp: 99098059968
+ DGSEvent[2].event_timestamp: 99098059970
+
+CurEvNo: 85
+ DGSEvent[0].event_timestamp: 99098160264
+ DGSEvent[1].event_timestamp: 99098160267
+ DGSEvent[2].event_timestamp: 99098160268
+ DGSEvent[3].event_timestamp: 99098160707
+ DGSEvent[4].event_timestamp: 99098160708
+
+CurEvNo: 86
+ DGSEvent[0].event_timestamp: 99098194136
+ DGSEvent[1].event_timestamp: 99098194140
+ DGSEvent[2].event_timestamp: 99098194144
+
+CurEvNo: 87
+ DGSEvent[0].event_timestamp: 99098247075
+ DGSEvent[1].event_timestamp: 99098247076
+
+CurEvNo: 88
+ DGSEvent[0].event_timestamp: 99098445567
+ DGSEvent[1].event_timestamp: 99098445569
+
+CurEvNo: 89
+ DGSEvent[0].event_timestamp: 99098446566
+ DGSEvent[1].event_timestamp: 99098446569
+
+CurEvNo: 90
+ DGSEvent[0].event_timestamp: 99098630804
+ DGSEvent[1].event_timestamp: 99098631017
+ DGSEvent[2].event_timestamp: 99098631017
+ DGSEvent[3].event_timestamp: 99098631019
+
+CurEvNo: 91
+ DGSEvent[0].event_timestamp: 99098651584
+ DGSEvent[1].event_timestamp: 99098651908
+ DGSEvent[2].event_timestamp: 99098651910
+
+CurEvNo: 92
+ DGSEvent[0].event_timestamp: 99098822816
+ DGSEvent[1].event_timestamp: 99098822819
+ DGSEvent[2].event_timestamp: 99098822820
+
+CurEvNo: 93
+ DGSEvent[0].event_timestamp: 99099074121
+ DGSEvent[1].event_timestamp: 99099074606
+ DGSEvent[2].event_timestamp: 99099074606
+
+CurEvNo: 94
+ DGSEvent[0].event_timestamp: 99099142172
+ DGSEvent[1].event_timestamp: 99099142594
+ DGSEvent[2].event_timestamp: 99099142596
+ DGSEvent[3].event_timestamp: 99099142596
+ DGSEvent[4].event_timestamp: 99099142605
+
+CurEvNo: 95
+ DGSEvent[0].event_timestamp: 99099225975
+ DGSEvent[1].event_timestamp: 99099225976
+ DGSEvent[2].event_timestamp: 99099225977
+
+CurEvNo: 96
+ DGSEvent[0].event_timestamp: 99099571973
+ DGSEvent[1].event_timestamp: 99099571973
+ DGSEvent[2].event_timestamp: 99099571988
+ DGSEvent[3].event_timestamp: 99099571990
+
+CurEvNo: 97
+ DGSEvent[0].event_timestamp: 99099884250
+ DGSEvent[1].event_timestamp: 99099884269
+
+CurEvNo: 98
+ DGSEvent[0].event_timestamp: 99100080273
+ DGSEvent[1].event_timestamp: 99100080281
+
+CurEvNo: 99
+ DGSEvent[0].event_timestamp: 99100245145
+ DGSEvent[1].event_timestamp: 99100245152could not read a full buffer of size 500000, only got 348320, bleft=348320
+read new buffer of size 348320 bytes, bpos=0, bleft=348320
+could not read a full buffer of size 500000, only got 0, bleft=0
+read new buffer of size 0 bytes, bpos=0, bleft=0
+failed to read 64 bytes for payload, got 0
+ GEBGetEv returned 2
+we have read 4529848300 bytes; CurEvNo=11673368
+
+Sorting is done
+attempting to save root or map file
+
+
+attempting to close root file...
+done saving rootfile "rootfiles/run406.root
+
+
+read 11673368 events; Pars.beta=0.0000; time since last update 154 minutes
+CommandFileName="GEBSort.command"
+
+sorted timestamp range 83915466671-->114122439480: 30206972809
+that is 302.1 seconds or 0h5m2s
+^^^^^ any timestamp jumps will upset this accounting
+
+hit statistics per type
+14 GEB_TYPE_DGS            56312918 ; 186423.58 Hz 
+19 GEB_TYPE_AGOD             529219 ;   1751.98 Hz 
+read a total of              56842137 ; header/payloads
+
+
+nn1=234881024
+nn2=56842139
+nn3=56842138
+
+
+mean observed polar and azimuth angles
+for the detectors we saw (module,crystal)
+
+------------------------------------------
+------------------------------------------
+
+
+ ** GEBSort is done at Thu Mar 17 13:20:08 2016
+

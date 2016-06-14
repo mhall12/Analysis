@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/GTMerge.h
+vector
+-
+
+/media/mhall12/Zeus/goddess_daq/source/mkMap.c
+stdlib.h
+-
+fcntl.h
+-
+stddef.h
+-
+stdio.h
+-
+unistd.h
+-
+math.h
+-
+limits.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+sys/param.h
+-
+sys/resource.h
+-
+sys/times.h
+-
+assert.h
+-
+GTMerge.h
+/media/mhall12/Zeus/goddess_daq/source/GTMerge.h
+

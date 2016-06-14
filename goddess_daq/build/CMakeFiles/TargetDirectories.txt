@@ -1,0 +1,8 @@
+/media/mhall12/Zeus/goddess_daq/build/source/CMakeFiles/GEBMerge.dir
+/media/mhall12/Zeus/goddess_daq/build/source/CMakeFiles/GEBSort_nogeb.dir
+/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/GoddessStruct.dir
+/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/GoddessStruct_OBJECT.dir
+/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA.dir
+/media/mhall12/Zeus/goddess_daq/build/goddess/source/CMakeFiles/ORRUBA_OBJECT.dir
+/media/mhall12/Zeus/goddess_daq/build/hribf/source/CMakeFiles/hribfConvert.dir
+/media/mhall12/Zeus/goddess_daq/build/source/CMakeFiles/mkMap.dir

@@ -1,0 +1,308 @@
+
+   0/ 0: (19,GEB_TYPE_AGOD        ) TS=       1726717198517; dT=1726717198517
+
+   1/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869240081; dT=17152041564
+   1/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869240112; dT=31
+   1/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869240112; dT=0
+
+   2/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869333341; dT=93229
+   2/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869333754; dT=413
+   2/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869333754; dT=0
+   2/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869333754; dT=0
+   2/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869333758; dT=4
+   2/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869333758; dT=0
+
+   3/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869334084; dT=326
+   3/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869334109; dT=25
+   3/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869334109; dT=0
+   3/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869334110; dT=1
+
+   4/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869350721; dT=16611
+   4/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869350729; dT=8
+
+   5/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869434712; dT=83983
+   5/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869434719; dT=7
+   5/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869434719; dT=0
+   5/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869434951; dT=232
+   5/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869434951; dT=0
+
+   6/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869458173; dT=23222
+   6/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869458218; dT=45
+   6/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869458218; dT=0
+   6/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869458222; dT=4
+   6/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869458224; dT=2
+   6/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869458456; dT=232
+   6/ 6: (14,GEB_TYPE_DGS         ) TS=       1743869458456; dT=0
+   6/ 7: (14,GEB_TYPE_DGS         ) TS=       1743869458462; dT=6
+   6/ 8: (14,GEB_TYPE_DGS         ) TS=       1743869458464; dT=2
+   6/ 9: (14,GEB_TYPE_DGS         ) TS=       1743869458466; dT=2
+
+   7/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869458845; dT=379
+   7/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869458853; dT=8
+   7/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869458853; dT=0
+
+   8/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869555956; dT=97103
+   8/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869555989; dT=33
+   8/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869555990; dT=1
+
+   9/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869771491; dT=215501
+   9/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869771492; dT=1
+   9/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869771502; dT=10
+   9/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869771881; dT=379
+   9/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869771881; dT=0
+
+  10/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869772022; dT=141
+  10/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869772024; dT=2
+
+  11/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869829598; dT=57574
+
+  12/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869830118; dT=520
+  12/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869830118; dT=0
+  12/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869830118; dT=0
+  12/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869830119; dT=1
+  12/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869830119; dT=0
+  12/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869830129; dT=10
+  12/ 6: (14,GEB_TYPE_DGS         ) TS=       1743869830303; dT=174
+  12/ 7: (14,GEB_TYPE_DGS         ) TS=       1743869830303; dT=0
+  12/ 8: (14,GEB_TYPE_DGS         ) TS=       1743869830339; dT=36
+
+  13/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869884805; dT=54466
+  13/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869884858; dT=53
+  13/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869884860; dT=2
+  13/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869884860; dT=0
+  13/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869884862; dT=2
+  13/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869884894; dT=32
+  13/ 6: (14,GEB_TYPE_DGS         ) TS=       1743869884894; dT=0
+  13/ 7: (14,GEB_TYPE_DGS         ) TS=       1743869884894; dT=0
+  13/ 8: (14,GEB_TYPE_DGS         ) TS=       1743869884895; dT=1
+  13/ 9: (14,GEB_TYPE_DGS         ) TS=       1743869884901; dT=6
+  13/10: (14,GEB_TYPE_DGS         ) TS=       1743869884901; dT=0
+  13/11: (14,GEB_TYPE_DGS         ) TS=       1743869884921; dT=20
+  13/12: (14,GEB_TYPE_DGS         ) TS=       1743869884922; dT=1
+  13/13: (14,GEB_TYPE_DGS         ) TS=       1743869884922; dT=0
+  13/14: (14,GEB_TYPE_DGS         ) TS=       1743869885239; dT=317
+  13/15: (14,GEB_TYPE_DGS         ) TS=       1743869885240; dT=1
+  13/16: (14,GEB_TYPE_DGS         ) TS=       1743869885240; dT=0
+  13/17: (14,GEB_TYPE_DGS         ) TS=       1743869885241; dT=1
+  13/18: (14,GEB_TYPE_DGS         ) TS=       1743869885245; dT=4
+  13/19: (14,GEB_TYPE_DGS         ) TS=       1743869885279; dT=34
+  13/20: (14,GEB_TYPE_DGS         ) TS=       1743869885284; dT=5
+  13/21: (14,GEB_TYPE_DGS         ) TS=       1743869885291; dT=7
+
+  14/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869894493; dT=9202
+  14/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869894497; dT=4
+  14/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869894602; dT=105
+
+  15/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869895234; dT=632
+  15/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869895234; dT=0
+  15/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869895238; dT=4
+  15/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869895238; dT=0
+  15/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869895252; dT=14
+
+  16/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869910519; dT=15267
+  16/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869910522; dT=3
+  16/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869910523; dT=1
+  16/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869910949; dT=426
+  16/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869910949; dT=0
+  16/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869910951; dT=2
+
+  17/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869922512; dT=11561
+  17/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869922517; dT=5
+  17/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869922674; dT=157
+
+  18/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869941794; dT=19120
+  18/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869941852; dT=58
+  18/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869941853; dT=1
+  18/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869941854; dT=1
+  18/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869941855; dT=1
+
+  19/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869952663; dT=10808
+  19/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869952664; dT=1
+  19/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869952664; dT=0
+  19/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869952673; dT=9
+
+  20/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869961495; dT=8822
+  20/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869961501; dT=6
+
+  21/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869962229; dT=728
+  21/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869962236; dT=7
+  21/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869962492; dT=256
+  21/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869962514; dT=22
+
+  22/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869962754; dT=240
+
+  23/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869963683; dT=929
+  23/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869963699; dT=16
+  23/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869963701; dT=2
+  23/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869963731; dT=30
+  23/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869963731; dT=0
+  23/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869963741; dT=10
+  23/ 6: (14,GEB_TYPE_DGS         ) TS=       1743869963749; dT=8
+  23/ 7: (14,GEB_TYPE_DGS         ) TS=       1743869964122; dT=373
+  23/ 8: (14,GEB_TYPE_DGS         ) TS=       1743869964122; dT=0
+  23/ 9: (14,GEB_TYPE_DGS         ) TS=       1743869964126; dT=4
+  23/10: (14,GEB_TYPE_DGS         ) TS=       1743869964127; dT=1
+  23/11: (14,GEB_TYPE_DGS         ) TS=       1743869964130; dT=3
+
+  24/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869964197; dT=67
+  24/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869964198; dT=1
+
+  25/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869965783; dT=1585
+  25/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869966255; dT=472
+
+  26/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869966333; dT=78
+  26/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869966362; dT=29
+  26/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869966554; dT=192
+  26/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869966554; dT=0
+
+  27/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869967103; dT=549
+  27/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869967104; dT=1
+  27/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869967107; dT=3
+  27/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869967191; dT=84
+  27/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869967191; dT=0
+  27/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869967195; dT=4
+
+  28/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869999151; dT=31956
+  28/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869999268; dT=117
+  28/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869999270; dT=2
+  28/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869999270; dT=0
+  28/ 4: (14,GEB_TYPE_DGS         ) TS=       1743869999270; dT=0
+  28/ 5: (14,GEB_TYPE_DGS         ) TS=       1743869999273; dT=3
+  28/ 6: (14,GEB_TYPE_DGS         ) TS=       1743869999275; dT=2
+  28/ 7: (14,GEB_TYPE_DGS         ) TS=       1743869999295; dT=20
+  28/ 8: (14,GEB_TYPE_DGS         ) TS=       1743869999300; dT=5
+
+  29/ 0: (14,GEB_TYPE_DGS         ) TS=       1743869999725; dT=425
+  29/ 1: (14,GEB_TYPE_DGS         ) TS=       1743869999726; dT=1
+  29/ 2: (14,GEB_TYPE_DGS         ) TS=       1743869999728; dT=2
+  29/ 3: (14,GEB_TYPE_DGS         ) TS=       1743869999728; dT=0
+
+  30/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870000734; dT=1006
+
+  31/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870001429; dT=695
+  31/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870001430; dT=1
+
+  32/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870010785; dT=9355
+  32/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870010979; dT=194
+
+  33/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870011553; dT=574
+  33/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870011555; dT=2
+  33/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870011560; dT=5
+  33/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870011646; dT=86
+  33/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870011646; dT=0
+
+  34/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870012626; dT=980
+  34/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870012628; dT=2
+  34/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870012630; dT=2
+  34/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870012668; dT=38
+  34/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870012797; dT=129
+
+  35/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870014654; dT=1857
+  35/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870014656; dT=2
+  35/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870014658; dT=2
+  35/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870014687; dT=29
+  35/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870014894; dT=207
+  35/ 5: (14,GEB_TYPE_DGS         ) TS=       1743870014895; dT=1
+  35/ 6: (14,GEB_TYPE_DGS         ) TS=       1743870014898; dT=3
+  35/ 7: (14,GEB_TYPE_DGS         ) TS=       1743870014905; dT=7
+  35/ 8: (14,GEB_TYPE_DGS         ) TS=       1743870014905; dT=0
+  35/ 9: (14,GEB_TYPE_DGS         ) TS=       1743870014911; dT=6
+  35/10: (14,GEB_TYPE_DGS         ) TS=       1743870014921; dT=10
+
+  36/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870017779; dT=2858
+  36/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870017780; dT=1
+  36/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870017782; dT=2
+  36/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870017788; dT=6
+
+  37/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870029648; dT=11860
+  37/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870029649; dT=1
+  37/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870029650; dT=1
+  37/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870029651; dT=1
+  37/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870029654; dT=3
+  37/ 5: (14,GEB_TYPE_DGS         ) TS=       1743870029658; dT=4
+  37/ 6: (14,GEB_TYPE_DGS         ) TS=       1743870029662; dT=4
+  37/ 7: (14,GEB_TYPE_DGS         ) TS=       1743870030118; dT=456
+  37/ 8: (14,GEB_TYPE_DGS         ) TS=       1743870030123; dT=5
+  37/ 9: (14,GEB_TYPE_DGS         ) TS=       1743870030126; dT=3
+
+  38/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870030439; dT=313
+
+  39/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870039025; dT=8586
+  39/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870039038; dT=13
+  39/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870039449; dT=411
+  39/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870039449; dT=0
+  39/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870039458; dT=9
+  39/ 5: (14,GEB_TYPE_DGS         ) TS=       1743870039476; dT=18
+  39/ 6: (14,GEB_TYPE_DGS         ) TS=       1743870039506; dT=30
+  39/ 7: (14,GEB_TYPE_DGS         ) TS=       1743870039506; dT=0
+  39/ 8: (14,GEB_TYPE_DGS         ) TS=       1743870039511; dT=5
+  39/ 9: (14,GEB_TYPE_DGS         ) TS=       1743870039513; dT=2
+
+  40/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870039530; dT=17
+  40/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870039530; dT=0
+  40/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870039628; dT=98
+  40/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870039631; dT=3
+  40/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870039631; dT=0
+  40/ 5: (14,GEB_TYPE_DGS         ) TS=       1743870039633; dT=2
+  40/ 6: (14,GEB_TYPE_DGS         ) TS=       1743870039633; dT=0
+  40/ 7: (14,GEB_TYPE_DGS         ) TS=       1743870039839; dT=206
+  40/ 8: (14,GEB_TYPE_DGS         ) TS=       1743870039840; dT=1
+  40/ 9: (14,GEB_TYPE_DGS         ) TS=       1743870039840; dT=0
+  40/10: (14,GEB_TYPE_DGS         ) TS=       1743870040028; dT=188
+
+  41/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870053600; dT=13572
+  41/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870053916; dT=316
+  41/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870053923; dT=7
+  41/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870053924; dT=1
+  41/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870053928; dT=4
+
+  42/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870054258; dT=330
+
+  43/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870056602; dT=2344
+  43/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870056604; dT=2
+  43/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870056604; dT=0
+  43/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870056605; dT=1
+  43/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870056605; dT=0
+  43/ 5: (14,GEB_TYPE_DGS         ) TS=       1743870056608; dT=3
+  43/ 6: (14,GEB_TYPE_DGS         ) TS=       1743870056609; dT=1
+  43/ 7: (14,GEB_TYPE_DGS         ) TS=       1743870056745; dT=136
+  43/ 8: (14,GEB_TYPE_DGS         ) TS=       1743870056748; dT=3
+  43/ 9: (14,GEB_TYPE_DGS         ) TS=       1743870056754; dT=6
+  43/10: (14,GEB_TYPE_DGS         ) TS=       1743870056836; dT=82
+  43/11: (14,GEB_TYPE_DGS         ) TS=       1743870056845; dT=9
+
+  44/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870057196; dT=351
+  44/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870057200; dT=4
+  44/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870057203; dT=3
+  44/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870057280; dT=77
+  44/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870057292; dT=12
+
+  45/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870057709; dT=417
+  45/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870057710; dT=1
+  45/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870057712; dT=2
+  45/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870057715; dT=3
+  45/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870057717; dT=2
+  45/ 5: (14,GEB_TYPE_DGS         ) TS=       1743870057741; dT=24
+  45/ 6: (14,GEB_TYPE_DGS         ) TS=       1743870057749; dT=8
+
+  46/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870075939; dT=18190
+  46/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870076433; dT=494
+
+  47/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870076512; dT=79
+  47/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870076516; dT=4
+  47/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870076516; dT=0
+  47/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870076523; dT=7
+
+  48/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870080911; dT=4388
+  48/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870081333; dT=422
+
+  49/ 0: (14,GEB_TYPE_DGS         ) TS=       1743870081432; dT=99
+  49/ 1: (14,GEB_TYPE_DGS         ) TS=       1743870081685; dT=253
+  49/ 2: (14,GEB_TYPE_DGS         ) TS=       1743870081686; dT=1
+  49/ 3: (14,GEB_TYPE_DGS         ) TS=       1743870081688; dT=2
+  49/ 4: (14,GEB_TYPE_DGS         ) TS=       1743870081693; dT=5
+  49/ 5: (14,GEB_TYPE_DGS         ) TS=       1743870081698; dT=5
+  49/ 6: (14,GEB_TYPE_DGS         ) TS=       1743870081704; dT=6
+  49/ 7: (14,GEB_TYPE_DGS         ) TS=       1743870081713; dT=9
+  49/ 8: (14,GEB_TYPE_DGS         ) TS=       1743870081713; dT=0
+  49/ 9: (14,GEB_TYPE_DGS         ) TS=       1743870081891; dT=178
