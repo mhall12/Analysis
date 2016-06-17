@@ -5,6 +5,148 @@
 #include "TSpectrum.h"
 #include "FindGam.h"
 
+void QuadCalc(){
+
+	std::ifstream hep("gamhep.txt");
+	std::ofstream out("GamCalParamsQuad.txt");
+
+	double HighEn[111] = {};
+	double Sxx = 0;
+	double Sxy = 0;
+	double sxy = 0;
+	double Sxx2 = 0;
+	double Sx2x2 = 0;
+	double Sx2y = 0;
+	double sx2y = 0;
+	double nn = 13;
+	double sx = 0;
+	double sy = 0;
+	double sx2 = 0;
+	double sx3 = 0;
+	double sx4 = 0;
+
+	//Quadratic equation of the form Ax2+Bx+C
+	double A = 0;
+	double B = 0;
+	double C = 0;
+
+	std::vector<std::vector<double>> PeakPos2(PeakPos);
+
+	double gamEnergies2[13] = {846.8, 1238.2, 2598.86, 121.78, 244.7, 344.27, 778.9, 867.4, 964.1, 1085, 1112, 1408, 6048.2};
+
+	for (int i = 0; i < 111; i++){
+		
+		hep >> HighEn[i];
+		
+		if (HighEn[i] != 0){
+			PeakPos2[i].push_back(HighEn[i]);
+
+			for (int j = 0; j < 13; j++){
+				sx += PeakPos2[i][j];
+				sy += gamEnergies2[j];
+				sx2 += pow(PeakPos2[i][j],2);
+				sxy += PeakPos2[i][j]*gamEnergies2[j];
+				sx3 += pow(PeakPos2[i][j],3);
+				sx4 += pow(PeakPos2[i][j],4);
+				sx2y += pow(PeakPos2[i][j],2)*gamEnergies2[j];
+			}
+
+		Sxx = sx2/nn-pow(sx/nn,2);
+		Sxy = sxy/nn-sx/nn*sy/nn;
+		Sxx2 = sx3/nn-sx/nn*sx2/nn;
+		Sx2x2 = sx4/nn-sx2/nn*sx2/nn;
+		Sx2y = sx2y/nn-sx2/nn*sy/nn;
+
+		A = (Sx2y*Sxx-Sxy*Sxx2)/(Sxx*Sx2x2-pow(Sxx2,2));
+		
+		B = (Sxy*Sx2x2-Sx2y*Sxx2)/(Sxx*Sx2x2-pow(Sxx2,2));
+
+		C = sy/nn-B*sx/nn-A*sx2/nn;
+
+		}
+		else{
+			A = 0;
+			B = 0;
+			C = 0;
+		}
+
+		out << A << " " << B << " " << C << endl;
+
+		Sxx = 0;
+		Sxy = 0;
+		sxy = 0;
+		Sxx2 = 0;
+		Sx2x2 = 0;
+		Sx2y = 0;
+		sx2y = 0;
+		nn = 13;
+		sx = 0;
+		sy = 0;
+		sx2 = 0;
+		sx3 = 0;
+		sx4 = 0;
+		A = 0;
+		B = 0;
+		C = 0;
+
+	}
+
+}
+
+void RegCalc2()
+{
+	std::ifstream hep("gamhep.txt");
+	std::ofstream out3("GamCalLinWHigh.txt");
+
+	double gamEnergies3[13] = {846.8, 1238.2, 2598.86, 121.78, 244.7, 344.27, 778.9, 867.4, 964.1, 1085, 1112, 1408, 6048.2};
+
+	double sy = 0;
+	double sx2 = 0;
+	double sx = 0;
+	double sxy = 0;
+	double n = 12;
+	double slope = 0;
+	double offset = 0;
+
+	double HighEn;
+	
+	std::vector<std::vector<double>> PeakPos3(PeakPos);
+
+	for (int i=0; i<111; i++){
+
+		hep >> HighEn;
+
+		PeakPos3[i].push_back(HighEn);
+		
+		if (HighEn != 0){
+			
+			for (int j = 0; j < 13; j++){
+				sx2 += pow(PeakPos3[i][j],2);
+				sx += PeakPos3[i][j];
+				sxy += PeakPos3[i][j]*gamEnergies3[j];
+				sy += gamEnergies3[j];
+
+
+
+			}
+
+			offset = (sy*sx2-sx*sxy)/(n*sx2-pow(sx,2));
+			slope = (n*sxy-sx*sy)/(n*sx2-pow(sx,2));
+		}
+
+		out3 << slope << " " << offset << std::endl;
+
+		slope = 0;
+		offset = 0;
+		sy = 0;
+		sx2 = 0;
+		sx = 0;
+		sxy = 0;
+
+	}
+}
+
+
 void RegCalc(std::ostream& oufcal)
 {
 
@@ -65,9 +207,16 @@ void PeakFinder(TH1* h1, std::ostream& ouf, int whichspec, int detno)
     Double_t nSigma = 1;
     Double_t thresh;
 
-    if (whichspec == 0) thresh = 0.004;
-    else thresh = .005;
+    if (whichspec == 0){
+		if (detno != 96 && detno != 95 && detno != 76 && detno != 70 && detno != 31 && detno != 26 && detno != 84) thresh = 0.004;
+		else if (detno == 96 || detno == 95 || detno == 76 || detno == 70 || detno ==31 || detno == 26) thresh = .0004;
+		else thresh = 0.008;
 
+    }
+    else{ 
+		if (detno != 110) thresh = .005;
+		else if (detno == 110) thresh = .05;
+    }
     Int_t nFound = spec->Search(h1, nSigma, "", thresh);
     
     //Print out the number of found peaks
@@ -103,13 +252,11 @@ void PeakFinder(TH1* h1, std::ostream& ouf, int whichspec, int detno)
     int HiBoundEu[9] = {180, 350, 450, 1000, 1100, 1230, 1450, 1450, 1790};
 */
 
-    int LowBoundCo[3] = {1036, 1518, 3188};
-    int LowBoundEu[9] = {147, 296, 417, 950, 1060, 1176, 1329, 1359, 1721};
+    int LowBoundCo[3] = {1036, 1511, 3177};
+    int LowBoundEu[9] = {147, 296, 417, 950, 1060, 1176, 1327, 1359, 1721};
 
-    int HiBoundCo[3] = {1049, 1533, 3219};
-    int HiBoundEu[9] = {156, 308, 431, 965, 1075, 1196, 1349, 1377, 1743};
-
-
+    int HiBoundCo[3] = {1055, 1539, 3226};
+    int HiBoundEu[9] = {158, 311, 434, 970, 1080, 1199, 1352, 1384, 1749};
 
 
 
@@ -124,21 +271,34 @@ int EuPks = 0;
 
     	if (whichspec == 0){
 		for (int j=0; j<3; j++){
-			if (xpos[i-1] > LowBoundCo[j] && xpos[i-1] < HiBoundCo[j]){
+			if (detno != 73 && xpos[i-1] > LowBoundCo[j] && xpos[i-1] < HiBoundCo[j]){
 				Peaks.push_back(xpos[i-1]);
 				//std::cout << xpos[i-1] << std::endl;
+				CoPks += 1;
+			}
+			if (detno == 73 && xpos[i-1] > LowBoundCo[j]*1.2 && xpos[i-1] < HiBoundCo[j]*1.2){
+				Peaks.push_back(xpos[i-1]);
 				CoPks += 1;
 			}
 		}
 	}
 	else{
 		for (int j=0; j<9; j++){
-			if (xpos[i-1] > LowBoundEu[j] && xpos[i-1] < HiBoundEu[j]){
+			if (detno != 73 && xpos[i-1] > LowBoundEu[j] && xpos[i-1] < HiBoundEu[j]){
 				if (xpos[i-1] != Peaks.back()){
 					Peaks.push_back(xpos[i-1]);
 					//std::cout << xpos[i-1] << std::endl;
 					EuPks+=1;
 				}
+			}
+			if (detno == 73 && xpos[i-1] > LowBoundEu[j]*1.2 && xpos[i-1] < HiBoundEu[j]*1.2){
+				if (xpos[i-1] != Peaks.back()){
+					Peaks.push_back(xpos[i-1]);
+					//std::cout << xpos[i-1] << std::endl;
+					EuPks+=1;
+				}
+		
+
 			}
 		}
 
@@ -146,11 +306,21 @@ int EuPks = 0;
 
     }
 
+	if (EuPks == 9) EuCounter+=1;
+	if (CoPks == 3) CoCounter+=1;
+	if (CoPks == 2) Co2Counter+=1;
+	if (CoPks == 4) Co4Counter+=1;
+
 	cout << "Det No: " << detno << " Co Peaks: " << CoPks << " Eu Peaks: " << EuPks << endl;
 
 }
 
 void CalGam(){
+
+	EuCounter=0;
+	CoCounter=0;
+	Co2Counter=0;
+	Co4Counter=0;
 
 	//TFile *gright = TFile::Open("GamRight.root");
 	//TFile *gleft = TFile::Open("GamLeft.root");
@@ -167,12 +337,15 @@ void CalGam(){
 		gCo->cd();
 
 		hist1 = (TH1*) gCo->Get("Gammasphere_Energy/gam_" + TString(std::to_string(i)));
-
+		if (i != 80) hist1->Rebin(2);	
+		else hist1->Rebin(4);
+		
 		PeakFinder(hist1, outFile, 0, i);
 			
 		gEu->cd();
 	
 		hist2 = (TH1*) gEu->Get("Gammasphere_Energy/gam_" + TString(std::to_string(i)));
+		hist2->Rebin(1);
 		
 		PeakFinder(hist2, outFile, 1, i);
 		
@@ -182,15 +355,21 @@ void CalGam(){
 
 		Peaks.clear();
 
+		//if (i != 60){
 		hist2->Reset();
 		hist1->Reset();
+		//}
 	}	
 
 
 	RegCalc(outFile);
+	QuadCalc();
+	RegCalc2();
 
-
-
+	cout << "Number of Detectors with 9 Eu Peaks: " << EuCounter << endl;
+	cout << "Number of Detectors with 3 Co Peaks: " << CoCounter << endl;
+	cout << "Number of Detectors with 2 Co Peaks: " << Co2Counter << endl;
+	cout << "Number of Detectors with 4 Co Peaks: " << Co4Counter << endl;
 
 /*
 	gleft->cd();
