@@ -603,10 +603,10 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 				datum->E1 = itr->second;
 				datum->PstripE1 = itr->first;
 			}
-			//else if (det->GetDepth() == 2){
-			//	datum->E2 = itr->second;
-			//	datum->PstripE2 = itr->first;
-			//}
+//			else if (det->GetDepth() == 2){
+//				datum->E2 = itr->second;
+//				datum->PstripE2 = itr->first;
+//			}
 
 			datum->sectorStr = sectorStr;
 
@@ -674,43 +674,42 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 
 
 	SiData data;
-	int used = 0;
+//	int used = 0;
 	std::vector<int> usedEvt;
 	for (int i=0;i<siCont->size();i++){
 		if (siCont->at(i).dE > 0){
 			for (int j=0;j<siCont->size();j++){
-				for (int k=0;k<usedEvt.size();k++){
-					if (usedEvt[k] == j) used =1;
-				}
+//				for (int k=0;k<siCont->size();k++){
 
 
-						if (used == 0 && i!=j){
+						if (i!=j){
 							data.dE = siCont->at(i).dE;
 							data.E1 = siCont->at(j).E1;
-							//data.E2 = siCont->at(i).E2;
+//							data.E2 = siCont->at(k).E2;
 							data.PstripdE = siCont->at(i).PstripdE;
 							data.PstripE1 = siCont->at(j).PstripE1;
-							//data.PstripE2 = siCont->at(i).PstripE2;
+//							data.PstripE2 = siCont->at(k).PstripE2;
 							//if (siContBack->size()>=i && siContBack->size()>=j){
 							//data.NstripdE = siCont->size();//at(i).NstripdE;
 							//data.NstripE1 = siContBack->size();//at(j).NstripE1;
 							//}
 							data.sectorStr = siCont->at(i).sectorStr;
-							if (siCont->at(i).dE != 0 && siCont->at(j).E1 != 0){
+							if (siCont->at(i).dE != 0 && siCont->at(j).E1 != 0 && data.PstripE1-data.PstripdE <= 5){
 								if (data.sectorStr=="DA" && data.dE > mul[data.PstripdE]*pow(data.E1,exp[data.PstripdE])){
 									siData->push_back(data);
 									//usedEvt.push_back(i);
-									usedEvt.push_back(j);
+									//usedEvt.push_back(j);
 								}
 								if (data.sectorStr=="DC" && data.dE > (DCco1[data.PstripdE]*pow(data.E1,2) + DCco2[data.PstripdE]*data.E1 + DCco3[data.PstripdE])){
 									siData->push_back(data);
 									//usedEvt.push_back(i);
-									usedEvt.push_back(j);
+									//usedEvt.push_back(j);
 
 								}
 							}
 						}
-					used = 0;
+//				}
+//				used = 0;
 			}
 		}
 	}

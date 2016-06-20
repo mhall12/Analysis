@@ -9,7 +9,7 @@ DumpEvery 900
 #-------------------------------------------
 # basic sort parameters 
 
-nevents           10000000
+nevents           10000000000000
 printevents       10
 beta		  0.0
 #beta             0.127
