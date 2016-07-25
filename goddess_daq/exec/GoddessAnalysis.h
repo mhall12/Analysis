@@ -39,6 +39,7 @@
 
 	TH2D *gam_ind;
 	TH1D *gam_tot;
+	TH1D *Good_gam_tot;
 
 	std::vector<TH1D*> gam_gated;
 	std::vector<TH1D*> DA_TotE;

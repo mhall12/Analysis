@@ -1,5 +1,5 @@
 //Matthew Hall
-//Analysis code for 19F(3He,t)19Ne performed at Argonne National Lab 9/15.
+//Analysis code for 19F(3He,t)19Ne performed at Argonne National Lab 9/2015.
 
 #include "GoddessAnalysis.h"
 
@@ -45,12 +45,15 @@ void histfill(int runnum){
 	double calDAE1[32][2] = {};
 	double calDAdE[32][2] = {};
 
+	double gamcalparams[111][3] = {};
+
 	//The files for the normalization parameters and gates are opened here.
 	ifstream inFile1("E1normmultDA.txt");
 	ifstream inFile2("E1normaddDA.txt");
 	ifstream inFile3("gates.txt");
 	ifstream inFile4("E1cal.txt");
 	ifstream inFile5("dEcal.txt");
+	ifstream inFile6("GamCalParamsQuad.txt");
 
 	//build the arrays for the gates and normalization parameters:
 
@@ -73,15 +76,33 @@ void histfill(int runnum){
 
 	}
 
+	for (int i=0; i<111; i++){
+
+		inFile6 >> gamcalparams[i][0] >> gamcalparams[i][1] >> gamcalparams[i][2];
+
+	}
+
 	//close the files here
 	inFile1.close();
 	inFile2.close();
 	inFile3.close();
 	inFile4.close();
 	inFile5.close();
+	inFile6.close();
 
 	//E1 norm is defined below. It is the E1 energy multiplied by the normalization that makes all of the E1 energies lie on top of each other for all of the dE,E1 combos.
 	double E1norm;
+	double E1cal;
+	double dEcal;
+
+	double PIDGateHi;
+	double PIDGateLo;
+
+	double gamEn;
+
+	int Match;
+
+	int BadGams[19] = {7,21,26,27,28,31,35,39,47,48,50,56,62,63,68,87,98,105,110};
 
 	//fill the parameters from the two text files located in exec called E1normmult.txt and E1normadd.txt
 
@@ -103,42 +124,79 @@ void histfill(int runnum){
 		//Fill the Si histograms here:
 		for(int i = 0; i < si2->size();i++){
 
+			//rstrip is the difference between the E1 strip number and the dE strip number
 			int rstrip = si2->at(i).PstripE1-si2->at(i).PstripdE;			
 
 			//if (si2->at(i).E1 < 620 && si2->at(i).E1 > 577 && si2->at(i).PstripE1 == 1) gate++;
 			if (si2->at(i).sectorStr == "DA"){
-				if (si2->at(i).dE < multhiDA[si2->at(i).PstripdE]*pow(si2->at(i).E1,exphiDA[si2->at(i).PstripdE]) && si2->at(i).dE > multloDA[si2->at(i).PstripdE]*pow(si2->at(i).E1,exploDA[si2->at(i).PstripdE])){
+
+				//Variables for the high and low triton PID gates for use in the below if statement are defined here.
+				PIDGateHi = multhiDA[si2->at(i).PstripdE]*pow(si2->at(i).E1,exphiDA[si2->at(i).PstripdE]);
+				PIDGateLo = multloDA[si2->at(i).PstripdE]*pow(si2->at(i).E1,exploDA[si2->at(i).PstripdE]);
+
+				//Here we take only the events within the restricted gates.
+				if (si2->at(i).dE < PIDGateHi && si2->at(i).dE > PIDGateLo){
+
+					//DA_PIDhists is the gated triton PIDs. 
 					DA_PIDhists[si2->at(i).PstripdE]->Fill(si2->at(i).E1,si2->at(i).dE);
+					//These 3 histograms are the energy vs strip number histograms.
 					if (si2->at(i).dE != 0) QQQDAdE->Fill(si2->at(i).dE,si2->at(i).PstripdE);
 					if (si2->at(i).E1 != 0) QQQDAE1->Fill(si2->at(i).E1,si2->at(i).PstripE1);
 					if (si2->at(i).E2 != 0) QQQDAE2->Fill(si2->at(i).E2,si2->at(i).PstripE2);
 
-					if (si2->at(i).PstripdE == 0 && (si2->at(i).PstripE1 == 0 || si2->at(i).PstripE1 == 1) && gamgate>0) QQQDAdE0->Fill(si2->at(i).E1);
+					//The following histogram was to gate on the gamma lines and try to see what tritons were in coincidence. It didn't work because there were too few counts.
+					//if (si2->at(i).PstripdE == 0 && (si2->at(i).PstripE1 == 0 || si2->at(i).PstripE1 == 1) && gamgate>0) QQQDAdE0->Fill(si2->at(i).E1);
 
+					//Now we only consider the events that have strip(E1)-strip(dE) between 0 and 4. 
 					if (rstrip >= 0 && rstrip <= 4){
+						
+						//This vector puts the E1 energy spectra for each strip(dE) into individual histograms. They are stored in the DA_Triton_Spectra folder.
 						DA_T_Spec[si2->at(i).PstripdE][rstrip]->Fill(si2->at(i).E1);	
+						
+						//normDA0 and normDA1 are the m and b to the mx+b normalization, respectively. The normalization takes the E1 histograms and adds them to the rstrip=0 histogram for each strip(dE).
 						if (normDA0[si2->at(i).PstripdE][rstrip] != 0 ){
-							QQQDAE1sum->Fill(si2->at(i).E1*normDA0[si2->at(i).PstripdE][rstrip]+normDA1[si2->at(i).PstripdE][rstrip],si2->at(i).PstripdE);
 
-							//E1 norm is the normalized E1 energy for each dE strip (i.e. dE strip 0, E strip 0, 1, 2, 3)
+							//E1 is the normalized x (uncalibrated Energy) E1 value. They are normalized to the rstrip=0 histogram. E1 norm is the normalized E1 energy for each dE strip (i.e. dE strip 0, E strip 0, 1, 2, 3)
 							E1norm = si2->at(i).E1*normDA0[si2->at(i).PstripdE][rstrip]+normDA1[si2->at(i).PstripdE][rstrip];
-							QQQDAE1cal->Fill(E1norm*calDAE1[si2->at(i).PstripdE][0]+calDAE1[si2->at(i).PstripdE][1],si2->at(i).PstripdE);
+							//QQQDAE1sum are the summed normalized E1 histograms. 
+							QQQDAE1sum->Fill(E1norm, si2->at(i).PstripdE);
+							
+							//E1cal is the calibrated E1 energy, assuming a linear calibration for the 3 highest E peaks. 
+							E1cal = E1norm*calDAE1[si2->at(i).PstripdE][0]+calDAE1[si2->at(i).PstripdE][1];
+							//QQQDAE1cal are the calibrated DAE1 histograms.
+							QQQDAE1cal->Fill(E1cal, si2->at(i).PstripdE);
 
-							DA_TotE[si2->at(i).PstripdE]->Fill(calDAE1[si2->at(i).PstripdE][0]*E1norm + calDAE1[si2->at(i).PstripdE][1] + calDAdE[si2->at(i).PstripdE][0]*si2->at(i).dE + calDAdE[si2->at(i).PstripdE][1]);
-							QQQDATot->Fill(calDAE1[si2->at(i).PstripdE][0]*E1norm + calDAE1[si2->at(i).PstripdE][1] + calDAdE[si2->at(i).PstripdE][0]*si2->at(i).dE + calDAdE[si2->at(i).PstripdE][1],si2->at(i).PstripdE);
+							//dEcal is the calibrated dE energy. 
+							dEcal = calDAdE[si2->at(i).PstripdE][0]*si2->at(i).dE + calDAdE[si2->at(i).PstripdE][1];					
+							//DA_TotE stores the total energy histograms in the DA_Total_E folder.
+							DA_TotE[si2->at(i).PstripdE]->Fill(E1cal + dEcal);
+							//QQQDATot stores the calibrated energy in a strip # vs calibrated energy histogram. 
+							QQQDATot->Fill(E1cal + dEcal, si2->at(i).PstripdE);
 
-						//The gates are set here. If the gate for each peak is greater than 0, the gamma histogram corresponding to that peak is filled later in the program.
+							//The gates are set here. If the gate for each peak is greater than 0, the gamma histogram corresponding to that peak is filled later in the program.
+							//There are 4 peaks that were gated on, and each peak has two bounds (hence the p<8). The for loop is incremented by 2 because the 2nd bound is used by doing p+1.
 							for (int p = 0; p<8; p+=2){
-								if ((si2->at(i).E1*normDA0[si2->at(i).PstripdE][rstrip]+normDA1[si2->at(i).PstripdE][rstrip]) < boundDA[si2->at(i).PstripdE][p] && (si2->at(i).E1*normDA0[si2->at(i).PstripdE][rstrip]+normDA1[si2->at(i).PstripdE][rstrip]) > boundDA[si2->at(i).PstripdE][p+1]){
+		
+								//if E1norm is less than the first bound and greater than the 2nd bound...
+								if (E1norm < boundDA[si2->at(i).PstripdE][p] && E1norm > boundDA[si2->at(i).PstripdE][p+1]){
+									//...increase the gate of that peak (0,1,2,3) by 1.
 									pkgate[p/2]++;
+	
+									//DA_dE_Gated is the gated dE for each of the four peaks in E1. p/2 because there is 4 peaks
 									DA_dE_Gated[si2->at(i).PstripdE][p/2]->Fill(si2->at(i).dE);
-								}
 
-							}
-						}
-					}
-				}
-			}
+								} //closes the gating if statement
+
+							} //closes the gating for loop
+
+						} //closes the if the normalization parameter !=0 if statement.
+
+					} //closes the rstrip condition if statement
+
+				} //closes the restricted gates if statement
+
+			} //closes the DA if statement
+
 			if (si2->at(i).sectorStr == "DC"){
 				DC_PIDhists[si2->at(i).PstripdE]->Fill(si2->at(i).E1,si2->at(i).dE);
 				if (si2->at(i).dE != 0) QQQDCdE->Fill(si2->at(i).dE,si2->at(i).PstripdE);
@@ -150,16 +208,28 @@ void histfill(int runnum){
 
 		}
 		for (int i = 0; i < gam2->size();i++){
-			gam_ind->Fill(gam2->at(i).en,gam2->at(i).num); //Gamma histogram filled by energy and detector number
-			//gam_cal->Fill(gam2->at(i).en,gam2->at(i).num);
 
-			gam_tot->Fill(gam2->at(i).en*.81);
+			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
 
-			//Fill the gated gammasphere histograms here:
-			for (int z=0; z<4; z++){
-				if (pkgate[z] > 0) gam_gated[z]->Fill(gam2->at(i).en*.81);
+			if (gamEn != 0){
+				gam_ind->Fill(gamEn,gam2->at(i).num); //Gamma histogram filled by energy and detector number
+				//gam_cal->Fill(gam2->at(i).en,gam2->at(i).num);
+
+				gam_tot->Fill(gamEn);
+
+				//Fill the gated gammasphere histograms here:
+				for (int z=0; z<4; z++){
+					if (pkgate[z] > 0) gam_gated[z]->Fill(gamEn);
+
+				}
+
+				Match = 0;
+				for (int k=0; k<19; k++){
+					if (gam2->at(i).num == BadGams[k]) Match+=1;
+				}
+
+				if (Match == 0) Good_gam_tot->Fill(gamEn);
 			}
-				
 
 		}
 
@@ -179,7 +249,7 @@ void MakeMyHists(){
 
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	hist = TFile::Open("TotalData410418.root","RECREATE");
+	hist = TFile::Open("TotalData.root","RECREATE");
 	//directories for the PID histograms are created. Directories for the other QQQ histograms are not created because they are put in 2D histograms.
 	QQQ5_DA_PID = hist->mkdir("DA_PID");
 	QQQ5_DC_PID = hist->mkdir("DC_PID");
@@ -206,8 +276,9 @@ void MakeMyHists(){
 	std::string gambase = "gam_pk";
 
 	Gammasphere_Hists->cd();
-	gam_ind = new TH2D("gam_ind","Individual Gammasphere Detectors",12500,0,25000,110,0,110);
-	gam_tot = new TH1D("gam_tot","Summed Gammasphere Spectrum",12500,0,25000);
+	gam_ind = new TH2D("gam_ind","Individual Gammasphere Detectors",8000,0,8000,111,0,111);
+	gam_tot = new TH1D("gam_tot","Summed Gammasphere Spectrum",8000,0,8000);
+	Good_gam_tot = new TH1D("Good_gam_tot","Summed Gammasphere Spectrum (Good Resolutions)",8000,0,8000);
 
 	gam_ind->GetXaxis()->SetTitle("Channel Number");
 	gam_ind->GetYaxis()->SetTitle("Gammasphere Detector Number");
@@ -218,6 +289,11 @@ void MakeMyHists(){
 	gam_tot->GetYaxis()->SetTitle("Counts");
 	gam_tot->GetXaxis()->CenterTitle();
 	gam_tot->GetYaxis()->CenterTitle();
+
+	Good_gam_tot->GetXaxis()->SetTitle("Energy (keV)");
+	Good_gam_tot->GetYaxis()->SetTitle("Counts");
+	Good_gam_tot->GetXaxis()->CenterTitle();
+	Good_gam_tot->GetYaxis()->CenterTitle();
 
 	for (int i=0; i<4; i++){
 		string namegam = gambase + std::to_string(i);
@@ -336,7 +412,7 @@ void MakeMyHists(){
 
 
 	int numruns = 0;
-	for (int run = 410; run < 419; run++){
+	for (int run = 400; run < 495; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
 		if ((run > 400 && run < 409 && run != 405) || (run > 409 && run < 424) || (run > 431 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
 			histfill(run);
