@@ -23,6 +23,7 @@
 
 	TDirectory *Gammasphere_Hists;
 	TDirectory *QQQ5_DA_TotalE;
+	TDirectory *Gamma_Gated_Hists;
 
 	TH2D *QQQDAdE;
 	TH2D *QQQDAE1;
@@ -30,6 +31,8 @@
 	TH2D *QQQDAE1sum;
 	TH2D *QQQDAE1cal;
 	TH2D *QQQDATot;
+	TH2D *QQQDATot2;
+	TH2D *QQQDAQ;
 
 	TH2D *QQQDCdE;
 	TH2D *QQQDCE1;
@@ -55,5 +58,17 @@
 	
 	std::vector<TH1D*> dE_gated;
 	std::vector<std::vector<TH1D*>> DA_dE_Gated;
+
+	TH1D *gam6048;
+	TH1D *gam5555;
+	TH1D *gam237;
+	TH1D *gam272;
+	TH1D *gam194;
+	TH1D *gam1633;
+	TH1D *gam1233;
+	TH1D *gam4358;
+	TH1D *gam1297;
+
+	int sum1840;
 
 

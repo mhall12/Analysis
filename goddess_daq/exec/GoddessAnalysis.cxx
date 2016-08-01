@@ -22,6 +22,16 @@ void histfill(int runnum){
 	//A generic gate to use whenever I need a quick one. May be commented out much of the time.
 	int gate = 0;
 	int gamgate = 0;
+	int Qgate = 0;
+	int g6048 = 0; //Unknown
+	int g5555 = 0; //Unknown
+	int g237 = 0; //238 keV in 19Ne
+	int g272 = 0; //275 keV in 19Ne
+	int g194 = 0; //Unknown
+	int g1633 = 0; //1633 keV in 20Ne
+	int g1233 = 0; //1232 keV in 19Ne
+	int g4358 = 0; //Possible 4362 keV peak in 19Ne
+	int g1297 = 0;
 
 	//Gates for each of the peaks in the triton spectra. Gate 0 refers to the Right most peak, Gate 0 refers to the one to the left and so on...
 	int pkgate[4] = {0};
@@ -40,12 +50,18 @@ void histfill(int runnum){
 	//Bounds for the Gamma coincidence gates. The first two columns are upper, lower bounds for Peak 0, etc. The peaks that don't have bounds for the higher strips are given a value of 1.0 in the txt file. 0 was not used in case some of the energies read 0. 
 	double boundDA[32][8] = {};
 
-	//Calibrations for the DA E1 detector are stored in this array.
-
+	//Calibrations for the DA E1 detector and DA dE detector are stored in these arrays.
 	double calDAE1[32][2] = {};
 	double calDAdE[32][2] = {};
 
+	//Gammasphere quandratic calibration parameters stored here
 	double gamcalparams[111][3] = {};
+
+	//strip number angle assignments.
+	double stripangle[20][2];
+	
+	//cubic energy loss parameters through the Al blocker. In the file, Column 1: Angle in Deg, Column 2: Angle in Rad, Column 3,4,5,6 are the parameters Ax^3+Bx^2+Cx+D in that order.
+	double energyloss[12][6];
 
 	//The files for the normalization parameters and gates are opened here.
 	ifstream inFile1("E1normmultDA.txt");
@@ -54,6 +70,8 @@ void histfill(int runnum){
 	ifstream inFile4("E1cal.txt");
 	ifstream inFile5("dEcal.txt");
 	ifstream inFile6("GamCalParamsQuad.txt");
+	ifstream inFile7("angleassign.txt");
+	ifstream inFile8("energyloss.txt");
 
 	//build the arrays for the gates and normalization parameters:
 
@@ -74,6 +92,10 @@ void histfill(int runnum){
 			inFile2 >> normDA1[i][j];
 		}
 
+		if (i<20) inFile7 >> stripangle[i][0] >> stripangle[i][1];
+
+		if (i<12) inFile8 >> energyloss[i][0] >> energyloss[i][1] >> energyloss[i][2] >> energyloss[i][3] >> energyloss[i][4] >> energyloss[i][5];
+
 	}
 
 	for (int i=0; i<111; i++){
@@ -89,11 +111,21 @@ void histfill(int runnum){
 	inFile4.close();
 	inFile5.close();
 	inFile6.close();
+	inFile7.close();
+	inFile8.close();
 
 	//E1 norm is defined below. It is the E1 energy multiplied by the normalization that makes all of the E1 energies lie on top of each other for all of the dE,E1 combos.
 	double E1norm;
+	//E1cal is the calibrated E1 energy (strips 0 through 19)
 	double E1cal;
+	//dEcal is the calibrated dE energy (strips 0 through 19)
 	double dEcal;
+	//Total Calibrated energy.
+	double Ecaltot;
+	//Einit is the initial triton Energy from the reaction
+	double Einit;
+
+	int angle;
 
 	double PIDGateHi;
 	double PIDGateLo;
@@ -104,13 +136,30 @@ void histfill(int runnum){
 
 	int BadGams[19] = {7,21,26,27,28,31,35,39,47,48,50,56,62,63,68,87,98,105,110};
 
+	double m3H = 3.016049;
+	double m3He = 3.016029;
+	double m19Ne = 19.001880;
+
+	//Q-value of the reaction
+	double Q;
+
 	//fill the parameters from the two text files located in exec called E1normmult.txt and E1normadd.txt
 
 	for (int evt=0;evt<nEntries;evt++){
 		//Reset the gates to 0 for each entry of the tree.
 		gate = 0;
 		gamgate = 0;
-		
+		Qgate = 0;
+		g6048 = 0; //Unknown
+		g5555 = 0; //Unknown
+		g237 = 0; //238 keV in 19Ne
+		g272 = 0; //275 keV in 19Ne
+		g194 = 0; //Unknown
+		g1633 = 0; //1633 keV in 20Ne
+		g1233 = 0; //1232 keV in 19Ne
+		g4358 = 0;
+		g1297 = 0;
+			
 		for (int g = 0; g<4; g++) pkgate[g] = 0;
 
 		nt->GetEntry(evt);
@@ -118,7 +167,18 @@ void histfill(int runnum){
 
 		//We'll use the for loop here to draw gamma gates.
 		for (int i = 0; i < gam2->size();i++){
-			if (gam2->at(i).en*.81 > 236 && gam2->at(i).en*.81 < 242) gamgate++;
+			//if (gam2->at(i).en*.81 > 236 && gam2->at(i).en*.81 < 242) gamgate++;
+			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
+
+			if (gamEn >= 6039 && gamEn <= 6060) g6048++;
+			if (gamEn >= 5546 && gamEn <= 5566) g5555++;
+			if (gamEn >= 234 && gamEn <= 238) g237++;
+			if (gamEn >= 271 && gamEn <= 275) g272++;
+			if (gamEn >= 192 && gamEn <= 197) g194++;
+			if (gamEn >= 1630 && gamEn <= 1638) g1633++;
+			if (gamEn >= 1231 && gamEn <= 1239) g1233++;
+			if (gamEn >= 4331 && gamEn <= 4373) g4358++;
+			if (gamEn >= 1276 && gamEn <= 1314) g1297++;
 		}
 
 		//Fill the Si histograms here:
@@ -167,11 +227,32 @@ void histfill(int runnum){
 							QQQDAE1cal->Fill(E1cal, si2->at(i).PstripdE);
 
 							//dEcal is the calibrated dE energy. 
-							dEcal = calDAdE[si2->at(i).PstripdE][0]*si2->at(i).dE + calDAdE[si2->at(i).PstripdE][1];					
+							dEcal = calDAdE[si2->at(i).PstripdE][0]*si2->at(i).dE + calDAdE[si2->at(i).PstripdE][1];
+
+							Ecaltot = E1cal + dEcal;
+					
 							//DA_TotE stores the total energy histograms in the DA_Total_E folder.
-							DA_TotE[si2->at(i).PstripdE]->Fill(E1cal + dEcal);
+							DA_TotE[si2->at(i).PstripdE]->Fill(Ecaltot);
 							//QQQDATot stores the calibrated energy in a strip # vs calibrated energy histogram. 
-							QQQDATot->Fill(E1cal + dEcal, si2->at(i).PstripdE);
+							QQQDATot->Fill(Ecaltot, si2->at(i).PstripdE);
+							
+							if (si2->at(i).PstripdE < 20){
+								//QQQDATot2 stores the calibrated energy BEFORE the Al blocker in strip # vs energy.
+								angle = stripangle[si2->at(i).PstripdE][1];
+								Einit = pow(Ecaltot,3)*energyloss[angle-15][2]+pow(Ecaltot,2)*energyloss[angle-15][3]+Ecaltot*energyloss[angle-15][4]+energyloss[angle-15][5];
+
+								QQQDATot2->Fill(Einit, si2->at(i).PstripdE);
+
+								//Q-Value Spectrum, calculation of Q-value below. Assume 30MeV for beam energy. Equation 11.10 in Krane.
+								Q = Einit*(1+m3H/m19Ne)-30*(1-m3He/m19Ne)-2*sqrt(m3He*m3H/pow(m19Ne,2)*Einit*30)*cos(energyloss[angle-15][1]);
+
+								QQQDAQ->Fill(Q, si2->at(i).PstripdE);
+									
+								//Q-value gate
+								if (Q < -10 && Q > -10.1) Qgate++;
+
+
+							}//closes if strip(dE)<20 
 
 							//The gates are set here. If the gate for each peak is greater than 0, the gamma histogram corresponding to that peak is filled later in the program.
 							//There are 4 peaks that were gated on, and each peak has two bounds (hence the p<8). The for loop is incremented by 2 because the 2nd bound is used by doing p+1.
@@ -223,19 +304,34 @@ void histfill(int runnum){
 
 				}
 
+				if (Qgate > 0){
+					gam_gated[4]->Fill(gamEn);
+					if (gamEn > 1835 && gamEn < 1847) sum1840+=1;
+				}
+
 				Match = 0;
 				for (int k=0; k<19; k++){
 					if (gam2->at(i).num == BadGams[k]) Match+=1;
 				}
 
 				if (Match == 0) Good_gam_tot->Fill(gamEn);
+
+				if (g6048 > 0) gam6048->Fill(gamEn);
+				if (g5555 > 0) gam5555->Fill(gamEn);
+				if (g237 > 0) gam237->Fill(gamEn);
+				if (g272 > 0) gam272->Fill(gamEn);
+				if (g194 > 0) gam194->Fill(gamEn);
+				if (g1633 > 0) gam1633->Fill(gamEn);
+				if (g1233 > 0) gam1233->Fill(gamEn);
+				if (g4358 > 0) gam4358->Fill(gamEn);
+				if (g1297 > 0) gam1297->Fill(gamEn);
 			}
 
 		}
 
 	}
 
-
+	
 	std::cout << "Run " << runnum << " will now be closed." << std::endl; 
 	gam2->clear();
 	si2->clear();
@@ -247,6 +343,7 @@ void histfill(int runnum){
 
 void MakeMyHists(){
 
+	sum1840=0;
 	int stripnum = 32;
 	//the hist file is opened here for writing
 	hist = TFile::Open("TotalData.root","RECREATE");
@@ -257,6 +354,7 @@ void MakeMyHists(){
 	QQQ5_DC_Tritons = hist->mkdir("DC_Triton_Spectra");
 	QQQ5_DA_dE_gated = hist->mkdir("DA_dE_gated");
 	Gammasphere_Hists = hist->mkdir("Gammasphere_Histograms");
+	Gamma_Gated_Hists = hist->mkdir("Gamma_Gated_Histograms");
 	QQQ5_DA_TotalE = hist->mkdir("DA_Total_E");
 
 	//QQQ energy histograms are created here.
@@ -272,6 +370,8 @@ void MakeMyHists(){
 
 	QQQ5_DA_TotalE->cd();
 	QQQDATot = new TH2D("QQQDATot","QQQ5 DA Total Energy",2048,0,32,32,0,32);
+	QQQDATot2 = new TH2D("QQQDATot2","QQQ5 DA Total Energy Before Degradation",2048,15,32,19,0,19);
+	QQQDAQ = new TH2D("QQQDAQ","Strip Number vs Reaction Q-Value Spectrum",2048,-15,0,19,0,19);
 
 	std::string gambase = "gam_pk";
 
@@ -295,7 +395,7 @@ void MakeMyHists(){
 	Good_gam_tot->GetXaxis()->CenterTitle();
 	Good_gam_tot->GetYaxis()->CenterTitle();
 
-	for (int i=0; i<4; i++){
+	for (int i=0; i<5; i++){
 		string namegam = gambase + std::to_string(i);
 		TH1D *h = new TH1D(TString(namegam),"Gated Gammasphere Spectrum Triton Peak " + TString(std::to_string(i)),4000,0,8000);
 
@@ -323,7 +423,7 @@ void MakeMyHists(){
 		QQQ5_DA_PID->cd();
 		//Creates the summed DA PID plots (with coincidences of PstripE-PstripdE <=4)
 		string nameDA = PIDbaseDA + std::to_string(i);
-		TH2D *h0 = new TH2D(TString(nameDA),"QQQ5 DA dE vs E1 Strip " + TString(std::to_string(i)),4096,0,4096,4096,0,4096);					
+		TH2D *h0 = new TH2D(TString(nameDA),"QQQ5 DA dE vs E1 Strip " + TString(std::to_string(i)),1024,0,1024,4096,0,4096);					
 
 		DA_PIDhists.push_back(h0);
 
@@ -410,6 +510,16 @@ void MakeMyHists(){
 		
 	}
 
+	Gamma_Gated_Hists->cd();
+	gam6048 = new TH1D("gam6048","Gammas Gated on 6048 keV Peak",8000,0,8000);
+	gam5555 = new TH1D("gam5555","Gammas Gated on 5555 keV Peak",8000,0,8000);
+	gam237 = new TH1D("gam237","Gammas Gated on 237 keV Peak",8000,0,8000);
+	gam272 = new TH1D("gam272","Gammas Gated on 272 keV Peak",8000,0,8000);
+	gam194 = new TH1D("gam194","Gammas Gated on 194 keV Peak",8000,0,8000);
+	gam1633 = new TH1D("gam1633","Gammas Gated on 1633 keV Peak",8000,0,8000);
+	gam1233 = new TH1D("gam1233","Gammas Gated on 1233 keV Peak",8000,0,8000);
+	gam4358 = new TH1D("gam4358","Gammas Gated on 4358 keV Peak",8000,0,8000);
+	gam1297 = new TH1D("gam1297","Gammas Gated on 1297 keV Peak",8000,0,8000);
 
 	int numruns = 0;
 	for (int run = 400; run < 495; run++){
@@ -419,8 +529,9 @@ void MakeMyHists(){
 			numruns++;
 		}
 	}
-
-
+	
+	
+	std::cout << "The Integral of the 1840 peak is: " << sum1840 << std::endl;
 	std::cout << "The number of runs analyzed was: " << numruns << std::endl;
 	std::cout << "Writing data to TotalData.root" << std::endl;
 	hist->Write();
