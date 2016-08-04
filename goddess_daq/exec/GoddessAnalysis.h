@@ -24,6 +24,7 @@
 	TDirectory *Gammasphere_Hists;
 	TDirectory *QQQ5_DA_TotalE;
 	TDirectory *Gamma_Gated_Hists;
+	TDirectory *Gamma_Intensity_Hists;
 
 	TH2D *QQQDAdE;
 	TH2D *QQQDAE1;
@@ -69,6 +70,24 @@
 	TH1D *gam4358;
 	TH1D *gam1297;
 
-	int sum1840;
+	TH1D *int238;
+	TH1D *back238;
 
+	TH1D *int275;
+	TH1D *back275;
+
+	TH1D *int1232;
+	TH1D *back1232;
+
+	TH1D *int1840;
+	TH1D *back1840;
+
+	TH1D *int2556;
+	TH1D *back2556;
+
+	TH1D *int4140;
+	TH1D *back4140;
+
+	TH1D *int4362;
+	TH1D *back4362;
 

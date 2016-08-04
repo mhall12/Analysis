@@ -63,6 +63,11 @@ void histfill(int runnum){
 	//cubic energy loss parameters through the Al blocker. In the file, Column 1: Angle in Deg, Column 2: Angle in Rad, Column 3,4,5,6 are the parameters Ax^3+Bx^2+Cx+D in that order.
 	double energyloss[12][6];
 
+	//Q-Value bins for the gamma intensity histograms are initialized here.
+	double Qbins[300] = {};
+	double Qgatearray[300][2] = {};
+	double buff;
+
 	//The files for the normalization parameters and gates are opened here.
 	ifstream inFile1("E1normmultDA.txt");
 	ifstream inFile2("E1normaddDA.txt");
@@ -72,6 +77,7 @@ void histfill(int runnum){
 	ifstream inFile6("GamCalParamsQuad.txt");
 	ifstream inFile7("angleassign.txt");
 	ifstream inFile8("energyloss.txt");
+	ifstream inFile9("Qbins.txt");
 
 	//build the arrays for the gates and normalization parameters:
 
@@ -104,6 +110,12 @@ void histfill(int runnum){
 
 	}
 
+	for (int i=0; i<300; i++){
+		
+		inFile9 >> Qbins[i] >> buff >> Qgatearray[i][0] >> Qgatearray[i][1];
+
+	}
+
 	//close the files here
 	inFile1.close();
 	inFile2.close();
@@ -113,6 +125,7 @@ void histfill(int runnum){
 	inFile6.close();
 	inFile7.close();
 	inFile8.close();
+	inFile9.close();
 
 	//E1 norm is defined below. It is the E1 energy multiplied by the normalization that makes all of the E1 energies lie on top of each other for all of the dE,E1 combos.
 	double E1norm;
@@ -143,6 +156,20 @@ void histfill(int runnum){
 	//Q-value of the reaction
 	double Q;
 
+
+
+//	std::vector<std::vector<double>> Qgatevec;
+
+//	for (int i = 0; i < 300; i++){
+//		Qbins[i] = -15 + (double)i/20;
+//	}
+
+
+
+	//Qgatevec stores the bin center of Qbin if there is an event in the bin.
+	
+
+
 	//fill the parameters from the two text files located in exec called E1normmult.txt and E1normadd.txt
 
 	for (int evt=0;evt<nEntries;evt++){
@@ -166,7 +193,7 @@ void histfill(int runnum){
 		if(evt % 100000 == 0) cout << "Run " << runnum << ": Processing event number "<<evt << " of " << nEntries << endl;
 
 		//We'll use the for loop here to draw gamma gates.
-		for (int i = 0; i < gam2->size();i++){
+		for (unsigned int i = 0; i < gam2->size();i++){
 			//if (gam2->at(i).en*.81 > 236 && gam2->at(i).en*.81 < 242) gamgate++;
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
 
@@ -182,7 +209,7 @@ void histfill(int runnum){
 		}
 
 		//Fill the Si histograms here:
-		for(int i = 0; i < si2->size();i++){
+		for(unsigned int i = 0; i < si2->size();i++){
 
 			//rstrip is the difference between the E1 strip number and the dE strip number
 			int rstrip = si2->at(i).PstripE1-si2->at(i).PstripdE;			
@@ -249,8 +276,13 @@ void histfill(int runnum){
 								QQQDAQ->Fill(Q, si2->at(i).PstripdE);
 									
 								//Q-value gate
-								if (Q < -10 && Q > -10.1) Qgate++;
+								if (Q < -7.2 && Q > -7.4) Qgate++;
 
+								//Q-value gate for the intensity histograms filled here.
+								for (int bin = 0; bin < 299; bin++){
+									if (Q < Qbins[bin+1] && Q > Qbins[bin]) Qgatearray[bin][1]++;
+								}//closes the Q-bin gate
+								//Qgatevec.push_back(Q);
 
 							}//closes if strip(dE)<20 
 
@@ -288,7 +320,9 @@ void histfill(int runnum){
 			}
 
 		}
-		for (int i = 0; i < gam2->size();i++){
+
+
+		for (unsigned int i = 0; i < gam2->size();i++){
 
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
 
@@ -306,8 +340,35 @@ void histfill(int runnum){
 
 				if (Qgate > 0){
 					gam_gated[4]->Fill(gamEn);
-					if (gamEn > 1835 && gamEn < 1847) sum1840+=1;
 				}
+
+				for (int q = 0; q < 300; q++){
+					if (Qgatearray[q][1]>0){
+
+						if (gamEn > 234 && gamEn < 239) int238->Fill(Qgatearray[q][0]);
+						if (gamEn > 241 && gamEn < 246) back238->Fill(Qgatearray[q][0]);
+
+						if (gamEn > 270 && gamEn < 276) int275->Fill(Qgatearray[q][0]);
+						if (gamEn > 260 && gamEn < 266) back275->Fill(Qgatearray[q][0]);
+
+						if (gamEn > 1224 && gamEn < 1240) int1232->Fill(Qgatearray[q][0]);
+						if (gamEn > 1196 && gamEn < 1212) back1232->Fill(Qgatearray[q][0]);
+
+						if (gamEn > 1835 && gamEn < 1847) int1840->Fill(Qgatearray[q][0]);
+						if (gamEn > 1823 && gamEn < 1835) back1840->Fill(Qgatearray[q][0]);
+
+						if (gamEn > 2526 && gamEn < 2576) int2556->Fill(Qgatearray[q][0]);
+						if (gamEn > 2584 && gamEn < 2634) back2556->Fill(Qgatearray[q][0]);
+
+						if (gamEn > 4138 && gamEn < 4148) int4140->Fill(Qgatearray[q][0]);
+						if (gamEn > 4128 && gamEn < 4138) back4140->Fill(Qgatearray[q][0]);
+
+						if (gamEn > 4294 && gamEn < 4376) int4362->Fill(Qgatearray[q][0]);
+						if (gamEn > 4400 && gamEn < 4482) back4362->Fill(Qgatearray[q][0]);
+
+					}
+				}
+					
 
 				Match = 0;
 				for (int k=0; k<19; k++){
@@ -329,8 +390,13 @@ void histfill(int runnum){
 
 		}
 
+		for (int c=0; c<300; c++){ Qgatearray[c][1] = 0;}
+
 	}
 
+
+
+	
 	
 	std::cout << "Run " << runnum << " will now be closed." << std::endl; 
 	gam2->clear();
@@ -343,7 +409,6 @@ void histfill(int runnum){
 
 void MakeMyHists(){
 
-	sum1840=0;
 	int stripnum = 32;
 	//the hist file is opened here for writing
 	hist = TFile::Open("TotalData.root","RECREATE");
@@ -356,6 +421,7 @@ void MakeMyHists(){
 	Gammasphere_Hists = hist->mkdir("Gammasphere_Histograms");
 	Gamma_Gated_Hists = hist->mkdir("Gamma_Gated_Histograms");
 	QQQ5_DA_TotalE = hist->mkdir("DA_Total_E");
+	Gamma_Intensity_Hists = hist->mkdir("Gamma_Intensity_Histograms");
 
 	//QQQ energy histograms are created here.
 	QQQDAdE = new TH2D("QQQDAdE","QQQ5 DA dE",4096,0,4096,32,0,32);
@@ -521,6 +587,30 @@ void MakeMyHists(){
 	gam4358 = new TH1D("gam4358","Gammas Gated on 4358 keV Peak",8000,0,8000);
 	gam1297 = new TH1D("gam1297","Gammas Gated on 1297 keV Peak",8000,0,8000);
 
+	Gamma_Intensity_Hists->cd();
+
+	int238 = new TH1D("int238","Intensity of 238 keV Gamma vs Q-Value",300,-15,0);
+	back238 = new TH1D("back238","Background of 238 keV Gamma vs Q-Value",300,-15,0);
+
+	int275 = new TH1D("int275","Intensity of 275 keV Gamma vs Q-Value",300,-15,0);
+	back275 = new TH1D("back275","Background of 275 keV Gamma vs Q-Value",300,-15,0);
+
+	int1232 = new TH1D("int1232","Intensity of 1232 keV Gamma vs Q-Value",300,-15,0);
+	back1232 = new TH1D("back1232","Background of 1232 keV Gamma vs Q-Value",300,-15,0);
+
+	int1840 = new TH1D("int1840","Intensity of 1840 keV Gamma vs Q-Value",300,-15,0);
+	back1840 = new TH1D("back1840","Background of 1840 keV Gamma vs Q-Value",300,-15,0);
+
+	int2556 = new TH1D("int2556","Intensity of 2556 keV Gamma vs Q-Value",300,-15,0);
+	back2556 = new TH1D("back2556","Background of 2556 keV Gamma vs Q-Value",300,-15,0);
+
+	int4140 = new TH1D("int4140","Intensity of 4140 keV Gamma vs Q-Value",300,-15,0);
+	back4140 = new TH1D("back4140","Background of 4140 keV Gamma vs Q-Value",300,-15,0);
+
+	int4362 = new TH1D("int4362","Intensity of 4362 keV Gamma vs Q-Value",300,-15,0);
+	back4362 = new TH1D("back4362","Background of 4362 keV Gamma vs Q-Value",300,-15,0);
+
+
 	int numruns = 0;
 	for (int run = 400; run < 495; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
@@ -530,8 +620,14 @@ void MakeMyHists(){
 		}
 	}
 	
+	int238->Add(back238,-1);
+	int275->Add(back275,-1);
+	int1232->Add(back1232,-1);
+	int1840->Add(back1840,-1);
+	int2556->Add(back2556,-1);
+	int4140->Add(back4140,-1);
+	int4362->Add(back4362,-1);
 	
-	std::cout << "The Integral of the 1840 peak is: " << sum1840 << std::endl;
 	std::cout << "The number of runs analyzed was: " << numruns << std::endl;
 	std::cout << "Writing data to TotalData.root" << std::endl;
 	hist->Write();
