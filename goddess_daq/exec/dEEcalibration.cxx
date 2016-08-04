@@ -598,7 +598,7 @@ double Common::dedx(double * pZ1, double * pA1, double * pZ2, double * pA2, doub
 	return 0;
 }
 
-void defprta( double energy, double * elost, double thickness)
+void defAl( double energy, double * elost, double thickness)
 {
 	Common Target;
 
@@ -622,57 +622,153 @@ void defprta( double energy, double * elost, double thickness)
 
 }
 
+void defSi( double energy, double * elost, double thickness)
+{
+	Common Target;
+
+	Target.aPRS[0] = 10.0;
+	Target.aXLN[0] = 10.0;
+	Target.aCONCN[0][0] = 1.0;
+
+
+	Target.aISG[0] = 0;
+	Target.aINN[0] = 1;
+	Target.aDEN[0] = 2.328; //Density of Aluminum in g/cm3
+	Target.aZNUMB[0][0] = 14;
+	Target.aANUMB[0][0] = 28;
+	Target.aELNUM[0][0] = 1;
+	Target.loste[0] = 0;
+	Target.aTHK[0] = thickness;
+
+	Target.desorb(1, 1.0, 3.0, energy);
+        
+        *elost = Target.loste[0];
+
+}
+
 main()
 {
 	Common Target;
 	double energy;
-	double eloss;
-	eloss = 0;
+	double elossAl = 0;
+	double elossdE = 0;
 	double thick;	
 	double efinal;
 	double initenergy;
 	double Efin;
-	double Corrthick;
+	double Althick;
+	double dEthick;
+	double CorrAlthick;
+	double CorrdEthick;
 
 	std::ofstream outFile1("Stoppings.txt");
 
-	thick = 137.16;
-	initenergy = 0;
+	Althick = 137.16;
+	dEthick = 100;
 
+	ifstream inEn("tEnergies.txt");
+	ifstream inAng("QQQAngles.txt");
+	ifstream inRawE("RawdEEPeaks.txt");
+	ofstream outcal("dEECal2.txt");
 
-	
-int counter = 0;
-	
+	//Calculated Triton energies for each excitation per strip
+	double tEnergies[20][5] = {};
+	//Angle of each strip
+	double Radangles[20] = {};
 
-	for (int angle = 15; angle <27; angle++){
+	//measured raw dE and E triton peaks
+	double dERawE[20][5] = {};
+	double E1RawE[20][5] = {};
 
-		Corrthick = thick/cos(angle*PI/180.0);
+	double tEnergiesAfterAl = 0;
+	double tEnergiesindE[20][5] = {};
+	double tEnergiesinE1[20][5] = {};
 
+	for (int i = 0; i<20; i++){
+		inEn >> tEnergies[i][0] >> tEnergies[i][1] >> tEnergies[i][2] >> tEnergies[i][3] >> tEnergies[i][4];
 
-		for (int i=160; i<276; i++){
+		inAng >> Radangles[i];
 
-			energy = (double)i/10;
+		inRawE >> tEnergiesindE[i][0] >> tEnergiesindE[i][1] >> tEnergiesindE[i][2] >> tEnergiesindE[i][3] >> tEnergiesindE[i][4] >> tEnergiesinE1[i][0] >> tEnergiesinE1[i][1] >> tEnergiesinE1[i][2] >> tEnergiesinE1[i][3] >> tEnergiesindE1[i][4];
+	}
 
-			defprta(energy, &eloss, Corrthick);
+	double sydE = 0;
+	double sx2dE = 0;
+	double sxdE = 0;
+	double sxydE = 0;
+	double n = 5;
+	double slopedE = 0;
+	double offsetdE = 0;
 
-			Efin = energy - eloss;
-	
-			outFile1 << Efin << " " << energy << " " << std::endl;
+	double syE1 = 0;
+	double sx2E1 = 0;
+	double sxE1 = 0;
+	double sxyE1 = 0;
+	double slopeE1 = 0;
+	double offsetE1 = 0;
 
+	//loop over each of the strips we are calibrating
+	for (int j = 0; j<20; j++){
 
+		CorrAlthick = Althick/cos(Radangles[j]);
+		CorrdEthick = dEthick/cos(Radangles[j]);
 
+		//loop over each of the different triton energies before Al blocker
+		for (int en = 0; en < 5; en++){		
+			defAl(tEnergies[j][en], &elossAl, CorrAlthick);
+
+			tEnergiesAfterAl = tEnergies[j][en] - elossAl;
+			
+			defSi(tEnergiesAfterAl, &elossdE, CorrdEthick);
+
+			tEnergiesindE[j][en] = elossdE;
+
+			tEnergiesinE1[j][en] = tEnergiesAfterAl - elossdE;
+			
 		}
-
-
-		outFile1 << "**************" << angle << "**************" << std::endl;
 
 	}
 
+	for (int j = 0; j<20; j++){
+		for (int k = 0; k < 5; k++){
+			sydE+=tEnergiesindE[j][k];
+			sxdE+=dERawE[j][k];
+			sx2dE+=pow(dERawE[j][k],2);
+			sxydE+=tEnergiesindE[j][k]*dERawE[j][k];
 
+			syE1+=tEnergiesinE1[j][k];
+			sxE1+=E1RawE[j][k];
+			sx2E1+=pow(E1RawE[j][k],2);
+			sxyE1+=tEnergiesinE1[j][k]*E1RawE[j][k];
+		}
 
- //	std::cout << " Final Calculated Energy = " << Efin <<std::endl;
- //	std::cout << " Initial Energy = " << initenergy <<std::endl;
+		offsetdE = (sydE*sx2dE-sxdE*sxydE)/(n*sx2dE-pow(sxdE,2));
+		slopedE = (n*sxydE-sxdE*sydE)/(n*sx2dE-pow(sxdE,2));
+		
+		offsetE1 = (syE1*sx2E1-sxE1*sxyE1)/(n*sx2E1-pow(sxE1,2));
+		slopeE1 = (n*sxyE1-sxE1*syE1)/(n*sx2E1-pow(sxE1,2));
 
+		outcal << slopedE << " " << offsetdE << " " << slopeE1 << " " << offsetE1 << std::endl;
+
+		slopedE = 0;
+		offsetdE = 0;
+		sydE = 0;
+		sx2dE = 0;
+		sxdE = 0;
+		sxydE = 0;
+
+		slopeE1 = 0;
+		offsetE1 = 0;
+		syE1 = 0;
+		sx2E1 = 0;
+		sxE1 = 0;
+		sxyE1 = 0;
+	}
+
+	inEn.close();
+	inRawE.close();
+	inAng.close();
+	outcal.close();
 
 }
 /*
