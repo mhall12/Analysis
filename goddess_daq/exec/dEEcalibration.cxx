@@ -633,7 +633,7 @@ void defSi( double energy, double * elost, double thickness)
 
 	Target.aISG[0] = 0;
 	Target.aINN[0] = 1;
-	Target.aDEN[0] = 2.328; //Density of Aluminum in g/cm3
+	Target.aDEN[0] = 2.328; //Density of Si in g/cm3
 	Target.aZNUMB[0][0] = 14;
 	Target.aANUMB[0][0] = 28;
 	Target.aELNUM[0][0] = 1;
@@ -661,35 +661,38 @@ main()
 	double CorrAlthick;
 	double CorrdEthick;
 
-	std::ofstream outFile1("Stoppings.txt");
-
 	Althick = 137.16;
-	dEthick = 100;
+	dEthick = 23.29;
 
-	ifstream inEn("tEnergies.txt");
-	ifstream inAng("QQQAngles.txt");
-	ifstream inRawE("RawdEEPeaks.txt");
-	ofstream outcal("dEECal2.txt");
+	std::ifstream inAEn("Ang_and_tEnergies.txt");
+	std::ifstream inRawE("RawdEEPeaks.txt");
+	std::ofstream outcal("dEECal2.txt");
 
 	//Calculated Triton energies for each excitation per strip
-	double tEnergies[20][5] = {};
+	double tEnergies[22][5] = {};
 	//Angle of each strip
-	double Radangles[20] = {};
+	double Radangles[22] = {};
 
 	//measured raw dE and E triton peaks
-	double dERawE[20][5] = {};
-	double E1RawE[20][5] = {};
+	double dERawE[22][5] = {};
+	double E1RawE[22][5] = {};
 
 	double tEnergiesAfterAl = 0;
-	double tEnergiesindE[20][5] = {};
-	double tEnergiesinE1[20][5] = {};
+	double tEnergiesindE[22][5] = {};
+	double tEnergiesinE1[22][5] = {};
 
-	for (int i = 0; i<20; i++){
-		inEn >> tEnergies[i][0] >> tEnergies[i][1] >> tEnergies[i][2] >> tEnergies[i][3] >> tEnergies[i][4];
+	for (int i = 0; i<44; i++){
+		if (i < 22){
+			inAEn >> Radangles[i] >> tEnergies[i][0] >> tEnergies[i][1] >> tEnergies[i][2] >> tEnergies[i][3] >> tEnergies[i][4];
+			inRawE >> E1RawE[i][0] >> E1RawE[i][1] >> E1RawE[i][2] >> E1RawE[i][3] >> E1RawE[i][4];
+		}
+	
+		if (i > 21){
+			inRawE >> dERawE[i-22][0] >> dERawE[i-22][1] >> dERawE[i-22][2] >> dERawE[i-22][3] >> dERawE[i-22][4];
+		}
+		
+		std::cout << dERawE[i][0] << std::endl;
 
-		inAng >> Radangles[i];
-
-		inRawE >> tEnergiesindE[i][0] >> tEnergiesindE[i][1] >> tEnergiesindE[i][2] >> tEnergiesindE[i][3] >> tEnergiesindE[i][4] >> tEnergiesinE1[i][0] >> tEnergiesinE1[i][1] >> tEnergiesinE1[i][2] >> tEnergiesinE1[i][3] >> tEnergiesindE1[i][4];
 	}
 
 	double sydE = 0;
@@ -708,10 +711,12 @@ main()
 	double offsetE1 = 0;
 
 	//loop over each of the strips we are calibrating
-	for (int j = 0; j<20; j++){
+	for (int j = 0; j<22; j++){
 
 		CorrAlthick = Althick/cos(Radangles[j]);
 		CorrdEthick = dEthick/cos(Radangles[j]);
+
+		//std::cout << CorrAlthick << " " << CorrdEthick << std::endl;
 
 		//loop over each of the different triton energies before Al blocker
 		for (int en = 0; en < 5; en++){		
@@ -720,7 +725,8 @@ main()
 			tEnergiesAfterAl = tEnergies[j][en] - elossAl;
 			
 			defSi(tEnergiesAfterAl, &elossdE, CorrdEthick);
-
+			//std::cout << "Initial E: " << tEnergies[j][en] << "E after Al: " << tEnergiesAfterAl << std::endl;
+			//std::cout << "elossdE: " << elossdE << std::endl;
 			tEnergiesindE[j][en] = elossdE;
 
 			tEnergiesinE1[j][en] = tEnergiesAfterAl - elossdE;
@@ -729,12 +735,14 @@ main()
 
 	}
 
-	for (int j = 0; j<20; j++){
+	for (int j = 0; j<22; j++){
 		for (int k = 0; k < 5; k++){
 			sydE+=tEnergiesindE[j][k];
 			sxdE+=dERawE[j][k];
 			sx2dE+=pow(dERawE[j][k],2);
 			sxydE+=tEnergiesindE[j][k]*dERawE[j][k];
+
+			
 
 			syE1+=tEnergiesinE1[j][k];
 			sxE1+=E1RawE[j][k];
@@ -742,13 +750,25 @@ main()
 			sxyE1+=tEnergiesinE1[j][k]*E1RawE[j][k];
 		}
 
+std::cout << "sydE: " << sydE << " sxdE: " << sxdE << " sx2dE: " << sx2dE << " sxydE: " << sxydE << std::endl;
+
+		
 		offsetdE = (sydE*sx2dE-sxdE*sxydE)/(n*sx2dE-pow(sxdE,2));
 		slopedE = (n*sxydE-sxdE*sydE)/(n*sx2dE-pow(sxdE,2));
 		
 		offsetE1 = (syE1*sx2E1-sxE1*sxyE1)/(n*sx2E1-pow(sxE1,2));
 		slopeE1 = (n*sxyE1-sxE1*syE1)/(n*sx2E1-pow(sxE1,2));
 
-		outcal << slopedE << " " << offsetdE << " " << slopeE1 << " " << offsetE1 << std::endl;
+		if (sxdE == 0){
+			slopedE = 0;
+			offsetdE = 0;
+		}
+		if (sxE1 == 0){
+			slopeE1 = 0;
+			offsetE1 = 0;
+		}
+
+		outcal << slopeE1 << " " << offsetE1 << " " << slopedE << " " << offsetdE << std::endl;
 
 		slopedE = 0;
 		offsetdE = 0;
@@ -765,23 +785,9 @@ main()
 		sxyE1 = 0;
 	}
 
-	inEn.close();
+	inAEn.close();
 	inRawE.close();
-	inAng.close();
 	outcal.close();
 
 }
-/*
 
-		for (int i=0; i<2000; i++){
-			energy = efinal*1+(double)i/100;
-			defprta( energy, &eloss, Corrthick);
-			Efin = energy-eloss;
-
-			//std::cout << "Initial Energy " << energy <<  " eloss " << eloss << std::endl;
-
-			if (efinal > Efin-.01 && efinal < Efin+.01){
-				initenergy = energy;
-				break;
-			}
-*/
