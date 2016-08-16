@@ -23,6 +23,7 @@ void histfill(int runnum){
 	int gate = 0;
 	int gamgate = 0;
 	int Qgate = 0;
+	int Exgate = 0;
 	int g6048 = 0; //Unknown
 	int g5555 = 0; //Unknown
 	int g237 = 0; //238 keV in 19Ne
@@ -43,96 +44,11 @@ void histfill(int runnum){
 	int multloDA[32] = {48465,48904,67376,79593,57971,46821,90206,60449,168350,77873,66289,66867,59435,65073,63094,67867,1,85541,64814,1,61649,89429,1,117354,55882,64826,106899,60760,1,1,1,1};
 	double exploDA[32] = {-.646,-.651,-.685,-.715,-.667,-.633,-.730,-.664,-.825,-.706,-.679,-.669,-.657,-.674,-.660,-.669,0,-.715,-.660,0,-.639,-.704,0,-.753,-.604,-.643,-.73,-.641,0,0,0,0};
 
-	//normalization parameters for the DA E1 histograms. normDA0 is the slope and normDA1 is the intercept in m*x+b. The normalization parameters were found by matching dE-E strip combinations to the first useful looking dE-E strip combo.
-	double normDA0[32][5] = {};
-	double normDA1[32][5] = {};
-
-	//Bounds for the Gamma coincidence gates. The first two columns are upper, lower bounds for Peak 0, etc. The peaks that don't have bounds for the higher strips are given a value of 1.0 in the txt file. 0 was not used in case some of the energies read 0. 
-	double boundDA[32][8] = {};
-
-	//Calibrations for the DA E1 detector and DA dE detector are stored in these arrays.
-	double calDAE1[32][2] = {};
-	double calDAdE[32][2] = {};
-
-	//Gammasphere quandratic calibration parameters stored here
-	double gamcalparams[111][3] = {};
-
-	//strip number angle assignments.
-	double stripangle[20][2];
-	
-	//cubic energy loss parameters through the Al blocker. In the file, Column 1: Angle in Deg, Column 2: Angle in Rad, Column 3,4,5,6 are the parameters Ax^3+Bx^2+Cx+D in that order.
-	double energyloss[12][6];
-
-	//Q-Value bins for the gamma intensity histograms are initialized here.
-	double Qbins[300] = {};
-	double Qgatearray[300][2] = {};
-	double buff;
 
 	//Q-value gates here
 	double Qgatelo[5] = {-3.43, -4.78, -6.146, -7.64, -8.1};
 	double Qgatehi[5] = {-3.23, -4.58, -5.946, -7.44, -7.795};
 
-	//The files for the normalization parameters and gates are opened here.
-	ifstream inFile1("E1normmultDA.txt");
-	ifstream inFile2("E1normaddDA.txt");
-	ifstream inFile3("gates.txt");
-	ifstream inFile4("dEECal2.txt");
-	//ifstream inFile4("E1cal.txt");
-	//ifstream inFile5("dEcal.txt");
-	ifstream inFile6("GamCalParamsQuad.txt");
-//	ifstream inFile7("angleassign.txt");
-//	ifstream inFile8("energyloss.txt");
-	ifstream inFile9("Qbins.txt");
-
-	//build the arrays for the gates and normalization parameters:
-
-	for (int i=0; i<32; i++){
-
-		inFile4 >> calDAE1[i][0] >> calDAE1[i][1] >> calDAdE[i][0] >> calDAdE[i][1];
-
-//		inFile4 >> calDAE1[i][0] >> calDAE1[i][1];
-//		inFile5 >> calDAdE[i][0] >> calDAdE[i][1];
-		
-		for (int k = 0; k<8; k++){
-
-			inFile3 >> boundDA[i][k];
-
-		}
-
-		for (int j=0; j<5; j++){
-
-			inFile1 >> normDA0[i][j];
-			inFile2 >> normDA1[i][j];
-		}
-
-//		if (i<20) inFile7 >> stripangle[i][0] >> stripangle[i][1];
-
-//		if (i<12) inFile8 >> energyloss[i][0] >> energyloss[i][1] >> energyloss[i][2] >> energyloss[i][3] >> energyloss[i][4] >> energyloss[i][5];
-
-	}
-
-	for (int i=0; i<111; i++){
-
-		inFile6 >> gamcalparams[i][0] >> gamcalparams[i][1] >> gamcalparams[i][2];
-
-	}
-
-	for (int i=0; i<300; i++){
-		
-		inFile9 >> Qbins[i] >> buff >> Qgatearray[i][0] >> Qgatearray[i][1];
-
-	}
-
-	//close the files here
-	inFile1.close();
-	inFile2.close();
-	inFile3.close();
-	inFile4.close();
-//	inFile5.close();
-	inFile6.close();
-//	inFile7.close();
-//	inFile8.close();
-	inFile9.close();
 
 	//E1 norm is defined below. It is the E1 energy multiplied by the normalization that makes all of the E1 energies lie on top of each other for all of the dE,E1 combos.
 	double E1norm;
@@ -159,9 +75,15 @@ void histfill(int runnum){
 	double m3H = 3.016049;
 	double m3He = 3.016029;
 	double m19Ne = 19.001880;
+	double m19F = 18.998403;
+	double m27Al = 26.981539;
+	double m27Si = 26.986704;
+	double utoMeV = 931.4941;
 
 	//Q-value of the reaction
 	double Q;
+	double QAl;
+	double Ex19Ne;
 
 
 
@@ -184,6 +106,7 @@ void histfill(int runnum){
 		gate = 0;
 		gamgate = 0;
 		Qgate = 0;
+		Exgate = 0;
 		g6048 = 0; //Unknown
 		g5555 = 0; //Unknown
 		g237 = 0; //238 keV in 19Ne
@@ -276,7 +199,7 @@ void histfill(int runnum){
 								//QQQDATot2 stores the calibrated energy BEFORE the Al blocker in strip # vs energy.
 							//	angle = stripangle[si2->at(i).PstripdE][1];
 								angle = AandEloss[si2->at(i).PstripdE][0];
-							//	std::cout << "ANGLEEEEE::::: " << angle << std::endl;
+
 							//	Einit = pow(Ecaltot,3)*energyloss[angle-15][2]+pow(Ecaltot,2)*energyloss[angle-15][3]+Ecaltot*energyloss[angle-15][4]+energyloss[angle-15][5];
 								Einit = pow(Ecaltot,3)*AandEloss[si2->at(i).PstripdE][2]+pow(Ecaltot,2)*AandEloss[si2->at(i).PstripdE][3]+Ecaltot*AandEloss[si2->at(i).PstripdE][4]+AandEloss[si2->at(i).PstripdE][5];
 
@@ -284,11 +207,20 @@ void histfill(int runnum){
 
 								//Q-Value Spectrum, calculation of Q-value below. Assume 30MeV for beam energy. Equation 11.10 in Krane.
 								Q = Einit*(1+m3H/m19Ne)-30*(1-m3He/m19Ne)-2*sqrt(m3He*m3H/pow(m19Ne,2)*Einit*30)*cos(angle);
+								QAl = Einit*(1+m3H/m27Si)-30*(1-m3He/m27Si)-2*sqrt(m3He*m3H/pow(m27Si,2)*Einit*30)*cos(angle);
+
+								Ex19Ne = (m3He + m19F - m3H - m19Ne)*utoMeV - Q;
 
 								QQQDAQ->Fill(Q, si2->at(i).PstripdE);
+								QQQDAQAl->Fill(QAl, si2->at(i).PstripdE);
+								QQQDATotQ->Fill(Q);
+					
+								QQQDAEx->Fill(Ex19Ne, si2->at(i).PstripdE);
+								QQQDAExTot->Fill(Ex19Ne);
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
+								if (Ex19Ne > 5 && Ex19Ne < 5.2) Exgate++;
 
 								//Q-value gate for the intensity histograms filled here.
 								for (int bin = 0; bin < 299; bin++){
@@ -360,6 +292,9 @@ void histfill(int runnum){
 
 				if (Qgate > 0){
 					gam_gated[4]->Fill(gamEn);
+				}
+				if (Exgate > 0){
+					gam_gated[5]->Fill(gamEn);
 				}
 
 				for (int q = 0; q < 300; q++){
@@ -450,8 +385,8 @@ void MakeMyHists(){
 	QQQDAE1 = new TH2D("QQQDAE1","QQQ5 DA E1",4096,0,4096,32,0,32);
 	QQQDAE2 = new TH2D("QQQDAE2","QQQ5 DA E2",4096,0,4096,32,0,32);
 
-	QQQDCdE = new TH2D("QQQDCdE","QQQ5 DC dE",5000,0,50000,32,0,32);
-	QQQDCE1 = new TH2D("QQQDCE1","QQQ5 DC E1",5000,0,50000,32,0,32);
+	QQQDCdE = new TH2D("QQQDCdE","QQQ5 DC dE",1250,0,50000,32,0,32);
+	QQQDCE1 = new TH2D("QQQDCE1","QQQ5 DC E1",1250,0,50000,32,0,32);
 
 	QQQDAE1sum = new TH2D("QQQDAE1sum","QQQ5 DA E1 Summed Histograms",1024,0,1024,32,0,32);
 	QQQDAE1cal = new TH2D("QQQDAE1cal","QQQ5 DA E1 Calibrated Histograms",512,0,32,32,0,32);
@@ -461,6 +396,10 @@ void MakeMyHists(){
 	QQQDATot = new TH2D("QQQDATot","QQQ5 DA Total Energy",2048,0,32,32,0,32);
 	QQQDATot2 = new TH2D("QQQDATot2","QQQ5 DA Total Energy Before Degradation",2048,15,32,19,0,19);
 	QQQDAQ = new TH2D("QQQDAQ","Strip Number vs Reaction Q-Value Spectrum",2048,-15,0,19,0,19);
+	QQQDAQAl = new TH2D("QQQDAQAl","Strip Number vs Reaction Q-Value Spectrum 27Al(3He,t)",2048,-15,0,19,0,19);
+	QQQDATotQ = new TH1D("QQQDATotQ","QQQ5 DA Q Summed Q-Value Spectrum",2048,-15,0);
+	QQQDAEx = new TH2D("QQQDAEx","Strip Number vs Excitation Energy",2048,0,15,19,0,19);
+	QQQDAExTot = new TH1D("QQQDAExTot","Excitation Energy of 19Ne",2048,0,15);
 
 	std::string gambase = "gam_pk";
 
@@ -484,7 +423,7 @@ void MakeMyHists(){
 	Good_gam_tot->GetXaxis()->CenterTitle();
 	Good_gam_tot->GetYaxis()->CenterTitle();
 
-	for (int i=0; i<5; i++){
+	for (int i=0; i<6; i++){
 		string namegam = gambase + std::to_string(i);
 		TH1D *h = new TH1D(TString(namegam),"Gated Gammasphere Spectrum Triton Peak " + TString(std::to_string(i)),4000,0,8000);
 
@@ -526,7 +465,7 @@ void MakeMyHists(){
 		QQQ5_DC_PID->cd();
 		//Creates the summed DC PID plots (with coincidences of PstripE-PstripdE <=4)
 		string nameDC = PIDbaseDC + std::to_string(i);
-		TH2D *h1 = new TH2D(TString(nameDC),"QQQ5 DC dE vs E1 Strip " + TString(std::to_string(i)),5000,0,50000,5000,0,50000);
+		TH2D *h1 = new TH2D(TString(nameDC),"QQQ5 DC dE vs E1 Strip " + TString(std::to_string(i)),1250,0,50000,1250,0,50000);
 
 		DC_PIDhists.push_back(h1);
 
@@ -649,20 +588,87 @@ void MakeMyHists(){
 	int4362 = new TH1D("int4362","Intensity of 4362 keV Gamma vs Q-Value",300,-15,0);
 	back4362 = new TH1D("back4362","Background of 4362 keV Gamma vs Q-Value",300,-15,0);
 
+/*
+	calDAE1[32][2] = {};
+	calDAdE[32][2] = {};
+	normDA0[32][5] = {};
+	normDA1[32][5] = {};
+	boundDA[32][8] = {};
+	Qbins[300] = {};
+	Qgatearray[300][2] = {};
+	gamcalparams[111][3] = {};
+*/
 
-	ifstream inFile("AnglesAndELoss2.txt");	
+	//The files for the normalization parameters and gates are opened here.
+	ifstream inFile0("AnglesAndELoss2.txt");	
+	ifstream inFile1("E1normmultDA.txt");
+	ifstream inFile2("E1normaddDA.txt");
+	ifstream inFile3("gates.txt");
+	ifstream inFile4("dEECal2.txt");
+	//ifstream inFile4("E1cal.txt");
+	//ifstream inFile5("dEcal.txt");
+	ifstream inFile6("GamCalParamsQuad.txt");
+//	ifstream inFile7("angleassign.txt");
+//	ifstream inFile8("energyloss.txt");
+	ifstream inFile9("Qbins.txt");
 
 	for (int i = 0; i<20; i++){
 
-		inFile >> AandEloss[i][0] >> AandEloss[i][1] >> AandEloss[i][2] >> AandEloss[i][3] >> AandEloss[i][4] >> AandEloss[i][5];
+		inFile0 >> AandEloss[i][0] >> AandEloss[i][1] >> AandEloss[i][2] >> AandEloss[i][3] >> AandEloss[i][4] >> AandEloss[i][5];
 		std::cout << AandEloss[i][0];
 
 	} 
 
+	//build the arrays for the gates and normalization parameters:
 
+	for (int i=0; i<32; i++){
 
+		inFile4 >> calDAE1[i][0] >> calDAE1[i][1] >> calDAdE[i][0] >> calDAdE[i][1];
 
+//		inFile4 >> calDAE1[i][0] >> calDAE1[i][1];
+//		inFile5 >> calDAdE[i][0] >> calDAdE[i][1];
+		
+		for (int k = 0; k<8; k++){
 
+			inFile3 >> boundDA[i][k];
+
+		}
+
+		for (int j=0; j<5; j++){
+
+			inFile1 >> normDA0[i][j];
+			inFile2 >> normDA1[i][j];
+		}
+
+//		if (i<20) inFile7 >> stripangle[i][0] >> stripangle[i][1];
+
+//		if (i<12) inFile8 >> energyloss[i][0] >> energyloss[i][1] >> energyloss[i][2] >> energyloss[i][3] >> energyloss[i][4] >> energyloss[i][5];
+
+	}
+
+	for (int i=0; i<111; i++){
+
+		inFile6 >> gamcalparams[i][0] >> gamcalparams[i][1] >> gamcalparams[i][2];
+
+	}
+
+	for (int i=0; i<300; i++){
+		
+		inFile9 >> Qbins[i] >> buff >> Qgatearray[i][0] >> Qgatearray[i][1];
+
+	}
+
+	//close the files here
+	inFile0.close();
+	inFile1.close();
+	inFile2.close();
+	inFile3.close();
+	inFile4.close();
+//	inFile5.close();
+	inFile6.close();
+//	inFile7.close();
+//	inFile8.close();
+	inFile9.close();
 
 
 
@@ -768,6 +774,16 @@ void MakeMyHists(){
 				//if (si2->at(i).E1 > 586 && si2->at(i).E1 < 612 && si2->at(i).PstripdE == 0 && (si2->at(i).PstripE1 == 0 || si2->at(i).PstripE1 == 1)) gate++;
 
 
+
+
+
+
+
+	//strip number angle assignments.
+//	double stripangle[20][2];
+	
+	//cubic energy loss parameters through the Al blocker. In the file, Column 1: Angle in Deg, Column 2: Angle in Rad, Column 3,4,5,6 are the parameters Ax^3+Bx^2+Cx+D in that order.
+//	double energyloss[12][6];
 
 
 

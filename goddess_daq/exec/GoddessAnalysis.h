@@ -37,6 +37,10 @@
 	TH2D *QQQDATot;
 	TH2D *QQQDATot2;
 	TH2D *QQQDAQ;
+	TH2D *QQQDAQAl;
+	TH1D *QQQDATotQ;
+	TH2D *QQQDAEx;
+	TH1D *QQQDAExTot;
 
 	TH2D *QQQDCdE;
 	TH2D *QQQDCE1;
@@ -98,4 +102,23 @@
 	TH1D *back4362;
 
 	double AandEloss[20][6];
+
+	//Calibrations for the DA E1 detector and DA dE detector are stored in these arrays.
+	double calDAE1[32][2];
+	double calDAdE[32][2];
+
+	//normalization parameters for the DA E1 histograms. normDA0 is the slope and normDA1 is the intercept in m*x+b. The normalization parameters were found by matching dE-E strip combinations to the first useful looking dE-E strip combo.
+	double normDA0[32][5];
+	double normDA1[32][5];
+
+	//Bounds for the Gamma coincidence gates. The first two columns are upper, lower bounds for Peak 0, etc. The peaks that don't have bounds for the higher strips are given a value of 1.0 in the txt file. 0 was not used in case some of the energies read 0. 
+	double boundDA[32][8];
+
+	//Q-Value bins for the gamma intensity histograms are initialized here.
+	double Qbins[300];
+	double Qgatearray[300][2];
+	double buff;
+
+	//Gammasphere quandratic calibration parameters stored here
+	double gamcalparams[111][3];
 
