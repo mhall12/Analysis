@@ -79,6 +79,7 @@
 	TH1D *gam1233;
 	TH1D *gam4358;
 	TH1D *gam1297;
+	TH1D *gam1840;
 
 	TH1D *int238;
 	TH1D *back238;
@@ -121,4 +122,8 @@
 
 	//Gammasphere quandratic calibration parameters stored here
 	double gamcalparams[111][3];
+
+	//QQQ DC Triton gates
+	double TGateDCLow[22][5];
+	double TGateDCHi[22][5];
 

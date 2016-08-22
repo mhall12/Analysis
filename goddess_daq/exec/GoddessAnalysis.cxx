@@ -33,6 +33,7 @@ void histfill(int runnum){
 	int g1233 = 0; //1232 keV in 19Ne
 	int g4358 = 0; //Possible 4362 keV peak in 19Ne
 	int g1297 = 0;
+	int g1840 = 0;
 
 	//Gates for each of the peaks in the triton spectra. Gate 0 refers to the Right most peak, Gate 0 refers to the one to the left and so on...
 	int pkgate[4] = {0};
@@ -60,6 +61,11 @@ void histfill(int runnum){
 	double Ecaltot;
 	//Einit is the initial triton Energy from the reaction
 	double Einit;
+
+	double DCdE;
+	double DCE1;
+	int stripdE;
+	int stripE1;
 
 	double angle;
 
@@ -116,6 +122,7 @@ void histfill(int runnum){
 		g1233 = 0; //1232 keV in 19Ne
 		g4358 = 0;
 		g1297 = 0;
+		g1840 = 0;
 			
 		for (int g = 0; g<4; g++) pkgate[g] = 0;
 
@@ -136,6 +143,7 @@ void histfill(int runnum){
 			if (gamEn >= 1231 && gamEn <= 1239) g1233++;
 			if (gamEn >= 4331 && gamEn <= 4373) g4358++;
 			if (gamEn >= 1276 && gamEn <= 1314) g1297++;
+			if (gamEn >= 1836 && gamEn <= 1843) g1840++;
 		}
 
 		//Fill the Si histograms here:
@@ -220,7 +228,7 @@ void histfill(int runnum){
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
-								if (Ex19Ne > 5 && Ex19Ne < 5.2) Exgate++;
+								if (Ex19Ne > 6.34 && Ex19Ne < 6.52) Exgate++;
 
 								//Q-value gate for the intensity histograms filled here.
 								for (int bin = 0; bin < 299; bin++){
@@ -263,13 +271,31 @@ void histfill(int runnum){
 			} //closes the DA if statement
 
 			if (si2->at(i).sectorStr == "DC"){
-				DC_PIDhists[si2->at(i).PstripdE]->Fill(si2->at(i).E1,si2->at(i).dE);
-				if (si2->at(i).dE != 0) QQQDCdE->Fill(si2->at(i).dE,si2->at(i).PstripdE);
-				if (si2->at(i).E1 != 0) QQQDCE1->Fill(si2->at(i).E1,si2->at(i).PstripE1);
-				
-				if (rstrip >= 0 && rstrip <= 4) DC_T_Spec[si2->at(i).PstripdE][rstrip]->Fill(si2->at(i).E1);
 
-			}
+				stripdE = si2->at(i).PstripdE;
+				stripE1 = si2->at(i).PstripE1;
+				DCdE = si2->at(i).dE;
+				DCE1 = si2->at(i).E1;
+
+				PIDGateLo = pow(DCE1,4)*TGateDCLow[stripdE][0] + pow(DCE1,3)*TGateDCLow[stripdE][1] + pow(DCE1,2)*TGateDCLow[stripdE][2] + DCE1*TGateDCLow[stripdE][3] + TGateDCLow[stripdE][4];
+				PIDGateHi = pow(DCE1,4)*TGateDCHi[stripdE][0] + pow(DCE1,3)*TGateDCHi[stripdE][1] + pow(DCE1,2)*TGateDCHi[stripdE][2] + DCE1*TGateDCHi[stripdE][3] + TGateDCHi[stripdE][4];
+
+				//std::cout << "High Gate: " << PIDGateHi << " Low Gate: " << PIDGateLo << std::endl;
+
+				if (stripdE < 22 && DCdE > PIDGateLo && DCdE < PIDGateHi){
+
+					DC_PIDhists[si2->at(i).PstripdE]->Fill(si2->at(i).E1,si2->at(i).dE);
+					if (si2->at(i).dE != 0) QQQDCdE->Fill(si2->at(i).dE,si2->at(i).PstripdE);
+					if (si2->at(i).E1 != 0) QQQDCE1->Fill(si2->at(i).E1,si2->at(i).PstripE1);
+				
+					if (rstrip >= 0 && rstrip <= 4){
+						
+						 DC_T_Spec[si2->at(i).PstripdE][rstrip]->Fill(si2->at(i).E1);
+
+					} //closes rstrip if statement
+				} //closes triton gate if statement
+
+			} //closes DC if statement
 
 		}
 
@@ -341,6 +367,7 @@ void histfill(int runnum){
 				if (g1233 > 0) gam1233->Fill(gamEn);
 				if (g4358 > 0) gam4358->Fill(gamEn);
 				if (g1297 > 0) gam1297->Fill(gamEn);
+				if (g1840 > 0) gam1840->Fill(gamEn);
 			}
 
 		}
@@ -564,6 +591,7 @@ void MakeMyHists(){
 	gam1233 = new TH1D("gam1233","Gammas Gated on 1233 keV Peak",8000,0,8000);
 	gam4358 = new TH1D("gam4358","Gammas Gated on 4358 keV Peak",8000,0,8000);
 	gam1297 = new TH1D("gam1297","Gammas Gated on 1297 keV Peak",8000,0,8000);
+	gam1840 = new TH1D("gam1840","Gammas Gated on 1840 keV Peak",8000,0,8000);
 
 	Gamma_Intensity_Hists->cd();
 
@@ -611,11 +639,11 @@ void MakeMyHists(){
 //	ifstream inFile7("angleassign.txt");
 //	ifstream inFile8("energyloss.txt");
 	ifstream inFile9("Qbins.txt");
+	ifstream inFile10("QQQDCTGates.txt");
 
 	for (int i = 0; i<20; i++){
 
 		inFile0 >> AandEloss[i][0] >> AandEloss[i][1] >> AandEloss[i][2] >> AandEloss[i][3] >> AandEloss[i][4] >> AandEloss[i][5];
-		std::cout << AandEloss[i][0];
 
 	} 
 
@@ -644,6 +672,7 @@ void MakeMyHists(){
 
 //		if (i<12) inFile8 >> energyloss[i][0] >> energyloss[i][1] >> energyloss[i][2] >> energyloss[i][3] >> energyloss[i][4] >> energyloss[i][5];
 
+
 	}
 
 	for (int i=0; i<111; i++){
@@ -656,7 +685,17 @@ void MakeMyHists(){
 		
 		inFile9 >> Qbins[i] >> buff >> Qgatearray[i][0] >> Qgatearray[i][1];
 
+		if (i < 44){
+			if (i < 22) inFile10 >> TGateDCLow[i][0] >> TGateDCLow[i][1] >> TGateDCLow[i][2] >> TGateDCLow[i][3] >> TGateDCLow[i][4];
+			if (i > 21) inFile10 >> TGateDCHi[i-22][0] >> TGateDCHi[i-22][1] >> TGateDCHi[i-22][2] >> TGateDCHi[i-22][3] >> TGateDCHi[i-22][4];
+		}
+
 	}
+
+//	for (int i=0; i<22; i++){
+//		std::cout << TGateDCHi[i][0] << " " << TGateDCHi[i][1] << " " << TGateDCHi[i][2] << " " << TGateDCHi[i][3] << " " << TGateDCHi[i][4] << std::endl;
+//
+//	}
 
 	//close the files here
 	inFile0.close();
@@ -669,6 +708,7 @@ void MakeMyHists(){
 //	inFile7.close();
 //	inFile8.close();
 	inFile9.close();
+	inFile10.close();
 
 
 
