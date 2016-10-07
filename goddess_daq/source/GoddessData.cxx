@@ -256,6 +256,8 @@ void GoddessData::Fill(GEB_EVENT *gebEvt, std::vector<DGSEVENT> *dgsEvts, std::v
 	for (size_t i=0;i<agodEvts->size();i++) {
 		AGODEVENT agodEvt = agodEvts->at(i);
 
+		unsigned long long timestamp = agodEvt.timestamp;
+
 		analogADCMult->Fill(agodEvt.values.size());
 		for (size_t j=0;j<agodEvt.values.size();j++) {
 			unsigned long int value = agodEvt.values[j];
@@ -269,7 +271,7 @@ void GoddessData::Fill(GEB_EVENT *gebEvt, std::vector<DGSEVENT> *dgsEvts, std::v
 			std::pair<short, short> key = std::make_pair(GEB_TYPE_AGOD, channel);
 			if (suppressCh.find(key) != suppressCh.end()) continue;
 
-			Detector *det = config->SetRawValue(GEB_TYPE_AGOD, channel, value);
+			Detector *det = config->SetRawValue(GEB_TYPE_AGOD, channel, value, timestamp);
 			if (!det) {
 				suppressCh[key] = true;
 				continue;
@@ -307,7 +309,7 @@ void GoddessData::Fill(GEB_EVENT *gebEvt, std::vector<DGSEVENT> *dgsEvts, std::v
 		DFMAEVENT dgodEvt = dgodEvts->at(i);
 		unsigned int value=dgodEvt.ehi;
 		unsigned short channel=dgodEvt.tid;
-		//unsigned long long timestamp = dgodEvt.LEDts;
+		unsigned long long timestamp = dgodEvt.LEDts;
 
 		DAQchannel=channel;
 		//DAQCh_Energy[channel] = value; //filling this will overwrite the analog
@@ -318,7 +320,7 @@ void GoddessData::Fill(GEB_EVENT *gebEvt, std::vector<DGSEVENT> *dgsEvts, std::v
 			continue;
 		}
 
-		Detector *det=config->SetRawValue(GEB_TYPE_DFMA,channel,value);
+		Detector *det=config->SetRawValue(GEB_TYPE_DFMA,channel,value,timestamp);
 		if (!det) {
 			suppressCh[key]=true;
 			continue;
@@ -554,7 +556,7 @@ void GoddessData::FillHists(std::vector<DGSEVENT> *dgsEvts) {
 void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVENT> *dgodEvts, std::vector<AGODEVENT> *agodEvts) {
 	///A map of SiData based on the position in the barrel.
 	std::map<std::string, SiData> siMap;
-	std::map<std::string, SiData> siMap2;
+//	std::map<std::string, SiData> siMap2;
 
 	for (auto detItr=siDets.begin();detItr!=siDets.end(); ++detItr) {
 
@@ -570,12 +572,15 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 		siDet::ValueMap frontCalEn = det->GetCalEn(siDet::pType);
 		siDet::ValueMap backRawEn = det->GetRawEn(siDet::nType);
 		siDet::ValueMap backCalEn = det->GetCalEn(siDet::nType);
+
+		unsigned long long time = det->GetTimeStamp();
 		
 		bool firstDet = false;
 		if (siMap.find(sectorStr) == siMap.end()) firstDet = true;
 		//Get the data matching the sector string, if it doens't exist a new datum is ctreated automatically.
+//		SiData datum; 
 		SiData *datum = &siMap[sectorStr];
-		SiData *datumback = &siMap2[sectorStr];
+//		SiData *datumback = &siMap2[sectorStr];
 
 		//If this sector is new we need to initialize it with default values.
 		if (firstDet) {
@@ -583,7 +588,7 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 			datum->E1 = 0;
 			//datum->E2 = 0;
 			datum->sectorStr = sectorStr;
-			datumback->sectorStr = sectorStr;
+//			datumback->sectorStr = sectorStr;
 		}
 
 		if (detType=="QQQ5"){
@@ -610,6 +615,8 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 
 			datum->sectorStr = sectorStr;
 
+			datum->time = time;
+
 
 				//for (auto itr2 = siMap.begin(); itr2 != siMap.end(); ++itr2) {
 				//	SiData datum2 = itr2->second;
@@ -617,9 +624,16 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 					//if (datum.E1) {
 				//		siData->push_back(datum2);
 					//}
-			SiData datum2 = siMap.begin()->second;				//}
+			SiData datum2 = siMap.begin()->second; //datum;//siMap.begin()->second;				//}
 			//siData->push_back(datum2);
 			siCont->push_back(datum2);
+
+//			datum2.dE = 0;
+//			datum2.E1 = 0;
+//			datum2.E2 = 0;
+//			datum2.PstripdE = 0;
+//			datum2.PstripE1 = 0;
+//			datum2.PstripE2 = 0;
 
 		}
 /*
@@ -688,6 +702,9 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 //							data.E2 = siCont->at(k).E2;
 							data.PstripdE = siCont->at(i).PstripdE;
 							data.PstripE1 = siCont->at(j).PstripE1;
+
+							data.time = siCont->at(i).time;
+
 //							data.PstripE2 = siCont->at(k).PstripE2;
 							//if (siContBack->size()>=i && siContBack->size()>=j){
 							//data.NstripdE = siCont->size();//at(i).NstripdE;
@@ -695,12 +712,12 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 							//}
 							data.sectorStr = siCont->at(i).sectorStr;
 							if (siCont->at(i).dE != 0 && siCont->at(j).E1 != 0 && data.PstripE1-data.PstripdE <= 5){
-								if (data.sectorStr=="DA" && data.dE > mul[data.PstripdE]*pow(data.E1,exp[data.PstripdE])){
+								if (data.sectorStr=="DA" && data.dE > mul[data.PstripdE]*pow(data.E1,exp[data.PstripdE]) && data.dE < 4096 && data.E1 < 4096 && data.PstripdE < 28){
 									siData->push_back(data);
 									//usedEvt.push_back(i);
 									//usedEvt.push_back(j);
 								}
-								if (data.sectorStr=="DC" && data.dE > (DCco1[data.PstripdE]*pow(data.E1,2) + DCco2[data.PstripdE]*data.E1 + DCco3[data.PstripdE])){
+								if (data.sectorStr=="DC" && data.dE > (DCco1[data.PstripdE]*pow(data.E1,2) + DCco2[data.PstripdE]*data.E1 + DCco3[data.PstripdE]) && data.PstripdE < 28){
 									siData->push_back(data);
 									//usedEvt.push_back(i);
 									//usedEvt.push_back(j);
@@ -822,6 +839,9 @@ void GoddessData::FillTrees(std::vector<DGSEVENT> *dgsEvts, std::vector<DFMAEVEN
 			datum.en = dgsEvts->at(dgsEvtNum).ehi;
 			datum.type = dgsEvts->at(dgsEvtNum).tpe;
 			datum.num = dgsEvts->at(dgsEvtNum).tid;
+
+			datum.time = dgsEvts->at(dgsEvtNum).event_timestamp;
+
 			gamData->push_back(datum);
 		}
 		

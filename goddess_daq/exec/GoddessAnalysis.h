@@ -15,6 +15,7 @@
 	vector<SiData> *si2;
 
 	TDirectory *QQQ5_DA_PID;
+	TDirectory *QQQ5_DA_PID_Cal;
 	TDirectory *QQQ5_DC_PID;
 
 	TDirectory *QQQ5_DA_Tritons;
@@ -27,6 +28,8 @@
 	TDirectory *Gamma_Intensity_Hists;
 	TDirectory *Q_Gated_QQQ_DA_E1;
 	TDirectory *Q_Gated_QQQ_DA_dE;
+
+	TDirectory *Timing_Spectra;
 
 	TH2D *QQQDAdE;
 	TH2D *QQQDAE1;
@@ -42,9 +45,26 @@
 	TH2D *QQQDAEx;
 	TH1D *QQQDAExTot;
 
+	TH1D *QQQDAExtotTiming;
+
 	TH2D *QQQDCdE;
 	TH2D *QQQDCE1;
 	//TH1D *QQQDAtot;
+
+	TH2D *gam_DA;
+	TH2D *gam_DC;
+	
+	TH1D *TimeHist;
+	TH2D *gamTime;
+	TH1D *gam511vtime;
+	TH1D *gam511vtimeBACK;
+	TH1D *gam238vtime;
+	TH1D *gam238vtimeBACK;
+	TH1D *gam1233vtime;
+	TH1D *gam1233vtimeBACK;
+	TH1D *gam1633vtime;
+	TH1D *gam1633vtimeBACK;
+
 
 	TH1D *QQQDAdE0;
 
@@ -58,6 +78,7 @@
 	int nEntries;
 	
 	std::vector<TH2D*> DA_PIDhists;
+	std::vector<TH2D*> DA_PIDhists_Cal;
 	std::vector<TH2D*> DC_PIDhists;
 
 	std::vector<TH1D*> sT_Spec;
@@ -126,4 +147,8 @@
 	//QQQ DC Triton gates
 	double TGateDCLow[22][5];
 	double TGateDCHi[22][5];
+
+	//PID Gates from calibrated energies
+	double CalPIDGateLo[32][5];
+	double CalPIDGateHi[32][5];
 

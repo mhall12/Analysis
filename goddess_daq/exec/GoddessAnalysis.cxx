@@ -3,7 +3,7 @@
 
 #include "GoddessAnalysis.h"
 
-void histfill(int runnum){
+void histfill(int runnum, ofstream &log){
 	std::cout << "Run " << runnum << " is now being analyzed." << std::endl; 	
 	std::cout << "rootfiles/run" + TString(std::to_string(runnum)) + ".root" << endl;
 	//the code opens the file here
@@ -34,6 +34,9 @@ void histfill(int runnum){
 	int g4358 = 0; //Possible 4362 keV peak in 19Ne
 	int g1297 = 0;
 	int g1840 = 0;
+
+	int timegate = 0;
+
 
 	//Gates for each of the peaks in the triton spectra. Gate 0 refers to the Right most peak, Gate 0 refers to the one to the left and so on...
 	int pkgate[4] = {0};
@@ -71,6 +74,8 @@ void histfill(int runnum){
 
 	double PIDGateHi;
 	double PIDGateLo;
+	double PIDGateHiCal;
+	double PIDGateLoCal;
 
 	double gamEn;
 
@@ -89,9 +94,11 @@ void histfill(int runnum){
 	//Q-value of the reaction
 	double Q;
 	double QAl;
-	double Ex19Ne;
+	double Ex19Ne = 0;
 
+	double tritongate = 0;
 
+	double timediff;
 
 //	std::vector<std::vector<double>> Qgatevec;
 
@@ -99,13 +106,11 @@ void histfill(int runnum){
 //		Qbins[i] = -15 + (double)i/20;
 //	}
 
-
-
 	//Qgatevec stores the bin center of Qbin if there is an event in the bin.
 	
 
+	log << "Run Number: " << runnum << " Number of Entries: " << nEntries << std::endl;
 
-	//fill the parameters from the two text files located in exec called E1normmult.txt and E1normadd.txt
 
 	for (int evt=0;evt<nEntries;evt++){
 		//Reset the gates to 0 for each entry of the tree.
@@ -123,6 +128,10 @@ void histfill(int runnum){
 		g4358 = 0;
 		g1297 = 0;
 		g1840 = 0;
+		
+		timegate = 0;
+
+		tritongate = 0;
 			
 		for (int g = 0; g<4; g++) pkgate[g] = 0;
 
@@ -155,12 +164,27 @@ void histfill(int runnum){
 			//if (si2->at(i).E1 < 620 && si2->at(i).E1 > 577 && si2->at(i).PstripE1 == 1) gate++;
 			if (si2->at(i).sectorStr == "DA"){
 
+				//E1 is the normalized x (uncalibrated Energy) E1 value. They are normalized to the rstrip=0 histogram. E1 norm is the normalized E1 energy for each dE strip (i.e. dE strip 0, E strip 0, 1, 2, 3)
+				E1norm = si2->at(i).E1*normDA0[si2->at(i).PstripdE][rstrip]+normDA1[si2->at(i).PstripdE][rstrip];
+
+				//dEcal is the calibrated dE energy. 
+				dEcal = calDAdE[si2->at(i).PstripdE][0]*si2->at(i).dE + calDAdE[si2->at(i).PstripdE][1];
+
+				//E1cal is the calibrated E1 energy, assuming a linear calibration for the 3 highest E peaks. 
+				E1cal = E1norm*calDAE1[si2->at(i).PstripdE][0]+calDAE1[si2->at(i).PstripdE][1];
+
 				//Variables for the high and low triton PID gates for use in the below if statement are defined here.
 				PIDGateHi = multhiDA[si2->at(i).PstripdE]*pow(si2->at(i).E1,exphiDA[si2->at(i).PstripdE]);
 				PIDGateLo = multloDA[si2->at(i).PstripdE]*pow(si2->at(i).E1,exploDA[si2->at(i).PstripdE]);
 
-				//Here we take only the events within the restricted gates.
+				PIDGateHiCal = pow(E1cal,4)*CalPIDGateHi[si2->at(i).PstripdE][0] + pow(E1cal,3)*CalPIDGateHi[si2->at(i).PstripdE][1] + pow(E1cal,2)*CalPIDGateHi[si2->at(i).PstripdE][2] + E1cal*CalPIDGateHi[si2->at(i).PstripdE][3] + CalPIDGateHi[si2->at(i).PstripdE][4];
+				PIDGateLoCal = pow(E1cal,4)*CalPIDGateLo[si2->at(i).PstripdE][0] + pow(E1cal,3)*CalPIDGateLo[si2->at(i).PstripdE][1] + pow(E1cal,2)*CalPIDGateLo[si2->at(i).PstripdE][2] + E1cal*CalPIDGateLo[si2->at(i).PstripdE][3] + CalPIDGateLo[si2->at(i).PstripdE][4];
+
+				//Here we take only the events within the restricted gates. Now with even more restriction!
 				if (si2->at(i).dE < PIDGateHi && si2->at(i).dE > PIDGateLo){
+				if (dEcal < PIDGateHiCal && dEcal > PIDGateLoCal){
+
+					tritongate++;
 
 					//DA_PIDhists is the gated triton PIDs. 
 					DA_PIDhists[si2->at(i).PstripdE]->Fill(si2->at(i).E1,si2->at(i).dE);
@@ -181,20 +205,19 @@ void histfill(int runnum){
 						//normDA0 and normDA1 are the m and b to the mx+b normalization, respectively. The normalization takes the E1 histograms and adds them to the rstrip=0 histogram for each strip(dE).
 						if (normDA0[si2->at(i).PstripdE][rstrip] != 0 ){
 
-							//E1 is the normalized x (uncalibrated Energy) E1 value. They are normalized to the rstrip=0 histogram. E1 norm is the normalized E1 energy for each dE strip (i.e. dE strip 0, E strip 0, 1, 2, 3)
-							E1norm = si2->at(i).E1*normDA0[si2->at(i).PstripdE][rstrip]+normDA1[si2->at(i).PstripdE][rstrip];
+
 							//QQQDAE1sum are the summed normalized E1 histograms. 
 							QQQDAE1sum->Fill(E1norm, si2->at(i).PstripdE);
 							
-							//E1cal is the calibrated E1 energy, assuming a linear calibration for the 3 highest E peaks. 
-							E1cal = E1norm*calDAE1[si2->at(i).PstripdE][0]+calDAE1[si2->at(i).PstripdE][1];
+
 							//QQQDAE1cal are the calibrated DAE1 histograms.
 							QQQDAE1cal->Fill(E1cal, si2->at(i).PstripdE);
 
-							//dEcal is the calibrated dE energy. 
-							dEcal = calDAdE[si2->at(i).PstripdE][0]*si2->at(i).dE + calDAdE[si2->at(i).PstripdE][1];
+
 							//QQQDAdEcal are the calibrated DAdE histograms.
 							QQQDAdEcal->Fill(dEcal, si2->at(i).PstripdE);
+
+							DA_PIDhists_Cal[si2->at(i).PstripdE]->Fill(E1cal,dEcal);
 
 							Ecaltot = E1cal + dEcal;
 					
@@ -228,7 +251,7 @@ void histfill(int runnum){
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
-								if (Ex19Ne > 6.34 && Ex19Ne < 6.52) Exgate++;
+								if (Ex19Ne > 5.8 && Ex19Ne < 6.1) Exgate++;
 
 								//Q-value gate for the intensity histograms filled here.
 								for (int bin = 0; bin < 299; bin++){
@@ -266,7 +289,37 @@ void histfill(int runnum){
 
 					} //closes the rstrip condition if statement
 
+					//gamma data for loop for timing histograms
+					for (unsigned int w = 0; w < gam2->size();w++){
+
+						gamEn = pow(gam2->at(w).en,2)*gamcalparams[gam2->at(w).num][0] + gam2->at(w).en*gamcalparams[gam2->at(w).num][1] + gamcalparams[gam2->at(w).num][2]; 
+
+						timediff = (double)gam2->at(w).time - (double)si2->at(i).time;
+				
+						if (gamEn > 505 && gamEn < 515) gam511vtime->Fill(timediff);
+						if (gamEn > 490 && gamEn < 500) gam511vtimeBACK->Fill(timediff);
+
+						if (gamEn > 232 && gamEn < 239) gam238vtime->Fill(timediff);
+						if (gamEn > 225 && gamEn < 232) gam238vtimeBACK->Fill(timediff);
+
+						if (gamEn > 1223 && gamEn < 1241) gam1233vtime->Fill(timediff);
+						if (gamEn > 1205 && gamEn < 1223) gam1233vtimeBACK->Fill(timediff);
+
+						if (gamEn > 1628 && gamEn < 1639) gam1633vtime->Fill(timediff);
+						if (gamEn > 1675 && gamEn < 1686) gam1633vtimeBACK->Fill(timediff);
+
+						gam_DA->Fill(timediff,si2->at(i).PstripdE);
+						if ((timediff < 216 && timediff > 176) || (timediff < 430 && timediff > 400)) timegate++;
+						if (Ex19Ne > 5.15) TimeHist->Fill(timediff);
+
+						gamTime->Fill(timediff,gamEn);
+					}
+
+					if (timegate > 0) QQQDAExtotTiming->Fill(Ex19Ne);
+					timegate = 0;
+
 				} //closes the restricted gates if statement
+				} //closes resitricted gates if statement
 
 			} //closes the DA if statement
 
@@ -301,11 +354,12 @@ void histfill(int runnum){
 
 
 		for (unsigned int i = 0; i < gam2->size();i++){
-
+		if (tritongate > 0){
+			gam_ind->Fill(gam2->at(i).en,gam2->at(i).num);
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
 
 			if (gamEn != 0){
-				gam_ind->Fill(gamEn,gam2->at(i).num); //Gamma histogram filled by energy and detector number
+				//gam_ind->Fill(gamEn,gam2->at(i).num); //Gamma histogram filled by energy and detector number
 				//gam_cal->Fill(gam2->at(i).en,gam2->at(i).num);
 
 				gam_tot->Fill(gamEn);
@@ -369,6 +423,8 @@ void histfill(int runnum){
 				if (g1297 > 0) gam1297->Fill(gamEn);
 				if (g1840 > 0) gam1840->Fill(gamEn);
 			}
+	
+		}
 
 		}
 
@@ -384,6 +440,7 @@ void histfill(int runnum){
 	gam2->clear();
 	si2->clear();
 	data->Close();
+
 }
 
 //********************************************************************************************************//
@@ -393,9 +450,11 @@ void MakeMyHists(){
 
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	hist = TFile::Open("TotalData.root","RECREATE");
+	hist = TFile::Open("TotalDataTiming.root","RECREATE");
+	std::ofstream logFile("GoddessAnalysis.log");
 	//directories for the PID histograms are created. Directories for the other QQQ histograms are not created because they are put in 2D histograms.
 	QQQ5_DA_PID = hist->mkdir("DA_PID");
+	QQQ5_DA_PID_Cal = hist->mkdir("DA_PID_Cal");
 	QQQ5_DC_PID = hist->mkdir("DC_PID");
 	QQQ5_DA_Tritons = hist->mkdir("DA_Triton_Spectra");
 	QQQ5_DC_Tritons = hist->mkdir("DC_Triton_Spectra");
@@ -406,6 +465,7 @@ void MakeMyHists(){
 	Gamma_Intensity_Hists = hist->mkdir("Gamma_Intensity_Histograms");
 	Q_Gated_QQQ_DA_E1 = hist->mkdir("Q_Gated_QQQ_DA_E1");
 	Q_Gated_QQQ_DA_dE = hist->mkdir("Q_Gated_QQQ_DA_dE");
+	Timing_Spectra = hist->mkdir("Timing_Spectra");
 
 	//QQQ energy histograms are created here.
 	QQQDAdE = new TH2D("QQQDAdE","QQQ5 DA dE",4096,0,4096,32,0,32);
@@ -428,10 +488,13 @@ void MakeMyHists(){
 	QQQDAEx = new TH2D("QQQDAEx","Strip Number vs Excitation Energy",2048,0,15,19,0,19);
 	QQQDAExTot = new TH1D("QQQDAExTot","Excitation Energy of 19Ne",2048,0,15);
 
+	//Test histograms for timing are created here.
+	QQQDAExtotTiming = new TH1D("QQQDAExtotTiming","QQQ5 DA Total E Timing Gated",2048,0,15);
+
 	std::string gambase = "gam_pk";
 
 	Gammasphere_Hists->cd();
-	gam_ind = new TH2D("gam_ind","Individual Gammasphere Detectors",8000,0,8000,111,0,111);
+	gam_ind = new TH2D("gam_ind","Individual Gammasphere Detectors",10000,0,10000,111,0,111);
 	gam_tot = new TH1D("gam_tot","Summed Gammasphere Spectrum",8000,0,8000);
 	Good_gam_tot = new TH1D("Good_gam_tot","Summed Gammasphere Spectrum (Good Resolutions)",8000,0,8000);
 
@@ -488,6 +551,16 @@ void MakeMyHists(){
 		DA_PIDhists.back()->GetYaxis()->SetTitle("Channel Number in dE");
 		DA_PIDhists.back()->GetXaxis()->CenterTitle();
 		DA_PIDhists.back()->GetYaxis()->CenterTitle();
+
+		QQQ5_DA_PID_Cal->cd();
+		TH2D *g0 = new TH2D(TString(nameDA)+"_cal","QQQ5 DA dE vs E1 Strip " + TString(std::to_string(i)),1024,0,32,500,0,6);					
+
+		DA_PIDhists_Cal.push_back(g0);
+
+		DA_PIDhists_Cal.back()->GetXaxis()->SetTitle("E1 Energy (MeV)");
+		DA_PIDhists_Cal.back()->GetYaxis()->SetTitle("dE Energy (MeV)");
+		DA_PIDhists_Cal.back()->GetXaxis()->CenterTitle();
+		DA_PIDhists_Cal.back()->GetYaxis()->CenterTitle();
 
 		QQQ5_DC_PID->cd();
 		//Creates the summed DC PID plots (with coincidences of PstripE-PstripdE <=4)
@@ -581,6 +654,27 @@ void MakeMyHists(){
 		
 	}
 
+	Timing_Spectra->cd();
+
+	gam_DA = new TH2D("gam_DA","Timing Difference Between Gammasphere and QQQ5 DA",2000,-1000,1000,32,0,32);
+	gam_DC = new TH2D("gam_DC","Timing Difference Between Gammasphere and QQQ5 DC",2000,-1000,1000,32,0,32);
+
+	TimeHist = new TH1D("TimeHist","Timing Difference for different QQQ5 Peaks",1000,-500,500);
+
+	gamTime = new TH2D("gamTime","Gamma Energy vs Timing Difference", 1000,-500,500,4000,0,8000);
+
+	gam511vtime = new TH1D("gam511vtime","Gamma 511 intensity vs timing",1000,-500,500); 
+	gam511vtimeBACK = new TH1D("gam511vtimeBACK","Gamma 511 intensity vs timing",1000,-500,500);
+
+	gam238vtime = new TH1D("gam238vtime","Gamma 238 intensity vs timing",1000,-500,500); 
+	gam238vtimeBACK = new TH1D("gam238vtimeBACK","Gamma 238 intensity vs timing",1000,-500,500);
+
+	gam1233vtime = new TH1D("gam1233vtime","Gamma 1233 intensity vs timing",1000,-500,500); 
+	gam1233vtimeBACK = new TH1D("gam1233vtimeBACK","Gamma 1233 intensity vs timing",1000,-500,500);
+
+	gam1633vtime = new TH1D("gam1633vtime","Gamma 1633 intensity vs timing",1000,-500,500); 
+	gam1633vtimeBACK = new TH1D("gam1633vtimeBACK","Gamma 1633 intensity vs timing",1000,-500,500);
+
 	Gamma_Gated_Hists->cd();
 	gam6048 = new TH1D("gam6048","Gammas Gated on 6048 keV Peak",8000,0,8000);
 	gam5555 = new TH1D("gam5555","Gammas Gated on 5555 keV Peak",8000,0,8000);
@@ -640,6 +734,8 @@ void MakeMyHists(){
 //	ifstream inFile8("energyloss.txt");
 	ifstream inFile9("Qbins.txt");
 	ifstream inFile10("QQQDCTGates.txt");
+	ifstream inFile11("CalGatesLo.txt");
+	ifstream inFile12("CalGatesHi.txt");
 
 	for (int i = 0; i<20; i++){
 
@@ -671,6 +767,9 @@ void MakeMyHists(){
 //		if (i<20) inFile7 >> stripangle[i][0] >> stripangle[i][1];
 
 //		if (i<12) inFile8 >> energyloss[i][0] >> energyloss[i][1] >> energyloss[i][2] >> energyloss[i][3] >> energyloss[i][4] >> energyloss[i][5];
+
+		inFile11 >> CalPIDGateLo[i][0] >> CalPIDGateLo[i][1] >> CalPIDGateLo[i][2] >> CalPIDGateLo[i][3] >> CalPIDGateLo[i][4];
+		inFile12 >> CalPIDGateHi[i][0] >> CalPIDGateHi[i][1] >> CalPIDGateHi[i][2] >> CalPIDGateHi[i][3] >> CalPIDGateHi[i][4];
 
 
 	}
@@ -713,10 +812,10 @@ void MakeMyHists(){
 
 
 	int numruns = 0;
-	for (int run = 400; run < 495; run++){
+	for (int run = 412; run < 413; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
 		if ((run > 400 && run < 409 && run != 405) || (run > 409 && run < 424) || (run > 431 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
-			histfill(run);
+			histfill(run,logFile);
 			numruns++;
 		}
 	}
@@ -728,12 +827,17 @@ void MakeMyHists(){
 	int2556->Add(back2556,-1);
 	int4140->Add(back4140,-1);
 	int4362->Add(back4362,-1);
+
+	gam511vtime->Add(gam511vtimeBACK,-1);
+	gam238vtime->Add(gam238vtimeBACK,-1);
+	gam1233vtime->Add(gam1233vtimeBACK,-1);
 	
 	std::cout << "The number of runs analyzed was: " << numruns << std::endl;
 	std::cout << "Writing data to TotalData.root" << std::endl;
 	hist->Write();
 	hist->Close();
 
+	logFile.close();
 
 }
 
