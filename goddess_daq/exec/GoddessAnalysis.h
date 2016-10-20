@@ -50,6 +50,7 @@
 	TH2D *QQQDCdE;
 	TH2D *QQQDCE1;
 	//TH1D *QQQDAtot;
+	TH2D *QQQDAvsGam;
 
 	TH2D *gam_DA;
 	TH2D *gam_DC;

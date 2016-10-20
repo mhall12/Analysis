@@ -34,6 +34,7 @@ void histfill(int runnum, ofstream &log){
 	int g4358 = 0; //Possible 4362 keV peak in 19Ne
 	int g1297 = 0;
 	int g1840 = 0;
+	int g2556 = 0;
 
 	int timegate = 0;
 
@@ -92,13 +93,15 @@ void histfill(int runnum, ofstream &log){
 	double utoMeV = 931.4941;
 
 	//Q-value of the reaction
-	double Q;
+	double Q = 0;
 	double QAl;
 	double Ex19Ne = 0;
 
 	double tritongate = 0;
 
 	double timediff;
+
+	std::vector<double> SiTime;
 
 //	std::vector<std::vector<double>> Qgatevec;
 
@@ -128,6 +131,7 @@ void histfill(int runnum, ofstream &log){
 		g4358 = 0;
 		g1297 = 0;
 		g1840 = 0;
+		g2556 = 0;
 		
 		timegate = 0;
 
@@ -153,6 +157,7 @@ void histfill(int runnum, ofstream &log){
 			if (gamEn >= 4331 && gamEn <= 4373) g4358++;
 			if (gamEn >= 1276 && gamEn <= 1314) g1297++;
 			if (gamEn >= 1836 && gamEn <= 1843) g1840++;
+			if (gamEn >= 2526 && gamEn <= 2576) g2556++;
 		}
 
 		//Fill the Si histograms here:
@@ -185,6 +190,8 @@ void histfill(int runnum, ofstream &log){
 				if (dEcal < PIDGateHiCal && dEcal > PIDGateLoCal){
 
 					tritongate++;
+
+					SiTime.push_back((double)si2->at(i).time);
 
 					//DA_PIDhists is the gated triton PIDs. 
 					DA_PIDhists[si2->at(i).PstripdE]->Fill(si2->at(i).E1,si2->at(i).dE);
@@ -251,7 +258,7 @@ void histfill(int runnum, ofstream &log){
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
-								if (Ex19Ne > 5.8 && Ex19Ne < 6.1) Exgate++;
+								if (Ex19Ne > 5.3 && Ex19Ne < 5.4) Exgate++;
 
 								//Q-value gate for the intensity histograms filled here.
 								for (int bin = 0; bin < 299; bin++){
@@ -313,6 +320,9 @@ void histfill(int runnum, ofstream &log){
 						if (Ex19Ne > 5.15) TimeHist->Fill(timediff);
 
 						gamTime->Fill(timediff,gamEn);
+
+						if ( (73 < timediff && timediff < 104) || (190 < timediff && timediff < 217) || (416 < timediff && timediff < 440)) QQQDAvsGam->Fill(Ex19Ne,gamEn); 
+
 					}
 
 					if (timegate > 0) QQQDAExtotTiming->Fill(Ex19Ne);
@@ -353,12 +363,19 @@ void histfill(int runnum, ofstream &log){
 		}
 
 
+
 		for (unsigned int i = 0; i < gam2->size();i++){
+		timegate = 0;
 		if (tritongate > 0){
 			gam_ind->Fill(gam2->at(i).en,gam2->at(i).num);
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
 
-			if (gamEn != 0){
+			for (unsigned int j = 0; j < SiTime.size(); j++){
+				timediff = (double)gam2->at(i).time - SiTime[j];
+				if ( (73 < timediff && timediff < 104) || (190 < timediff && timediff < 217) || (416 < timediff && timediff < 440)) timegate++;
+			}
+
+			if (gamEn != 0 && timegate > 0){
 				//gam_ind->Fill(gamEn,gam2->at(i).num); //Gamma histogram filled by energy and detector number
 				//gam_cal->Fill(gam2->at(i).en,gam2->at(i).num);
 
@@ -429,7 +446,8 @@ void histfill(int runnum, ofstream &log){
 		}
 
 		for (int c=0; c<300; c++){ Qgatearray[c][1] = 0;}
-
+		timegate = 0;
+		SiTime.clear();
 	}
 
 
@@ -441,6 +459,7 @@ void histfill(int runnum, ofstream &log){
 	si2->clear();
 	data->Close();
 
+
 }
 
 //********************************************************************************************************//
@@ -450,7 +469,7 @@ void MakeMyHists(){
 
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	hist = TFile::Open("TotalDataTiming.root","RECREATE");
+	hist = TFile::Open("TotalDataTiming2.root","RECREATE");
 	std::ofstream logFile("GoddessAnalysis.log");
 	//directories for the PID histograms are created. Directories for the other QQQ histograms are not created because they are put in 2D histograms.
 	QQQ5_DA_PID = hist->mkdir("DA_PID");
@@ -478,6 +497,8 @@ void MakeMyHists(){
 	QQQDAE1sum = new TH2D("QQQDAE1sum","QQQ5 DA E1 Summed Histograms",1024,0,1024,32,0,32);
 	QQQDAE1cal = new TH2D("QQQDAE1cal","QQQ5 DA E1 Calibrated Histograms",512,0,32,32,0,32);
 	QQQDAdEcal = new TH2D("QQQDAdEcal","QQQ5 DA dE Calibrated Histograms",512,0,32,32,0,32);
+	
+	QQQDAvsGam = new TH2D("QQQDAvsGam","Gamma Energy vs Q-value",2048,0,15,8000,0,8000);
 
 	QQQ5_DA_TotalE->cd();
 	QQQDATot = new TH2D("QQQDATot","QQQ5 DA Total Energy",2048,0,32,32,0,32);
@@ -812,7 +833,7 @@ void MakeMyHists(){
 
 
 	int numruns = 0;
-	for (int run = 412; run < 413; run++){
+	for (int run = 400; run < 495; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
 		if ((run > 400 && run < 409 && run != 405) || (run > 409 && run < 424) || (run > 431 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
 			histfill(run,logFile);

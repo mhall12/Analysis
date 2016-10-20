@@ -10,6 +10,7 @@ void histfill(string runfile){
 	
 	newtree = (TTree*)datafile->Get("t2");
 	double ene2[200] = {};
+	long long int timefull2[200] = {};
 
 	double dESBcalE;
 	double TotE = 0;
@@ -19,15 +20,16 @@ void histfill(string runfile){
 	double E1calE[5] = {};
 	double dE2calE[5] = {};
 
+	long long int tdiff;
+
 	int TritonGate = 0;
 	int TritonGate64 = 0;
 
 	//Calibration Parameters used to fix the Rough Calibration and make it agree with the Gammasphere calibration
 	double GamReCal[2] = {.9702, 38.871}; 
 
-	std::cout << GamReCal[0] << " " << GamReCal[1] << std::endl;
-
 	newtree->SetBranchAddress("ene",&ene2);
+	newtree->SetBranchAddress("timefull",&timefull2);
 
 	nEntries = newtree->GetEntries();
 
@@ -69,6 +71,7 @@ void histfill(string runfile){
 				//for (int j = 0; j < 4; j++){
 				//	if (i < 4 && dE2calE[i] != 0 && E1calE[j] != 0){
 				//		TotE = dE2calE[i] + dE2calE[j];
+					//Only Picking out the backside of dE2
 					if (i == 4){
 						TotE = dE2calE[i] + dESBcalE;
 						SBvTotE->Fill(TotE,dESBcalE);
@@ -78,6 +81,17 @@ void histfill(string runfile){
 
 				if (TotE > 9.84 && TotE < 12.65 && dESBcalE > 1.25 && dESBcalE < 2.2){
 					TritonGate++;
+
+					for (int j = 0; j < 16; j++){
+						GamCalE = ene2[j]*GamCalParams[j][0] + GamCalParams[j][1];
+
+						tdiff = timefull2[j] - timefull2[i+37];
+
+					//	if (ene2[j] > 0) std::cout << "Gamma Time: " << timefull2[j] << " Si Time: " << timefull2[i+37] << std::endl; 
+
+						if (GamCalE > 0) TimeDiff->Fill(tdiff);
+
+					}
 				}
 
 				if (TotE > 9.9 && TotE < 10.7 && dESBcalE > 1.25 && dESBcalE < 2.2) TritonGate64++;
@@ -117,7 +131,7 @@ void MakeMyHists(){
 		std::cout << "Data with 8.5 MV on the Tandem. DataHighE.root will be recreated." << std::endl;
 	}
 	if (runmode == 2){
-		hist = TFile::Open("DataLowE.root","RECREATE");
+		hist = TFile::Open("DataLowEtest.root","RECREATE");
 		std::cout << "Data with 7.0 MV on the Tandem. DataLowE.root will be recreated." << std::endl;
 	}
 	
@@ -156,6 +170,7 @@ void MakeMyHists(){
 		Clovers = hist->mkdir("Clovers");
 		Single_Channel_Histograms = hist->mkdir("Si_Detectors/Single_Channel_Histograms");
 		Single_Gamma_Dets = hist->mkdir("Clovers/Single_Gamma_Dets");
+		Timing_Histograms = hist->mkdir("Timing_Histograms");
 
 		hist->cd("Si_Detectors/Single_Channel_Histograms");
 		
@@ -228,6 +243,12 @@ void MakeMyHists(){
 
 		}
 
+		hist->cd("Timing_Histograms");
+
+		TimeDiff = new TH1D("TimeDiff","Timing Difference Between Gamma and Si Dets",400,-10000000,10000000);
+
+		
+
 		
 
 	}
@@ -243,9 +264,9 @@ void MakeMyHists(){
 	
 		if (runmode == 1 && i > 16 && i < 80) histfill(filebuffer);
 
-		if (runmode == 2 && i > 85 && i < 171) histfill(filebuffer);
+//		if (runmode == 2 && i > 85 && i < 171) histfill(filebuffer);
 
-//		if (runmode == 2 && i > 85 && i < 87) histfill(filebuffer);
+		if (runmode == 2 && i > 85 && i < 95) histfill(filebuffer);
 
 
 	}

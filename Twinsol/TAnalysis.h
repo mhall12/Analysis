@@ -30,6 +30,7 @@
 	TDirectory *Raw_Data;
 	TDirectory *PIDs;
 	TDirectory *Single_Gamma_Dets;
+	TDirectory *Timing_Histograms;
 
 	TH1D *dESB;
 
@@ -39,3 +40,4 @@
 	TH1D *GamTotT;
 	TH1D *GamTotT64;
 	TH1D *GoodGamTotT64;
+	TH1D *TimeDiff;
