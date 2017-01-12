@@ -14,9 +14,14 @@
 	int runmode;
 
 	std::vector<TH1D*> RawData;
+	std::vector<TH1D*> dE1hists;
 	std::vector<TH1D*> dE2hists;
 	std::vector<TH1D*> E1hists;
 	std::vector<TH1D*> GamCalHists;
+
+	std::vector<TH2D*> PIDres1;
+
+	std::vector<std::vector<TH2D*>> PIDres;
 
 	double E1cal[5][2];
 	double dE2cal[5][2];

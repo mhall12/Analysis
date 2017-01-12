@@ -8,7 +8,7 @@
 void QuadCalc(){
 
 	std::ifstream hep("gamhep.txt");
-	std::ofstream out("GamCalParamsQuad.txt");
+	std::ofstream out("GamCalParamsQuadREDO.txt");
 
 	double HighEn[111] = {};
 	double Sxx = 0;
@@ -32,7 +32,7 @@ void QuadCalc(){
 
 	std::vector<std::vector<double>> PeakPos2(PeakPos);
 
-	double gamEnergies2[13] = {846.8, 1238.2, 2598.86, 121.78, 244.7, 344.27, 778.9, 867.4, 964.1, 1085, 1112, 1408, 6048.2};
+	double gamEnergies2[13] = {846.8, 1238.2, 2598.86, 121.78, 244.7, 344.27, 778.9, 867.4, 964.1, 1085, 1112, 1408, 6130};
 
 	for (int i = 0; i < 111; i++){
 		
@@ -96,9 +96,9 @@ void QuadCalc(){
 void RegCalc2()
 {
 	std::ifstream hep("gamhep.txt");
-	std::ofstream out3("GamCalLinWHigh.txt");
+	std::ofstream out3("GamCalLinWHighREDO.txt");
 
-	double gamEnergies3[13] = {846.8, 1238.2, 2598.86, 121.78, 244.7, 344.27, 778.9, 867.4, 964.1, 1085, 1112, 1408, 6048.2};
+	double gamEnergies3[13] = {846.8, 1238.2, 2598.86, 121.78, 244.7, 344.27, 778.9, 867.4, 964.1, 1085, 1112, 1408, 6130};
 
 	double sy = 0;
 	double sx2 = 0;
@@ -327,7 +327,7 @@ void CalGam(){
 	TFile *gCo = TFile::Open("GamCo.root");
 	TFile *gEu = TFile::Open("GamEu.root");
 
-	std::ofstream outFile("GamCalParams.txt");
+	std::ofstream outFile("GamCalParamsREDO.txt");
 
 	TH1 *hist1;
 	TH1 *hist2;

@@ -17,6 +17,9 @@ void histfill(string runfile){
 	double GamCalE;
 	double ReGamCalE;
 
+	double Eres;
+
+	double dE1calE[5] = {};
 	double E1calE[5] = {};
 	double dE2calE[5] = {};
 
@@ -45,7 +48,10 @@ void histfill(string runfile){
 
 		newtree->GetEntry(evt);
 
-		if (evt % 100000 == 0) std::cout << "Processing event number " << evt << " of " << nEntries << std::endl;
+		if (evt % 10000 == 0){
+			std::cout << "Processing event number " << evt << " of " << nEntries << " \r";
+			std::cout.flush();
+		}
 
 
 		for (int i = 0; i<48; i++){
@@ -60,13 +66,15 @@ void histfill(string runfile){
 
 		if (runmode != 0){
 			for (int i = 0; i < 5; i++){
+				if (runmode == 1 && ene2[i+32] > 0) dE1calE[i] = ene2[i+32] * dE1cal[i][0] + dE1cal[i][1];
 				if (ene2[i+37] > 0) dE2calE[i] = ene2[i+37] * dE2cal[i][0] + dE2cal[i][1];
 				if (ene2[i+42] > 0) E1calE[i] = ene2[i+42] * E1cal[i][0] + E1cal[i][1];			
 
 				if (ene2[i+37] > 0) dE2hists[i]->Fill(dE2calE[i]);
 				if (ene2[i+42] > 0) E1hists[i]->Fill(E1calE[i]);
 
-				SBvdE2[i]->Fill(dE2calE[i],dESBcalE);
+				if (runmode == 2){
+					SBvdE2[i]->Fill(dE2calE[i],dESBcalE);
 				
 				//for (int j = 0; j < 4; j++){
 				//	if (i < 4 && dE2calE[i] != 0 && E1calE[j] != 0){
@@ -77,24 +85,44 @@ void histfill(string runfile){
 						SBvTotE->Fill(TotE,dESBcalE);
 					}
 
+				
+
 				//}
 
-				if (TotE > 9.84 && TotE < 12.65 && dESBcalE > 1.25 && dESBcalE < 2.2){
-					TritonGate++;
+					if (TotE > 9.84 && TotE < 12.65 && dESBcalE > 1.25 && dESBcalE < 2.2){
+						TritonGate++;
 
-					for (int j = 0; j < 16; j++){
-						GamCalE = ene2[j]*GamCalParams[j][0] + GamCalParams[j][1];
+						for (int j = 0; j < 16; j++){
+							GamCalE = ene2[j]*GamCalParams[j][0] + GamCalParams[j][1];
 
-						tdiff = timefull2[j] - timefull2[i+37];
+							tdiff = timefull2[j] - timefull2[i+37];
 
-					//	if (ene2[j] > 0) std::cout << "Gamma Time: " << timefull2[j] << " Si Time: " << timefull2[i+37] << std::endl; 
+						//	if (ene2[j] > 0) std::cout << "Gamma Time: " << timefull2[j] << " Si Time: " << timefull2[i+37] << std::endl; 
 
-						if (GamCalE > 0) TimeDiff->Fill(tdiff);
+							if (GamCalE > 0) TimeDiff->Fill(tdiff);
+
+						}
+					}
+
+					if (TotE > 9.9 && TotE < 10.7 && dESBcalE > 1.25 && dESBcalE < 2.2) TritonGate64++;
+				}
+
+				if (runmode == 1){
+
+					dE1hists[i]->Fill(dE1calE[i]);
+					for (int j = 0; j < 5; j++){
+						int test;
+						if (i < 4) test = i*-1+3;
+						else test=4;
+						
+						Eres = dE2calE[j] + E1calE[i];
+
+						if (i == 4) PIDres[i][j]->Fill(Eres,dE1calE[i]);
+
+
 
 					}
 				}
-
-				if (TotE > 9.9 && TotE < 10.7 && dESBcalE > 1.25 && dESBcalE < 2.2) TritonGate64++;
 
 			}
 		
@@ -120,14 +148,14 @@ void histfill(string runfile){
 void MakeMyHists(){
 
 	//runmode = 0 is for calibration, runmode = 1 is for 8.5 MV data, runmode = 2 is for 7 MV data;
-	runmode = 2;
+	runmode = 1;
 	
 	if (runmode == 0){
 		hist = TFile::Open("CalibrationData60Co.root","RECREATE");
 		std::cout << "Calibration Run Mode. CalibrationData.root will be recreated." << std::endl;
 	}
 	if (runmode == 1){
-		hist = TFile::Open("DataHighE.root","RECREATE");
+		hist = TFile::Open("DataHighEtest.root","RECREATE");
 		std::cout << "Data with 8.5 MV on the Tandem. DataHighE.root will be recreated." << std::endl;
 	}
 	if (runmode == 2){
@@ -177,6 +205,10 @@ void MakeMyHists(){
 		if (runmode == 2) dESB = new TH1D("dESB","dE1 Single SB Calibrated",2000,0,20);
 
 		for (int i = 0; i < 5; i++){
+			if (runmode == 1){
+				TH1D *h0 = new TH1D("dE1_" + TString(std::to_string(i)), "dE1 Detector Channel " + TString(std::to_string(i)) + " Calibrated", 2000,0,35000);
+				dE1hists.push_back(h0);
+			}
 
 			TH1D *h1 = new TH1D("E1_" + TString(std::to_string(i)), "E1 Detector Channel " + TString(std::to_string(i)) + " Calibrated", 2000,0,20);
 			E1hists.push_back(h1);
@@ -189,13 +221,32 @@ void MakeMyHists(){
 
 		hist->cd("Si_Detectors/PIDs");
 		
-		for (int i = 0; i<5; i++){
-			TH2D *h3 = new TH2D("SBvdE2_" + TString(std::to_string(i)), "Surface Barrier dE vs dE2 Strip " + TString(std::to_string(i)), 2000,0,20,2000,0,20);
-			SBvdE2.push_back(h3);
+		if (runmode == 2){
+			for (int i = 0; i<5; i++){
+				TH2D *h3 = new TH2D("SBvdE2_" + TString(std::to_string(i)), "Surface Barrier dE vs dE2 Strip " + TString(std::to_string(i)), 2000,0,20,2000,0,20);
+				SBvdE2.push_back(h3);
+			}
+		
+
+
+			SBvTotE = new TH2D("SBvTotE", "Surface Barrier dE vs Total E", 2000,0,20,2000,0,20);
+
 		}
 
+		if (runmode == 1){
+			for (int i=0; i<5; i++){
+				for (int j = 0; j < 5; j++){
+					TH2D *h4 = new TH2D("dE1_" + TString(std::to_string(i)) + "dE2_" + TString(std::to_string(j)) + "E1_" + TString(std::to_string(i)), "dE1 Strip " +  TString(std::to_string(i)) + " vs Eres",3000,0,30,2000,0,35000);
+					PIDres1.push_back(h4);
+				}
 
-		SBvTotE = new TH2D("SBvTotE", "Surface Barrier dE vs Total E", 2000,0,20,2000,0,20);
+				PIDres.push_back(PIDres1);
+
+				PIDres1.clear();
+
+			}
+
+		}
 
 		Clovers->cd();
 
@@ -262,8 +313,8 @@ void MakeMyHists(){
 		
 		if (runmode == 0 && i > 5 && i < 12) histfill(filebuffer);
 	
+//		if (runmode == 1 && i > 16 && i < 80) histfill(filebuffer);
 		if (runmode == 1 && i > 16 && i < 80) histfill(filebuffer);
-
 //		if (runmode == 2 && i > 85 && i < 171) histfill(filebuffer);
 
 		if (runmode == 2 && i > 85 && i < 95) histfill(filebuffer);
