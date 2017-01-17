@@ -28,6 +28,8 @@ void histfill(string runfile){
 	int TritonGate = 0;
 	int TritonGate64 = 0;
 
+	int timegate = 0;
+
 	//Calibration Parameters used to fix the Rough Calibration and make it agree with the Gammasphere calibration
 	double GamReCal[2] = {.9702, 38.871}; 
 
@@ -40,6 +42,9 @@ void histfill(string runfile){
 
 		TritonGate = 0;
 		TritonGate64 = 0;
+		timegate = 0;
+
+	int timegatearr[26] = {0};
 
 		for (int i = 0; i < 5; i++){
 			E1calE[i] = 0;
@@ -66,6 +71,9 @@ void histfill(string runfile){
 
 		if (runmode != 0){
 			for (int i = 0; i < 5; i++){
+				dE1calE[i] = 0;
+				dE2calE[i] = 0;
+				E1calE[i] = 0;
 				if (runmode == 1 && ene2[i+32] > 0) dE1calE[i] = ene2[i+32] * dE1cal[i][0] + dE1cal[i][1];
 				if (ene2[i+37] > 0) dE2calE[i] = ene2[i+37] * dE2cal[i][0] + dE2cal[i][1];
 				if (ene2[i+42] > 0) E1calE[i] = ene2[i+42] * E1cal[i][0] + E1cal[i][1];			
@@ -111,15 +119,26 @@ void histfill(string runfile){
 
 					dE1hists[i]->Fill(dE1calE[i]);
 					for (int j = 0; j < 5; j++){
-						int test;
-						if (i < 4) test = i*-1+3;
-						else test=4;
-						
-						Eres = dE2calE[j] + E1calE[i];
+						dE2calE[j] = 0;
+						if (ene2[j+37] > 0) dE2calE[j] = ene2[j+37] * dE2cal[j][0] + dE2cal[j][1];
 
-						if (i == 4) PIDres[i][j]->Fill(Eres,dE1calE[i]);
+						PIDres[i][j]->Fill(dE2calE[j],dE1calE[i]);
 
+						if (dE2calE[j] < 11.3759 && dE2calE[j] > 4.74 && dE1calE[i] >3457 && dE1calE[i] < 5550 && i == 4){
+							TritonGate++;
+							for (int k = 0; k < 16; k++){
+								GamCalE = ene2[k]*GamCalParams[k][0] + GamCalParams[k][1];
+								tdiff = timefull2[k] - timefull2[36];
+								if (GamCalE > 0) TimeDiff->Fill(tdiff);
 
+								if (tdiff > 33000 && tdiff < 550000) timegate++;
+								int timer = -4000000;
+								for (int t = 0; t < 26; t++){
+									if (tdiff > timer && tdiff < timer+500000) timegatearr[t]++;
+									timer += 500000;
+								}
+							}
+						}
 
 					}
 				}
@@ -128,15 +147,23 @@ void histfill(string runfile){
 		
 			for (int i = 0; i < 16; i++){
 				GamCalE = ene2[i]*GamCalParams[i][0] + GamCalParams[i][1];
-				ReGamCalE = GamCalE*0.9702 + 38.871;
+				ReGamCalE = GamCalE;//*.9836 + 23.011;
+
+				if (ene2[0]>0 && ene2[0] < 20000) Gamma35vsTime->Fill(timefull2[0]/1E10,ene2[0]);
 
 				if (ReGamCalE > 40){
-					GamCalHists[i]->Fill(ReGamCalE);
+					GamCalHists[i]->Fill(ene2[i]);
 					GamTot->Fill(ReGamCalE);
 				
 					if (TritonGate > 0) GamTotT->Fill(ReGamCalE);
 					if (TritonGate64 > 0) GamTotT64->Fill(ReGamCalE);
-					if ((i == 0 || i == 8 || i == 9 || i == 10 || i == 11 || i == 12 || i == 13) && TritonGate64 > 0) GoodGamTotT64->Fill(ReGamCalE);
+					if ((i == 8 || i == 9 || i == 10 || i == 11 || i == 12 || i == 13) && TritonGate > 0) GoodGamTotT64->Fill(ReGamCalE);
+
+					for (int t=0; t<26; t++){
+						if (timegatearr[t] > 0 && TritonGate>0) TimeGatedGammas[t]->Fill(ReGamCalE);
+
+					}
+
 				}
 			}
 		}
@@ -155,7 +182,7 @@ void MakeMyHists(){
 		std::cout << "Calibration Run Mode. CalibrationData.root will be recreated." << std::endl;
 	}
 	if (runmode == 1){
-		hist = TFile::Open("DataHighEtest.root","RECREATE");
+		hist = TFile::Open("DataHighGAMMAvsTIMING.root","RECREATE");
 		std::cout << "Data with 8.5 MV on the Tandem. DataHighE.root will be recreated." << std::endl;
 	}
 	if (runmode == 2){
@@ -236,7 +263,7 @@ void MakeMyHists(){
 		if (runmode == 1){
 			for (int i=0; i<5; i++){
 				for (int j = 0; j < 5; j++){
-					TH2D *h4 = new TH2D("dE1_" + TString(std::to_string(i)) + "dE2_" + TString(std::to_string(j)) + "E1_" + TString(std::to_string(i)), "dE1 Strip " +  TString(std::to_string(i)) + " vs Eres",3000,0,30,2000,0,35000);
+					TH2D *h4 = new TH2D("dE1_" + TString(std::to_string(i)) + "dE2_" + TString(std::to_string(j)), "dE1 Strip " +  TString(std::to_string(i)) + " vs dE2 Strip " + TString(std::to_string(j)),300,0,15,1000,0,10000);
 					PIDres1.push_back(h4);
 				}
 
@@ -250,13 +277,13 @@ void MakeMyHists(){
 
 		Clovers->cd();
 
-		GamTot = new TH1D("GamTot","Total Calibrated Clovershare Spectrum",8000,0,8000);
+		GamTot = new TH1D("GamTot","Total Calibrated Clovershare Spectrum",7000,0,8000);
 
-		GamTotT = new TH1D("GamTotT","Total Calibrated Clovershare Spectrum Triton Gated",8000,0,8000);
+		GamTotT = new TH1D("GamTotT","Total Calibrated Clovershare Spectrum Triton Gated",7000,0,8000);
 
-		GamTotT64 = new TH1D("GamTotT64","Total Calibrated Clovershare Spectrum 6.4 MeV Triton Gated",8000,0,8000);
+		GamTotT64 = new TH1D("GamTotT64","Total Calibrated Clovershare Spectrum 6.4 MeV Triton Gated",7000,0,8000);
 
-		GoodGamTotT64 = new TH1D("GoodGamTotT64","Total Calibrated Clovershare Spectrum 6.4 MeV Triton Gated",8000,0,8000);
+		GoodGamTotT64 = new TH1D("GoodGamTotT64","Total Calibrated Clovershare Spectrum 6.4 MeV Triton Gated",7000,0,8000);
 
 		hist->cd("Clovers/Single_Gamma_Dets");
 
@@ -287,7 +314,7 @@ void MakeMyHists(){
 				CloverNo = i - 12;
 			}
 		
-			TH1D *h4 = new TH1D("gam_" + TString(std::to_string(CloverDetNo)) + "_" + TString(std::to_string(CloverNo)), "Detector #" + TString(std::to_string(CloverDetNo)) + " Clover #" + TString(std::to_string(CloverNo)), 8000, 0, 8000);
+			TH1D *h4 = new TH1D("gam_" + TString(std::to_string(CloverDetNo)) + "_" + TString(std::to_string(CloverNo)), "Detector #" + TString(std::to_string(CloverDetNo)) + " Clover #" + TString(std::to_string(CloverNo)), 25000, 0, 25000);
 
 			GamCalHists.push_back(h4);
 
@@ -298,7 +325,14 @@ void MakeMyHists(){
 
 		TimeDiff = new TH1D("TimeDiff","Timing Difference Between Gamma and Si Dets",400,-10000000,10000000);
 
-		
+		for (int t=0; t<26; t++){
+			TH1D *h5 = new TH1D("timebin_" + TString(std::to_string(t)), "Time Bin " + TString(std::to_string(t)),7000,0,8000);
+
+			TimeGatedGammas.push_back(h5);
+
+		}
+
+		//Gamma35vsTime = new TH2D("Gamma35vsTime","Gamma 35 vs timing",8000,4.4E8,4.8E8,8000,0,16000);
 
 		
 
@@ -314,7 +348,10 @@ void MakeMyHists(){
 		if (runmode == 0 && i > 5 && i < 12) histfill(filebuffer);
 	
 //		if (runmode == 1 && i > 16 && i < 80) histfill(filebuffer);
-		if (runmode == 1 && i > 16 && i < 80) histfill(filebuffer);
+		if (runmode == 1 && i > 16 && i < 80){
+			histfill(filebuffer);
+
+		}
 //		if (runmode == 2 && i > 85 && i < 171) histfill(filebuffer);
 
 		if (runmode == 2 && i > 85 && i < 95) histfill(filebuffer);

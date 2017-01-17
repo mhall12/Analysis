@@ -23,6 +23,8 @@
 
 	std::vector<std::vector<TH2D*>> PIDres;
 
+	std::vector<TH1D*> TimeGatedGammas;
+
 	double E1cal[5][2];
 	double dE2cal[5][2];
 	double dE1cal[5][2];
@@ -46,3 +48,5 @@
 	TH1D *GamTotT64;
 	TH1D *GoodGamTotT64;
 	TH1D *TimeDiff;
+
+	TH2D *Gamma35vsTime;
