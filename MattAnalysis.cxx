@@ -7,7 +7,7 @@ void histfill(int runnum, ofstream &log1){
 	std::cout << "Run " << runnum << " is now being analyzed." << std::endl; 	
 	std::cout << "../exec/rootfiles/run" + TString(std::to_string(runnum)) + ".root" << endl;
 	//the code opens the file here
-	data = TFile::Open("../exec/rootfiles/run" + TString(std::to_string(runnum)) + "SX3revgatetest.root");
+	data = TFile::Open("../exec/rootfiles/QQQ5/run" + TString(std::to_string(runnum)) + "QQQ5_SKIMMED_AGAIN.root");
 	//trees->cd();
 
 	//the data from trees/god is placed into a container gam2 and si2.
@@ -108,16 +108,16 @@ void histfill(int runnum, ofstream &log1){
 
 	double timediff;
 
+	std::vector<double> gam511;
+
+
+	//In the TimeDiff vector, index 1 refers to the Gamma and index 2 refers to the Si event
+	std::vector<std::vector<double>> TimeDiff;
+
 	std::vector<double> SiTime;
 
-
-//	std::vector<std::vector<double>> Qgatevec;
-
-//	for (int i = 0; i < 300; i++){
-//		Qbins[i] = -15 + (double)i/20;
-//	}
-
-	//Qgatevec stores the bin center of Qbin if there is an event in the bin.
+	//Saves the Gamma Index number for a time that is in the time gate
+	std::vector<int> TimingGammaIndex;
 	
 
 	log1 << "Run Number: " << runnum << " Number of Entries: " << nEntries << std::endl;
@@ -140,7 +140,11 @@ void histfill(int runnum, ofstream &log1){
 		timegate = 0;
 
 		tritongate = 0;
-			
+
+		int ExGates[31] = {0};
+
+		gam511.clear();
+				
 		for (int g = 0; g<4; g++) pkgate[g] = 0;
 
 		nt->GetEntry(evt);
@@ -150,6 +154,7 @@ void histfill(int runnum, ofstream &log1){
 		}
 
 		//We'll use the for loop here to draw gamma gates.
+
 		for (unsigned int i = 0; i < gam2->size();i++){
 			//if (gam2->at(i).en*.81 > 236 && gam2->at(i).en*.81 < 242) gamgate++;
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
@@ -160,7 +165,10 @@ void histfill(int runnum, ofstream &log1){
 			if (gamEn >= 1276 && gamEn <= 1314) g1297++;
 			if (gamEn >= 1836 && gamEn <= 1843) g1840++;
 			if (gamEn >= 2526 && gamEn <= 2576) g2556++;
+
+
 		}
+
 
 		//Fill the Si histograms here:
 		for(unsigned int i = 0; i < si2->size();i++){
@@ -183,7 +191,45 @@ void histfill(int runnum, ofstream &log1){
 			//rstrip is the difference between the E1 strip number and the dE strip number
 			int rstrip = stripE1-stripdE;			
 
-			//if (E1 < 620 && E1 > 577 && stripE1 == 1) gate++;
+			//***********************************BEGIN TIMING********************************************
+			for (unsigned int w = 0; w < gam2->size();w++){
+				TimingGammaIndex.push_back(0);
+				gamEn = pow(gam2->at(w).en,2)*gamcalparams[gam2->at(w).num][0] + gam2->at(w).en*gamcalparams[gam2->at(w).num][1] + gamcalparams[gam2->at(w).num][2]; 
+				
+
+				if (si2->at(i).telescopeID == 1100){
+					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(0,false);
+					//if (timediff < 445 && timediff > 400){
+					if (timediff < 430 && timediff > 412){
+						TimingGammaIndex[w]++;
+						timegate++;
+
+					}
+
+					TDiffDA->Fill(timediff);
+					
+				}
+
+				if (si2->at(i).telescopeID == 1102){
+					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(0,false);
+					if (timediff < 203 && timediff > 189) TimingGammaIndex[w]++;
+					TDiffDC->Fill(timediff);
+				}
+	
+				if (si2->at(i).telescopeID >= 2104 && si2->at(i).telescopeID <= 2110 && si2->at(i).telescopeID != 2106){
+					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(1,false);
+					//if (timediff < 203 && timediff > 189) TimingGammaIndex[w]++;
+					TDiffSX3->Fill(timediff);
+				}
+
+				if (gamEn > 506 && gamEn < 514) gam511.push_back(gamEn);
+				else gam511.push_back(0);
+
+
+			}
+			//***********************************END TIMING********************************************
+
+
 			if (si2->at(i).telescopeID == 1100 && si2->at(i).MultLayer(0,false) == 1 && si2->at(i).MultLayer(1,false) == 1){
 
 				//E1 is the normalized x (uncalibrated Energy) E1 value. They are normalized to the rstrip=0 histogram. E1 norm is the normalized E1 energy for each dE strip (i.e. dE strip 0, E strip 0, 1, 2, 3)
@@ -252,10 +298,8 @@ void histfill(int runnum, ofstream &log1){
 							
 							if (stripdE < 20){
 								//QQQDATot2 stores the calibrated energy BEFORE the Al blocker in strip # vs energy.
-							//	angle = stripangle[stripdE][1];
 								angle = AandEloss[stripdE][0];
 
-							//	Einit = pow(Ecaltot,3)*energyloss[angle-15][2]+pow(Ecaltot,2)*energyloss[angle-15][3]+Ecaltot*energyloss[angle-15][4]+energyloss[angle-15][5];
 								Einit = pow(Ecaltot,3)*AandEloss[stripdE][2]+pow(Ecaltot,2)*AandEloss[stripdE][3]+Ecaltot*AandEloss[stripdE][4]+AandEloss[stripdE][5];
 
 								QQQDATot2->Fill(Einit, stripdE);
@@ -275,7 +319,12 @@ void histfill(int runnum, ofstream &log1){
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
-								if (Ex19Ne > 5.3 && Ex19Ne < 5.4) Exgate++;
+								if (Ex19Ne > 6 && Ex19Ne < 6.3) Exgate++;
+
+								//Put the for loop for the range of Ex gates here
+								for (int ex = 0; ex < 31; ex++){
+									if (Ex19Ne > ExGateArrLow[ex] && Ex19Ne < ExGateArrHi[ex]) ExGates[ex]++;
+								}//closes ex for loop
 
 								//Q-value gate for the intensity histograms filled here.
 								for (int bin = 0; bin < 299; bin++){
@@ -288,8 +337,8 @@ void histfill(int runnum, ofstream &log1){
 									if (Q > Qgatelo[g] && Q < Qgatehi[g]){
 										Q_gated_E1[stripdE]->Fill(E1norm);
 										Q_DA_dE_Gated[stripdE][g]->Fill(dE);
-									}
-								}
+									}//closes if Qgate statement
+								}//closes g for loop
 
 							}//closes if strip(dE)<20 
 
@@ -313,37 +362,9 @@ void histfill(int runnum, ofstream &log1){
 
 					} //closes the rstrip condition if statement
 
-					//gamma data for loop for timing histograms
-					for (unsigned int w = 0; w < gam2->size();w++){
-
-						gamEn = pow(gam2->at(w).en,2)*gamcalparams[gam2->at(w).num][0] + gam2->at(w).en*gamcalparams[gam2->at(w).num][1] + gamcalparams[gam2->at(w).num][2]; 
-
-						timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(0,false);
-				
-						if (gamEn > 505 && gamEn < 515) gam511vtime->Fill(timediff);
-						if (gamEn > 490 && gamEn < 500) gam511vtimeBACK->Fill(timediff);
-
-						if (gamEn > 232 && gamEn < 239) gam238vtime->Fill(timediff);
-						if (gamEn > 225 && gamEn < 232) gam238vtimeBACK->Fill(timediff);
-
-						if (gamEn > 1223 && gamEn < 1241) gam1233vtime->Fill(timediff);
-						if (gamEn > 1205 && gamEn < 1223) gam1233vtimeBACK->Fill(timediff);
-
-						if (gamEn > 1628 && gamEn < 1639) gam1633vtime->Fill(timediff);
-						if (gamEn > 1675 && gamEn < 1686) gam1633vtimeBACK->Fill(timediff);
-
-						gam_DA->Fill(timediff,stripdE);
-						if ((timediff < 216 && timediff > 176) || (timediff < 430 && timediff > 400)) timegate++;
-						if (Ex19Ne > 5.15) TimeHist->Fill(timediff);
-
-						gamTime->Fill(timediff,gamEn);
-
-						if ( (73 < timediff && timediff < 104) || (190 < timediff && timediff < 217) || (416 < timediff && timediff < 440)) QQQDAvsGam->Fill(Ex19Ne,gamEn); 
-
-					}
+					
 
 					if (timegate > 0) QQQDAExtotTiming->Fill(Ex19Ne);
-					//timegate = 0;
 
 				} //closes the restricted gates if statement
 				} //closes resitricted gates if statement
@@ -358,12 +379,14 @@ void histfill(int runnum, ofstream &log1){
 				dE = dE;
 				E1 = E1;
 
+				E1norm = pow(E1,2)*normDC0[stripdE][rstrip]+E1*normDC1[stripdE][rstrip]+normDC2[stripdE][rstrip];
+
 				PIDGateLo = pow(E1,4)*TGateDCLow[stripdE][0] + pow(E1,3)*TGateDCLow[stripdE][1] + pow(E1,2)*TGateDCLow[stripdE][2] + E1*TGateDCLow[stripdE][3] + TGateDCLow[stripdE][4];
 				PIDGateHi = pow(E1,4)*TGateDCHi[stripdE][0] + pow(E1,3)*TGateDCHi[stripdE][1] + pow(E1,2)*TGateDCHi[stripdE][2] + E1*TGateDCHi[stripdE][3] + TGateDCHi[stripdE][4];
 
 
 				if (stripdE < 22 && dE > PIDGateLo && dE < PIDGateHi){
-
+					tritongate++;
 					if (stripdE == stripE1-1) DC_PIDhists[stripdE]->Fill(E1,dE);
 					if (dE != 0) QQQDCdE->Fill(dE,stripdE);
 					if (E1 != 0) QQQDCE1->Fill(E1,stripE1);
@@ -416,8 +439,8 @@ void histfill(int runnum, ofstream &log1){
 				dEE1check->Fill(E1,dE);
 			}
 
-			if (g238 > 0 || g275>0 || g1233>0 || g1297>0){
-				if (si2->at(i).telescopeID == 2105){
+			if (g238 > 0 || g275>0 || g1233>0 || g1297>0 || g2556>0){
+				if (si2->at(i).telescopeID == 2105 && positionE1>75){
 					if (stripE1==0) SX3_0->Fill(E1);
 					if (stripE1==1) SX3_1->Fill(E1);
 					if (stripE1==2) SX3_2->Fill(E1);
@@ -433,30 +456,37 @@ void histfill(int runnum, ofstream &log1){
 
 
 		for (unsigned int i = 0; i < gam2->size();i++){
-//		if (tritongate > 0){
-			gam_ind->Fill(gam2->at(i).en,gam2->at(i).num);
+		if (tritongate > 0){
+			
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
 
-			for (unsigned int j = 0; j < SiTime.size(); j++){
-				timediff = (double)gam2->at(i).time - SiTime[j];
-				if ( (73 < timediff && timediff < 104) || (190 < timediff && timediff < 217) || (416 < timediff && timediff < 440)) timegate++;
-			}
+			gam_ind->Fill(gamEn,gam2->at(i).num);
 
-			//*******Gamma histograms filled below here are suppressed by the time gate with the DA detector*******
-			if (gamEn != 0){// && timegate > 0){
+			
 
+			//*******Gamma histograms filled below here are suppressed by the time gate with the Si detectors*******
+			if (gamEn != 0 && TimingGammaIndex[i]>0){
+
+				for (unsigned int j = 0; j < gam2->size();j++){
+					if (gamEn > 3000 && gam511[j] > 0 && TimingGammaIndex[j] > 0){
+						gamEn += gam511[j];
+						//std::cout << "woah!" << std::endl;
+					}
+				}
 				gam_tot->Fill(gamEn);
-
 				//Fill the gated gammasphere histograms here:
 				for (int z=0; z<4; z++){
 					if (pkgate[z] > 0) gam_gated[z]->Fill(gamEn);
 
 				}
+				for (int ex = 0; ex < 31; ex++){
+					if (ExGates[ex] > 0) ExGatedGams[ex]->Fill(gamEn);
+				}
 
 				if (Qgate > 0){
 					gam_gated[4]->Fill(gamEn);
 				}
-				if (Exgate > 0){
+				if (Exgate > 0){// && g238>0){
 					gam_gated[5]->Fill(gamEn);
 				}
 
@@ -488,12 +518,6 @@ void histfill(int runnum, ofstream &log1){
 				}
 					
 
-				Match = 0;
-				for (int k=0; k<19; k++){
-					if (gam2->at(i).num == BadGams[k]) Match+=1;
-				}
-
-				if (Match == 0) Good_gam_tot->Fill(gamEn);
 
 				if (g238 > 0) gam238->Fill(gamEn);
 				if (g275 > 0) gam275->Fill(gamEn);
@@ -503,11 +527,12 @@ void histfill(int runnum, ofstream &log1){
 	
 		}
 
-//		}
+		}
 
 		for (int c=0; c<300; c++){ Qgatearray[c][1] = 0;}
 		timegate = 0;
 		SiTime.clear();
+		TimingGammaIndex.clear();
 	}
 
 
@@ -529,7 +554,7 @@ void MakeMyHists(){
 
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	hist = TFile::Open("test412.root","RECREATE");
+	hist = TFile::Open("QQQ5Dets.root","RECREATE");
 	std::ofstream logFile("GoddessAnalysis.log");
 
 	//directories for the histograms are created. 
@@ -554,6 +579,7 @@ void MakeMyHists(){
 		Gammasphere_Hists = hist->mkdir("Gamma_Hists/Gammasphere_Histograms");
 		Gamma_Gated_Hists = hist->mkdir("Gamma_Hists/Gamma_Gated_Histograms");
 		Gamma_Intensity_Hists = hist->mkdir("Gamma_Hists/Gamma_Intensity_Histograms");
+		Excitation_Energy_Gated = hist->mkdir("Gamma_Hists/Excitation_Energy_Gated");
 	QQQ5_DA_TotalE = hist->mkdir("DA_Total_E");
 	Strip_vs_E_Hists = hist->mkdir("Strip_vs_E_Hists");
 	Timing_Spectra = hist->mkdir("Timing_Spectra");
@@ -598,7 +624,7 @@ void MakeMyHists(){
 	hist->cd("Gamma_Hists/Gammasphere_Histograms");
 	gam_ind = new TH2D("gam_ind","Individual Gammasphere Detectors",10000,0,10000,111,0,111);
 	gam_tot = new TH1D("gam_tot","Summed Gammasphere Spectrum",8000,0,8000);
-	Good_gam_tot = new TH1D("Good_gam_tot","Summed Gammasphere Spectrum (Good Resolutions)",8000,0,8000);
+
 
 	gam_ind->GetXaxis()->SetTitle("Channel Number");
 	gam_ind->GetYaxis()->SetTitle("Gammasphere Detector Number");
@@ -610,10 +636,6 @@ void MakeMyHists(){
 	gam_tot->GetXaxis()->CenterTitle();
 	gam_tot->GetYaxis()->CenterTitle();
 
-	Good_gam_tot->GetXaxis()->SetTitle("Energy (keV)");
-	Good_gam_tot->GetYaxis()->SetTitle("Counts");
-	Good_gam_tot->GetXaxis()->CenterTitle();
-	Good_gam_tot->GetYaxis()->CenterTitle();
 
 	for (int i=0; i<6; i++){
 		string namegam = gambase + std::to_string(i);
@@ -837,6 +859,11 @@ void MakeMyHists(){
 
 	Timing_Spectra->cd();
 
+	TDiffDA = new TH1D("TDiffDA","Timing Difference Between Gammasphere and QQQ5 DA",1000,-500,500);
+	TDiffDC = new TH1D("TDiffDC","Timing Difference Between Gammasphere and QQQ5 DC",1000,-500,500);
+	TDiffSX3 = new TH1D("TDiffSX3","Timing Difference Between Gammasphere and SX3",1000,-500,500);
+
+
 	gam_DA = new TH2D("gam_DA","Timing Difference Between Gammasphere and QQQ5 DA",2000,-1000,1000,32,0,32);
 	gam_DC = new TH2D("gam_DC","Timing Difference Between Gammasphere and QQQ5 DC",2000,-1000,1000,32,0,32);
 
@@ -886,6 +913,22 @@ void MakeMyHists(){
 	int4362 = new TH1D("int4362","Intensity of 4362 keV Gamma vs Q-Value",300,-15,0);
 	back4362 = new TH1D("back4362","Background of 4362 keV Gamma vs Q-Value",300,-15,0);
 
+	hist->cd("Gamma_Hists/Excitation_Energy_Gated");
+	double gatenum=0;
+
+	for (int i=0; i<31; i++){
+		ExGateArrLow[i] = gatenum;
+		gatenum += 0.3;
+		ExGateArrHi[i] = ExGateArrLow[i]+0.5;
+
+		string ExNameBase = "Ex_" + std::to_string(ExGateArrLow[i]) + "_" + std::to_string(ExGateArrHi[i]);
+		
+		TH1D *h9 = new TH1D(TString(ExNameBase),"Gated Gammasphere Spectrum Ex " + TString(std::to_string(ExGateArrLow[i])) + " to " + TString(std::to_string(ExGateArrHi[i])),2000,0,8000);
+
+		ExGatedGams.push_back(h9);
+
+	}
+
 
 	//The files for the normalization parameters and gates are opened here.
 	ifstream inFile0("textfiles/AnglesAndELoss2.txt");	
@@ -902,6 +945,10 @@ void MakeMyHists(){
 	ifstream inFile10("textfiles/QQQDCTGates.txt");
 	ifstream inFile11("textfiles/CalGatesLo.txt");
 	ifstream inFile12("textfiles/CalGatesHi.txt");
+
+	ifstream inFile13("textfiles/E1normmult2DC.txt");
+	ifstream inFile14("textfiles/E1normmult1DC.txt");
+	ifstream inFile15("textfiles/E1normaddDC.txt");
 
 	for (int i = 0; i<20; i++){
 
@@ -928,6 +975,11 @@ void MakeMyHists(){
 
 			inFile1 >> normDA0[i][j];
 			inFile2 >> normDA1[i][j];
+
+			inFile13 >> normDC0[i][j];
+			inFile14 >> normDC1[i][j];
+			inFile15 >> normDC2[i][j];
+			
 		}
 
 //		if (i<20) inFile7 >> stripangle[i][0] >> stripangle[i][1];
@@ -978,7 +1030,7 @@ void MakeMyHists(){
 
 
 	int numruns = 0;
-	for (int run = 412; run < 413; run++){
+	for (int run = 404; run < 495; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
 		if ((run > 400 && run < 409 && run != 405) || (run > 409 && run < 424) || (run > 431 && run < 435) || (run > 436 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
 			histfill(run,logFile);
@@ -1097,5 +1149,36 @@ void MakeMyHists(){
 
 
 
+*/
+
+//gamma data for loop for timing histograms 
+/*
+					for (unsigned int w = 0; w < gam2->size();w++){
+
+						gamEn = pow(gam2->at(w).en,2)*gamcalparams[gam2->at(w).num][0] + gam2->at(w).en*gamcalparams[gam2->at(w).num][1] + gamcalparams[gam2->at(w).num][2]; 
+
+						timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(0,false);
+				
+						if (gamEn > 505 && gamEn < 515) gam511vtime->Fill(timediff);
+						if (gamEn > 490 && gamEn < 500) gam511vtimeBACK->Fill(timediff);
+
+						if (gamEn > 232 && gamEn < 239) gam238vtime->Fill(timediff);
+						if (gamEn > 225 && gamEn < 232) gam238vtimeBACK->Fill(timediff);
+
+						if (gamEn > 1223 && gamEn < 1241) gam1233vtime->Fill(timediff);
+						if (gamEn > 1205 && gamEn < 1223) gam1233vtimeBACK->Fill(timediff);
+
+						if (gamEn > 1628 && gamEn < 1639) gam1633vtime->Fill(timediff);
+						if (gamEn > 1675 && gamEn < 1686) gam1633vtimeBACK->Fill(timediff);
+
+						gam_DA->Fill(timediff,stripdE);
+						if ((timediff < 216 && timediff > 176) || (timediff < 430 && timediff > 400)) timegate++;
+						if (Ex19Ne > 5.15) TimeHist->Fill(timediff);
+
+						gamTime->Fill(timediff,gamEn);
+
+						if ( (73 < timediff && timediff < 104) || (190 < timediff && timediff < 217) || (416 < timediff && timediff < 440)) QQQDAvsGam->Fill(Ex19Ne,gamEn); 
+
+					}
 */
 

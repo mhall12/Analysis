@@ -44,6 +44,8 @@
 
 	TDirectory *Timing_Spectra;
 
+	TDirectory *Excitation_Energy_Gated;
+
 	TH1D *E1proj;
 	TH2D *dEE1check;
 
@@ -87,7 +89,6 @@
 
 	TH2D *gam_ind;
 	TH1D *gam_tot;
-	TH1D *Good_gam_tot;
 
 	std::vector<TH1D*> gam_gated;
 	std::vector<TH1D*> DA_TotE;
@@ -144,6 +145,12 @@
 	TH1D *int4362;
 	TH1D *back4362;
 
+	TH1D *TDiffDA;
+	TH1D *TDiffDC;
+	TH1D *TDiffSX3;
+
+	std::vector<TH1D*> ExGatedGams;
+
 	double AandEloss[20][6];
 
 	//Calibrations for the DA E1 detector and DA dE detector are stored in these arrays.
@@ -153,6 +160,11 @@
 	//normalization parameters for the DA E1 histograms. normDA0 is the slope and normDA1 is the intercept in m*x+b. The normalization parameters were found by matching dE-E strip combinations to the first useful looking dE-E strip combo.
 	double normDA0[32][5];
 	double normDA1[32][5];
+
+	//normalization parameters for the DC E1 histograms. normDC0 is the squared term, normDC1 is the slope, and normDC2 is the intercept in nx^2+mx+b. The normalization parameters were found by matching dE-E strip combinations to the first useful looking dE-E strip combo.
+	double normDC0[32][5];
+	double normDC1[32][5];
+	double normDC2[32][5];
 
 	//Bounds for the Gamma coincidence gates. The first two columns are upper, lower bounds for Peak 0, etc. The peaks that don't have bounds for the higher strips are given a value of 1.0 in the txt file. 0 was not used in case some of the energies read 0. 
 	double boundDA[32][8];
@@ -177,4 +189,7 @@
 	TH1D *SX3_1;
 	TH1D *SX3_2;
 	TH1D *SX3_3;
+
+	double ExGateArrLow[31];
+	double ExGateArrHi[31];
 
