@@ -37,6 +37,7 @@
 
 	TDirectory *Gammasphere_Hists;
 	TDirectory *QQQ5_DA_TotalE;
+	TDirectory *QQQ5_DC_TotalE;
 	TDirectory *Gamma_Gated_Hists;
 	TDirectory *Gamma_Intensity_Hists;
 	TDirectory *Q_Gated_QQQ_DA_E1;
@@ -45,6 +46,9 @@
 	TDirectory *Timing_Spectra;
 
 	TDirectory *Excitation_Energy_Gated;
+	TDirectory *Triton_Gated;
+
+	TDirectory *D5_Triton_Spectra;
 
 	TH1D *E1proj;
 	TH2D *dEE1check;
@@ -63,12 +67,18 @@
 	TH2D *QQQDAEx;
 	TH1D *QQQDAExTot;
 
+	TH2D *QQQDCQ;
+	TH2D *QQQDCEx;
+	TH1D *QQQDCExTot;
+
 	TH1D *QQQDAExtotTiming;
 
 	TH2D *QQQDCdE;
 	TH2D *QQQDCE1;
 	//TH1D *QQQDAtot;
 	TH2D *QQQDAvsGam;
+
+	TH2D *QQQDCE1sum;
 
 	TH2D *gam_DA;
 	TH2D *gam_DC;
@@ -89,6 +99,11 @@
 
 	TH2D *gam_ind;
 	TH1D *gam_tot;
+	TH1D *gam_tot2;
+	TH1D *gam_totBack;
+	TH1D *gam_totBack2;
+	TH1D *gam_totBackAvg;
+	TH1D *gam_totBackAvg8000;
 
 	std::vector<TH1D*> gam_gated;
 	std::vector<TH1D*> DA_TotE;
@@ -123,6 +138,7 @@
 	TH1D *gam1233;
 	TH1D *gam1297;
 	TH1D *gam1840;
+	TH1D *gam2556;
 
 	TH1D *int238;
 	TH1D *back238;
@@ -145,6 +161,19 @@
 	TH1D *int4362;
 	TH1D *back4362;
 
+	TH1D *int1853;
+	TH1D *back1853;
+
+	TH1D *int1844;
+	TH1D *back1844;
+
+	TH1D *gamExGated;
+	TH1D *gamExGated2;
+	TH1D *gamExBack;
+	TH1D *gamExBack2;
+	TH1D *gamExBackAvg;
+	TH1D *gamExBackAvg8000;
+
 	TH1D *TDiffDA;
 	TH1D *TDiffDC;
 	TH1D *TDiffSX3;
@@ -156,6 +185,9 @@
 	//Calibrations for the DA E1 detector and DA dE detector are stored in these arrays.
 	double calDAE1[32][2];
 	double calDAdE[32][2];
+
+	//Calibration parameters to convert the raw DC signals to Q-value
+	double DCtoQ[32][3];
 
 	//normalization parameters for the DA E1 histograms. normDA0 is the slope and normDA1 is the intercept in m*x+b. The normalization parameters were found by matching dE-E strip combinations to the first useful looking dE-E strip combo.
 	double normDA0[32][5];
@@ -192,4 +224,23 @@
 
 	double ExGateArrLow[31];
 	double ExGateArrHi[31];
+
+	int gcount1;
+	int gcount2;
+
+	std::vector<TH1D*> D5Spec;
+
+	TH1D *D5_E;
+	TH1D *D5_E2;
+	TH1D *D5_E3;
+	TH1D *D5_E4;
+
+	TH2D *D5vPos;
+	TH2D *D5vPos2;
+	
+	TH2D *D5vAng;
+	TH2D *D5vAng2;
+
+	TH1D *D5posZ;
+	TH1D *D5posXY;
 

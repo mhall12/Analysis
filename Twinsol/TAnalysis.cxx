@@ -29,6 +29,7 @@ void histfill(string runfile){
 	int TritonGate64 = 0;
 
 	int timegate = 0;
+	int timegate2 = 0;
 
 	//Calibration Parameters used to fix the Rough Calibration and make it agree with the Gammasphere calibration
 	double GamReCal[2] = {.9702, 38.871}; 
@@ -40,11 +41,14 @@ void histfill(string runfile){
 
 	for (int evt = 0; evt < nEntries; evt++){
 
-		TritonGate = 0;
+		for (int f=32; f<37; f++){
+			if (ene2[f]>0) TritonGate = 0;
+		}
 		TritonGate64 = 0;
 		timegate = 0;
+		timegate2 = 0;
 
-	int timegatearr[26] = {0};
+		int timegatearr[26] = {0};
 
 		for (int i = 0; i < 5; i++){
 			E1calE[i] = 0;
@@ -122,25 +126,33 @@ void histfill(string runfile){
 						dE2calE[j] = 0;
 						if (ene2[j+37] > 0) dE2calE[j] = ene2[j+37] * dE2cal[j][0] + dE2cal[j][1];
 
-						PIDres[i][j]->Fill(dE2calE[j],dE1calE[i]);
+						//PIDres[i][j]->Fill(dE2calE[j],dE1calE[i]);
 
-						if (dE2calE[j] < 11.3759 && dE2calE[j] > 4.74 && dE1calE[i] >3457 && dE1calE[i] < 5550 && i == 4){
+						//if (dE2calE[j] < 11.3759 && dE2calE[j] > 4.74 && dE1calE[i] >3457 && dE1calE[i] < 5550){
 							TritonGate++;
 							for (int k = 0; k < 16; k++){
 								GamCalE = ene2[k]*GamCalParams[k][0] + GamCalParams[k][1];
 								tdiff = timefull2[k] - timefull2[36];
 								if (GamCalE > 0) TimeDiff->Fill(tdiff);
 
-								if (tdiff > 33000 && tdiff < 550000) timegate++;
+								if (tdiff > -200000 && tdiff < 550000) timegate++;
+								if (tdiff > 0 && tdiff < 1000000) timegate2++;
 								int timer = -4000000;
-								for (int t = 0; t < 26; t++){
-									if (tdiff > timer && tdiff < timer+500000) timegatearr[t]++;
-									timer += 500000;
+								for (int t = 0; t < 6; t++){
+									if (tdiff > timer && tdiff < timer+2500000) timegatearr[t]++;
+									timer += 2500000;
+								}	
+								if (GamCalE>1216 && GamCalE<1246){
+									TimeDiff1230->Fill(tdiff);
+									TimeDiffadd->Fill(tdiff);
+									PIDres[i][j]->Fill(dE2calE[j],dE1calE[i]);
 								}
+								if (GamCalE>1186 && GamCalE<1216) TimeDiffback->Fill(tdiff);
 							}
-						}
-
+						//}
+					
 					}
+					
 				}
 
 			}
@@ -149,15 +161,15 @@ void histfill(string runfile){
 				GamCalE = ene2[i]*GamCalParams[i][0] + GamCalParams[i][1];
 				ReGamCalE = GamCalE;//*.9836 + 23.011;
 
-				if (ene2[0]>0 && ene2[0] < 20000) Gamma35vsTime->Fill(timefull2[0]/1E10,ene2[0]);
+				//if (ene2[0]>0 && ene2[0] < 20000) Gamma35vsTime->Fill(timefull2[0]/1E10,ene2[0]);
 
 				if (ReGamCalE > 40){
 					GamCalHists[i]->Fill(ene2[i]);
 					GamTot->Fill(ReGamCalE);
 				
-					if (TritonGate > 0) GamTotT->Fill(ReGamCalE);
+					if (TritonGate > 0 && timegate>0) GamTotT->Fill(ReGamCalE);
 					if (TritonGate64 > 0) GamTotT64->Fill(ReGamCalE);
-					if ((i == 8 || i == 9 || i == 10 || i == 11 || i == 12 || i == 13) && TritonGate > 0) GoodGamTotT64->Fill(ReGamCalE);
+					if (timegate2 > 0 && TritonGate > 0) GoodGamTotT64->Fill(ReGamCalE);
 
 					for (int t=0; t<26; t++){
 						if (timegatearr[t] > 0 && TritonGate>0) TimeGatedGammas[t]->Fill(ReGamCalE);
@@ -333,8 +345,12 @@ void MakeMyHists(){
 		}
 
 		//Gamma35vsTime = new TH2D("Gamma35vsTime","Gamma 35 vs timing",8000,4.4E8,4.8E8,8000,0,16000);
-
 		
+		TimeDiff1230 = new TH1D("TimeDiff1230","Timing Difference Between Gamma and Si Dets for 1230",400,-10000000,10000000);
+
+		TimeDiffback = new TH1D("TimeDiffback","Timing Difference Between Gamma and Si Dets for background",400,-10000000,10000000);
+
+		TimeDiffadd = new TH1D("TimeDiffadd","Timing Difference Between Gamma and Si Dets for 1230 wo back",400,-10000000,10000000);
 
 	}
 
@@ -358,6 +374,8 @@ void MakeMyHists(){
 
 
 	}
+
+	TimeDiffadd->Add(TimeDiffback,-1);
 
 	hist->Write();
 	hist->Close();
