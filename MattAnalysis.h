@@ -39,6 +39,7 @@
 	TDirectory *QQQ5_DA_TotalE;
 	TDirectory *QQQ5_DC_TotalE;
 	TDirectory *Gamma_Gated_Hists;
+	TDirectory *Background;
 	TDirectory *Gamma_Intensity_Hists;
 	TDirectory *Q_Gated_QQQ_DA_E1;
 	TDirectory *Q_Gated_QQQ_DA_dE;
@@ -49,6 +50,25 @@
 	TDirectory *Triton_Gated;
 
 	TDirectory *D5_Triton_Spectra;
+
+	TDirectory *SX3_Hists;
+	TDirectory *D4_Hists;
+	TDirectory *Energy_Ungated4;
+	TDirectory *D5_Hists;
+	TDirectory *Energy_Ungated5;
+	TDirectory *D7_Hists;
+	TDirectory *Energy_Ungated7;
+	TDirectory *D8_Hists;
+	TDirectory *Energy_Ungated8;
+	TDirectory *D9_Hists;
+	TDirectory *Energy_Ungated9;
+	TDirectory *D10_Hists;
+	TDirectory *Energy_Ungated10;
+
+	TDirectory *Gamma_Gated_Background;
+	TDirectory *Gamma_Gated;
+
+	TH2D *Burgerman;
 
 	TH1D *E1proj;
 	TH2D *dEE1check;
@@ -140,6 +160,13 @@
 	TH1D *gam1840;
 	TH1D *gam2556;
 
+	TH1D *gam238_Back;
+	TH1D *gam275_Back;
+	TH1D *gam1233_Back;
+	TH1D *gam1297_Back;
+	TH1D *gam1840_Back;
+	TH1D *gam2556_Back;
+
 	TH1D *int238;
 	TH1D *back238;
 
@@ -180,6 +207,36 @@
 
 	std::vector<TH1D*> ExGatedGams;
 
+	std::vector<TH1D*> D5Spec;
+
+	std::vector<TH2D*> D4_E_Ungated;
+	std::vector<TH2D*> D5_E_Ungated;
+	std::vector<TH2D*> D7_E_Ungated;
+	std::vector<TH2D*> D8_E_Ungated;
+	std::vector<TH2D*> D9_E_Ungated;
+	std::vector<TH2D*> D10_E_Ungated;
+
+	TH2D *D4_E_Gated_Back;
+	TH2D *D5_E_Gated_Back;
+	TH2D *D7_E_Gated_Back;
+	TH2D *D8_E_Gated_Back;
+	TH2D *D9_E_Gated_Back;
+	TH2D *D10_E_Gated_Back;
+
+	TH2D *D4_E_Gam_Gated;
+	TH2D *D5_E_Gam_Gated;
+	TH2D *D7_E_Gam_Gated;
+	TH2D *D8_E_Gam_Gated;
+	TH2D *D9_E_Gam_Gated;
+	TH2D *D10_E_Gam_Gated;
+
+	TH2D *D4_E_Sum_v_Ang;
+	TH2D *D5_E_Sum_v_Ang;
+	TH2D *D7_E_Sum_v_Ang;
+	TH2D *D8_E_Sum_v_Ang;
+	TH2D *D9_E_Sum_v_Ang;
+	TH2D *D10_E_Sum_v_Ang;
+
 	double AandEloss[20][6];
 
 	//Calibrations for the DA E1 detector and DA dE detector are stored in these arrays.
@@ -217,30 +274,12 @@
 	double CalPIDGateLo[32][5];
 	double CalPIDGateHi[32][5];
 
-	TH1D *SX3_0;
-	TH1D *SX3_1;
-	TH1D *SX3_2;
-	TH1D *SX3_3;
 
+//
 	double ExGateArrLow[31];
 	double ExGateArrHi[31];
 
-	int gcount1;
-	int gcount2;
+//	TH2D *Burgerman;
 
-	std::vector<TH1D*> D5Spec;
-
-	TH1D *D5_E;
-	TH1D *D5_E2;
-	TH1D *D5_E3;
-	TH1D *D5_E4;
-
-	TH2D *D5vPos;
-	TH2D *D5vPos2;
-	
-	TH2D *D5vAng;
-	TH2D *D5vAng2;
-
-	TH1D *D5posZ;
-	TH1D *D5posXY;
+	double SX3Norm[7][8];
 

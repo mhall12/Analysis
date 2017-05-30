@@ -2,12 +2,20 @@
 //Analysis code for 19F(3He,t)19Ne performed at Argonne National Lab 9/2015.
 
 #include "MattAnalysis.h"
+#include "MattAnalysis2.h"
 
 void histfill(int runnum, ofstream &log1){
 	std::cout << "Run " << runnum << " is now being analyzed." << std::endl; 	
 	std::cout << "../exec/rootfiles/run" + TString(std::to_string(runnum)) + ".root" << endl;
 	//the code opens the file here
-	data = TFile::Open("../exec/rootfiles/QQQ5/run" + TString(std::to_string(runnum)) + "QQQ5_SKIMMED_AGAIN.root");
+	//data = TFile::Open("../exec/rootfiles/QQQ5/run" + TString(std::to_string(runnum)) + "QQQ5_SKIMMED_AGAIN.root");
+	//data = TFile::Open("../exec/rootfiles/TotalFiles/run" + TString(std::to_string(runnum)) + "_SKIMMED.root");
+	//data = TFile::Open("../exec/rootfiles/TotalFiles/run" + TString(std::to_string(runnum)) + "_AllData.root");
+	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
+	//data = TFile::Open("/media/mhall12/ne19disk1/Mult1RootFiles/run" + TString(std::to_string(runnum)) + ".root");
+	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFilesWithoutSX3Crap/run" + TString(std::to_string(runnum)) + "_SX3Mult1.root");
+	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFilesWithoutSX3Crap/run" + TString(std::to_string(runnum)) + "_SX3NoHump.root");
+	data = TFile::Open("/media/mhall12/ne19disk1/FinalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
 	//trees->cd();
 
 	//the data from trees/god is placed into a container gam2 and si2.
@@ -27,12 +35,18 @@ void histfill(int runnum, ofstream &log1){
 	int Exgate = 0;
 
 	int g238 = 0; //238 keV in 19Ne
+	int g238_back = 0;
 	int g275 = 0; //275 keV in 19Ne
+	int g275_back = 0;
 	int g1233 = 0; //1232 keV in 19Ne
 	int g1297 = 0;
 	int g1840 = 0;
 	int g2556 = 0;
 	int g4362 = 0;
+
+	int g197 = 0; //19F
+	int g109 = 0; //19F
+	int g890 = 0; //22Na
 
 	int timegate = 0;
 
@@ -77,7 +91,12 @@ void histfill(int runnum, ofstream &log1){
 
 	int stripE1N;
 
-	double positionE1;
+	double positionZ;
+	double positionS;
+	double positionX;
+	double positionY;
+
+	int detID = 0;
 
 	double angle;
 
@@ -113,6 +132,12 @@ void histfill(int runnum, ofstream &log1){
 
 	std::vector<double> gam511;
 
+	int SX3Gate = 0;
+
+	double pi = 3.14159265;
+
+	int ang_bin = 0;
+
 	//In the TimeDiff vector, index 1 refers to the Gamma and index 2 refers to the Si event
 	std::vector<std::vector<double>> TimeDiff;
 
@@ -123,6 +148,9 @@ void histfill(int runnum, ofstream &log1){
 
 	std::vector<int> BackgroundTiming;
 	std::vector<int> BackgroundTiming2;
+
+	std::vector<double> ExVec;
+	std::vector<double> ExVecWithSX3;
 
 	log1 << "Run Number: " << runnum << " Number of Entries: " << nEntries << std::endl;
 
@@ -135,12 +163,19 @@ void histfill(int runnum, ofstream &log1){
 		Exgate = 0;
 
 		g238 = 0; //238 keV in 19Ne
+		g238_back = 0;
 		g275 = 0; //275 keV in 19Ne
+		g275_back = 0;
 		g1233 = 0; //1232 keV in 19Ne
 		g1297 = 0;
 		g1840 = 0;
 		g2556 = 0;
 		g4362 = 0;
+
+		//Background Peaks!
+		g197 = 0;
+		g109 = 0;
+		g890 = 0;
 		
 		timegate = 0;
 
@@ -151,6 +186,8 @@ void histfill(int runnum, ofstream &log1){
 		gam511.clear();
 
 		DCgate = 0;
+
+		SX3Gate = 0;
 				
 		for (int g = 0; g<4; g++) pkgate[g] = 0;
 
@@ -167,12 +204,19 @@ void histfill(int runnum, ofstream &log1){
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
 
 			if (gamEn >= 235 && gamEn <= 241) g238++;
+				if (gamEn >= 242 && gamEn <= 248) g238_back++;
 			if (gamEn >= 272 && gamEn <= 278) g275++;
+				if (gamEn >= 279 && gamEn <= 285) g275_back++;
 			if (gamEn >= 1224 && gamEn <= 1238) g1233++;
 			if (gamEn >= 1276 && gamEn <= 1314) g1297++;
-			if (gamEn >= 1835 && gamEn <= 1845) g1840++;
-			if (gamEn >= 2526 && gamEn <= 2576) g2556++;
+			if (gamEn >= 1836 && gamEn <= 1843) g1840++;
+			if (gamEn >= 2546 && gamEn <= 2566) g2556++;
 			if (gamEn >= 4320 && gamEn <= 4409) g4362++;
+
+			if (gamEn >= 194 && gamEn <= 200) g197++;
+			if (gamEn >= 106 && gamEn <= 112) g109++;
+			if (gamEn >= 886 && gamEn <= 896) g890++;
+
 
 		}
 
@@ -184,21 +228,22 @@ void histfill(int runnum, ofstream &log1){
 			E1 = si2->at(i).ESumLayer(1,false);
 			E2 = si2->at(i).ESumLayer(2,false);
 
-			//Backsides used for SX3s only right now, the energy is initialized here.
-			E1N = si2->at(i).ESumLayer(1,true);
-
 			stripdE = si2->at(i).StripMaxLayer(0,false);
 			stripE1 = si2->at(i).StripMaxLayer(1,false);
 			stripE2 = si2->at(i).StripMaxLayer(2,false);
 
-			stripE1N = si2->at(i).StripMaxLayer(1,true);
+			positionZ = si2->at(i).PosE1().Z();
+			//S is the cylindrical coordinates position of the SX3 detector. It should be a constant value.
+			positionS = sqrt(pow(si2->at(i).PosE1().X(),2)+pow(si2->at(i).PosE1().Y(),2));
+			positionX = si2->at(i).PosE1().X();
+			positionY = si2->at(i).PosE1().Y();
 
-			positionE1 = si2->at(i).PosE1().Z();
+			detID = si2->at(i).telescopeID;
 
 			//rstrip is the difference between the E1 strip number and the dE strip number
 			int rstrip = stripE1-stripdE;			
 
-			//***********************************BEGIN TIMING********************************************
+			//c**********************************BEGIN TIMING********************************************
 			for (unsigned int w = 0; w < gam2->size();w++){
 				TimingGammaIndex.push_back(0);
 				BackgroundTiming.push_back(0);
@@ -236,8 +281,13 @@ void histfill(int runnum, ofstream &log1){
 	
 				if (si2->at(i).telescopeID >= 2104 && si2->at(i).telescopeID <= 2110 && si2->at(i).telescopeID != 2106){
 					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(1,false);
-					//if (timediff < 203 && timediff > 189) TimingGammaIndex[w]++;
-					TDiffSX3->Fill(timediff);
+					if (timediff < 208 && timediff > 188) TimingGammaIndex[w]++;
+
+					if (timediff < 180 && timediff > 160) BackgroundTiming[w]++;
+					if (timediff < 250 && timediff > 230) BackgroundTiming2[w]++;
+
+
+					if (si2->at(i).MultLayer(1,false) == 1) TDiffSX3->Fill(timediff);
 				}
 
 				if (gamEn > 506 && gamEn < 514) gam511.push_back(gamEn);
@@ -245,7 +295,7 @@ void histfill(int runnum, ofstream &log1){
 
 
 			}
-			//***********************************END TIMING********************************************
+			//c**********************************END TIMING********************************************
 
 
 			if (si2->at(i).telescopeID == 1100 && si2->at(i).MultLayer(0,false) == 1 && si2->at(i).MultLayer(1,false) == 1){
@@ -288,7 +338,8 @@ void histfill(int runnum, ofstream &log1){
 					if (rstrip >= 0 && rstrip <= 4){
 						
 						//This vector puts the E1 energy spectra for each strip(dE) into individual histograms. They are stored in the DA_Triton_Spectra folder.
-						DA_T_Spec[stripdE][rstrip]->Fill(E1);	
+						DA_T_Spec[stripdE][rstrip]->Fill(E1);
+						if (stripdE == 0 && rstrip == 1) DAvRunCheck->Fill(E1,runnum);	
 						
 						//normDA0 and normDA1 are the m and b to the mx+b normalization, respectively. The normalization takes the E1 histograms and adds them to the rstrip=0 histogram for each strip(dE).
 						if (normDA0[stripdE][rstrip] != 0 ){
@@ -321,6 +372,7 @@ void histfill(int runnum, ofstream &log1){
 								Einit = pow(Ecaltot,3)*AandEloss[stripdE][2]+pow(Ecaltot,2)*AandEloss[stripdE][3]+Ecaltot*AandEloss[stripdE][4]+AandEloss[stripdE][5];
 
 								QQQDATot2->Fill(Einit, stripdE);
+								E_v_Ang->Fill(angle*180/pi, Einit);
 
 								//Q-Value Spectrum, calculation of Q-value below. Assume 30MeV for beam energy. Equation 11.10 in Krane.
 								Q = Einit*(1+m3H/m19Ne)-30*(1-m3He/m19Ne)-2*sqrt(m3He*m3H/pow(m19Ne,2)*Einit*30)*cos(angle);
@@ -337,7 +389,12 @@ void histfill(int runnum, ofstream &log1){
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
-/****/								if (Ex19Ne > 6.2 && Ex19Ne < 6.6) Exgate++;
+								if (Ex19Ne > 6.2 && Ex19Ne < 6.6) Exgate++;
+//c**c	
+								if (Ex19Ne >= 4 && Ex19Ne <= 7){
+									ExVec.push_back(Ex19Ne);
+									ExVecWithSX3.push_back(Ex19Ne);
+								}
 
 								//Put the for loop for the range of Ex gates here
 								for (int ex = 0; ex < 31; ex++){
@@ -389,7 +446,7 @@ void histfill(int runnum, ofstream &log1){
 
 			} //closes the DA if statement
 
-	//********************************************DC Begin*******************************************************************//
+	//c*******************************************DC Begin******************************************************************c//
 			if (si2->at(i).telescopeID == 1102 && si2->at(i).MultLayer(0,false) == 1){
 
 				stripdE = stripdE;
@@ -405,7 +462,7 @@ void histfill(int runnum, ofstream &log1){
 
 				if (stripdE < 22 && dE > PIDGateLo && dE < PIDGateHi){
 					tritongate++;
-					if (stripdE == stripE1-1) DC_PIDhists[stripdE]->Fill(E1,dE);
+					if (stripdE == stripE1-1 || stripdE == 7) DC_PIDhists[stripdE]->Fill(E1,dE);
 					if (dE != 0) QQQDCdE->Fill(dE,stripdE);
 					if (E1 != 0) QQQDCE1->Fill(E1,stripE1);
 				
@@ -431,7 +488,12 @@ void histfill(int runnum, ofstream &log1){
 							QQQDCEx->Fill(Ex19Ne, stripdE);
 							QQQDCExTot->Fill(Ex19Ne);
 
-/*****/						if (Ex19Ne > 6.3 && Ex19Ne < 6.7) Exgate++;//DCgate++;
+							if (Ex19Ne > 6.2 && Ex19Ne < 6.7) Exgate++;//DCgate++;
+//c***	
+							if (Ex19Ne >= 4 && Ex19Ne <= 7){
+								ExVec.push_back(Ex19Ne);
+								ExVecWithSX3.push_back(Ex19Ne);
+							}
 
 							//Put the for loop for the range of Ex gates here
 							//Digital Excitation energy spectrum not great below 3.9 MeV...
@@ -447,10 +509,10 @@ void histfill(int runnum, ofstream &log1){
 
 			} //closes DC if statement
 
-	//********************************************DC End*******************************************************************//
+	//c*******************************************DC End******************************************************************c//
 
 			//Downstream barrel Si detectors for loop
-			if (si2->at(i).telescopeID >= 2104 && si2->at(i).telescopeID <= 2110 && si2->at(i).telescopeID != 2106 && si2->at(i).MultLayer(0,false) == 1 && si2->at(i).MultLayer(1,false) == 1 && stripdE > -1 && stripE1 > -1){
+			if (si2->at(i).telescopeID >= 2104 && si2->at(i).telescopeID <= 2110 && si2->at(i).telescopeID != 2106 && E1 > 300000 && si2->at(i).MultLayer(1,false) == 1){
 
 				if (stripdE == 0 && stripE1 != 3) break;
 				if ((stripdE == 1 || stripdE == 2) && (stripE1 != 3 && stripE1 != 2)) break;
@@ -458,61 +520,204 @@ void histfill(int runnum, ofstream &log1){
 				if (stripdE == 5 && stripE1 != 1) break;
 				if ((stripdE == 6 || stripdE == 7) && stripE1 !=0) break;
 
-				if (positionE1 >=60) sec = 3;
-				if (positionE1 >=40 && positionE1 < 60) sec = 2;
-				if (positionE1 >=20 && positionE1 < 40) sec = 1;
-				if (positionE1 < 20) sec = 0;
+				if (positionZ >=60) sec = 3;
+				if (positionZ >=40 && positionZ < 60) sec = 2;
+				if (positionZ >=20 && positionZ < 40) sec = 1;
+				if (positionZ < 20) sec = 0;
+
+				//Reinitialize angle to some nonsense value
+				angle = -100;
+
+				//Calculate the triton angle in the lab frame:
+				if (positionS > 0) angle = atan(positionS/positionZ) * 180 / pi;
+				if (angle > -10 && angle < 0) angle = 0;
+				if (angle > 90 && angle < 100) angle = 90;
+	
+				if (angle <= 60) ang_bin = 0;
+				else if (angle > 60 && angle <= 70) ang_bin = 1;
+				else if (angle > 70 && angle <= 80) ang_bin = 2;
+				else if (angle > 80) ang_bin = 3;
+
+				//fix Weird jump in the data for D4 strip 2
+				if (si2->at(i).telescopeID == 2107 && stripE1 == 2 && angle > 70) E1 = E1-6500;
+
+				//Normalized E for each detector to the 0th strip
+//				E1norm = E1*SX3Norm[si2->at(i).telescopeID - 2104][2*stripE1] + SX3Norm[si2->at(i).telescopeID - 2104][2*stripE1+1];
+//				E1norm = pow(E1,2)*SX3Renorm[4*si2->at(i).telescopeID-8416+stripE1][0] + E1*SX3Renorm[4*si2->at(i).telescopeID-8416+stripE1][1] + SX3Renorm[4*si2->at(i).telescopeID-8416+stripE1][2];
+
+				E1norm = E1*SX3Norm_Ang[4*si2->at(i).telescopeID-8416+ang_bin][stripE1];
+//				if (detID == 2104) cout << stripE1 << " " << SX3Renorm[4*si2->at(i).telescopeID-8416+stripE1][0] << " " << SX3Renorm[4*si2->at(i).telescopeID-8416+stripE1][1] << " " <<SX3Renorm[4*si2->at(i).telescopeID-8416+stripE1][2] << endl;
+//if (detID == 2104) cout << stripE1 << " " << angle << " " << ang_bin << " " << SX3Norm_Ang[4*si2->at(i).telescopeID-8416+ang_bin][stripdE] << endl;
+				//double SX3Norm[4] = {1,1.021282496,1.027428233,1.05339854};
+
+				//E1norm = E1*SX3Norm[stripE1];
+
+//		cout << SX3Norm[i][0] << " " << SX3Norm[i][1] << " " << SX3Norm[i][2] << " " << SX3Norm[i][3] << endl;
+//if (positionZ > 75){
+				int calanglebin = 0;
+
+				for (int a = 45; a < 90; a+=2){
+					if (angle >= a-1 && angle < a+1) calanglebin = (int)(.5*a-22.5);
+				}
+
+				E1cal = E1norm*SX3Cal[calanglebin][2*detID-4208]+SX3Cal[calanglebin][2*detID-4208 + 1];
+
+			//	cout << detID << " angle: " << angle << " calanglebin: " << calanglebin << " :0: " << SX3Cal[calanglebin][2*detID-4208] << " :1: " << 
+
+				Q = E1cal*(1+m3H/m19Ne)-30*(1-m3He/m19Ne)-2*sqrt(m3He*m3H/pow(m19Ne,2)*E1cal*30)*cos(angle*pi/180);
+				Ex19Ne = (m3He + m19F - m3H - m19Ne)*utoMeV - Q;
+
+				if (Ex19Ne >= 4 && Ex19Ne <= 7){
+					ExVecWithSX3.push_back(Ex19Ne);
+				}
+
+				SX3ExTot->Fill(Ex19Ne);
+
+				//if (Ex19Ne > 6.3 && Ex19Ne < 6.5) Exgate++;
+
+				if (g238 > 0 || g275 > 0){
+					SX3_Gam_Gated->Fill(angle,E1cal);
+					SX3_Q_Gam_Gated->Fill(angle,Q);
+					E_v_Ang->Fill(angle,E1cal);
+					SX3Ex->Fill(Ex19Ne);
+				}
+				if (g238_back > 0 || g275_back > 0){
+					SX3_Gated_Back->Fill(angle,E1cal);
+					SX3_Q_Gated_Back->Fill(angle,Q);
+					E_v_AngBack->Fill(angle,E1cal);
+					SX3ExBack->Fill(Ex19Ne);
+				}
 
 				switch(si2->at(i).telescopeID) {
-					case 2104: D4_PID[stripdE][stripE1][sec]->Fill(E1,dE);
-						   break;
-					case 2105: D5_PID[stripdE][stripE1][sec]->Fill(E1,dE);
-						   break;
-					case 2107: D7_PID[stripdE][stripE1][sec]->Fill(E1,dE);
-						   break;
-					case 2108: D8_PID[stripdE][stripE1][sec]->Fill(E1,dE);
-						   break;
-					case 2109: D9_PID[stripdE][stripE1][sec]->Fill(E1,dE);
-						   break;
-					case 2110: D10_PID[stripdE][stripE1][sec]->Fill(E1,dE);
-						   break;
+
+					case 2104:
+						{
+						//	D4_PID[stripdE][stripE1][sec]->Fill(E1,dE);
+							D4_E_Ungated[stripE1]->Fill(E1norm,angle);
+							
+							D4_E_Sum_v_Ang->Fill(E1norm,angle);
+
+							if (g238 > 0 || g275 > 0) D4_E_Gam_Gated->Fill(angle,E1cal);
+							if (g238_back > 0 || g275_back > 0) D4_E_Gated_Back->Fill(angle,E1cal);
+						}
+						break;
+
+
+					case 2105: 
+						{
+						//	D5_PID[stripdE][stripE1][sec]->Fill(E1,dE);
+							D5_E_Ungated[stripE1]->Fill(E1norm,angle);
+
+							D5_E_Sum_v_Ang->Fill(E1norm,angle);
+
+							if (g238 > 0 || g275 > 0) D5_E_Gam_Gated->Fill(angle,E1cal);
+
+							if (g238_back > 0 || g275_back > 0) D5_E_Gated_Back->Fill(angle,E1cal);
+
+							SX3Gate++;
+						}
+						break;
+
+					case 2107:
+						{
+						//	D7_PID[stripdE][stripE1][sec]->Fill(E1,dE);
+							D7_E_Ungated[stripE1]->Fill(E1norm,angle);
+
+							D7_E_Sum_v_Ang->Fill(E1norm,angle);
+
+							if (g238 > 0 || g275 > 0) D7_E_Gam_Gated->Fill(angle,E1cal);
+							if (g238_back > 0 || g275_back > 0) D7_E_Gated_Back->Fill(angle,E1cal);
+
+						}
+						break;
+					case 2108:
+						{
+						//	D8_PID[stripdE][stripE1][sec]->Fill(E1,dE);
+							D8_E_Ungated[stripE1]->Fill(E1norm,angle);
+
+							D8_E_Sum_v_Ang->Fill(E1norm,angle);
+
+							if (g238 > 0 || g275 > 0) D8_E_Gam_Gated->Fill(angle,E1cal);
+							if (g238_back > 0 || g275_back > 0) D8_E_Gated_Back->Fill(angle,E1cal);
+					
+						}
+						break;
+					case 2109:
+						{
+						//	D9_PID[stripdE][stripE1][sec]->Fill(E1,dE);
+							D9_E_Ungated[stripE1]->Fill(E1norm,angle);
+
+							D9_E_Sum_v_Ang->Fill(E1norm,angle);
+
+							if (g238 > 0 || g275 > 0) D9_E_Gam_Gated->Fill(angle,E1cal);
+							if (g238_back > 0 || g275_back > 0) D9_E_Gated_Back->Fill(angle,E1cal);
+
+						}
+						break;
+					case 2110:
+						{
+						//	D10_PID[stripdE][stripE1][sec]->Fill(E1,dE);
+							D10_E_Ungated[stripE1]->Fill(E1norm,angle);
+
+							D10_E_Sum_v_Ang->Fill(E1norm,angle);
+
+							if (g238 > 0 || g275 > 0) D10_E_Gam_Gated->Fill(angle,E1cal);
+							if (g238_back > 0 || g275_back > 0) D10_E_Gated_Back->Fill(angle,E1cal);
+						}
+						break;
+
 				}//closes PID Switch
 
+//}			
+
 			}
 
-			//if (si2->at(i).telescopeID == 2105 && stripdE == 0 && stripE1 == 3 && positionE1 > 77 && dE > -14943*log(E1)+211302-500 && dE < -16012*log(E1)+227462+5000){
-			if (si2->at(i).telescopeID == 2105 && stripdE == 0 && stripE1 == 3 && positionE1 > 60 && positionE1<63 && dE > 4.142e-18*pow(E1,4)-4.29676e-12*pow(E1,3)+1.8723e-6*pow(E1,2)-.454376*E1+7.31e4 && dE < (3.462e-19*pow(E1,4)-5.12e-13*pow(E1,3)+4.92e-7*pow(E1,2)-.2428*E1+6.53e4)){
-				E1proj->Fill(E1);
-				dEE1check->Fill(E1,dE);
-			}
-
-			if (g238 > 0 || g275>0 || g1233>0 || g1297>0 || g2556>0){
-				if (si2->at(i).telescopeID == 2105 && positionE1>75){
-					if (stripE1==0) SX3_0->Fill(E1);
-					if (stripE1==1) SX3_1->Fill(E1);
-					if (stripE1==2) SX3_2->Fill(E1);
-					if (stripE1==3) SX3_3->Fill(E1);
-		
-				
-				}
-			}
 
 		for (unsigned int f = 0; f < gam2->size();f++){
 			gamEn = pow(gam2->at(f).en,2)*gamcalparams[gam2->at(f).num][0] + gam2->at(f).en*gamcalparams[gam2->at(f).num][1] + gamcalparams[gam2->at(f).num][2]; 
 
-			if (gamEn != 0 && TimingGammaIndex[f]>0 && Ex19Ne >6.2 && Ex19Ne < 6.6) QQQDAvsGam->Fill(Ex19Ne,gamEn); 
+			if (gamEn != 0 && TimingGammaIndex[f]>0 && Ex19Ne >6.2 && Ex19Ne < 6.6) QQQDAvsGam->Fill(Ex19Ne,gamEn);
+			
+//			if (TimingGammaIndex[f]>0 && gamEn != 0){
+//				for (int Ex = 40; Ex < 70; Ex++){
 
+//					if (detID < 2000) Ex_v_Gam->Fill(gamEn,Ex19Ne);
+
+//				}
+//			}
 		}
+
 		}//closes silicon detectors loop
 
 
 
 		for (unsigned int i = 0; i < gam2->size();i++){
-		if (tritongate > 0){
-			
-			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
+		//if (tritongate > 0){
 
-			gam_ind->Fill(gamEn,gam2->at(i).num);
+			double gamUncal = gam2->at(i).en;
+
+			switch(gam2->at(i).num){
+				case 31:
+				    {
+					gamUncal = gamUncal/GamNorm31[runnum-400];
+				    }
+				    break;
+				case 87:
+				    {
+					gamUncal = gamUncal/GamNorm87[runnum-400];
+				    }
+				    break;
+				default: gamUncal = gamUncal;
+				    break;
+			}
+
+			gamEn = pow(gamUncal,2)*gamcalparams[gam2->at(i).num][0] + gamUncal*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
+
+//			gamEn=gamEn*gamcorr[gam2->at(i).num];
+
+			gam_ind->Fill(gamUncal,gam2->at(i).num);
+
+			GamvRunnum[gam2->at(i).num]->Fill(gamUncal,runnum);
 
 			if (gamEn != 0 && BackgroundTiming[i]>0){
 				gam_totBack->Fill(gamEn);
@@ -522,7 +727,7 @@ void histfill(int runnum, ofstream &log1){
 				gam_totBack2->Fill(gamEn);
 				if (Exgate > 0) gamExBack2->Fill(gamEn);
 			}
-			//*******Gamma histograms filled below here are suppressed by the time gate with the Si detectors*******
+			//c******Gamma histograms filled below here are suppressed by the time gate with the Si detectors*******
 			if (gamEn != 0 && TimingGammaIndex[i]>0){
 
 				for (unsigned int j = 0; j < gam2->size();j++){
@@ -531,8 +736,8 @@ void histfill(int runnum, ofstream &log1){
 						//std::cout << "woah!" << std::endl;
 					}
 				}
-				gam_tot->Fill(gamEn);
-				gam_tot2->Fill(gamEn);
+				if (g197 == 0 && g109 == 0) gam_tot->Fill(gamEn);
+				if (g197 == 0 && g109 == 0) gam_tot2->Fill(gamEn);
 				//Fill the gated gammasphere histograms here:
 				for (int z=0; z<4; z++){
 					if (pkgate[z] > 0) gam_gated[z]->Fill(gamEn);
@@ -585,8 +790,8 @@ void histfill(int runnum, ofstream &log1){
 						if (gamEn > 1850 && gamEn < 1856) int1853->Fill(Qgatearray[q][0]);
 						if (gamEn > 1856 && gamEn < 1862) back1853->Fill(Qgatearray[q][0]);
 
-						if (gamEn >= 1843 && gamEn <= 1845) int1844->Fill(Qgatearray[q][0]);
-						if (gamEn >= 1846 && gamEn <= 1849) back1844->Fill(Qgatearray[q][0]);
+						if (gamEn >= 1834 && gamEn <= 1844) int1844->Fill(Qgatearray[q][0]);
+						if (gamEn >= 1848 && gamEn <= 1858) back1844->Fill(Qgatearray[q][0]);
 
 					}
 				}
@@ -595,14 +800,40 @@ void histfill(int runnum, ofstream &log1){
 
 				if (g238 > 0 && Exgate > 0) gam238->Fill(gamEn);
 				if (g275 > 0 && Exgate > 0) gam275->Fill(gamEn);
-				if (g1233 > 0) gam1233->Fill(gamEn);
-				if (g1297 > 0) gam1297->Fill(gamEn);
-				if (g1840 > 0) gam1840->Fill(gamEn);
-				if (g2556 > 0) gam2556->Fill(gamEn);
-			}
-	
-		}
+				if (g1233 > 0 && Exgate > 0) gam1233->Fill(gamEn);
+				if (g1297 > 0 && Exgate > 0) gam1297->Fill(gamEn);
+				if (g1840 > 0 && Exgate > 0) gam1840->Fill(gamEn);
+				if (g2556 > 0 && Exgate > 0 && g238 > 0) gam2556->Fill(gamEn);
 
+				for (unsigned int v = 0; v < ExVec.size(); v++){
+
+					Ex_v_Gam->Fill(gamEn,ExVec[v]);
+	
+				}
+			}//Closes if GamEn and TimingGammaIndex
+	
+		//}//Close Triton Gate
+
+			if (gamEn != 0 && TimingGammaIndex[i] > 0){
+
+				for (unsigned int ex = 0; ex < ExVecWithSX3.size(); ex++){
+
+					if (g238 > 0 && g197 == 0 && g109 == 0 && g890 == 0) gam238vEx->Fill(gamEn,ExVecWithSX3[ex]);
+					if (g275 > 0 && g197 == 0 && g109 == 0 && g890 == 0) gam275vEx->Fill(gamEn,ExVecWithSX3[ex]);
+
+				}
+
+			}
+
+			if (gamEn != 0 && (BackgroundTiming[i] > 0 || BackgroundTiming2[i] > 0)){
+					if (g238 > 0) gam238_Back->Fill(gamEn);
+					if (g275 > 0) gam275_Back->Fill(gamEn);
+					if (g1233 > 0) gam1233_Back->Fill(gamEn);
+					if (g1297 > 0) gam1297_Back->Fill(gamEn);
+					if (g1840 > 0) gam1840_Back->Fill(gamEn);
+					if (g2556 > 0) gam2556_Back->Fill(gamEn);
+			
+			}
 		}
 
 		for (int c=0; c<300; c++){ Qgatearray[c][1] = 0;}
@@ -611,6 +842,9 @@ void histfill(int runnum, ofstream &log1){
 		TimingGammaIndex.clear();
 		BackgroundTiming.clear();
 		BackgroundTiming2.clear();
+		ExVec.clear();
+		ExVecWithSX3.clear();
+
 	}
 
 
@@ -625,7 +859,7 @@ void histfill(int runnum, ofstream &log1){
 
 }
 
-//********************************************************************************************************//
+//c******************************************************************************************************c//
 
 
 void MakeMyHists(){
@@ -633,7 +867,8 @@ void MakeMyHists(){
 	gcount2 = 0;
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	hist = TFile::Open("DCCalTests.root","RECREATE");
+	string RootFile = "UnalibratedInd.root";
+	hist = TFile::Open(TString(RootFile),"RECREATE");
 	std::ofstream logFile("GoddessAnalysis.log");
 
 	//directories for the histograms are created. 
@@ -657,22 +892,47 @@ void MakeMyHists(){
 	Gamma_Hists = hist->mkdir("Gamma_Hists");
 		Gammasphere_Hists = hist->mkdir("Gamma_Hists/Gammasphere_Histograms");
 		Gamma_Gated_Hists = hist->mkdir("Gamma_Hists/Gamma_Gated_Histograms");
+			Background = hist->mkdir("Gamma_Hists/Gamma_Gated_Histograms/Background");
 		Gamma_Intensity_Hists = hist->mkdir("Gamma_Hists/Gamma_Intensity_Histograms");
 		Excitation_Energy_Gated = hist->mkdir("Gamma_Hists/Excitation_Energy_Gated");
 		Triton_Gated = hist->mkdir("Gamma_Hists/Triton_Gated");
+		Gams_vs_Run = hist->mkdir("Gamma_Hists/Gams_vs_Run");
 	QQQ5_DA_TotalE = hist->mkdir("DA_Total_E");
 	QQQ5_DC_TotalE = hist->mkdir("DC_Total_E");
 	Strip_vs_E_Hists = hist->mkdir("Strip_vs_E_Hists");
 	Timing_Spectra = hist->mkdir("Timing_Spectra");
+	SX3_Hists = hist->mkdir("SX3_Hists");
+		D4_Hists = hist->mkdir("SX3_Hists/D4_Hists");
+			Energy_Ungated4 = hist->mkdir("SX3_Hists/D4_Hists/Energy_Ungated4");
+		D5_Hists = hist->mkdir("SX3_Hists/D5_Hists");
+			Energy_Ungated5 = hist->mkdir("SX3_Hists/D5_Hists/Energy_Ungated5");
+		D7_Hists = hist->mkdir("SX3_Hists/D7_Hists");
+			Energy_Ungated7 = hist->mkdir("SX3_Hists/D7_Hists/Energy_Ungated7");
+		D8_Hists = hist->mkdir("SX3_Hists/D8_Hists");
+			Energy_Ungated8 = hist->mkdir("SX3_Hists/D8_Hists/Energy_Ungated8");
+		D9_Hists = hist->mkdir("SX3_Hists/D9_Hists");
+			Energy_Ungated9 = hist->mkdir("SX3_Hists/D9_Hists/Energy_Ungated9");
+		D10_Hists = hist->mkdir("SX3_Hists/D10_Hists");
+			Energy_Ungated10 = hist->mkdir("SX3_Hists/D10_Hists/Energy_Ungated10");
+		Gamma_Gated_Background = hist->mkdir("SX3_Hists/Gamma_Gated_Background");
+		Gamma_Gated = hist->mkdir("SX3_Hists/Gamma_Gated");
 
 	E1proj = new TH1D("E1proj","BB10 0 SX3 3 D5 sec 2", 1250, 0, 900000);
 	dEE1check = new TH2D("dEE1check","check",1250,0,900000,1250,0,300000);
 
-	SX3_0 = new TH1D("SX3_0","SX3 2105 strip 0 gated",5000,0,1000000);
-	SX3_1 = new TH1D("SX3_1","SX3 2105 strip 1 gated",5000,0,1000000);
-	SX3_2 = new TH1D("SX3_2","SX3 2105 strip 2 gated",5000,0,1000000);
-	SX3_3 = new TH1D("SX3_3","SX3 2105 strip 3 gated",5000,0,1000000);
+	E_v_Ang = new TH2D("E_v_Ang","Angle vs Triton Energy",60,0,90,1000,0,30);
+	E_v_AngBack = new TH2D("E_v_AngBack","Angle vs Triton Energy Background",60,0,90,1000,0,30);
 
+	Ex_v_Gam = new TH2D("Ex_v_Gam","Ex vs Gamma Energy",8000,0,8000,30,4,7);
+	gam238vEx = new TH2D("gam238vEx","238 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
+	gam275vEx = new TH2D("gam275vEx","275 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
+
+	DAvRunCheck = new TH2D("DAvRunCheck","Run Number vs E1 Energy",4096,0,4096,100,400,500);
+//	SX3_0 = new TH1D("SX3_0","SX3 2105 strip 0 gated",5000,0,1000000);
+//	SX3_1 = new TH1D("SX3_1","SX3 2105 strip 1 gated",5000,0,1000000);
+//	SX3_2 = new TH1D("SX3_2","SX3 2105 strip 2 gated",5000,0,1000000);
+//	SX3_3 = new TH1D("SX3_3","SX3 2105 strip 3 gated",5000,0,1000000);
+//
 	//QQQ energy histograms are created here.
 	Strip_vs_E_Hists->cd();
 	QQQDAdE = new TH2D("QQQDAdE","QQQ5 DA dE",4096,0,4096,32,0,32);
@@ -977,12 +1237,22 @@ void MakeMyHists(){
 	gam1633vtimeBACK = new TH1D("gam1633vtimeBACK","Gamma 1633 intensity vs timing",1000,-500,500);
 
 	hist->cd("Gamma_Hists/Gamma_Gated_Histograms");
+
 	gam238 = new TH1D("gam238","Gammas Gated on 237 keV Peak",8000,0,8000);
 	gam275 = new TH1D("gam275","Gammas Gated on 272 keV Peak",8000,0,8000);
 	gam1233 = new TH1D("gam1233","Gammas Gated on 1233 keV Peak",8000,0,8000);
 	gam1297 = new TH1D("gam1297","Gammas Gated on 1297 keV Peak",8000,0,8000);
 	gam1840 = new TH1D("gam1840","Gammas Gated on 1840 keV Peak",8000,0,8000);
 	gam2556 = new TH1D("gam2556","Gammas Gated on 2556 keV Peak",8000,0,8000);
+
+	hist->cd("Gamma_Hists/Gamma_Gated_Histograms/Background");
+
+	gam238_Back = new TH1D("gam238_Back","Gammas Gated on 237 keV Peak",8000,0,8000);
+	gam275_Back = new TH1D("gam275_Back","Gammas Gated on 272 keV Peak",8000,0,8000);
+	gam1233_Back = new TH1D("gam1233_Back","Gammas Gated on 1233 keV Peak",8000,0,8000);
+	gam1297_Back = new TH1D("gam1297_Back","Gammas Gated on 1297 keV Peak",8000,0,8000);
+	gam1840_Back = new TH1D("gam1840_Back","Gammas Gated on 1840 keV Peak",8000,0,8000);
+	gam2556_Back = new TH1D("gam2556_Back","Gammas Gated on 2556 keV Peak",8000,0,8000);
 
 	hist->cd("Gamma_Hists/Gamma_Intensity_Histograms");
 
@@ -1039,6 +1309,87 @@ void MakeMyHists(){
 
 	}
 
+	hist->cd("Gamma_Hists/Gams_vs_Run");
+	for (int i = 0; i < 111; i++){
+	
+		TH2D *hgam = new TH2D("Gam_" + TString(std::to_string(i)),"Gam " + TString(std::to_string(i)),5000,0,10000,100,400,500);
+		GamvRunnum.push_back(hgam);
+
+	}
+
+	hist->cd("SX3_Hists");
+	SX3_Gam_Gated = new TH2D("SX3_Gam_Gated","SX3 Summed Energy Gamma Gated Background",30,30,90,300,10,25);
+	SX3_Gated_Back = new TH2D("SX3_Gated_Back","SX3 Summed Gamma Gated Background",30,30,90,300,10,25);
+
+	SX3_Q_Gam_Gated = new TH2D("SX3_Q_Gam_Gated","SX3 Summed Q-value Gamma Gated Background",30,30,90,300,-15,0);
+	SX3_Q_Gated_Back = new TH2D("SX3_Q_Gated_Back","SX3 Summed Q-value Gamma Gated Background",30,30,90,300,-15,0);
+
+	SX3Ex = new TH1D("SX3Ex","Excitation Energy of 19Ne in SX3 Gamma Gated",800,0,8);
+	SX3ExBack = new TH1D("SX3ExBack","Excitation Energy of 19Ne in SX3 Background",800,0,8);
+	SX3ExTot = new TH1D("SX3ExTot","Excitation Energy of 19Ne in SX3 Ungated",800,0,8);
+
+	string D4base = "D4_E_";
+	string D5base = "D5_E_";
+	string D7base = "D7_E_";
+	string D8base = "D8_E_";
+	string D9base = "D9_E_";
+	string D10base = "D10_E_";
+
+	for (int i = 0; i < 4; i++){
+		hist->cd("SX3_Hists/D4_Hists/Energy_Ungated4");
+			TH2D *h10 = new TH2D(TString(D4base) + TString(std::to_string(i)),"D4 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
+			D4_E_Ungated.push_back(h10);
+
+			if (i == 3) D4_E_Sum_v_Ang = new TH2D(TString(D4base) + TString("Sum_v_Ang"),"D4 Energy Summed",500,0,1000000,30,30,90);
+		hist->cd("SX3_Hists/D5_Hists/Energy_Ungated5");
+			TH2D *h11 = new TH2D(TString(D5base) + TString(std::to_string(i)),"D5 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
+			D5_E_Ungated.push_back(h11);
+
+			if (i == 3) D5_E_Sum_v_Ang = new TH2D(TString(D5base) + TString("Sum_v_Ang"),"D5 Energy Summed",500,0,1000000,30,30,90);
+		hist->cd("SX3_Hists/D7_Hists/Energy_Ungated7");
+			TH2D *h12 = new TH2D(TString(D7base) + TString(std::to_string(i)),"D7 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
+			D7_E_Ungated.push_back(h12);
+
+			if (i == 3) D7_E_Sum_v_Ang = new TH2D(TString(D7base) + TString("Sum_v_Ang"),"D7 Energy Summed",500,0,1000000,30,30,90);
+		hist->cd("SX3_Hists/D8_Hists/Energy_Ungated8");
+			TH2D *h13 = new TH2D(TString(D8base) + TString(std::to_string(i)),"D8 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
+			D8_E_Ungated.push_back(h13);
+
+			if (i == 3) D8_E_Sum_v_Ang = new TH2D(TString(D8base) + TString("Sum_v_Ang"),"D8 Energy Summed",500,0,1000000,30,30,90);
+		hist->cd("SX3_Hists/D9_Hists/Energy_Ungated9");
+			TH2D *h14 = new TH2D(TString(D9base) + TString(std::to_string(i)),"D9 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
+			D9_E_Ungated.push_back(h14);
+
+			if (i == 3) D9_E_Sum_v_Ang = new TH2D(TString(D9base) + TString("Sum_v_Ang"),"D9 Energy Summed",500,0,1000000,30,30,90);
+		hist->cd("SX3_Hists/D10_Hists/Energy_Ungated10");
+			TH2D *h15 = new TH2D(TString(D10base) + TString(std::to_string(i)),"D10 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
+			D10_E_Ungated.push_back(h15);
+
+			if (i == 3) D10_E_Sum_v_Ang = new TH2D(TString(D10base) + TString("Sum_v_Ang"),"D10 Energy Summed",500,0,1000000,30,30,90);
+	}
+
+
+
+	hist->cd("SX3_Hists/Gamma_Gated_Background");
+
+		D4_E_Gated_Back = new TH2D(TString(D4base) + TString("Gated_Back"),"D4 Energy Gamma Gated Background",30,30,90,500,0,25);
+		D5_E_Gated_Back = new TH2D(TString(D5base) + TString("Gated_Back"),"D5 Energy Gamma Gated Background",30,30,90,500,0,25);
+		D7_E_Gated_Back = new TH2D(TString(D7base) + TString("Gated_Back"),"D7 Energy Gamma Gated Background",30,30,90,500,0,25);
+		D8_E_Gated_Back = new TH2D(TString(D8base) + TString("Gated_Back"),"D8 Energy Gamma Gated Background",30,30,90,500,0,25);
+		D9_E_Gated_Back = new TH2D(TString(D9base) + TString("Gated_Back"),"D9 Energy Gamma Gated Background",30,30,90,500,0,25);
+		D10_E_Gated_Back = new TH2D(TString(D10base) + TString("Gated_Back"),"D10 Energy Gamma Gated Background",30,30,90,500,0,25);
+
+//		D7Gated = new TH2D("D7Gated","D7 Energy Gamma Gated",500,0,1000000,30,30,90);
+
+	hist->cd("SX3_Hists/Gamma_Gated");
+	
+		D4_E_Gam_Gated = new TH2D(TString(D4base) + TString("Gam_Gated"),"D4 Energy Gamma Gated ",30,30,90,500,0,25);
+		D5_E_Gam_Gated = new TH2D(TString(D5base) + TString("Gam_Gated"),"D5 Energy Gamma Gated ",30,30,90,500,0,25);
+		D7_E_Gam_Gated = new TH2D(TString(D7base) + TString("Gam_Gated"),"D7 Energy Gamma Gated ",30,30,90,500,0,25);
+		D8_E_Gam_Gated = new TH2D(TString(D8base) + TString("Gam_Gated"),"D8 Energy Gamma Gated ",30,30,90,500,0,25);
+		D9_E_Gam_Gated = new TH2D(TString(D9base) + TString("Gam_Gated"),"D9 Energy Gamma Gated ",30,30,90,500,0,25);
+		D10_E_Gam_Gated = new TH2D(TString(D10base) + TString("Gam_Gated"),"D10 Energy Gamma Gated ",30,30,90,500,0,25);
+
 
 	//The files for the normalization parameters and gates are opened here.
 	ifstream inFile0("textfiles/AnglesAndELoss2.txt");	
@@ -1048,8 +1399,13 @@ void MakeMyHists(){
 	ifstream inFile4("textfiles/dEECal2.txt");
 	//ifstream inFile4("E1cal.txt");
 	//ifstream inFile5("dEcal.txt");
-	ifstream inFile6("textfiles/GamCalParamsQuadREDO.txt");
+//	ifstream inFile6("textfiles/GamCalParamsQuadREDO.txt");
+//	ifstream inFile6("textfiles/GamCalParamsQuad.txt");
+//	ifstream inFile6("textfiles/GamCalParamsQuadREDO2.txt");
+//	ifstream inFile6("textfiles/GamCalLinWHighREDO2.txt");
 //	ifstream inFile6("textfiles/GamCalLinWHighREDOcompat.txt");
+	ifstream inFile6("GamCal/QuadraticCalibration.txt");
+//	ifstream inFile6("GamCal/LinearCalibration.txt");
 //	ifstream inFile7("angleassign.txt");
 //	ifstream inFile8("energyloss.txt");
 	ifstream inFile9("textfiles/Qbins.txt");
@@ -1061,6 +1417,16 @@ void MakeMyHists(){
 	ifstream inFile14("textfiles/E1normmult1DC.txt");
 	ifstream inFile15("textfiles/E1normaddDC.txt");
 	ifstream inFile16("textfiles/DCtoQ.txt");
+
+//	ifstream inFile17("textfiles/SX3Norm.txt");
+	ifstream inFile18("textfiles/SX3RenormParams.txt");
+	ifstream inFile19("textfiles/SX3Norm_Angle.txt");
+	ifstream inFile20("textfiles/SX3Cal.txt");
+
+	ifstream inFile21("textfiles/GamCorr1.txt");
+
+	ifstream inFile22("GamCal/GamNorm31.txt");
+	ifstream inFile23("GamCal/GamNorm87.txt");
 
 	for (int i = 0; i<20; i++){
 
@@ -1110,6 +1476,8 @@ void MakeMyHists(){
 
 		inFile6 >> gamcalparams[i][0] >> gamcalparams[i][1] >> gamcalparams[i][2];
 
+		inFile21 >> gamcorr[i];
+
 	}
 
 	for (int i=0; i<300; i++){
@@ -1122,6 +1490,37 @@ void MakeMyHists(){
 		}
 
 	}
+
+//	for (int i = 0; i < 7; i++){
+//		for (int j = 0; j < 4; j++){
+//			inFile17 >> SX3Norm[i][0] >> SX3Norm[i][1] >> SX3Norm[i][2] >> SX3Norm[i][3] >> SX3Norm[i][4] >> SX3Norm[i][5] >> SX3Norm[i][6] >> SX3Norm[i][7];
+//		}
+
+
+//	}
+
+	for (int i = 0; i < 28; i++){
+
+		inFile18 >> SX3Renorm[i][0] >> SX3Renorm[i][1] >> SX3Renorm[i][2];
+		inFile19 >> SX3Norm_Ang[i][0] >> SX3Norm_Ang[i][1] >> SX3Norm_Ang[i][2] >> SX3Norm_Ang[i][3];
+
+	}
+
+	for (int i = 0; i < 23; i++){
+
+		inFile20 >> SX3Cal[i][0] >> SX3Cal[i][1] >> SX3Cal[i][2] >> SX3Cal[i][3] >> SX3Cal[i][4] >> SX3Cal[i][5] >> SX3Cal[i][6] >> SX3Cal[i][7] >> SX3Cal[i][8] >> SX3Cal[i][9] >> SX3Cal[i][10] >> SX3Cal[i][11] >> SX3Cal[i][12] >> SX3Cal[i][13]; 	
+
+	}
+
+	for (int i = 0; i < 95; i++){
+
+		inFile22 >> GamNorm31[i];
+		inFile23 >> GamNorm87[i];
+
+	}
+
+
+	
 
 //	for (int i=0; i<22; i++){
 //		std::cout << TGateDCHi[i][0] << " " << TGateDCHi[i][1] << " " << TGateDCHi[i][2] << " " << TGateDCHi[i][3] << " " << TGateDCHi[i][4] << std::endl;
@@ -1146,7 +1545,7 @@ void MakeMyHists(){
 	int numruns = 0;
 	for (int run = 404; run < 495; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
-		if ((run > 400 && run < 409 && run != 405) || (run > 409 && run < 424) || (run > 431 && run < 435) || (run > 436 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
+		if ((run > 400 && run < 409 && run != 405 && run != 406) || (run > 409 && run < 424) || (run > 431 && run < 435) || (run > 436 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
 			histfill(run,logFile);
 			numruns++;
 		}
@@ -1204,8 +1603,64 @@ void MakeMyHists(){
 
 	}
 
+	double gamExInt = gamExGated->Integral();
+	double gamExInt2 = (gamExBack->Integral() + gamExBack2->Integral())/2;
+
+	double gam_totInt = gam_tot->Integral();
+	double gam_totInt2 = (gam_totBack->Integral() + gam_totBack2->Integral())/2;
+	
+	double ScaleFactor_tot = gam_totInt/gam_totInt2;
+	double ScaleFactorEx = gamExInt/gamExInt2;
+
+	std::cout << gam_totInt << " " << gam_totInt2 << " " << ScaleFactor_tot << std::endl;
+	std::cout << gamExInt << " " << gamExInt2 << " " << ScaleFactorEx << std::endl;
+
+	gam_totBackAvg8000->Scale(ScaleFactor_tot);
+	gamExBackAvg8000->Scale(ScaleFactorEx);
+
 	gam_tot2->Add(gam_totBackAvg8000,-1);
 	gamExGated2->Add(gamExBackAvg8000,-1);
+
+	D4_E_Gam_Gated->Add(D4_E_Gated_Back,-1);
+	D5_E_Gam_Gated->Add(D5_E_Gated_Back,-1);
+	D7_E_Gam_Gated->Add(D7_E_Gated_Back,-1);
+	D8_E_Gam_Gated->Add(D8_E_Gated_Back,-1);
+	D9_E_Gam_Gated->Add(D9_E_Gated_Back,-1);
+	D10_E_Gam_Gated->Add(D10_E_Gated_Back,-1);
+
+	SX3_Gam_Gated->Add(SX3_Gated_Back,-1);
+	SX3_Q_Gam_Gated->Add(SX3_Q_Gated_Back,-1);
+	SX3Ex->Add(SX3ExBack,-1);
+
+	E_v_Ang->Add(E_v_AngBack,-1);
+
+	double g238Int = gam238->Integral();
+	double g275Int = gam275->Integral();
+	double g1233Int = gam1233->Integral();
+	double g1297Int = gam1297->Integral();
+	double g1840Int = gam1840->Integral();
+	double g2556Int = gam2556->Integral();
+
+	double g238BackInt = gam238_Back->Integral();
+	double g275BackInt = gam275_Back->Integral();
+	double g1233BackInt = gam1233_Back->Integral();
+	double g1297BackInt = gam1297_Back->Integral();
+	double g1840BackInt = gam1840_Back->Integral();
+	double g2556BackInt = gam2556_Back->Integral();
+
+	double g238Scale = g238Int/g238BackInt;
+	double g275Scale = g275Int/g275BackInt;
+	double g1233Scale = g1233Int/g1233BackInt;
+	double g1297Scale = g1297Int/g1297BackInt;
+	double g1840Scale = g1840Int/g1840BackInt;
+	double g2556Scale = g2556Int/g2556BackInt;
+
+	gam238_Back->Scale(g238Scale);
+	gam275_Back->Scale(g275Scale);
+	gam1233_Back->Scale(g1233Scale);
+	gam1297_Back->Scale(g1297Scale);
+	gam1840_Back->Scale(g1840Scale);
+	gam2556_Back->Scale(g2556Scale);
 
 
 //Probably don't want to do this, if the bin content is negative just say it indicates less background than expected in that region. ***
@@ -1215,7 +1670,7 @@ void MakeMyHists(){
 
 	
 	std::cout << std::endl << "The number of runs analyzed was: " << numruns << std::endl;
-	std::cout << "Writing data to TotalData.root" << std::endl;
+	std::cout << "Writing data to " << RootFile << std::endl;
 	hist->Write();
 	hist->Close();
 
