@@ -8,14 +8,14 @@ void histfill(int runnum, ofstream &log1){
 	std::cout << "Run " << runnum << " is now being analyzed." << std::endl; 	
 	std::cout << "../exec/rootfiles/run" + TString(std::to_string(runnum)) + ".root" << endl;
 	//the code opens the file here
-	//data = TFile::Open("../exec/rootfiles/QQQ5/run" + TString(std::to_string(runnum)) + "QQQ5_SKIMMED_AGAIN.root");
+	data = TFile::Open("../exec/rootfiles/QQQ5/run" + TString(std::to_string(runnum)) + "QQQ5_SKIMMED_AGAIN.root");
 	//data = TFile::Open("../exec/rootfiles/TotalFiles/run" + TString(std::to_string(runnum)) + "_SKIMMED.root");
 	//data = TFile::Open("../exec/rootfiles/TotalFiles/run" + TString(std::to_string(runnum)) + "_AllData.root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/Mult1RootFiles/run" + TString(std::to_string(runnum)) + ".root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFilesWithoutSX3Crap/run" + TString(std::to_string(runnum)) + "_SX3Mult1.root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFilesWithoutSX3Crap/run" + TString(std::to_string(runnum)) + "_SX3NoHump.root");
-	data = TFile::Open("/media/mhall12/ne19disk1/FinalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
+	//data = TFile::Open("/media/mhall12/ne19disk1/FinalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
 	//trees->cd();
 
 	//the data from trees/god is placed into a container gam2 and si2.
@@ -389,11 +389,11 @@ void histfill(int runnum, ofstream &log1){
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
-								if (Ex19Ne > 6.2 && Ex19Ne < 6.6) Exgate++;
+								if (Ex19Ne > 5.8 && Ex19Ne < 6.6) Exgate++;
 //c**c	
 								if (Ex19Ne >= 4 && Ex19Ne <= 7){
 									ExVec.push_back(Ex19Ne);
-									ExVecWithSX3.push_back(Ex19Ne);
+//									ExVecWithSX3.push_back(Ex19Ne);
 								}
 
 								//Put the for loop for the range of Ex gates here
@@ -488,11 +488,11 @@ void histfill(int runnum, ofstream &log1){
 							QQQDCEx->Fill(Ex19Ne, stripdE);
 							QQQDCExTot->Fill(Ex19Ne);
 
-							if (Ex19Ne > 6.2 && Ex19Ne < 6.7) Exgate++;//DCgate++;
+							if (Ex19Ne > 5.8 && Ex19Ne < 6.7) Exgate++;//DCgate++;
 //c***	
 							if (Ex19Ne >= 4 && Ex19Ne <= 7){
 								ExVec.push_back(Ex19Ne);
-								ExVecWithSX3.push_back(Ex19Ne);
+//								ExVecWithSX3.push_back(Ex19Ne);
 							}
 
 							//Put the for loop for the range of Ex gates here
@@ -712,23 +712,54 @@ void histfill(int runnum, ofstream &log1){
 			}
 
 			gamEn = pow(gamUncal,2)*gamcalparams[gam2->at(i).num][0] + gamUncal*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
-
+			gamEn = 3.45437e-6*pow(gamEn,2)+.991322*gamEn+3.82698;
+			//Further corrections to some detectors
+			gamEn = pow(gamEn,2)*GamNorm[gam2->at(i).num][0] + gamEn*GamNorm[gam2->at(i).num][1] + GamNorm[gam2->at(i).num][2];
 //			gamEn=gamEn*gamcorr[gam2->at(i).num];
 
-			gam_ind->Fill(gamUncal,gam2->at(i).num);
+			gam_ind->Fill(gamEn,gam2->at(i).num);
 
 			GamvRunnum[gam2->at(i).num]->Fill(gamUncal,runnum);
 
-			if (gamEn != 0 && BackgroundTiming[i]>0){
+			if (gamEn >20 && BackgroundTiming[i]>0){
 				gam_totBack->Fill(gamEn);
 				if (Exgate > 0) gamExBack->Fill(gamEn);
+
+				//fill the 4k and 8k histograms 
+				for (unsigned int v = 0; v < ExVec.size(); v++){
+					for (int ex = 40; ex < ExLoopEnd; ex++){
+						int ele = ex-40;
+
+						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10){
+							QQQExvGam_Bkg[ele]->Fill(gamEn);
+						//	if (gamEn <= 4000) QQQExvGam_Bkg4k1000[ele]->Fill(gamEn);
+						//	else if (gamEn > 4000) QQQExvGam_Bkg8k1000[ele]->Fill(gamEn);
+
+						}
+
+					}
+				}
 			}
-			if (gamEn != 0 && BackgroundTiming2[i]>0){
+			if (gamEn >20 && BackgroundTiming2[i]>0){
 				gam_totBack2->Fill(gamEn);
 				if (Exgate > 0) gamExBack2->Fill(gamEn);
+
+				//fill the 4k and 8k histograms again. They get scaled anyway so it really doesn't make a difference if you add them together.
+				for (unsigned int v = 0; v < ExVec.size(); v++){
+					for (int ex = 40; ex < ExLoopEnd; ex++){
+						int ele = ex-40;
+
+						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ExWidth/10){
+							QQQExvGam_Bkg[ele]->Fill(gamEn);
+						//	if (gamEn <= 4000) QQQExvGam_Bkg4k1000[ele]->Fill(gamEn);
+						//	else if (gamEn > 4000) QQQExvGam_Bkg8k1000[ele]->Fill(gamEn);
+						}
+
+					}
+				}
 			}
 			//c******Gamma histograms filled below here are suppressed by the time gate with the Si detectors*******
-			if (gamEn != 0 && TimingGammaIndex[i]>0){
+			if (gamEn >20  && TimingGammaIndex[i]>0){//timegate > 0){//
 
 				for (unsigned int j = 0; j < gam2->size();j++){
 					if (gamEn > 3000 && gam511[j] > 0 && TimingGammaIndex[j] > 0){
@@ -808,19 +839,26 @@ void histfill(int runnum, ofstream &log1){
 				for (unsigned int v = 0; v < ExVec.size(); v++){
 
 					Ex_v_Gam->Fill(gamEn,ExVec[v]);
+
+					for (int ex = 40; ex < ExLoopEnd; ex++){
+						int ele = ex-40;
+
+						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10) QQQExvGam[ele]->Fill(gamEn);
+
+					}
 	
 				}
 			}//Closes if GamEn and TimingGammaIndex
 	
-		//}//Close Triton Gate
+//		}//Close Triton Gate
 
 			if (gamEn != 0 && TimingGammaIndex[i] > 0){
 
 				for (unsigned int ex = 0; ex < ExVecWithSX3.size(); ex++){
 
-					if (g238 > 0 && g197 == 0 && g109 == 0 && g890 == 0) gam238vEx->Fill(gamEn,ExVecWithSX3[ex]);
+					 gam238vEx->Fill(gamEn,ExVecWithSX3[ex]);
 					if (g275 > 0 && g197 == 0 && g109 == 0 && g890 == 0) gam275vEx->Fill(gamEn,ExVecWithSX3[ex]);
-
+//if (g238 > 0 && g197 == 0 && g109 == 0 && g890 == 0)
 				}
 
 			}
@@ -867,28 +905,48 @@ void MakeMyHists(){
 	gcount2 = 0;
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	string RootFile = "UnalibratedInd.root";
+	string RootFile = "NewHistsCheck2.root";
 	hist = TFile::Open(TString(RootFile),"RECREATE");
 	std::ofstream logFile("GoddessAnalysis.log");
 
 	//directories for the histograms are created. 
-	Particle_IDs = hist->mkdir("Particle_IDs");
-		QQQ5_DA_PID = hist->mkdir("Particle_IDs/DA_PID");
-		QQQ5_DA_PID_Cal = hist->mkdir("Particle_IDs/DA_PID_Cal");
-		QQQ5_DC_PID = hist->mkdir("Particle_IDs/DC_PID");
-		D4_FB_PIDs = hist->mkdir("Particle_IDs/D4_FB_PIDs");
-		D5_FB_PIDs = hist->mkdir("Particle_IDs/D5_FB_PIDs");
-		D7_FB_PIDs = hist->mkdir("Particle_IDs/D7_FB_PIDs");
-		D8_FB_PIDs = hist->mkdir("Particle_IDs/D8_FB_PIDs");
-		D9_FB_PIDs = hist->mkdir("Particle_IDs/D9_FB_PIDs");
-		D10_FB_PIDs = hist->mkdir("Particle_IDs/D10_FB_PIDs");
-	Triton_Spectra = hist->mkdir("Triton_Spectra");
-		DA_Triton_Spectra = hist->mkdir("Triton_Spectra/DA_Triton_Spectra");
-		DC_Triton_Spectra = hist->mkdir("Triton_Spectra/DC_Triton_Spectra");
-	Calibration_Hists = hist->mkdir("Calibration_Hists");
-		QQQ5_DA_dE_gated = hist->mkdir("Calibration_Hists/DA_dE_gated");
-		Q_Gated_QQQ_DA_E1 = hist->mkdir("Calibration_Hists/Q_Gated_QQQ_DA_E1");
-		Q_Gated_QQQ_DA_dE = hist->mkdir("Calibration_Hists/Q_Gated_QQQ_DA_dE");
+	Silicon_Detectors = hist->mkdir("Silicon_Detectors");
+		Particle_IDs = hist->mkdir("Silicon_Detectors/Particle_IDs");
+			QQQ5_DA_PID = hist->mkdir("Silicon_Detectors/Particle_IDs/DA_PID");
+			QQQ5_DA_PID_Cal = hist->mkdir("Silicon_Detectors/Particle_IDs/DA_PID_Cal");
+			QQQ5_DC_PID = hist->mkdir("Silicon_Detectors/Particle_IDs/DC_PID");
+			D4_FB_PIDs = hist->mkdir("Silicon_Detectors/Particle_IDs/D4_FB_PIDs");
+			D5_FB_PIDs = hist->mkdir("Silicon_Detectors/Particle_IDs/D5_FB_PIDs");
+			D7_FB_PIDs = hist->mkdir("Silicon_Detectors/Particle_IDs/D7_FB_PIDs");
+			D8_FB_PIDs = hist->mkdir("Silicon_Detectors/Particle_IDs/D8_FB_PIDs");
+			D9_FB_PIDs = hist->mkdir("Silicon_Detectors/Particle_IDs/D9_FB_PIDs");
+			D10_FB_PIDs = hist->mkdir("Silicon_Detectors/Particle_IDs/D10_FB_PIDs");
+		Triton_Spectra = hist->mkdir("Silicon_Detectors/Triton_Spectra");
+			DA_Triton_Spectra = hist->mkdir("Silicon_Detectors/Triton_Spectra/DA_Triton_Spectra");
+			DC_Triton_Spectra = hist->mkdir("Silicon_Detectors/Triton_Spectra/DC_Triton_Spectra");
+		Calibration_Hists = hist->mkdir("Silicon_Detectors/Calibration_Hists");
+			QQQ5_DA_dE_gated = hist->mkdir("Silicon_Detectors/Calibration_Hists/DA_dE_gated");
+			Q_Gated_QQQ_DA_E1 = hist->mkdir("Silicon_Detectors/Calibration_Hists/Q_Gated_QQQ_DA_E1");
+			Q_Gated_QQQ_DA_dE = hist->mkdir("Silicon_Detectors/Calibration_Hists/Q_Gated_QQQ_DA_dE");
+		QQQ5_DA_TotalE = hist->mkdir("Silicon_Detectors/DA_Total_E");
+		QQQ5_DC_TotalE = hist->mkdir("Silicon_Detectors/DC_Total_E");
+		Strip_vs_E_Hists = hist->mkdir("Silicon_Detectors/Strip_vs_E_Hists");
+		SX3_Hists = hist->mkdir("Silicon_Detectors/SX3_Hists");
+			D4_Hists = hist->mkdir("Silicon_Detectors/SX3_Hists/D4_Hists");
+				Energy_Ungated4 = hist->mkdir("Silicon_Detectors/SX3_Hists/D4_Hists/Energy_Ungated4");
+			D5_Hists = hist->mkdir("Silicon_Detectors/SX3_Hists/D5_Hists");
+				Energy_Ungated5 = hist->mkdir("Silicon_Detectors/SX3_Hists/D5_Hists/Energy_Ungated5");
+			D7_Hists = hist->mkdir("Silicon_Detectors/SX3_Hists/D7_Hists");
+				Energy_Ungated7 = hist->mkdir("Silicon_Detectors/SX3_Hists/D7_Hists/Energy_Ungated7");
+			D8_Hists = hist->mkdir("Silicon_Detectors/SX3_Hists/D8_Hists");
+				Energy_Ungated8 = hist->mkdir("Silicon_Detectors/SX3_Hists/D8_Hists/Energy_Ungated8");
+			D9_Hists = hist->mkdir("Silicon_Detectors/SX3_Hists/D9_Hists");
+				Energy_Ungated9 = hist->mkdir("Silicon_Detectors/SX3_Hists/D9_Hists/Energy_Ungated9");
+			D10_Hists = hist->mkdir("Silicon_Detectors/SX3_Hists/D10_Hists");
+				Energy_Ungated10 = hist->mkdir("Silicon_Detectors/SX3_Hists/D10_Hists/Energy_Ungated10");
+			Gamma_Gated_Background = hist->mkdir("Silicon_Detectors/SX3_Hists/Gamma_Gated_Background");
+			Gamma_Gated = hist->mkdir("Silicon_Detectors/SX3_Hists/Gamma_Gated");
+
 	Gamma_Hists = hist->mkdir("Gamma_Hists");
 		Gammasphere_Hists = hist->mkdir("Gamma_Hists/Gammasphere_Histograms");
 		Gamma_Gated_Hists = hist->mkdir("Gamma_Hists/Gamma_Gated_Histograms");
@@ -897,44 +955,62 @@ void MakeMyHists(){
 		Excitation_Energy_Gated = hist->mkdir("Gamma_Hists/Excitation_Energy_Gated");
 		Triton_Gated = hist->mkdir("Gamma_Hists/Triton_Gated");
 		Gams_vs_Run = hist->mkdir("Gamma_Hists/Gams_vs_Run");
-	QQQ5_DA_TotalE = hist->mkdir("DA_Total_E");
-	QQQ5_DC_TotalE = hist->mkdir("DC_Total_E");
-	Strip_vs_E_Hists = hist->mkdir("Strip_vs_E_Hists");
 	Timing_Spectra = hist->mkdir("Timing_Spectra");
-	SX3_Hists = hist->mkdir("SX3_Hists");
-		D4_Hists = hist->mkdir("SX3_Hists/D4_Hists");
-			Energy_Ungated4 = hist->mkdir("SX3_Hists/D4_Hists/Energy_Ungated4");
-		D5_Hists = hist->mkdir("SX3_Hists/D5_Hists");
-			Energy_Ungated5 = hist->mkdir("SX3_Hists/D5_Hists/Energy_Ungated5");
-		D7_Hists = hist->mkdir("SX3_Hists/D7_Hists");
-			Energy_Ungated7 = hist->mkdir("SX3_Hists/D7_Hists/Energy_Ungated7");
-		D8_Hists = hist->mkdir("SX3_Hists/D8_Hists");
-			Energy_Ungated8 = hist->mkdir("SX3_Hists/D8_Hists/Energy_Ungated8");
-		D9_Hists = hist->mkdir("SX3_Hists/D9_Hists");
-			Energy_Ungated9 = hist->mkdir("SX3_Hists/D9_Hists/Energy_Ungated9");
-		D10_Hists = hist->mkdir("SX3_Hists/D10_Hists");
-			Energy_Ungated10 = hist->mkdir("SX3_Hists/D10_Hists/Energy_Ungated10");
-		Gamma_Gated_Background = hist->mkdir("SX3_Hists/Gamma_Gated_Background");
-		Gamma_Gated = hist->mkdir("SX3_Hists/Gamma_Gated");
 
-	E1proj = new TH1D("E1proj","BB10 0 SX3 3 D5 sec 2", 1250, 0, 900000);
-	dEE1check = new TH2D("dEE1check","check",1250,0,900000,1250,0,300000);
+	Ex_vs_Gammas_Hists = hist->mkdir("Ex_vs_Gammas_Hists");
+		QQQ5_v_Gam = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam");
+			D1_Hists = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists");
+			D1_Hists_Bkg1000 = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg1000");
+			D1_Hists_Bkg8000 = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg8000");
+			Ratio_Hists = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/Ratio_Hists");
+		Si_v_Gam = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam");
 
-	E_v_Ang = new TH2D("E_v_Ang","Angle vs Triton Energy",60,0,90,1000,0,30);
-	E_v_AngBack = new TH2D("E_v_AngBack","Angle vs Triton Energy Background",60,0,90,1000,0,30);
+	hist->cd("Silicon_Detectors");
+		E_v_Ang = new TH2D("E_v_Ang","Angle vs Triton Energy",60,0,90,1000,0,30);
+		E_v_AngBack = new TH2D("E_v_AngBack","Angle vs Triton Energy Background",60,0,90,1000,0,30);
 
-	Ex_v_Gam = new TH2D("Ex_v_Gam","Ex vs Gamma Energy",8000,0,8000,30,4,7);
-	gam238vEx = new TH2D("gam238vEx","238 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
-	gam275vEx = new TH2D("gam275vEx","275 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
+		DAvRunCheck = new TH2D("DAvRunCheck","Run Number vs E1 Energy",4096,0,4096,100,400,500);
 
-	DAvRunCheck = new TH2D("DAvRunCheck","Run Number vs E1 Energy",4096,0,4096,100,400,500);
-//	SX3_0 = new TH1D("SX3_0","SX3 2105 strip 0 gated",5000,0,1000000);
-//	SX3_1 = new TH1D("SX3_1","SX3 2105 strip 1 gated",5000,0,1000000);
-//	SX3_2 = new TH1D("SX3_2","SX3 2105 strip 2 gated",5000,0,1000000);
-//	SX3_3 = new TH1D("SX3_3","SX3 2105 strip 3 gated",5000,0,1000000);
-//
+	hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam");
+		Ex_v_Gam = new TH2D("Ex_v_Gam","Ex vs Gamma Energy for QQQ5 Detectors",8000,0,8000,30,4,7);
+	for (int i = 40; i < ExLoopEnd; i++){ //66 because we are doing .5 MeV bin widths for the Si detectors, the last bin then gives 6.5-7.
+		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists");
+		int Ex_BinLow = i;
+		//double Ex_BinHi = (double)i/10+(double)ExWidth/10;
+		int Ex_BinHi = i+ExWidth;
+
+		std::cout << Ex_BinLow << "****************" << endl;
+
+		TH1D *h16 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)),"Excitation Energy Gated from " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)),8000,0,8000);
+
+		QQQExvGam.push_back(h16);
+
+		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg1000");
+		
+//		TH1D *h17 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_4k1k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " Background 0 to 4000",BkgBins,0,8000);
+		//TH1D *h18 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_8k1k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " Background 4000 to 8000",BkgBins,0,8000);
+		TH1D *h17 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_4k1k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)),8000,0,8000);
+		QQQExvGam_Bkg.push_back(h17);
+//		QQQExvGam_Bkg4k1000.push_back(h17);
+//		QQQExvGam_Bkg8k1000.push_back(h18);
+
+		//Add and scale the above hists FIRST before you set the bin content of 8000 bin histogram. 
+
+		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg8000");
+
+		TH1D *h19 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "Bkg8k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " Background",8000,0,8000);
+
+		QQQExvGam_Bkg8000.push_back(h19);
+		
+
+	}
+
+	hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam");
+		gam238vEx = new TH2D("gam238vEx","238 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
+		gam275vEx = new TH2D("gam275vEx","275 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
+
 	//QQQ energy histograms are created here.
-	Strip_vs_E_Hists->cd();
+	hist->cd("Silicon_Detectors/Strip_vs_E_Hists");
 	QQQDAdE = new TH2D("QQQDAdE","QQQ5 DA dE",4096,0,4096,32,0,32);
 	QQQDAE1 = new TH2D("QQQDAE1","QQQ5 DA E1",4096,0,4096,32,0,32);
 	QQQDAE2 = new TH2D("QQQDAE2","QQQ5 DA E2",4096,0,4096,32,0,32);
@@ -950,7 +1026,7 @@ void MakeMyHists(){
 	
 	QQQDAvsGam = new TH2D("QQQDAvsGam","Gamma Energy vs Ex",2048,0,15,8000,0,8000);
 
-	QQQ5_DA_TotalE->cd();
+	hist->cd("Silicon_Detectors/DA_Total_E");
 	QQQDATot = new TH2D("QQQDATot","QQQ5 DA Total Energy",2048,0,32,32,0,32);
 	QQQDATot2 = new TH2D("QQQDATot2","QQQ5 DA Total Energy Before Degradation",2048,15,32,19,0,19);
 	QQQDAQ = new TH2D("QQQDAQ","Strip Number vs Reaction Q-Value Spectrum",2048,-15,0,19,0,19);
@@ -964,7 +1040,7 @@ void MakeMyHists(){
 
 	std::string gambase = "gam_pk";
 
-	QQQ5_DC_TotalE->cd();
+	hist->cd("Silicon_Detectors/DC_Total_E");
 	QQQDCQ = new TH2D("QQQDCQ","Strip Number vs Reaction Q-Value Spectrum",2048,-15,0,19,0,19);
 	QQQDCEx = new TH2D("QQQDCEx","Strip Number vs Excitation Energy",2048,0,15,19,0,19);
 	QQQDCExTot = new TH1D("QQQDCExTot","Excitation Energy of 19Ne",2048,0,15);
@@ -1017,7 +1093,7 @@ void MakeMyHists(){
 	std::string QdEbase = "Q_gated_dE_";
 		
 	for (int i=0; i<stripnum; i++){
-		hist->cd("Particle_IDs/DA_PID");
+		hist->cd("Silicon_Detectors/Particle_IDs/DA_PID");
 		//Creates the summed DA PID plots (with coincidences of PstripE-PstripdE <=4)
 		string nameDA = PIDbaseDA + std::to_string(i);
 		TH2D *h0 = new TH2D(TString(nameDA),"QQQ5 DA dE vs E1 Strip " + TString(std::to_string(i)),1024,0,1024,4096,0,4096);					
@@ -1029,7 +1105,7 @@ void MakeMyHists(){
 		DA_PIDhists.back()->GetXaxis()->CenterTitle();
 		DA_PIDhists.back()->GetYaxis()->CenterTitle();
 
-		hist->cd("Particle_IDs/DA_PID_Cal");
+		hist->cd("Silicon_Detectors/Particle_IDs/DA_PID_Cal");
 		TH2D *g0 = new TH2D(TString(nameDA)+"_cal","QQQ5 DA dE vs E1 Strip " + TString(std::to_string(i)),1024,0,32,500,0,6);					
 
 		DA_PIDhists_Cal.push_back(g0);
@@ -1039,7 +1115,7 @@ void MakeMyHists(){
 		DA_PIDhists_Cal.back()->GetXaxis()->CenterTitle();
 		DA_PIDhists_Cal.back()->GetYaxis()->CenterTitle();
 
-		hist->cd("Particle_IDs/DC_PID");
+		hist->cd("Silicon_Detectors/Particle_IDs/DC_PID");
 		//Creates the summed DC PID plots (with coincidences of PstripE-PstripdE <=4)
 		string nameDC = PIDbaseDC + std::to_string(i);
 		TH2D *h1 = new TH2D(TString(nameDC),"QQQ5 DC dE vs E1 Strip " + TString(std::to_string(i)),1250,0,50000,1250,0,50000);
@@ -1051,7 +1127,7 @@ void MakeMyHists(){
 		DC_PIDhists.back()->GetXaxis()->CenterTitle();
 		DC_PIDhists.back()->GetYaxis()->CenterTitle();
 
-		hist->cd("Triton_Spectra/DA_Triton_Spectra");
+		hist->cd("Silicon_Detectors/Triton_Spectra/DA_Triton_Spectra");
 		//Creates the individual trition energy spectrum for each DA PstripdE and PstripE combination. Therefore, the vector created will be of dimension 32x5.
 		for (int j=0; j<5; j++){
 			int k = i+j;
@@ -1069,7 +1145,7 @@ void MakeMyHists(){
 		DA_T_Spec.push_back(sT_Spec);
 		sT_Spec.clear();
 
-		hist->cd("Triton_Spectra/DC_Triton_Spectra");
+		hist->cd("Silicon_Detectors/Triton_Spectra/DC_Triton_Spectra");
 		//Creates the individual trition energy spectrum for each DC PstripdE and PstripE combination. Therefore, the vector created will be of dimension 32x5.
 		for (int j=0; j<5; j++){
 			int k = i+j;
@@ -1089,7 +1165,7 @@ void MakeMyHists(){
 		sT_Spec.clear();
 
 
-		hist->cd("Calibration_Hists/DA_dE_gated");
+		hist->cd("Silicon_Detectors/Calibration_Hists/DA_dE_gated");
 
 		for (int j=0; j<4; j++){
 			
@@ -1102,7 +1178,7 @@ void MakeMyHists(){
 		DA_dE_Gated.push_back(dE_gated);
 		dE_gated.clear();
 
-		QQQ5_DA_TotalE->cd();
+		hist->cd("Silicon_Detectors/DA_Total_E");
 
 		string nametotDA = baseDAtot + std::to_string(i);
 		TH1D *h5 = new TH1D(TString(nametotDA),"QQQ5 DA Total Energy Strip " + TString(std::to_string(i)),512,0,32);					
@@ -1113,13 +1189,13 @@ void MakeMyHists(){
 		DA_TotE.back()->GetXaxis()->CenterTitle();
 		DA_TotE.back()->GetYaxis()->CenterTitle();
 
-		hist->cd("Calibration_Hists/Q_Gated_QQQ_DA_E1");
+		hist->cd("Silicon_Detectors/Calibration_Hists/Q_Gated_QQQ_DA_E1");
 		string QE1gated = QE1base + std::to_string(i);
 		TH1D *h6 = new TH1D(TString(QE1gated),"Q Gated QQQ DA E1 Strip " + TString(std::to_string(i)),4096,0,4096);
 		Q_gated_E1.push_back(h6);
 
 
-		hist->cd("Calibration_Hists/Q_Gated_QQQ_DA_dE");
+		hist->cd("Silicon_Detectors/Calibration_Hists/Q_Gated_QQQ_DA_dE");
 		for (int j=0; j<5; j++){
 			string QdEgated = QdEbase + std::to_string(i) + std::to_string(j);	
 			TH1D *h7 = new TH1D(TString(QdEgated),"Q Gated QQQ DA dE Strip " + TString(std::to_string(i)),4096,0,4096);
@@ -1138,22 +1214,22 @@ void MakeMyHists(){
 	for (int k = 0; k < 6; k++){
 
 		switch (k){
-			case 0: hist->cd("Particle_IDs/D4_FB_PIDs");
+			case 0: hist->cd("Silicon_Detectors/Particle_IDs/D4_FB_PIDs");
 				FBbase = "D4_";
 				break;
-			case 1: hist->cd("Particle_IDs/D5_FB_PIDs");
+			case 1: hist->cd("Silicon_Detectors/Particle_IDs/D5_FB_PIDs");
 				FBbase = "D5_";
 				break;
-			case 2: hist->cd("Particle_IDs/D7_FB_PIDs");
+			case 2: hist->cd("Silicon_Detectors/Particle_IDs/D7_FB_PIDs");
 				FBbase = "D7_";
 				break;
-			case 3: hist->cd("Particle_IDs/D8_FB_PIDs");
+			case 3: hist->cd("Silicon_Detectors/Particle_IDs/D8_FB_PIDs");
 				FBbase = "D8_";
 				break;
-			case 4: hist->cd("Particle_IDs/D9_FB_PIDs");
+			case 4: hist->cd("Silicon_Detectors/Particle_IDs/D9_FB_PIDs");
 				FBbase = "D9_";
 				break;
-			case 5: hist->cd("Particle_IDs/D10_FB_PIDs");
+			case 5: hist->cd("Silicon_Detectors/Particle_IDs/D10_FB_PIDs");
 				FBbase = "D10_";
 				break;
 		}//closes switch statement
@@ -1317,7 +1393,7 @@ void MakeMyHists(){
 
 	}
 
-	hist->cd("SX3_Hists");
+	hist->cd("Silicon_Detectors/SX3_Hists");
 	SX3_Gam_Gated = new TH2D("SX3_Gam_Gated","SX3 Summed Energy Gamma Gated Background",30,30,90,300,10,25);
 	SX3_Gated_Back = new TH2D("SX3_Gated_Back","SX3 Summed Gamma Gated Background",30,30,90,300,10,25);
 
@@ -1336,32 +1412,32 @@ void MakeMyHists(){
 	string D10base = "D10_E_";
 
 	for (int i = 0; i < 4; i++){
-		hist->cd("SX3_Hists/D4_Hists/Energy_Ungated4");
+		hist->cd("Silicon_Detectors/SX3_Hists/D4_Hists/Energy_Ungated4");
 			TH2D *h10 = new TH2D(TString(D4base) + TString(std::to_string(i)),"D4 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
 			D4_E_Ungated.push_back(h10);
 
 			if (i == 3) D4_E_Sum_v_Ang = new TH2D(TString(D4base) + TString("Sum_v_Ang"),"D4 Energy Summed",500,0,1000000,30,30,90);
-		hist->cd("SX3_Hists/D5_Hists/Energy_Ungated5");
+		hist->cd("Silicon_Detectors/SX3_Hists/D5_Hists/Energy_Ungated5");
 			TH2D *h11 = new TH2D(TString(D5base) + TString(std::to_string(i)),"D5 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
 			D5_E_Ungated.push_back(h11);
 
 			if (i == 3) D5_E_Sum_v_Ang = new TH2D(TString(D5base) + TString("Sum_v_Ang"),"D5 Energy Summed",500,0,1000000,30,30,90);
-		hist->cd("SX3_Hists/D7_Hists/Energy_Ungated7");
+		hist->cd("Silicon_Detectors/SX3_Hists/D7_Hists/Energy_Ungated7");
 			TH2D *h12 = new TH2D(TString(D7base) + TString(std::to_string(i)),"D7 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
 			D7_E_Ungated.push_back(h12);
 
 			if (i == 3) D7_E_Sum_v_Ang = new TH2D(TString(D7base) + TString("Sum_v_Ang"),"D7 Energy Summed",500,0,1000000,30,30,90);
-		hist->cd("SX3_Hists/D8_Hists/Energy_Ungated8");
+		hist->cd("Silicon_Detectors/SX3_Hists/D8_Hists/Energy_Ungated8");
 			TH2D *h13 = new TH2D(TString(D8base) + TString(std::to_string(i)),"D8 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
 			D8_E_Ungated.push_back(h13);
 
 			if (i == 3) D8_E_Sum_v_Ang = new TH2D(TString(D8base) + TString("Sum_v_Ang"),"D8 Energy Summed",500,0,1000000,30,30,90);
-		hist->cd("SX3_Hists/D9_Hists/Energy_Ungated9");
+		hist->cd("Silicon_Detectors/SX3_Hists/D9_Hists/Energy_Ungated9");
 			TH2D *h14 = new TH2D(TString(D9base) + TString(std::to_string(i)),"D9 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
 			D9_E_Ungated.push_back(h14);
 
 			if (i == 3) D9_E_Sum_v_Ang = new TH2D(TString(D9base) + TString("Sum_v_Ang"),"D9 Energy Summed",500,0,1000000,30,30,90);
-		hist->cd("SX3_Hists/D10_Hists/Energy_Ungated10");
+		hist->cd("Silicon_Detectors/SX3_Hists/D10_Hists/Energy_Ungated10");
 			TH2D *h15 = new TH2D(TString(D10base) + TString(std::to_string(i)),"D10 Energy Ungated Strip " + TString(std::to_string(i)),500,0,1000000,30,30,90);
 			D10_E_Ungated.push_back(h15);
 
@@ -1370,7 +1446,7 @@ void MakeMyHists(){
 
 
 
-	hist->cd("SX3_Hists/Gamma_Gated_Background");
+	hist->cd("Silicon_Detectors/SX3_Hists/Gamma_Gated_Background");
 
 		D4_E_Gated_Back = new TH2D(TString(D4base) + TString("Gated_Back"),"D4 Energy Gamma Gated Background",30,30,90,500,0,25);
 		D5_E_Gated_Back = new TH2D(TString(D5base) + TString("Gated_Back"),"D5 Energy Gamma Gated Background",30,30,90,500,0,25);
@@ -1381,7 +1457,7 @@ void MakeMyHists(){
 
 //		D7Gated = new TH2D("D7Gated","D7 Energy Gamma Gated",500,0,1000000,30,30,90);
 
-	hist->cd("SX3_Hists/Gamma_Gated");
+	hist->cd("Silicon_Detectors/SX3_Hists/Gamma_Gated");
 	
 		D4_E_Gam_Gated = new TH2D(TString(D4base) + TString("Gam_Gated"),"D4 Energy Gamma Gated ",30,30,90,500,0,25);
 		D5_E_Gam_Gated = new TH2D(TString(D5base) + TString("Gam_Gated"),"D5 Energy Gamma Gated ",30,30,90,500,0,25);
@@ -1400,11 +1476,13 @@ void MakeMyHists(){
 	//ifstream inFile4("E1cal.txt");
 	//ifstream inFile5("dEcal.txt");
 //	ifstream inFile6("textfiles/GamCalParamsQuadREDO.txt");
-//	ifstream inFile6("textfiles/GamCalParamsQuad.txt");
+	ifstream inFile6("textfiles/GamCalParamsQuad.txt");
 //	ifstream inFile6("textfiles/GamCalParamsQuadREDO2.txt");
 //	ifstream inFile6("textfiles/GamCalLinWHighREDO2.txt");
 //	ifstream inFile6("textfiles/GamCalLinWHighREDOcompat.txt");
-	ifstream inFile6("GamCal/QuadraticCalibration.txt");
+//	ifstream inFile6("GamCal/QuadraticCalibration.txt");
+//	ifstream inFile6("GamCal/PeakFinderLinear.txt");
+//	ifstream inFile6("GamCal/PeakFinderQuad.txt");
 //	ifstream inFile6("GamCal/LinearCalibration.txt");
 //	ifstream inFile7("angleassign.txt");
 //	ifstream inFile8("energyloss.txt");
@@ -1427,6 +1505,8 @@ void MakeMyHists(){
 
 	ifstream inFile22("GamCal/GamNorm31.txt");
 	ifstream inFile23("GamCal/GamNorm87.txt");
+
+	ifstream inFile24("textfiles/GamNorm.txt");
 
 	for (int i = 0; i<20; i++){
 
@@ -1478,6 +1558,8 @@ void MakeMyHists(){
 
 		inFile21 >> gamcorr[i];
 
+		inFile24 >> GamNorm[i][0] >> GamNorm[i][1] >> GamNorm[i][2];
+
 	}
 
 	for (int i=0; i<300; i++){
@@ -1517,6 +1599,7 @@ void MakeMyHists(){
 		inFile22 >> GamNorm31[i];
 		inFile23 >> GamNorm87[i];
 
+
 	}
 
 
@@ -1543,7 +1626,7 @@ void MakeMyHists(){
 
 
 	int numruns = 0;
-	for (int run = 404; run < 495; run++){
+	for (int run = 404; run < 494; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
 		if ((run > 400 && run < 409 && run != 405 && run != 406) || (run > 409 && run < 424) || (run > 431 && run < 435) || (run > 436 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
 			histfill(run,logFile);
@@ -1572,6 +1655,146 @@ void MakeMyHists(){
 	float ReducedContent = 0;
 	float ReducedContent2 = 0;
 
+	double scale4k;
+	double scale8k;
+
+	double BinConts;
+	//RealExLoopEnd is the actual endpoint number of the for loops calculated with the ExWidth variable.
+	int RealExLoopEnd = 30-ExWidth+1;
+	//Set the scale factors here for the histograms that go from 0 to 4000 and 4000 to 8000.
+	//Also do the scaling here before the contents get transfered to the final 8000 bin background hist.
+//	for (int ex = 0; ex < RealExLoopEnd; ex++){
+//		scale4k = QQQExvGam[ex]->Integral(24,4000) / QQQExvGam_Bkg4k1000[ex]->Integral(1,100);;
+//		scale8k = QQQExvGam[ex]->Integral(4000,8000) / QQQExvGam_Bkg8k1000[ex]->Integral(1,100);
+		
+//		QQQExvGam_Bkg4k1000[ex]->Scale(scale4k);
+//		QQQExvGam_Bkg8k1000[ex]->Scale(scale8k);
+
+//		std::cout << "tot: " << QQQExvGam[ex]->Integral(4000,8000) << " Back: " << QQQExvGam_Bkg8k1000[ex]->Integral(1,100) << " Scale: " << scale8k << endl;
+
+//	}
+
+	//Do the scaling from one histogram in smaller chunks. 
+	double CombinedConts = 0;
+	double ContsAvg = 0;
+	double scaling = 0;
+	double scaling2 = 1000;
+	for (int ex = 0; ex < RealExLoopEnd; ex++){
+
+		for (int bin = 1; bin <= 8000; bin++){
+
+			if ((bin == 1 || (bin-1) % 500 == 0) && bin != 8000) scaling = QQQExvGam[ex]->Integral(bin,bin+499)/QQQExvGam_Bkg[ex]->Integral(bin,bin+499);
+
+			if (bin < 3001){//800 bins (20keV/bin)
+				if ((bin == 1 || (bin-1) % 20 == 0) && bin != 8000 && bin > 20){
+					if (bin < 238 && (bin+19) > 238) scaling2 = scaling2;
+					else if (bin <= 275 && (bin+19) >= 275) scaling2 = scaling2;
+					else if (bin <= 511 && (bin+19) >= 511) scaling2 = scaling2;
+					else if (bin <= 1231 && (bin+19) >= 1231) scaling2 = scaling2;
+					else if (bin <= 1268 && (bin+19) >= 1268) scaling2 = scaling2;
+					else if (bin <= 1839 && (bin+19) >= 1839) scaling2 = scaling2;
+					else if (bin <= 1841 && (bin+19) >= 1841) scaling2 = scaling2;
+					else if (bin <= 2556 && (bin+19) >= 2556) scaling2 = scaling2;
+//scaling2 = QQQExvGam[ex]->Integral(bin,bin+19)/QQQExvGam_Bkg[ex]->Integral(bin,bin+19);
+					else scaling2 = QQQExvGam[ex]->Integral(bin,bin+19)/QQQExvGam_Bkg[ex]->Integral(bin,bin+19);
+
+				}
+				
+
+				if ((bin-1) % 20 == 0) CombinedConts = 0; //if the bin number-1 is div by 4, 5,9,etc, then reset combined conts to 0.
+				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
+				
+				if (bin % 20 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
+					ContsAvg = CombinedConts/20 * scaling2;
+										
+					for (int i = bin-19; i < bin+1; i++){
+
+						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+
+					}
+
+				}
+				
+			}
+/*
+			if (bin < 1001){//4000 bins (2keV/bin)
+				if (bin % 2 != 0) CombinedConts = 0; //if the bin number is NOT even, 1,3,etc, then reset combined conts to 0.
+				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
+				
+				if (bin % 2 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
+					ContsAvg = CombinedConts/2 * scaling;
+										
+					for (int i = bin-1; i < bin+1; i++){
+
+						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+
+					}
+
+				}
+				
+			}
+
+			else if (bin > 1000 && bin < 3001){//1000 bins (8 keV/bin)
+				if ((bin-1001) % 8 == 0) CombinedConts = 0;//Resets CombinedConts at 9,17,etc.
+				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
+
+				if ((bin-1000) % 8 == 0){//when bin is divisible by 8 calc the average and feed it into the background hist
+					ContsAvg = CombinedConts/8 * scaling;
+
+					for (int i = bin-7; i < bin + 1; i++){
+
+						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+
+					}
+
+
+				}
+				
+				
+			}
+*/
+			else if (bin > 3000 && bin < 5001){//500 bins (40 keV/bin)
+				if ((bin-3001) % 40 == 0) CombinedConts = 0;//Resets CombinedConts at 17,33,etc.
+				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
+				
+				if ((bin-3000) % 40 == 0){//when bin is divisible by 16 calc the average and feed it into the background hist
+					ContsAvg = CombinedConts/40 * scaling;
+
+					for (int i = bin-39; i < bin + 1; i++){
+
+						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+
+					}
+
+
+				}
+				
+			}
+			else if (bin > 5000){//100 bins (80 keV/bin)
+				if ((bin-5001) % 80 == 0) CombinedConts = 0;//Resets CombinedConts at 80,160,etc.
+				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
+				
+				if ((bin-5000) % 80 == 0){//when bin is divisible by 16 calc the average and feed it into the background hist
+					ContsAvg = CombinedConts/80 * scaling;
+
+					for (int i = bin-79; i < bin + 1; i++){
+
+						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+
+					}
+
+
+				}
+			}
+
+
+
+
+		}
+
+
+	}
+
 	for (int bin=1; bin<=1000; bin++){
 		average = (gam_totBack->GetBinContent(bin) + gam_totBack2->GetBinContent(bin)) / 2;
 
@@ -1597,9 +1820,77 @@ void MakeMyHists(){
 			
 
 		}
+		
+		//Set the bin conts for the 4k and 8k histograms here
+/*
+		for (int ex = 0; ex < RealExLoopEnd; ex++){
+			//less than 501 means 0 to 4000
+			if (bin < 501) BinConts = QQQExvGam_Bkg4k1000[ex]->GetBinContent(bin) / 8;
+			else if (bin > 500) BinConts = QQQExvGam_Bkg8k1000[ex]->GetBinContent(bin) / 8;
 
+			for (int bin2 = bincounter; bin2 <= (bincounter+7); bin2++){
+
+				QQQExvGam_Bkg8000[ex]->SetBinContent(bin2,BinConts);
+			
+			}
+
+		}
+*/
 		bincounter += 8;
+	}
+/*
+	int bincounter2 = 1;
 
+	for (int bin = 1; bin <= 100; bin++){
+
+		for (int ex = 0; ex < RealExLoopEnd; ex++){
+			//less than 501 means 0 to 4000
+			if (bin < 51) BinConts = QQQExvGam_Bkg4k1000[ex]->GetBinContent(bin) / 80;
+			else if (bin > 50) BinConts = QQQExvGam_Bkg8k1000[ex]->GetBinContent(bin) / 80;
+
+			for (int bin2 = bincounter2; bin2 <= (bincounter2+79); bin2++){
+
+				QQQExvGam_Bkg8000[ex]->SetBinContent(bin2,BinConts);
+			
+			}
+
+		}
+
+		bincounter2 += 80;
+
+
+
+
+	}
+*/
+	//Ratio histograms created here.
+
+	double RatioError = 0;
+
+	for (int ex = 0; ex < RealExLoopEnd; ex++){
+
+		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/Ratio_Hists");
+
+		TH1D *ratio = (TH1D*)QQQExvGam[ex]->Clone("ratio_" + TString(std::to_string((int)ex+4)) + "_" + TString(std::to_string((int)ex+4 + ExWidth)));
+
+		ratio->Divide(QQQExvGam_Bkg8000[ex]);
+//ratio->Add(QQQExvGam_Bkg8000[ex],-1);
+		RatioVec.push_back(ratio);
+
+		for (int bin = 1; bin <=8000; bin++){
+
+			double Bkg = (double)QQQExvGam_Bkg8000[ex]->GetBinContent(bin);
+			double Sig = (double)QQQExvGam[ex]->GetBinContent(bin);
+
+			if (Bkg != 0) RatioError = sqrt(pow(1/(Bkg)*sqrt(Sig),2)+pow((Sig/pow(Bkg,2))*sqrt(Bkg),2));
+			else if (Bkg == 0) RatioError = 1;
+//			if (Bkg != 0) RatioError = sqrt(pow((Bkg)*sqrt(Sig),2)+pow((Sig)*sqrt(Bkg),2));
+
+			RatioVec[ex]->SetBinError(bin, RatioError);
+
+			if (ex == 23 && (Sig/Bkg - RatioError) >=1) std::cout << bin << std::endl; 
+
+		}
 
 	}
 
@@ -1611,9 +1902,6 @@ void MakeMyHists(){
 	
 	double ScaleFactor_tot = gam_totInt/gam_totInt2;
 	double ScaleFactorEx = gamExInt/gamExInt2;
-
-	std::cout << gam_totInt << " " << gam_totInt2 << " " << ScaleFactor_tot << std::endl;
-	std::cout << gamExInt << " " << gamExInt2 << " " << ScaleFactorEx << std::endl;
 
 	gam_totBackAvg8000->Scale(ScaleFactor_tot);
 	gamExBackAvg8000->Scale(ScaleFactorEx);

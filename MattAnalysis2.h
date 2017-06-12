@@ -1,5 +1,18 @@
+	int ExWidth = 6; //Width of the ex bins in MeV*10.
+	int ExLoopEnd = 70-ExWidth+1;
+
+	int BkgBins = 100;
+
 
 	TDirectory *Gams_vs_Run;
+	TDirectory *Silicon_Detectors;
+	TDirectory *Ex_vs_Gammas_Hists;
+	TDirectory *QQQ5_v_Gam;
+	TDirectory *Si_v_Gam;
+	TDirectory *D1_Hists;
+	TDirectory *D1_Hists_Bkg1000;
+	TDirectory *D1_Hists_Bkg8000;
+	TDirectory *Ratio_Hists;
 
 	int gcount1;
 	int gcount2;
@@ -34,7 +47,15 @@
 
 	TH2D *DAvRunCheck;
 
-/*	
+	double GamNorm[111][3];
+
+	std::vector<TH1D*> QQQExvGam;
+	std::vector<TH1D*> QQQExvGam_Bkg;
+	std::vector<TH1D*> QQQExvGam_Bkg4k1000;
+	std::vector<TH1D*> QQQExvGam_Bkg8k1000;
+	std::vector<TH1D*> QQQExvGam_Bkg8000;
+	std::vector<TH1D*> RatioVec;
+/*		
 	TH1D *D5_E;
 	TH1D *D5_E2;
 	TH1D *D5_E3;
