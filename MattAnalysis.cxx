@@ -8,14 +8,15 @@ void histfill(int runnum, ofstream &log1){
 	std::cout << "Run " << runnum << " is now being analyzed." << std::endl; 	
 	std::cout << "../exec/rootfiles/run" + TString(std::to_string(runnum)) + ".root" << endl;
 	//the code opens the file here
-	data = TFile::Open("../exec/rootfiles/QQQ5/run" + TString(std::to_string(runnum)) + "QQQ5_SKIMMED_AGAIN.root");
+	//data = TFile::Open("../exec/rootfiles/QQQ5/run" + TString(std::to_string(runnum)) + "QQQ5_SKIMMED_AGAIN.root");
 	//data = TFile::Open("../exec/rootfiles/TotalFiles/run" + TString(std::to_string(runnum)) + "_SKIMMED.root");
 	//data = TFile::Open("../exec/rootfiles/TotalFiles/run" + TString(std::to_string(runnum)) + "_AllData.root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/Mult1RootFiles/run" + TString(std::to_string(runnum)) + ".root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFilesWithoutSX3Crap/run" + TString(std::to_string(runnum)) + "_SX3Mult1.root");
 	//data = TFile::Open("/media/mhall12/ne19disk1/TotalRootFilesWithoutSX3Crap/run" + TString(std::to_string(runnum)) + "_SX3NoHump.root");
-	//data = TFile::Open("/media/mhall12/ne19disk1/FinalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
+	data = TFile::Open("/media/mhall12/ne19disk1/FinalRootFiles/run" + TString(std::to_string(runnum)) + ".root");
+	//data = TFile::Open("/media/mhall12/ne19disk1/run" + TString(std::to_string(runnum)) + ".root");
 	//trees->cd();
 
 	//the data from trees/god is placed into a container gam2 and si2.
@@ -40,9 +41,12 @@ void histfill(int runnum, ofstream &log1){
 	int g275_back = 0;
 	int g1233 = 0; //1232 keV in 19Ne
 	int g1297 = 0;
+	int g1340 = 0;
 	int g1840 = 0;
 	int g2556 = 0;
 	int g4362 = 0;
+	int g4140 = 0;
+	int g2632 = 0;
 
 	int g197 = 0; //19F
 	int g109 = 0; //19F
@@ -54,6 +58,9 @@ void histfill(int runnum, ofstream &log1){
 	int pkgate[4] = {0};
 
 	int DCgate = 0;
+
+int DCtestgate1 = 0;
+int DCtestgate2 = 0;
 
 	//Tighter triton gates are defined here for each strip and implemented below. The Gates are drawn for the RAW DATA
 	int multhiDA[32] = {36869,43521,53842,61624,49340,40212,71464,51217,95073,87486,56305,56484,52242,50244,60521,58477,1,76951,55477,1,74043,70876,77413,94147,81916,55746,101339,44402,1,1,1,1};
@@ -82,6 +89,8 @@ void histfill(int runnum, ofstream &log1){
 	double dE;
 	double E1;
 	double E2;
+	
+	double ndE;
 
 	double E1N;
 
@@ -147,7 +156,7 @@ void histfill(int runnum, ofstream &log1){
 	std::vector<int> TimingGammaIndex;
 
 	std::vector<int> BackgroundTiming;
-	std::vector<int> BackgroundTiming2;
+
 
 	std::vector<double> ExVec;
 	std::vector<double> ExVecWithSX3;
@@ -162,15 +171,21 @@ void histfill(int runnum, ofstream &log1){
 		Qgate = 0;
 		Exgate = 0;
 
+DCtestgate1 = 0;
+DCtestgate2 = 0;
+
 		g238 = 0; //238 keV in 19Ne
 		g238_back = 0;
 		g275 = 0; //275 keV in 19Ne
 		g275_back = 0;
 		g1233 = 0; //1232 keV in 19Ne
 		g1297 = 0;
+		g1340 = 0;
 		g1840 = 0;
 		g2556 = 0;
 		g4362 = 0;
+		g4140 = 0;
+		g2632 = 0;
 
 		//Background Peaks!
 		g197 = 0;
@@ -198,7 +213,7 @@ void histfill(int runnum, ofstream &log1){
 		}
 
 		//We'll use the for loop here to draw gamma gates.
-
+/*
 		for (unsigned int i = 0; i < gam2->size();i++){
 			//if (gam2->at(i).en*.81 > 236 && gam2->at(i).en*.81 < 242) gamgate++;
 			gamEn = pow(gam2->at(i).en,2)*gamcalparams[gam2->at(i).num][0] + gam2->at(i).en*gamcalparams[gam2->at(i).num][1] + gamcalparams[gam2->at(i).num][2]; 
@@ -219,7 +234,7 @@ void histfill(int runnum, ofstream &log1){
 
 
 		}
-
+*/
 
 		//Fill the Si histograms here:
 		for(unsigned int i = 0; i < si2->size();i++){
@@ -227,6 +242,8 @@ void histfill(int runnum, ofstream &log1){
 			dE = si2->at(i).ESumLayer(0,false);
 			E1 = si2->at(i).ESumLayer(1,false);
 			E2 = si2->at(i).ESumLayer(2,false);
+
+			ndE = si2->at(i).ESumLayer(0,true);
 
 			stripdE = si2->at(i).StripMaxLayer(0,false);
 			stripE1 = si2->at(i).StripMaxLayer(1,false);
@@ -247,20 +264,33 @@ void histfill(int runnum, ofstream &log1){
 			for (unsigned int w = 0; w < gam2->size();w++){
 				TimingGammaIndex.push_back(0);
 				BackgroundTiming.push_back(0);
-				BackgroundTiming2.push_back(0);
-				gamEn = pow(gam2->at(w).en,2)*gamcalparams[gam2->at(w).num][0] + gam2->at(w).en*gamcalparams[gam2->at(w).num][1] + gamcalparams[gam2->at(w).num][2]; 
+				double gamUncal = gam2->at(w).en;
+				gamEn = pow(gamUncal,2)*gamcalparams[gam2->at(w).num][0] + gamUncal*gamcalparams[gam2->at(w).num][1] + gamcalparams[gam2->at(w).num][2]; 
+				gamEn = 3.45437e-6*pow(gamEn,2)+.991322*gamEn+3.82698;
+				//Further corrections to some detectors
+				gamEn = pow(gamEn,2)*GamNorm[gam2->at(w).num][0] + gamEn*GamNorm[gam2->at(w).num][1] + GamNorm[gam2->at(w).num][2];
 				
 
 				if (si2->at(i).telescopeID == 1100){
 					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(0,false);
 					//if (timediff < 445 && timediff > 400){
-					if (timediff < 430 && timediff > 412){
+					if (timediff < 432 && timediff > 412){
 						TimingGammaIndex[w]++;
 						timegate++;
+						if (gamEn >= 235 && gamEn <= 241) g238++;
+						if (gamEn >= 272 && gamEn <= 278) g275++;
+						if (gamEn >= 1224 && gamEn <= 1238) g1233++;
+						if (gamEn >= 1276 && gamEn <= 1314) g1297++;
+						if (gamEn >= 1320 && gamEn <= 1360) g1340++;
+						if (gamEn >= 1836 && gamEn <= 1843) g1840++;
+						if (gamEn >= 2546 && gamEn <= 2566) g2556++;
+						if (gamEn >= 4320 && gamEn <= 4409) g4362++;
+						if (gamEn >= 4100 && gamEn <= 4180) g4140++;
+						if (gamEn >= 2604 && gamEn <= 2660) g2632++;
 					}
 
-					if (timediff < 404 && timediff > 386) BackgroundTiming[w]++;
-					if (timediff < 478 && timediff > 460) BackgroundTiming2[w]++;
+					if (timediff < 404 || timediff > 460) BackgroundTiming[w]++;
+
 
 					TDiffDA->Fill(timediff);
 					
@@ -271,21 +301,42 @@ void histfill(int runnum, ofstream &log1){
 					if (timediff < 208 && timediff > 188){
 						TimingGammaIndex[w]++;
 						timegate++;
+						if (gamEn >= 235 && gamEn <= 241) g238++;
+						if (gamEn >= 272 && gamEn <= 278) g275++;
+						if (gamEn >= 1224 && gamEn <= 1238) g1233++;
+						if (gamEn >= 1276 && gamEn <= 1314) g1297++;
+						if (gamEn >= 1320 && gamEn <= 1360) g1340++;
+						if (gamEn >= 1836 && gamEn <= 1843) g1840++;
+						if (gamEn >= 2546 && gamEn <= 2566) g2556++;
+						if (gamEn >= 4320 && gamEn <= 4409) g4362++;
+						if (gamEn >= 4100 && gamEn <= 4180) g4140++;
+						if (gamEn >= 2604 && gamEn <= 2660) g2632++;
 					}
 
-					if (timediff < 180 && timediff > 160) BackgroundTiming[w]++;
-					if (timediff < 250 && timediff > 230) BackgroundTiming2[w]++;
+					if (timediff < 180 || timediff > 230) BackgroundTiming[w]++;
 
 					TDiffDC->Fill(timediff);
 				}
 	
 				if (si2->at(i).telescopeID >= 2104 && si2->at(i).telescopeID <= 2110 && si2->at(i).telescopeID != 2106){
 					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(1,false);
-					if (timediff < 208 && timediff > 188) TimingGammaIndex[w]++;
+					if (timediff < 208 && timediff > 188){
+						TimingGammaIndex[w]++;
 
-					if (timediff < 180 && timediff > 160) BackgroundTiming[w]++;
-					if (timediff < 250 && timediff > 230) BackgroundTiming2[w]++;
+						if (gamEn >= 235 && gamEn <= 241) g238++;
+						if (gamEn >= 272 && gamEn <= 278) g275++;
+						if (gamEn >= 1224 && gamEn <= 1238) g1233++;
+						if (gamEn >= 1276 && gamEn <= 1314) g1297++;
+						if (gamEn >= 1320 && gamEn <= 1360) g1340++;
+						if (gamEn >= 1836 && gamEn <= 1843) g1840++;
+						if (gamEn >= 2546 && gamEn <= 2566) g2556++;
+						if (gamEn >= 4320 && gamEn <= 4409) g4362++;
+						if (gamEn >= 4100 && gamEn <= 4180) g4140++;
+						if (gamEn >= 2604 && gamEn <= 2660) g2632++;
 
+					}
+
+					if (timediff < 180 || timediff > 230) BackgroundTiming[w]++;
 
 					if (si2->at(i).MultLayer(1,false) == 1) TDiffSX3->Fill(timediff);
 				}
@@ -389,11 +440,12 @@ void histfill(int runnum, ofstream &log1){
 									
 								//Q-value gate
 								if (Q < -7.2 && Q > -7.4) Qgate++;
-								if (Ex19Ne > 5.8 && Ex19Ne < 6.6) Exgate++;
+								if (Ex19Ne > 4 && Ex19Ne < 5) Exgate++;
 //c**c	
+if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 								if (Ex19Ne >= 4 && Ex19Ne <= 7){
 									ExVec.push_back(Ex19Ne);
-//									ExVecWithSX3.push_back(Ex19Ne);
+									ExVecWithSX3.push_back(Ex19Ne);
 								}
 
 								//Put the for loop for the range of Ex gates here
@@ -452,7 +504,12 @@ void histfill(int runnum, ofstream &log1){
 				stripdE = stripdE;
 				stripE1 = stripE1;
 				dE = dE;
-				E1 = E1;
+
+				if ((stripdE == 5 && stripE1 == 6 && E1 > 19900) || (stripdE == 8 && stripE1 == 9 && E1 > 23500)) E1 = -1;
+				else E1 = E1;
+
+//if (stripdE == 13 && (stripE1 == 15 || stripE1 == 14)) 
+//if (stripdE == 17 && (stripE1 == 19 || stripE1 == 20)) DC_PIDhists[stripdE]->Fill(E1,dE);
 
 				E1norm = pow(E1,2)*normDC0[stripdE][rstrip]+E1*normDC1[stripdE][rstrip]+normDC2[stripdE][rstrip];
 
@@ -462,19 +519,26 @@ void histfill(int runnum, ofstream &log1){
 
 				if (stripdE < 22 && dE > PIDGateLo && dE < PIDGateHi){
 					tritongate++;
-					if (stripdE == stripE1-1 || stripdE == 7) DC_PIDhists[stripdE]->Fill(E1,dE);
+					DC_PIDhists[stripdE]->Fill(E1,dE);
+					//if (stripdE == stripE1-1) DC_PIDhists[stripdE]->Fill(E1,dE);
 					if (dE != 0) QQQDCdE->Fill(dE,stripdE);
 					if (E1 != 0) QQQDCE1->Fill(E1,stripE1);
+
+					//if (stripdE == 8 && stripE1 == 9 && E1norm > 18400 && E1norm < 21000) DCtestgate1++;
+					//if (stripdE == 8 && stripE1 == 10 && E1 > 16531 && E1 < 18625) DCtestgate2++;
 				
 					if (rstrip >= 0 && rstrip <= 4){
 						 DC_T_Spec[stripdE][rstrip]->Fill(E1);
 
-						if ((E1norm > 14600 && stripdE == 1) || (stripdE == 2 && E1norm > 16700) || (stripdE == 3 && E1norm > 14500) || (stripdE == 4 && E1norm > 14500) || (stripdE == 6 && E1norm > 12000)){
+						if (((E1norm > 14600 && stripdE == 1) || (stripdE == 2 && E1norm > 16000) || (stripdE == 3 && E1norm > 14500) || (stripdE == 4 && E1norm > 14500) || (stripdE == 6 && E1norm > 12000) || (stripdE >= 7) || stripdE == 5 || (stripdE == 8 && E1norm > 15000)) && E1norm != 0){
 							QQQDCE1sum->Fill(E1norm,stripdE);
 
 							if (stripdE == 6 && E1norm > 23800 && E1norm < 25000) DCgate++;
 
-							Q = pow(E1norm,2)*DCtoQ[stripdE][0]+E1norm*DCtoQ[stripdE][1]+DCtoQ[stripdE][2];
+							angle = AandEloss[stripdE][0];
+							Einit = pow(E1norm,2)*DCtoTotalE[stripdE][0]+E1norm*DCtoTotalE[stripdE][1]+DCtoTotalE[stripdE][2];
+
+							Q = Einit*(1+m3H/m19Ne)-30*(1-m3He/m19Ne)-2*sqrt(m3He*m3H/pow(m19Ne,2)*Einit*30)*cos(angle);
 
 							//Q-value gate for the intensity histograms filled here.
 							for (int bin = 0; bin < 299; bin++){
@@ -485,14 +549,16 @@ void histfill(int runnum, ofstream &log1){
 
 							Ex19Ne = (m3He + m19F - m3H - m19Ne)*utoMeV - Q;
 
+							if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate1++;
+
 							QQQDCEx->Fill(Ex19Ne, stripdE);
 							QQQDCExTot->Fill(Ex19Ne);
 
-							if (Ex19Ne > 5.8 && Ex19Ne < 6.7) Exgate++;//DCgate++;
+							if (Ex19Ne > 4 && Ex19Ne < 5) Exgate++;//DCgate++;
 //c***	
 							if (Ex19Ne >= 4 && Ex19Ne <= 7){
 								ExVec.push_back(Ex19Ne);
-//								ExVecWithSX3.push_back(Ex19Ne);
+								ExVecWithSX3.push_back(Ex19Ne);
 							}
 
 							//Put the for loop for the range of Ex gates here
@@ -569,6 +635,8 @@ void histfill(int runnum, ofstream &log1){
 
 				if (Ex19Ne >= 4 && Ex19Ne <= 7){
 					ExVecWithSX3.push_back(Ex19Ne);
+				
+				//	if (Ex19Ne < 5) Exgate++;
 				}
 
 				SX3ExTot->Fill(Ex19Ne);
@@ -687,6 +755,7 @@ void histfill(int runnum, ofstream &log1){
 //			}
 		}
 
+
 		}//closes silicon detectors loop
 
 
@@ -720,46 +789,31 @@ void histfill(int runnum, ofstream &log1){
 			gam_ind->Fill(gamEn,gam2->at(i).num);
 
 			GamvRunnum[gam2->at(i).num]->Fill(gamUncal,runnum);
-
+//Background timing if statement
 			if (gamEn >20 && BackgroundTiming[i]>0){
 				gam_totBack->Fill(gamEn);
 				if (Exgate > 0) gamExBack->Fill(gamEn);
 
-				//fill the 4k and 8k histograms 
+				//gam_totBack2->Fill(gamEn);
+				//if (Exgate > 0) gamExBack2->Fill(gamEn);
+
+				//fill the Bkg histograms 
 				for (unsigned int v = 0; v < ExVec.size(); v++){
 					for (int ex = 40; ex < ExLoopEnd; ex++){
 						int ele = ex-40;
 
 						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10){
 							QQQExvGam_Bkg[ele]->Fill(gamEn);
-						//	if (gamEn <= 4000) QQQExvGam_Bkg4k1000[ele]->Fill(gamEn);
-						//	else if (gamEn > 4000) QQQExvGam_Bkg8k1000[ele]->Fill(gamEn);
+
 
 						}
 
 					}
 				}
 			}
-			if (gamEn >20 && BackgroundTiming2[i]>0){
-				gam_totBack2->Fill(gamEn);
-				if (Exgate > 0) gamExBack2->Fill(gamEn);
-
-				//fill the 4k and 8k histograms again. They get scaled anyway so it really doesn't make a difference if you add them together.
-				for (unsigned int v = 0; v < ExVec.size(); v++){
-					for (int ex = 40; ex < ExLoopEnd; ex++){
-						int ele = ex-40;
-
-						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ExWidth/10){
-							QQQExvGam_Bkg[ele]->Fill(gamEn);
-						//	if (gamEn <= 4000) QQQExvGam_Bkg4k1000[ele]->Fill(gamEn);
-						//	else if (gamEn > 4000) QQQExvGam_Bkg8k1000[ele]->Fill(gamEn);
-						}
-
-					}
-				}
-			}
+//Regular timing if statement			
 			//c******Gamma histograms filled below here are suppressed by the time gate with the Si detectors*******
-			if (gamEn >20  && TimingGammaIndex[i]>0){//timegate > 0){//
+			if (gamEn >20  && TimingGammaIndex[i]>0){// timegate > 0){//
 
 				for (unsigned int j = 0; j < gam2->size();j++){
 					if (gamEn > 3000 && gam511[j] > 0 && TimingGammaIndex[j] > 0){
@@ -781,7 +835,8 @@ void histfill(int runnum, ofstream &log1){
 				if (Qgate > 0){
 					gam_gated[4]->Fill(gamEn);
 				}
-				if (Exgate > 0){
+				//if (Exgate > 0){
+				if (DCtestgate1 > 0){
 					gam_gated[5]->Fill(gamEn);
 					if (gamEn > 1825 && gamEn < 1830) gcount1++;
 					if (gamEn > 1842 && gamEn < 1845) gcount2++;
@@ -790,7 +845,8 @@ void histfill(int runnum, ofstream &log1){
 					gamExGated2->Fill(gamEn);
 				}
 
-				if (DCgate > 0){
+				//if (DCgate > 0){
+				if (DCtestgate2 > 0){
 					gam_gated[6]->Fill(gamEn);
 				}
 
@@ -829,12 +885,12 @@ void histfill(int runnum, ofstream &log1){
 					
 
 
-				if (g238 > 0 && Exgate > 0) gam238->Fill(gamEn);
-				if (g275 > 0 && Exgate > 0) gam275->Fill(gamEn);
-				if (g1233 > 0 && Exgate > 0) gam1233->Fill(gamEn);
-				if (g1297 > 0 && Exgate > 0) gam1297->Fill(gamEn);
-				if (g1840 > 0 && Exgate > 0) gam1840->Fill(gamEn);
-				if (g2556 > 0 && Exgate > 0 && g238 > 0) gam2556->Fill(gamEn);
+				if (g238 > 0) gam238->Fill(gamEn);
+				if (g275 > 0) gam275->Fill(gamEn);
+				if (g1233 > 0) gam1233->Fill(gamEn);
+				if (g1297 > 0) gam1297->Fill(gamEn);
+				if (g1840 > 0) gam1840->Fill(gamEn);
+				if (g2556 > 0) gam2556->Fill(gamEn);
 
 				for (unsigned int v = 0; v < ExVec.size(); v++){
 
@@ -843,7 +899,98 @@ void histfill(int runnum, ofstream &log1){
 					for (int ex = 40; ex < ExLoopEnd; ex++){
 						int ele = ex-40;
 
-						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10) QQQExvGam[ele]->Fill(gamEn);
+						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10){
+
+							QQQExvGam[ele]->Fill(gamEn);
+							if (g238 > 0){
+								GamGated_QQQ[ele][0]->Fill(gamEn);
+								if (g1297 > 0) DblGamGated_QQQ[ele][0]->Fill(gamEn);
+								if (g2556 > 0) DblGamGated_QQQ[ele][1]->Fill(gamEn);
+								if (g4362 > 0) DblGamGated_QQQ[ele][2]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_QQQ[ele][3]->Fill(gamEn);
+								if (g4140 > 0) DblGamGated_QQQ[ele][4]->Fill(gamEn);
+							}
+
+							if (g275 > 0){
+								GamGated_QQQ[ele][1]->Fill(gamEn);
+								if (g1233 > 0) DblGamGated_QQQ[ele][5]->Fill(gamEn);
+								if (g1340 > 0) DblGamGated_QQQ[ele][6]->Fill(gamEn);
+								if (g2632 > 0) DblGamGated_QQQ[ele][7]->Fill(gamEn);
+							}
+
+							if (g1233 > 0){
+								GamGated_QQQ[ele][2]->Fill(gamEn);
+							}
+
+							if (g1297 > 0){
+								GamGated_QQQ[ele][3]->Fill(gamEn);
+							}
+
+							if (g1340 > 0){
+								GamGated_QQQ[ele][4]->Fill(gamEn);
+							}
+
+							if (g2556 > 0){
+								GamGated_QQQ[ele][5]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_QQQ[ele][8]->Fill(gamEn);
+							}
+
+							if (g1840 > 0){
+								GamGated_QQQ[ele][6]->Fill(gamEn);
+							}
+
+
+						}
+
+					}
+	
+				}
+
+				for (unsigned int v = 0; v < ExVecWithSX3.size(); v++){
+
+					for (int ex = 40; ex < ExLoopEnd; ex++){
+						int ele = ex-40;
+
+						if (ExVecWithSX3[v] >= (double)ex/10 && ExVecWithSX3[v] < (double)ex/10+(double)ExWidth/10){
+
+							if (g238 > 0){
+								GamGated_Si[ele][0]->Fill(gamEn);
+								if (g1297 > 0) DblGamGated_Si[ele][0]->Fill(gamEn);
+								if (g2556 > 0) DblGamGated_Si[ele][1]->Fill(gamEn);
+								if (g4362 > 0) DblGamGated_Si[ele][2]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_Si[ele][3]->Fill(gamEn);
+								if (g4140 > 0) DblGamGated_Si[ele][4]->Fill(gamEn);
+							}
+
+							if (g275 > 0){
+								GamGated_Si[ele][1]->Fill(gamEn);
+								if (g1233 > 0) DblGamGated_Si[ele][5]->Fill(gamEn);
+								if (g1340 > 0) DblGamGated_Si[ele][6]->Fill(gamEn);
+								if (g2632 > 0) DblGamGated_Si[ele][7]->Fill(gamEn);
+							}
+
+							if (g1233 > 0){
+								GamGated_Si[ele][2]->Fill(gamEn);
+							}
+
+							if (g1297 > 0){
+								GamGated_Si[ele][3]->Fill(gamEn);
+							}
+
+							if (g1340 > 0){
+								GamGated_Si[ele][4]->Fill(gamEn);
+							}
+
+							if (g2556 > 0){
+								GamGated_Si[ele][5]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_Si[ele][8]->Fill(gamEn);
+							}
+
+							if (g1840 > 0){
+								GamGated_Si[ele][6]->Fill(gamEn);
+							}
+
+						}
 
 					}
 	
@@ -854,32 +1001,132 @@ void histfill(int runnum, ofstream &log1){
 
 			if (gamEn != 0 && TimingGammaIndex[i] > 0){
 
-				for (unsigned int ex = 0; ex < ExVecWithSX3.size(); ex++){
+				for (unsigned int ex = 0; ex < ExVec.size(); ex++){//WithSX3
 
-					 gam238vEx->Fill(gamEn,ExVecWithSX3[ex]);
-					if (g275 > 0 && g197 == 0 && g109 == 0 && g890 == 0) gam275vEx->Fill(gamEn,ExVecWithSX3[ex]);
+					if (g238 > 0) gam238vEx->Fill(gamEn,ExVec[ex]);
+					if (g275 > 0 && g197 == 0 && g109 == 0 && g890 == 0) gam275vEx->Fill(gamEn,ExVec[ex]);
 //if (g238 > 0 && g197 == 0 && g109 == 0 && g890 == 0)
 				}
 
 			}
 
-			if (gamEn != 0 && (BackgroundTiming[i] > 0 || BackgroundTiming2[i] > 0)){
+			if (gamEn != 0 && BackgroundTiming[i] > 0){
 					if (g238 > 0) gam238_Back->Fill(gamEn);
 					if (g275 > 0) gam275_Back->Fill(gamEn);
 					if (g1233 > 0) gam1233_Back->Fill(gamEn);
 					if (g1297 > 0) gam1297_Back->Fill(gamEn);
 					if (g1840 > 0) gam1840_Back->Fill(gamEn);
 					if (g2556 > 0) gam2556_Back->Fill(gamEn);
+
+				for (unsigned int v = 0; v < ExVec.size(); v++){
+
+					for (int ex = 40; ex < ExLoopEnd; ex++){
+						int ele = ex-40;
+
+						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10){
+
+							if (g238 > 0){
+								GamGated_QQQ_BkgUnScale[ele][0]->Fill(gamEn);
+								if (g1297 > 0) DblGamGated_QQQ_BkgUnScale[ele][0]->Fill(gamEn);
+								if (g2556 > 0) DblGamGated_QQQ_BkgUnScale[ele][1]->Fill(gamEn);
+								if (g4362 > 0) DblGamGated_QQQ_BkgUnScale[ele][2]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_QQQ_BkgUnScale[ele][3]->Fill(gamEn);
+								if (g4140 > 0) DblGamGated_QQQ_BkgUnScale[ele][4]->Fill(gamEn);
+							}
+
+							if (g275 > 0){
+								GamGated_QQQ_BkgUnScale[ele][1]->Fill(gamEn);
+								if (g1233 > 0) DblGamGated_QQQ_BkgUnScale[ele][5]->Fill(gamEn);
+								if (g1340 > 0) DblGamGated_QQQ_BkgUnScale[ele][6]->Fill(gamEn);
+								if (g2632 > 0) DblGamGated_QQQ_BkgUnScale[ele][7]->Fill(gamEn);
+							}
+
+							if (g1233 > 0){
+								GamGated_QQQ_BkgUnScale[ele][2]->Fill(gamEn);
+							}
+
+							if (g1297 > 0){
+								GamGated_QQQ_BkgUnScale[ele][3]->Fill(gamEn);
+							}
+
+							if (g1340 > 0){
+								GamGated_QQQ_BkgUnScale[ele][4]->Fill(gamEn);
+							}
+
+							if (g2556 > 0){
+								GamGated_QQQ_BkgUnScale[ele][5]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_QQQ_BkgUnScale[ele][8]->Fill(gamEn);
+							}
+
+							if (g1840 > 0){
+								GamGated_QQQ_BkgUnScale[ele][6]->Fill(gamEn);
+							}
+
+						}
+
+					}
+	
+				}
+
+				for (unsigned int v = 0; v < ExVecWithSX3.size(); v++){
+
+					for (int ex = 40; ex < ExLoopEnd; ex++){
+						int ele = ex-40;
+
+						if (ExVecWithSX3[v] >= (double)ex/10 && ExVecWithSX3[v] < (double)ex/10+(double)ExWidth/10){
+
+							if (g238 > 0){
+								GamGated_Si_BkgUnScale[ele][0]->Fill(gamEn);
+								if (g1297 > 0) DblGamGated_Si_BkgUnScale[ele][0]->Fill(gamEn);
+								if (g2556 > 0) DblGamGated_Si_BkgUnScale[ele][1]->Fill(gamEn);
+								if (g4362 > 0) DblGamGated_Si_BkgUnScale[ele][2]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_Si_BkgUnScale[ele][3]->Fill(gamEn);
+								if (g4140 > 0) DblGamGated_Si_BkgUnScale[ele][4]->Fill(gamEn);
+							}
+
+							if (g275 > 0){
+								GamGated_Si_BkgUnScale[ele][1]->Fill(gamEn);
+								if (g1233 > 0) DblGamGated_Si_BkgUnScale[ele][5]->Fill(gamEn);
+								if (g1340 > 0) DblGamGated_Si_BkgUnScale[ele][6]->Fill(gamEn);
+								if (g2632 > 0) DblGamGated_Si_BkgUnScale[ele][7]->Fill(gamEn);
+							}
+
+							if (g1233 > 0){
+								GamGated_Si_BkgUnScale[ele][2]->Fill(gamEn);
+							}
+
+							if (g1297 > 0){
+								GamGated_Si_BkgUnScale[ele][3]->Fill(gamEn);
+							}
+
+							if (g1340 > 0){
+								GamGated_Si_BkgUnScale[ele][4]->Fill(gamEn);
+							}
+
+							if (g2556 > 0){
+								GamGated_Si_BkgUnScale[ele][5]->Fill(gamEn);
+								if (g1840 > 0) DblGamGated_Si_BkgUnScale[ele][8]->Fill(gamEn);
+							}
+
+							if (g1840 > 0){
+								GamGated_Si_BkgUnScale[ele][6]->Fill(gamEn);
+							}
+
+						}
+
+					}
+	
+				}
 			
 			}
 		}
+
 
 		for (int c=0; c<300; c++){ Qgatearray[c][1] = 0;}
 		timegate = 0;
 		SiTime.clear();
 		TimingGammaIndex.clear();
 		BackgroundTiming.clear();
-		BackgroundTiming2.clear();
 		ExVec.clear();
 		ExVecWithSX3.clear();
 
@@ -901,11 +1148,14 @@ void histfill(int runnum, ofstream &log1){
 
 
 void MakeMyHists(){
+
+	t.Start();
+
 	gcount1 = 0;	
 	gcount2 = 0;
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	string RootFile = "NewHistsCheck2.root";
+	string RootFile = "SiQQQHists.root";
 	hist = TFile::Open(TString(RootFile),"RECREATE");
 	std::ofstream logFile("GoddessAnalysis.log");
 
@@ -958,12 +1208,30 @@ void MakeMyHists(){
 	Timing_Spectra = hist->mkdir("Timing_Spectra");
 
 	Ex_vs_Gammas_Hists = hist->mkdir("Ex_vs_Gammas_Hists");
-		QQQ5_v_Gam = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam");
-			D1_Hists = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists");
-			D1_Hists_Bkg1000 = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg1000");
-			D1_Hists_Bkg8000 = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg8000");
-			Ratio_Hists = hist->mkdir("Ex_vs_Gammas_Hists/QQQ5_v_Gam/Ratio_Hists");
+		QQQ_v_Gam = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam");
+			D1_Hists = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/1D_Hists");
+			D1_Hists_Bkg1000 = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/1D_Hists_BkgUnScale");
+			D1_Hists_Bkg8000 = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/1D_Hists_Bkg8000");
+			Ratio_Hists = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/Ratio_Hists");
+
+			QQQ_SingleGammaGated = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_SingleGammaGated");
+			QQQ_SingleGammaGated_Bkg = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_SingleGammaGated_BkgUnScale");
+			QQQ_SingleGammaGated_Bkg = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_SingleGammaGated_Bkg");
+
+			QQQ_DoubleGammaGated = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_DoubleGammaGated");
+			QQQ_DoubleGammaGated_BkgUnScale = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_DoubleGammaGated_BkgUnScale");
+			QQQ_DoubleGammaGated_Bkg = hist->mkdir("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_DoubleGammaGated_Bkg");
+
 		Si_v_Gam = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam");
+			Si_SingleGammaGated = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated");
+			Si_SingleGammaGated_BkgUnScale = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated_BkgUnScale");
+			Si_SingleGammaGated_Bkg = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated_Bkg");
+
+			Si_DoubleGammaGated = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam/Si_DoubleGammaGated");
+			Si_DoubleGammaGated_BkgUnScale = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam/Si_DoubleGammaGated_BkgUnScale");
+			Si_DoubleGammaGated_Bkg = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam/Si_DoubleGammaGated_Bkg");
+
+			TripleGammaGated = hist->mkdir("Ex_vs_Gammas_Hists/Si_v_Gam/TripleGammaGated");
 
 	hist->cd("Silicon_Detectors");
 		E_v_Ang = new TH2D("E_v_Ang","Angle vs Triton Energy",60,0,90,1000,0,30);
@@ -971,10 +1239,10 @@ void MakeMyHists(){
 
 		DAvRunCheck = new TH2D("DAvRunCheck","Run Number vs E1 Energy",4096,0,4096,100,400,500);
 
-	hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam");
-		Ex_v_Gam = new TH2D("Ex_v_Gam","Ex vs Gamma Energy for QQQ5 Detectors",8000,0,8000,30,4,7);
+	hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam");
+		Ex_v_Gam = new TH2D("Ex_v_Gam","Ex vs Gamma Energy for QQQ Detectors",8000,0,8000,30,4,7);
 	for (int i = 40; i < ExLoopEnd; i++){ //66 because we are doing .5 MeV bin widths for the Si detectors, the last bin then gives 6.5-7.
-		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists");
+		hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/1D_Hists");
 		int Ex_BinLow = i;
 		//double Ex_BinHi = (double)i/10+(double)ExWidth/10;
 		int Ex_BinHi = i+ExWidth;
@@ -985,27 +1253,116 @@ void MakeMyHists(){
 
 		QQQExvGam.push_back(h16);
 
-		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg1000");
+		hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/1D_Hists_BkgUnScale");
 		
-//		TH1D *h17 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_4k1k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " Background 0 to 4000",BkgBins,0,8000);
-		//TH1D *h18 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_8k1k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " Background 4000 to 8000",BkgBins,0,8000);
-		TH1D *h17 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_4k1k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)),8000,0,8000);
+		TH1D *h17 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_UnScale","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)),8000,0,8000);
 		QQQExvGam_Bkg.push_back(h17);
 //		QQQExvGam_Bkg4k1000.push_back(h17);
 //		QQQExvGam_Bkg8k1000.push_back(h18);
 
 		//Add and scale the above hists FIRST before you set the bin content of 8000 bin histogram. 
 
-		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/1D_Hists_Bkg8000");
+		hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/1D_Hists_Bkg8000");
 
 		TH1D *h19 = new TH1D("Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "Bkg8k","Ex " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " Background",8000,0,8000);
 
 		QQQExvGam_Bkg8000.push_back(h19);
+
+
+		
+		for (int g = 0; g < 7; g++){
+
+			hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated");
+			TH1D *h20 = new TH1D("Si_Gam" + TString(std::to_string(GatedGams[g])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)),"Ex Gated from " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " & Gated on " + TString(std::to_string(GatedGams[g])) + " keV Gamma", 8000,0,8000);
+
+			hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated_BkgUnScale");
+			TH1D *h21 = new TH1D("Si_Gam" + TString(std::to_string(GatedGams[g])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_UnScale","Ex Gated from " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " & Gated on " + TString(std::to_string(GatedGams[g])) + " keV Gamma", 8000,0,8000);
+			hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated_Bkg");
+			TH1D *h22 = new TH1D("Si_Gam" + TString(std::to_string(GatedGams[g])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_Bkg","Ex Gated from " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " & Gated on " + TString(std::to_string(GatedGams[g])) + " keV Gamma", 8000,0,8000);
+
+			hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_SingleGammaGated");
+			TH1D *h23 = (TH1D*)h20->Clone("QQQ_Gam" + TString(std::to_string(GatedGams[g])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)));
+
+			hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_SingleGammaGated_BkgUnScale");
+			TH1D *h24 = (TH1D*)h21->Clone("QQQ_Gam" + TString(std::to_string(GatedGams[g])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_UnScale");
+
+			hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_SingleGammaGated_Bkg");
+			TH1D *h25 = (TH1D*)h22->Clone("QQQ_Gam" + TString(std::to_string(GatedGams[g])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_Bkg");
+
+			SiExvGam.push_back(h20);
+			SiExvGam_BkgUnScale.push_back(h21);
+			SiExvGam_Bkg.push_back(h22);
+			QQQ_SiExvGam.push_back(h23);
+			QQQ_SiExvGam_BkgUnScale.push_back(h24);
+			QQQ_SiExvGam_Bkg.push_back(h25);
+		
+		}
+	
+		GamGated_QQQ.push_back(QQQ_SiExvGam);
+		GamGated_QQQ_BkgUnScale.push_back(QQQ_SiExvGam_BkgUnScale);
+		GamGated_QQQ_Bkg.push_back(QQQ_SiExvGam_Bkg);
+		GamGated_Si.push_back(SiExvGam);
+		GamGated_Si_BkgUnScale.push_back(SiExvGam_BkgUnScale);
+		GamGated_Si_Bkg.push_back(SiExvGam_Bkg);
+
+		for (int dg = 0; dg < 9; dg++){
+			
+			hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_DoubleGammaGated");
+			TH1D *h26 = new TH1D("Si_Gam" + TString(std::to_string(DblGatedGams[dg])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)),"Ex Gated from " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " & Gated on " + TString(std::to_string(DblGatedGams[dg])) + " keV Gamma", 8000,0,8000);
+
+			hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_DoubleGammaGated_BkgUnScale");
+			TH1D *h27 = new TH1D("Si_Gam" + TString(std::to_string(DblGatedGams[dg])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_UnScale","Ex Gated from " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " & Gated on " + TString(std::to_string(DblGatedGams[dg])) + " keV Gamma", 8000,0,8000);
+			hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_DoubleGammaGated_Bkg");
+			TH1D *h28 = new TH1D("Si_Gam" + TString(std::to_string(DblGatedGams[dg])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_Bkg","Ex Gated from " + TString(std::to_string(Ex_BinLow)) + " to " + TString(std::to_string(Ex_BinHi)) + " & Gated on " + TString(std::to_string(DblGatedGams[dg])) + " keV Gamma", 8000,0,8000);
+
+			hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_DoubleGammaGated");
+			TH1D *h29 = (TH1D*)h26->Clone("QQQ_Gam" + TString(std::to_string(DblGatedGams[dg])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)));
+
+			hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_DoubleGammaGated_BkgUnScale");
+			TH1D *h30 = (TH1D*)h27->Clone("QQQ_Gam" + TString(std::to_string(DblGatedGams[dg])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_UnScale");
+
+			hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/QQQ_DoubleGammaGated_Bkg");
+			TH1D *h31 = (TH1D*)h28->Clone("QQQ_Gam" + TString(std::to_string(DblGatedGams[dg])) + "_Ex_" + TString(std::to_string(Ex_BinLow)) + "_" + TString(std::to_string(Ex_BinHi)) + "_Bkg");
+
+			SiExvDblGam.push_back(h26);
+			SiExvDblGam_BkgUnScale.push_back(h27);
+			SiExvDblGam_Bkg.push_back(h28);
+			QQQ_SiExvDblGam.push_back(h29);
+			QQQ_SiExvDblGam_BkgUnScale.push_back(h30);
+			QQQ_SiExvDblGam_Bkg.push_back(h31);
+
+		}
+
+		DblGamGated_QQQ.push_back(QQQ_SiExvDblGam);
+		DblGamGated_QQQ_BkgUnScale.push_back(QQQ_SiExvDblGam_BkgUnScale);
+		DblGamGated_QQQ_Bkg.push_back(QQQ_SiExvDblGam_Bkg);
+		DblGamGated_Si.push_back(SiExvDblGam);
+		DblGamGated_Si_BkgUnScale.push_back(SiExvDblGam_BkgUnScale);
+		DblGamGated_Si_Bkg.push_back(SiExvDblGam_Bkg);
+
+		SiExvGam.clear();
+		SiExvGam_BkgUnScale.clear();
+		SiExvGam_Bkg.clear();
+		QQQ_SiExvGam.clear();
+		QQQ_SiExvGam_BkgUnScale.clear();
+		QQQ_SiExvGam_Bkg.clear();
+
+		SiExvDblGam.clear();
+		SiExvDblGam_BkgUnScale.clear();
+		SiExvDblGam_Bkg.clear();
+		QQQ_SiExvDblGam.clear();
+		QQQ_SiExvDblGam_BkgUnScale.clear();
+		QQQ_SiExvDblGam_Bkg.clear();
+
+		hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated");
+
+		
 		
 
 	}
 
-	hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam");
+	std::cout << GamGated_QQQ.size() << " " << GamGated_QQQ[1].size() << std::endl;
+
 		gam238vEx = new TH2D("gam238vEx","238 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
 		gam275vEx = new TH2D("gam275vEx","275 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
 
@@ -1022,7 +1379,7 @@ void MakeMyHists(){
 	QQQDAE1cal = new TH2D("QQQDAE1cal","QQQ5 DA E1 Calibrated Histograms",512,0,32,32,0,32);
 	QQQDAdEcal = new TH2D("QQQDAdEcal","QQQ5 DA dE Calibrated Histograms",512,0,32,32,0,32);
 
-	QQQDCE1sum = new TH2D("QQQDCE1sum","QQQ5 DC E1 Summed Histograms",1250,0,50000,10,0,10);
+	QQQDCE1sum = new TH2D("QQQDCE1sum","QQQ5 DC E1 Summed Histograms",1250,0,50000,20,0,20);
 	
 	QQQDAvsGam = new TH2D("QQQDAvsGam","Gamma Energy vs Ex",2048,0,15,8000,0,8000);
 
@@ -1508,6 +1865,8 @@ void MakeMyHists(){
 
 	ifstream inFile24("textfiles/GamNorm.txt");
 
+	ifstream inFile25("textfiles/DCtoTotalE.txt");
+
 	for (int i = 0; i<20; i++){
 
 		inFile0 >> AandEloss[i][0] >> AandEloss[i][1] >> AandEloss[i][2] >> AandEloss[i][3] >> AandEloss[i][4] >> AandEloss[i][5];
@@ -1521,6 +1880,7 @@ void MakeMyHists(){
 		inFile4 >> calDAE1[i][0] >> calDAE1[i][1] >> calDAdE[i][0] >> calDAdE[i][1];
 
 		inFile16 >> DCtoQ[i][0] >> DCtoQ[i][1] >> DCtoQ[i][2];
+		inFile25 >> DCtoTotalE[i][0] >> DCtoTotalE[i][1] >> DCtoTotalE[i][2];
 
 //		inFile4 >> calDAE1[i][0] >> calDAE1[i][1];
 //		inFile5 >> calDAdE[i][0] >> calDAdE[i][1];
@@ -1626,9 +1986,12 @@ void MakeMyHists(){
 
 
 	int numruns = 0;
-	for (int run = 404; run < 494; run++){
+	for (int run = 404; run < 495; run++){
 		//Only some runs actually have data and will be made into histograms using this code.
 		if ((run > 400 && run < 409 && run != 405 && run != 406) || (run > 409 && run < 424) || (run > 431 && run < 435) || (run > 436 && run < 447) || (run > 448 && run < 455) || (run > 455 && run < 458) || (run > 459 && run < 465) || (run > 468 && run < 484) || (run > 484 && run < 495)){
+			t.Stop();
+			t.Print();
+			t.Start(false);
 			histfill(run,logFile);
 			numruns++;
 		}
@@ -1676,9 +2039,27 @@ void MakeMyHists(){
 
 	//Do the scaling from one histogram in smaller chunks. 
 	double CombinedConts = 0;
+	double CombinedContsQQQ = 0;
+	double CombinedContsSi = 0;
 	double ContsAvg = 0;
+	double ContsAvgQQQ = 0;
+	double ContsAvgSi = 0;
 	double scaling = 0;
-	double scaling2 = 1000;
+	double scaling2 = 0;
+
+	double SiscalingGamSingle = 0;
+	double QQQscalingGamSingle = 0;
+
+	double SiscalingGamDouble = 0;
+	double QQQscalingGamDouble = 0;
+
+	double errors = 0;
+	double errorsQQQ = 0;
+	double errorsSi = 0;
+
+	int g1 = 0;	
+	int g2 = 0;
+
 	for (int ex = 0; ex < RealExLoopEnd; ex++){
 
 		for (int bin = 1; bin <= 8000; bin++){
@@ -1686,47 +2067,40 @@ void MakeMyHists(){
 			if ((bin == 1 || (bin-1) % 500 == 0) && bin != 8000) scaling = QQQExvGam[ex]->Integral(bin,bin+499)/QQQExvGam_Bkg[ex]->Integral(bin,bin+499);
 
 			if (bin < 3001){//800 bins (20keV/bin)
-				if ((bin == 1 || (bin-1) % 20 == 0) && bin != 8000 && bin > 20){
-					if (bin < 238 && (bin+19) > 238) scaling2 = scaling2;
-					else if (bin <= 275 && (bin+19) >= 275) scaling2 = scaling2;
-					else if (bin <= 511 && (bin+19) >= 511) scaling2 = scaling2;
-					else if (bin <= 1231 && (bin+19) >= 1231) scaling2 = scaling2;
-					else if (bin <= 1268 && (bin+19) >= 1268) scaling2 = scaling2;
-					else if (bin <= 1839 && (bin+19) >= 1839) scaling2 = scaling2;
-					else if (bin <= 1841 && (bin+19) >= 1841) scaling2 = scaling2;
-					else if (bin <= 2556 && (bin+19) >= 2556) scaling2 = scaling2;
-//scaling2 = QQQExvGam[ex]->Integral(bin,bin+19)/QQQExvGam_Bkg[ex]->Integral(bin,bin+19);
-					else scaling2 = QQQExvGam[ex]->Integral(bin,bin+19)/QQQExvGam_Bkg[ex]->Integral(bin,bin+19);
+				if ((bin == 1 || (bin-1) % 100 == 0) && bin != 8000 /*&& bin > 100*/){
+					if (bin+100 < 238 && (bin+200) > 238) scaling2 = scaling2;
+					//else if (bin <= 275 && (bin+19) >= 275) scaling2 = scaling2;
+					//else if (bin <= 511 && (bin+19) >= 511) scaling2 = scaling2;
+					//else if (bin <= 1231 && (bin+19) >= 1231) scaling2 = scaling2;
+					//else if (bin <= 1268 && (bin+19) >= 1268) scaling2 = scaling2;
+					else if (bin+100 <= 1839 && (bin+200) >= 1839) scaling2 = scaling2;
+					//else if (bin <= 1841 && (bin+19) >= 1841) scaling2 = scaling2;
+					else if (bin+100 <= 2556 && (bin+200) >= 2556) scaling2 = scaling2;
+
+					else scaling2 = QQQExvGam[ex]->Integral(bin+100,bin+200)/QQQExvGam_Bkg[ex]->Integral(bin+100,bin+200);
+
 
 				}
 				
 
-				if ((bin-1) % 20 == 0) CombinedConts = 0; //if the bin number-1 is div by 4, 5,9,etc, then reset combined conts to 0.
-				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
-				
-				if (bin % 20 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
-					ContsAvg = CombinedConts/20 * scaling2;
-										
-					for (int i = bin-19; i < bin+1; i++){
-
-						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
-
-					}
-
+				if ((bin-1) % 2 == 0){
+					CombinedConts = 0; //if the bin number-1 is div by 4, 5,9,etc, then reset combined conts to 0.
+//					cout << "*********** RESET ************" << endl;
 				}
-				
-			}
-/*
-			if (bin < 1001){//4000 bins (2keV/bin)
-				if (bin % 2 != 0) CombinedConts = 0; //if the bin number is NOT even, 1,3,etc, then reset combined conts to 0.
 				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
+				cout << QQQExvGam_Bkg[ex]->GetBinContent(bin) << endl;
 				
 				if (bin % 2 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
-					ContsAvg = CombinedConts/2 * scaling;
+					ContsAvg = CombinedConts/2 * scaling2;
+					errors = sqrt(pow(sqrt(CombinedConts)/2 * scaling2,2) + pow(.05*CombinedConts/2 * scaling2,2));
+
+//					cout << "Scale = " << scaling2;
+//					cout << "Error = " << errors << endl;
 										
 					for (int i = bin-1; i < bin+1; i++){
 
 						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+						QQQExvGam_Bkg8000[ex]->SetBinError(i,errors);
 
 					}
 
@@ -1734,35 +2108,22 @@ void MakeMyHists(){
 				
 			}
 
-			else if (bin > 1000 && bin < 3001){//1000 bins (8 keV/bin)
-				if ((bin-1001) % 8 == 0) CombinedConts = 0;//Resets CombinedConts at 9,17,etc.
-				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
-
-				if ((bin-1000) % 8 == 0){//when bin is divisible by 8 calc the average and feed it into the background hist
-					ContsAvg = CombinedConts/8 * scaling;
-
-					for (int i = bin-7; i < bin + 1; i++){
-
-						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
-
-					}
-
-
-				}
-				
-				
-			}
-*/
 			else if (bin > 3000 && bin < 5001){//500 bins (40 keV/bin)
-				if ((bin-3001) % 40 == 0) CombinedConts = 0;//Resets CombinedConts at 17,33,etc.
+				if ((bin-1) % 250 == 0){
+					scaling2 = QQQExvGam[ex]->Integral(bin,bin+249)/QQQExvGam_Bkg[ex]->Integral(bin,bin+249);
+
+				}
+				if ((bin-3001) % 5 == 0) CombinedConts = 0;//Resets CombinedConts at 17,33,etc.
 				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
 				
-				if ((bin-3000) % 40 == 0){//when bin is divisible by 16 calc the average and feed it into the background hist
-					ContsAvg = CombinedConts/40 * scaling;
+				if ((bin-3000) % 5 == 0){//when bin is divisible by 16 calc the average and feed it into the background hist
+					ContsAvg = CombinedConts/5 * scaling2;
+					errors = sqrt(CombinedConts)/5 * scaling2;
 
-					for (int i = bin-39; i < bin + 1; i++){
+					for (int i = bin-4; i < bin + 1; i++){
 
 						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+						QQQExvGam_Bkg8000[ex]->SetBinError(i,errors);
 
 					}
 
@@ -1771,15 +2132,17 @@ void MakeMyHists(){
 				
 			}
 			else if (bin > 5000){//100 bins (80 keV/bin)
-				if ((bin-5001) % 80 == 0) CombinedConts = 0;//Resets CombinedConts at 80,160,etc.
+				if ((bin-5001) % 10 == 0) CombinedConts = 0;//Resets CombinedConts at 80,160,etc.
 				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
 				
-				if ((bin-5000) % 80 == 0){//when bin is divisible by 16 calc the average and feed it into the background hist
-					ContsAvg = CombinedConts/80 * scaling;
+				if ((bin-5000) % 10 == 0){//when bin is divisible by 16 calc the average and feed it into the background hist
+					ContsAvg = CombinedConts/10 * scaling;
+					errors = sqrt(CombinedConts)/10 * scaling;
 
-					for (int i = bin-79; i < bin + 1; i++){
+					for (int i = bin-9; i < bin + 1; i++){
 
 						QQQExvGam_Bkg8000[ex]->SetBinContent(i,ContsAvg);
+						QQQExvGam_Bkg8000[ex]->SetBinError(i,errors);
 
 					}
 
@@ -1787,13 +2150,306 @@ void MakeMyHists(){
 				}
 			}
 
+			
+
+		}//End the bin for loop
+
+//Put normalizations for the Gamma Gated Background Histograms here!
+		for (int i = 0; i < 7; i++){
+
+			for (int bin = 1; bin <= 8000; bin++){ 
+
+				if (bin < 3001){
+
+					if ((bin == 1 || (bin-1) % 200 == 0)){
+
+						if (bin < 238 && (bin+200) > 238) SiscalingGamSingle = GamGated_Si[ex][i]->Integral(bin+200,bin+400)/GamGated_Si_BkgUnScale[ex][i]->Integral(bin+200,bin+400);
+						else if (bin+200 <= 1839 && (bin+400) >= 1839) QQQscalingGamSingle = QQQscalingGamSingle;
+						else if (bin+200 <= 2556 && (bin+400) >= 2556) QQQscalingGamSingle = QQQscalingGamSingle;
+						else QQQscalingGamSingle = GamGated_QQQ[ex][i]->Integral(bin+200,bin+400)/GamGated_QQQ_BkgUnScale[ex][i]->Integral(bin+200,bin+400);
+						
+						if (bin < 238 && (bin+200) > 238) SiscalingGamSingle = GamGated_Si[ex][i]->Integral(bin+200,bin+400)/GamGated_Si_BkgUnScale[ex][i]->Integral(bin+200,bin+400);
+						else if (bin <= 1839 && (bin+200) >= 1839) SiscalingGamSingle = SiscalingGamSingle;
+						else if (bin <= 2556 && (bin+200) >= 2556) SiscalingGamSingle = SiscalingGamSingle;
+						else SiscalingGamSingle = GamGated_Si[ex][i]->Integral(bin,bin+200)/GamGated_Si_BkgUnScale[ex][i]->Integral(bin,bin+200);
+						
+					
+					}
+
+					if ((bin-1) % 5 == 0){
+						CombinedContsQQQ = 0;
+						CombinedContsSi = 0; 
+					}
+					CombinedContsQQQ += GamGated_QQQ_BkgUnScale[ex][i]->GetBinContent(bin);
+					CombinedContsSi += GamGated_Si_BkgUnScale[ex][i]->GetBinContent(bin);
+
+				
+					if (bin % 5 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
+						ContsAvgQQQ = CombinedContsQQQ/5 * QQQscalingGamSingle;
+						ContsAvgSi = CombinedContsSi/5 * SiscalingGamSingle;
+			
+						errorsQQQ = sqrt(pow(sqrt(CombinedContsQQQ)/5 * QQQscalingGamSingle,2) + pow(.05*CombinedContsQQQ/5 * QQQscalingGamSingle,2));
+						errorsSi = sqrt(pow(sqrt(CombinedContsSi)/5 * SiscalingGamSingle,2) + pow(.05*CombinedContsSi/5 * SiscalingGamSingle,2));
+										
+						for (int j = bin-4; j < bin+1; j++){
+
+							GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+							GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+							GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+							GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
 
 
+						}
+
+					}
+
+
+				}
+
+				if (bin > 3000 && bin < 5001){
+
+					if ((bin == 1 || (bin-1) % 100 == 0)){
+						
+						QQQscalingGamSingle = GamGated_QQQ[ex][i]->Integral(bin+100,bin+200)/GamGated_QQQ_BkgUnScale[ex][i]->Integral(bin+100,bin+200);
+						SiscalingGamSingle = GamGated_Si[ex][i]->Integral(bin+100,bin+200)/GamGated_Si_BkgUnScale[ex][i]->Integral(bin+100,bin+200);
+						
+					}
+
+					if ((bin-1) % 50 == 0){
+						CombinedContsQQQ = 0;
+						CombinedContsSi = 0; 
+					}
+					CombinedContsQQQ += GamGated_QQQ_BkgUnScale[ex][i]->GetBinContent(bin);
+					CombinedContsSi += GamGated_Si_BkgUnScale[ex][i]->GetBinContent(bin);
+
+				
+					if (bin % 50 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
+						ContsAvgQQQ = CombinedContsQQQ/50 * QQQscalingGamSingle;
+						ContsAvgSi = CombinedContsSi/50 * SiscalingGamSingle;
+			
+						errorsQQQ = sqrt(pow(sqrt(CombinedContsQQQ)/50 * QQQscalingGamSingle,2) + pow(.05*CombinedContsQQQ/50 * QQQscalingGamSingle,2));
+						errorsSi = sqrt(pow(sqrt(CombinedContsSi)/50 * SiscalingGamSingle,2) + pow(.05*CombinedContsSi/50 * SiscalingGamSingle,2));
+										
+						for (int j = bin-49; j < bin+1; j++){
+
+							GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+							GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+
+							GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+							GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+
+						}
+
+					}
+
+
+				}
+
+				if (bin > 5000 && bin < 8001){
+
+					if ((bin == 1 || (bin-1) % 100 == 0)){
+						
+						QQQscalingGamSingle = GamGated_QQQ[ex][i]->Integral(bin+100,bin+200)/GamGated_QQQ_BkgUnScale[ex][i]->Integral(bin+100,bin+200);
+						SiscalingGamSingle = GamGated_Si[ex][i]->Integral(bin+100,bin+200)/GamGated_Si_BkgUnScale[ex][i]->Integral(bin+100,bin+200);
+						
+					}
+
+					if ((bin-1) % 100 == 0){
+						CombinedContsQQQ = 0;
+						CombinedContsSi = 0; 
+					}
+					CombinedContsQQQ += GamGated_QQQ_BkgUnScale[ex][i]->GetBinContent(bin);
+					CombinedContsSi += GamGated_Si_BkgUnScale[ex][i]->GetBinContent(bin);
+
+				
+					if (bin % 100 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
+						ContsAvgQQQ = CombinedContsQQQ/100 * QQQscalingGamSingle;
+						ContsAvgSi = CombinedContsSi/100 * SiscalingGamSingle;
+			
+						errorsQQQ = sqrt(pow(sqrt(CombinedContsQQQ)/100 * QQQscalingGamSingle,2) + pow(.05*CombinedContsQQQ/100 * QQQscalingGamSingle,2));
+						errorsSi = sqrt(pow(sqrt(CombinedContsSi)/100 * SiscalingGamSingle,2) + pow(.05*CombinedContsSi/100 * SiscalingGamSingle,2));
+										
+						for (int j = bin-99; j < bin+1; j++){
+
+							GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+							GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+
+							GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+							GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+
+
+						}
+					}
+
+
+				}
+
+			}
+
+		}
+
+		for (int i = 0; i < 9; i++){
+
+			CombinedContsQQQ = 0;
+			CombinedContsSi = 0;
+
+			if (i == 0){
+				g1 = 238;
+				g2 = 1297;
+			}
+			else if (i == 1){
+				g1 = 238;
+				g2 = 2556;
+			}
+			else if (i == 2){
+				g1 = 238;
+				g2 = 4362;
+			}
+			else if (i == 3){
+				g1 = 238;
+				g2 = 1840;
+			}
+			else if (i == 4){
+				g1 = 238;
+				g2 = 4140;
+			}
+			else if (i == 5){
+				g1 = 275;
+				g2 = 1233;
+			}
+			else if (i == 6){
+				g1 = 275;
+				g2 = 1340;
+			}
+			else if (i == 7){
+				g1 = 275;
+				g2 = 2632;
+			}
+			else if (i == 8){
+				g1 = 1840;
+				g2 = 2556;
+			}
+
+			for (int bin = 1; bin <= 8000; bin++){ 
+
+				if (bin < 3001){
+
+					if ((bin == 1 || (bin-1) % 500 == 0)){
+
+						if (bin < g1 && bin+500 > g1){
+							QQQscalingGamDouble = (DblGamGated_QQQ[ex][i]->Integral(bin,g1-50)+DblGamGated_QQQ[ex][i]->Integral(g1+50,bin+500))/(DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(bin,g1-50)+DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(g1+50,bin+500));
+
+							SiscalingGamDouble = (DblGamGated_Si[ex][i]->Integral(bin,g1-50)+DblGamGated_Si[ex][i]->Integral(g1+50,bin+500))/(DblGamGated_Si_BkgUnScale[ex][i]->Integral(bin,g1-50)+DblGamGated_Si_BkgUnScale[ex][i]->Integral(g1+50,bin+500));
+
+						}
+
+						else if (bin < g2 && bin+500 > g2){
+							QQQscalingGamDouble = (DblGamGated_QQQ[ex][i]->Integral(bin,g2-50)+DblGamGated_QQQ[ex][i]->Integral(g2+50,bin+500))/(DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(bin,g2-50)+DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(g2+50,bin+500));
+
+							SiscalingGamDouble = (DblGamGated_Si[ex][i]->Integral(bin,g2-50)+DblGamGated_Si[ex][i]->Integral(g2+50,bin+500))/(DblGamGated_Si_BkgUnScale[ex][i]->Integral(bin,g2-50)+DblGamGated_Si_BkgUnScale[ex][i]->Integral(g2+50,bin+500));
+
+						}
+						
+						else{
+							QQQscalingGamDouble = DblGamGated_QQQ[ex][i]->Integral(bin,bin+500)/DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(bin,bin+500);
+
+							SiscalingGamDouble = DblGamGated_Si[ex][i]->Integral(bin,bin+500)/DblGamGated_Si_BkgUnScale[ex][i]->Integral(bin,bin+500);
+
+						}
+						
+					
+					}
+
+					if ((bin-1) % 100 == 0){
+						CombinedContsQQQ = 0;
+						CombinedContsSi = 0; 
+					}
+					CombinedContsQQQ += DblGamGated_QQQ_BkgUnScale[ex][i]->GetBinContent(bin);
+					CombinedContsSi += DblGamGated_Si_BkgUnScale[ex][i]->GetBinContent(bin);
+
+				
+					if (bin % 100 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
+						ContsAvgQQQ = CombinedContsQQQ/100 * QQQscalingGamDouble;
+						ContsAvgSi = CombinedContsSi/100 * SiscalingGamDouble;
+			
+						errorsQQQ = sqrt(pow(sqrt(CombinedContsQQQ)/100 * QQQscalingGamDouble,2) + pow(.05*CombinedContsQQQ/100 * QQQscalingGamDouble,2));
+						errorsSi = sqrt(pow(sqrt(CombinedContsSi)/100 * SiscalingGamDouble,2) + pow(.05*CombinedContsSi/100 * SiscalingGamDouble,2));
+										
+						for (int j = bin-99; j < bin+1; j++){
+
+							DblGamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+							DblGamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+							DblGamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+							DblGamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+
+
+						}
+
+					}
+
+
+				}
+
+				if (bin > 3000 && bin < 8001){
+
+					if ((bin == 1 || (bin-1) % 1000 == 0)){
+
+						if (bin < g2 && bin+1000 > g2){
+							QQQscalingGamDouble = (DblGamGated_QQQ[ex][i]->Integral(bin,g2-50)+DblGamGated_QQQ[ex][i]->Integral(g2+50,bin+1000))/(DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(bin,g2-50)+DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(g2+50,bin+1000));
+
+							SiscalingGamDouble = (DblGamGated_Si[ex][i]->Integral(bin,g2-50)+DblGamGated_Si[ex][i]->Integral(g2+50,bin+1000))/(DblGamGated_Si_BkgUnScale[ex][i]->Integral(bin,g2-50)+DblGamGated_Si_BkgUnScale[ex][i]->Integral(g2+50,bin+1000));
+
+						}
+						
+						else{
+							QQQscalingGamDouble = DblGamGated_QQQ[ex][i]->Integral(bin,bin+1000)/DblGamGated_QQQ_BkgUnScale[ex][i]->Integral(bin,bin+1000);
+
+							SiscalingGamDouble = DblGamGated_Si[ex][i]->Integral(bin,bin+1000)/DblGamGated_Si_BkgUnScale[ex][i]->Integral(bin,bin+1000);
+
+						}
+						
+					
+					}
+
+					if ((bin-1) % 200 == 0){
+						CombinedContsQQQ = 0;
+						CombinedContsSi = 0; 
+					}
+					CombinedContsQQQ += DblGamGated_QQQ_BkgUnScale[ex][i]->GetBinContent(bin);
+					CombinedContsSi += DblGamGated_Si_BkgUnScale[ex][i]->GetBinContent(bin);
+
+				
+					if (bin % 200 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
+						ContsAvgQQQ = CombinedContsQQQ/200 * QQQscalingGamDouble;
+						ContsAvgSi = CombinedContsSi/200 * SiscalingGamDouble;
+			
+						errorsQQQ = sqrt(pow(sqrt(CombinedContsQQQ)/200 * QQQscalingGamDouble,2) + pow(.05*CombinedContsQQQ/200 * QQQscalingGamDouble,2));
+						errorsSi = sqrt(pow(sqrt(CombinedContsSi)/200 * SiscalingGamDouble,2) + pow(.05*CombinedContsSi/200 * SiscalingGamDouble,2));
+										
+						for (int j = bin-199; j < bin+1; j++){
+
+							DblGamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+							DblGamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+
+							DblGamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+							DblGamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+
+						}
+
+					}
+
+
+				}
+
+
+			}
 
 		}
 
 
-	}
+
+
+	}//End for the Ex loop
 
 	for (int bin=1; bin<=1000; bin++){
 		average = (gam_totBack->GetBinContent(bin) + gam_totBack2->GetBinContent(bin)) / 2;
@@ -1869,7 +2525,7 @@ void MakeMyHists(){
 
 	for (int ex = 0; ex < RealExLoopEnd; ex++){
 
-		hist->cd("Ex_vs_Gammas_Hists/QQQ5_v_Gam/Ratio_Hists");
+		hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/Ratio_Hists");
 
 		TH1D *ratio = (TH1D*)QQQExvGam[ex]->Clone("ratio_" + TString(std::to_string((int)ex+4)) + "_" + TString(std::to_string((int)ex+4 + ExWidth)));
 
@@ -1888,7 +2544,7 @@ void MakeMyHists(){
 
 			RatioVec[ex]->SetBinError(bin, RatioError);
 
-			if (ex == 23 && (Sig/Bkg - RatioError) >=1) std::cout << bin << std::endl; 
+			//if (ex == 23 && (Sig/Bkg - RatioError) >=1) std::cout << bin << std::endl; 
 
 		}
 
@@ -1965,6 +2621,9 @@ void MakeMyHists(){
 	logFile.close();
 
 	std::cout << gcount1 << " * " << gcount2 << std::endl;
+
+	t.Stop();
+	t.Print();
 
 }
 

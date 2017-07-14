@@ -1,18 +1,41 @@
-	int ExWidth = 6; //Width of the ex bins in MeV*10.
+	int ExWidth = 8; //Width of the ex bins in MeV*10.
 	int ExLoopEnd = 70-ExWidth+1;
 
 	int BkgBins = 100;
 
+	int GatedGams[7] = {238,275,1233,1297,1340,2556,1840};
+	int DblGatedGams[9] = {2381297,2382556,2384362,2381840,2384140,2751233,2751340,2752632,25561840};
+
+	TStopwatch t;
 
 	TDirectory *Gams_vs_Run;
 	TDirectory *Silicon_Detectors;
 	TDirectory *Ex_vs_Gammas_Hists;
-	TDirectory *QQQ5_v_Gam;
+	TDirectory *QQQ_v_Gam;
 	TDirectory *Si_v_Gam;
 	TDirectory *D1_Hists;
 	TDirectory *D1_Hists_Bkg1000;
 	TDirectory *D1_Hists_Bkg8000;
 	TDirectory *Ratio_Hists;
+
+	TDirectory *QQQ_SingleGammaGated;
+	TDirectory *QQQ_SingleGammaGated_BkgUnScale;
+	TDirectory *QQQ_SingleGammaGated_Bkg;
+
+	TDirectory *QQQ_DoubleGammaGated;
+	TDirectory *QQQ_DoubleGammaGated_BkgUnScale;
+	TDirectory *QQQ_DoubleGammaGated_Bkg;
+
+	TDirectory *Si_SingleGammaGated;
+	TDirectory *Si_SingleGammaGated_BkgUnScale;
+	TDirectory *Si_SingleGammaGated_Bkg;
+
+	TDirectory *Si_DoubleGammaGated;
+	TDirectory *Si_DoubleGammaGated_BkgUnScale;
+	TDirectory *Si_DoubleGammaGated_Bkg;
+
+	TDirectory *TripleGammaGated;
+
 
 	int gcount1;
 	int gcount2;
@@ -55,6 +78,60 @@
 	std::vector<TH1D*> QQQExvGam_Bkg8k1000;
 	std::vector<TH1D*> QQQExvGam_Bkg8000;
 	std::vector<TH1D*> RatioVec;
+
+	std::vector<TH1D*> QQQ_SiExvGam;
+
+	std::vector<std::vector<TH1D*>> GamGated_QQQ;
+
+	std::vector<TH1D*> QQQ_SiExvGam_BkgUnScale;
+
+	std::vector<std::vector<TH1D*>> GamGated_QQQ_BkgUnScale;
+
+	std::vector<TH1D*> QQQ_SiExvGam_Bkg;
+
+	std::vector<std::vector<TH1D*>> GamGated_QQQ_Bkg;
+
+	std::vector<TH1D*> SiExvGam;
+
+	std::vector<std::vector<TH1D*>> GamGated_Si;
+
+	std::vector<TH1D*> SiExvGam_BkgUnScale;
+
+	std::vector<std::vector<TH1D*>> GamGated_Si_BkgUnScale;
+
+	std::vector<TH1D*> SiExvGam_Bkg;
+
+	std::vector<std::vector<TH1D*>> GamGated_Si_Bkg;
+
+
+
+	std::vector<TH1D*> QQQ_SiExvDblGam;
+
+	std::vector<std::vector<TH1D*>> DblGamGated_QQQ;
+
+	std::vector<TH1D*> QQQ_SiExvDblGam_BkgUnScale;
+
+	std::vector<std::vector<TH1D*>> DblGamGated_QQQ_BkgUnScale;
+
+	std::vector<TH1D*> QQQ_SiExvDblGam_Bkg;
+
+	std::vector<std::vector<TH1D*>> DblGamGated_QQQ_Bkg;
+
+	std::vector<TH1D*> SiExvDblGam;
+
+	std::vector<std::vector<TH1D*>> DblGamGated_Si;
+
+	std::vector<TH1D*> SiExvDblGam_BkgUnScale;
+
+	std::vector<std::vector<TH1D*>> DblGamGated_Si_BkgUnScale;
+
+	std::vector<TH1D*> SiExvDblGam_Bkg;
+
+	std::vector<std::vector<TH1D*>> DblGamGated_Si_Bkg;
+
+	double DCtoTotalE[32][3];
+	
+	
 /*		
 	TH1D *D5_E;
 	TH1D *D5_E2;

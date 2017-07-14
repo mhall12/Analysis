@@ -5,6 +5,7 @@
 #include "../goddess/include/GoddessStruct.h"
 #include <iostream>
 #include <fstream>
+#include "TStopwatch.h"
 
 //Variables used in GoddessAnalysis.cxx are initialized here.	
 	TTree *nt;
