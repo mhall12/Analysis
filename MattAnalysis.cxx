@@ -47,12 +47,23 @@ void histfill(int runnum, ofstream &log1){
 	int g4362 = 0;
 	int g4140 = 0;
 	int g2632 = 0;
+	int g1825 = 0;
 
 	int g197 = 0; //19F
 	int g109 = 0; //19F
 	int g890 = 0; //22Na
+	int g168 = 0;
+	int g460 = 0;
+	int g754 = 0;
+	int g1633 = 0;
+
+	int glt6175 = 0;
+	
+	
+	
 
 	int timegate = 0;
+	int timegateback = 0;
 
 	//Gates for each of the peaks in the triton spectra. Gate 0 refers to the Right most peak, Gate 0 refers to the one to the left and so on...
 	int pkgate[4] = {0};
@@ -161,6 +172,11 @@ int DCtestgate2 = 0;
 	std::vector<double> ExVec;
 	std::vector<double> ExVecWithSX3;
 
+	std::vector<double> DAExVec;
+	std::vector<double> DCExVec;
+	std::vector<double> SX3ExVec;
+	std::vector<std::vector<double>> ExVec2D;
+
 	log1 << "Run Number: " << runnum << " Number of Entries: " << nEntries << std::endl;
 
 
@@ -187,12 +203,21 @@ DCtestgate2 = 0;
 		g4140 = 0;
 		g2632 = 0;
 
+		g1825 = 0;
+
 		//Background Peaks!
 		g197 = 0;
 		g109 = 0;
 		g890 = 0;
-		
+		g168 = 0;
+		g460 = 0;
+		g754 = 0;
+		g1633 = 0;
+
+		glt6175 = 0;
+			
 		timegate = 0;
+		timegateback = 0;
 
 		tritongate = 0;
 
@@ -205,6 +230,10 @@ DCtestgate2 = 0;
 		SX3Gate = 0;
 				
 		for (int g = 0; g<4; g++) pkgate[g] = 0;
+
+		DAExVec.push_back(0);
+		DCExVec.push_back(0);
+		SX3ExVec.push_back(0);
 
 		nt->GetEntry(evt);
 		if(evt % 10000 == 0){
@@ -278,8 +307,10 @@ DCtestgate2 = 0;
 						TimingGammaIndex[w]++;
 						timegate++;
 						if (gamEn >= 235 && gamEn <= 241) g238++;
+						//if (gamEn >= 1625 && gamEn <= 1640) g275++;
+						//if (gamEn >= 193 && gamEn <= 200) g1233++;
 						if (gamEn >= 272 && gamEn <= 278) g275++;
-						if (gamEn >= 1224 && gamEn <= 1238) g1233++;
+						if (gamEn >= 1229 && gamEn <= 1236) g1233++;
 						if (gamEn >= 1276 && gamEn <= 1314) g1297++;
 						if (gamEn >= 1320 && gamEn <= 1360) g1340++;
 						if (gamEn >= 1836 && gamEn <= 1843) g1840++;
@@ -287,21 +318,44 @@ DCtestgate2 = 0;
 						if (gamEn >= 4320 && gamEn <= 4409) g4362++;
 						if (gamEn >= 4100 && gamEn <= 4180) g4140++;
 						if (gamEn >= 2604 && gamEn <= 2660) g2632++;
+
+						if (gamEn >= 1824 && gamEn <= 1828) g1825++;
+						//Bkg
+						if (gamEn >= 106 && gamEn <= 114) g109++;
+						if (gamEn >= 194 && gamEn <= 200) g197++;
+						//if (gamEn >= 886 && gamEn <= 896) g890++;
+						//if (gamEn >= 106 && gamEn <= 114) g109++;
+						//if (gamEn >= 194 && gamEn <= 200) g197++;
+						//if (gamEn >= 886 && gamEn <= 896) g890++;
+						//if (gamEn >= 886 && gamEn <= 896) g890++;
+
+						if (gamEn < 6350 || gamEn > 6550) glt6175++;
+
 					}
 
-					if (timediff < 404 || timediff > 460) BackgroundTiming[w]++;
+					if (timediff < 404 || timediff > 460){
+						BackgroundTiming[w]++;
+						timegateback++;
+					}
 
 
 					TDiffDA->Fill(timediff);
+					TimingvRunnumDA->Fill(timediff,runnum);
+
+					if (dE > 0) TimingDA2D->Fill(timediff,stripdE);
+					if (E1 > 0) TimingDA2D->Fill(timediff,stripE1+31);
 					
 				}
 
 				if (si2->at(i).telescopeID == 1102){
 					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(0,false);
+					if (runnum >=422 && runnum <=434) timediff+=115.7578; 
 					if (timediff < 208 && timediff > 188){
 						TimingGammaIndex[w]++;
 						timegate++;
 						if (gamEn >= 235 && gamEn <= 241) g238++;
+						//if (gamEn >= 1625 && gamEn <= 1640) g275++;
+						//if (gamEn >= 193 && gamEn <= 200) g1233++;
 						if (gamEn >= 272 && gamEn <= 278) g275++;
 						if (gamEn >= 1224 && gamEn <= 1238) g1233++;
 						if (gamEn >= 1276 && gamEn <= 1314) g1297++;
@@ -311,19 +365,38 @@ DCtestgate2 = 0;
 						if (gamEn >= 4320 && gamEn <= 4409) g4362++;
 						if (gamEn >= 4100 && gamEn <= 4180) g4140++;
 						if (gamEn >= 2604 && gamEn <= 2660) g2632++;
+
+if (gamEn >= 1824 && gamEn <= 1828) g1825++;
+
+						//Bkg
+						if (gamEn >= 106 && gamEn <= 114) g109++;
+						if (gamEn >= 194 && gamEn <= 200) g197++;
+
+						if (gamEn < 6350 || gamEn > 6550) glt6175++;
 					}
 
-					if (timediff < 180 || timediff > 230) BackgroundTiming[w]++;
+					if (timediff < 180 || timediff > 230){
+						BackgroundTiming[w]++;
+						timegateback++;
+					}
 
 					TDiffDC->Fill(timediff);
+					TimingvRunnumDC->Fill(timediff,runnum);
+
+					if (dE > 0) TimingDC2D->Fill(timediff,stripdE);
+					if (E1 > 0) TimingDC2D->Fill(timediff,stripE1+31);
 				}
 	
 				if (si2->at(i).telescopeID >= 2104 && si2->at(i).telescopeID <= 2110 && si2->at(i).telescopeID != 2106){
 					timediff = (double)gam2->at(w).time - (double)si2->at(i).TimestampMaxLayer(1,false);
+					if (runnum >=422 && runnum <=434) timediff+=115.7578; 
 					if (timediff < 208 && timediff > 188){
 						TimingGammaIndex[w]++;
+						timegate++;
 
 						if (gamEn >= 235 && gamEn <= 241) g238++;
+						//if (gamEn >= 1625 && gamEn <= 1640) g275++;
+						//if (gamEn >= 193 && gamEn <= 200) g1233++;
 						if (gamEn >= 272 && gamEn <= 278) g275++;
 						if (gamEn >= 1224 && gamEn <= 1238) g1233++;
 						if (gamEn >= 1276 && gamEn <= 1314) g1297++;
@@ -334,9 +407,20 @@ DCtestgate2 = 0;
 						if (gamEn >= 4100 && gamEn <= 4180) g4140++;
 						if (gamEn >= 2604 && gamEn <= 2660) g2632++;
 
+if (gamEn >= 1824 && gamEn <= 1828) g1825++;
+
+						//Bkg
+						if (gamEn >= 106 && gamEn <= 114) g109++;
+						if (gamEn >= 194 && gamEn <= 200) g197++;
+
+						if (gamEn < 6350 || gamEn > 6550) glt6175++;
+
 					}
 
-					if (timediff < 180 || timediff > 230) BackgroundTiming[w]++;
+					if (timediff < 180 || timediff > 230){
+						BackgroundTiming[w]++;
+						timegateback++;
+					}
 
 					if (si2->at(i).MultLayer(1,false) == 1) TDiffSX3->Fill(timediff);
 				}
@@ -346,6 +430,8 @@ DCtestgate2 = 0;
 
 
 			}
+
+			GMultHist->Fill(timegate);
 			//c**********************************END TIMING********************************************
 
 
@@ -430,6 +516,10 @@ DCtestgate2 = 0;
 								QAl = Einit*(1+m3H/m27Si)-30*(1-m3He/m27Si)-2*sqrt(m3He*m3H/pow(m27Si,2)*Einit*30)*cos(angle);
 
 								Ex19Ne = (m3He + m19F - m3H - m19Ne)*utoMeV - Q;
+	
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7 && g1825 > 0) AngDistTest->Fill(angle* 180 / pi);
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7 && g1840 > 0) AngDistTest2->Fill(angle* 180 / pi);
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7) AngDistTest_back->Fill(angle* 180 / pi);
 
 								QQQDAQ->Fill(Q, stripdE);
 								QQQDAQAl->Fill(QAl, stripdE);
@@ -443,11 +533,13 @@ DCtestgate2 = 0;
 								if (Ex19Ne > 4 && Ex19Ne < 5) Exgate++;
 //c**c	
 if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
-								if (Ex19Ne >= 4 && Ex19Ne <= 7){
+								if (Ex19Ne >= 3 && Ex19Ne <= 7.2){
 									ExVec.push_back(Ex19Ne);
 									ExVecWithSX3.push_back(Ex19Ne);
+									DAExVec.push_back(Ex19Ne);
+									DACount++;
 								}
-
+								
 								//Put the for loop for the range of Ex gates here
 								for (int ex = 0; ex < 31; ex++){
 									if (Ex19Ne > ExGateArrLow[ex] && Ex19Ne < ExGateArrHi[ex]) ExGates[ex]++;
@@ -497,6 +589,7 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 				} //closes resitricted gates if statement
 
 			} //closes the DA if statement
+			ExVec2D.push_back(DAExVec);
 
 	//c*******************************************DC Begin******************************************************************c//
 			if (si2->at(i).telescopeID == 1102 && si2->at(i).MultLayer(0,false) == 1){
@@ -549,6 +642,10 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 							Ex19Ne = (m3He + m19F - m3H - m19Ne)*utoMeV - Q;
 
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7 && g1825 > 0) AngDistTest->Fill(angle* 180 / pi);
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7 && g1840 > 0) AngDistTest2->Fill(angle* 180 / pi);
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7) AngDistTest_back->Fill(angle* 180 / pi);
+
 							if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate1++;
 
 							QQQDCEx->Fill(Ex19Ne, stripdE);
@@ -556,10 +653,13 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 							if (Ex19Ne > 4 && Ex19Ne < 5) Exgate++;//DCgate++;
 //c***	
-							if (Ex19Ne >= 4 && Ex19Ne <= 7){
+							if (Ex19Ne >= 3 && Ex19Ne <= 7.2){
 								ExVec.push_back(Ex19Ne);
 								ExVecWithSX3.push_back(Ex19Ne);
+								DCExVec.push_back(Ex19Ne);
+								DCCount++;
 							}
+							
 
 							//Put the for loop for the range of Ex gates here
 							//Digital Excitation energy spectrum not great below 3.9 MeV...
@@ -574,6 +674,7 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 				} //closes triton gate if statement
 
 			} //closes DC if statement
+			ExVec2D.push_back(DCExVec);
 
 	//c*******************************************DC End******************************************************************c//
 
@@ -632,12 +733,19 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 				Q = E1cal*(1+m3H/m19Ne)-30*(1-m3He/m19Ne)-2*sqrt(m3He*m3H/pow(m19Ne,2)*E1cal*30)*cos(angle*pi/180);
 				Ex19Ne = (m3He + m19F - m3H - m19Ne)*utoMeV - Q;
+				Ex19Ne = 0.9412*Ex19Ne + 0.5147;
 
-				if (Ex19Ne >= 4 && Ex19Ne <= 7){
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7 && g1825 > 0) AngDistTest->Fill(angle);
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7 && g1840 > 0) AngDistTest2->Fill(angle);
+if (Ex19Ne > 5.5 && Ex19Ne < 6.7 && g238 > 0) AngDistTest_back->Fill(angle);
+
+				if (Ex19Ne >= 3 && Ex19Ne <= 7.2){
 					ExVecWithSX3.push_back(Ex19Ne);
 				
 				//	if (Ex19Ne < 5) Exgate++;
+					SX3ExVec.push_back(Ex19Ne);
 				}
+
 
 				SX3ExTot->Fill(Ex19Ne);
 
@@ -739,6 +847,8 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 //}			
 
 			}
+			
+			ExVec2D.push_back(SX3ExVec);
 
 
 		for (unsigned int f = 0; f < gam2->size();f++){
@@ -758,7 +868,7 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 		}//closes silicon detectors loop
 
-
+//c************************************************BEGIN GAMMA***************************************************
 
 		for (unsigned int i = 0; i < gam2->size();i++){
 		//if (tritongate > 0){
@@ -784,13 +894,14 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 			gamEn = 3.45437e-6*pow(gamEn,2)+.991322*gamEn+3.82698;
 			//Further corrections to some detectors
 			gamEn = pow(gamEn,2)*GamNorm[gam2->at(i).num][0] + gamEn*GamNorm[gam2->at(i).num][1] + GamNorm[gam2->at(i).num][2];
+//Haven't been using the gamcorr below
 //			gamEn=gamEn*gamcorr[gam2->at(i).num];
 
 			gam_ind->Fill(gamEn,gam2->at(i).num);
 
 			GamvRunnum[gam2->at(i).num]->Fill(gamUncal,runnum);
 //Background timing if statement
-			if (gamEn >20 && BackgroundTiming[i]>0){
+			if (gamEn >20 && BackgroundTiming[i]>0 && g109 == 0 && g197 == 0 && timegate < gmult){
 				gam_totBack->Fill(gamEn);
 				if (Exgate > 0) gamExBack->Fill(gamEn);
 
@@ -799,8 +910,8 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 				//fill the Bkg histograms 
 				for (unsigned int v = 0; v < ExVec.size(); v++){
-					for (int ex = 40; ex < ExLoopEnd; ex++){
-						int ele = ex-40;
+					for (int ex = ExLoopBegin; ex < ExLoopEnd; ex++){
+						int ele = ex-ExLoopBegin;
 
 						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10){
 							QQQExvGam_Bkg[ele]->Fill(gamEn);
@@ -810,17 +921,34 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 					}
 				}
+
+				for (unsigned int v = 0; v < ExVecWithSX3.size(); v++){
+					if (ExVecWithSX3[v] >=6.3 && ExVecWithSX3[v] <=6.5 && timegateback == 1) GamTestHistback->Fill(gamEn);
+
+				}
 			}
 //Regular timing if statement			
-			//c******Gamma histograms filled below here are suppressed by the time gate with the Si detectors*******
-			if (gamEn >20  && TimingGammaIndex[i]>0){// timegate > 0){//
 
-				for (unsigned int j = 0; j < gam2->size();j++){
-					if (gamEn > 3000 && gam511[j] > 0 && TimingGammaIndex[j] > 0){
-						gamEn += gam511[j];
-						//std::cout << "woah!" << std::endl;
-					}
-				}
+//if (g275 > 0) gam275->Fill(gamEn);
+//if (g1233 > 0) gam1233->Fill(gamEn);
+
+			//c******Gamma histograms filled below here are suppressed by the time gate with the Si detectors*******
+
+
+//Added in the inverse gates for the two 19F peaks.
+			if (gamEn >20  && TimingGammaIndex[i] > 0 && g109 == 0 && g197 == 0 && timegate < gmult){// timegate > 0){//
+				if (DAExVec.size() > 1) DAGam++;
+				if (DCExVec.size() > 1) DCGam++;
+			//	for (unsigned int j = 0; j < gam2->size();j++){
+			//		if (gamEn > 3000 && gam511[j] > 0 && TimingGammaIndex[j] > 0){
+			//			gamEn += gam511[j];
+			//			//std::cout << "woah!" << std::endl;
+			//		}
+			//	}
+
+				if (g238 > 0 && g2556 > 0) g238v2556Mult->Fill(timegate);
+				if (g238 > 0 && g1840 > 0) g238v1840Mult->Fill(timegate);		
+
 				if (g197 == 0 && g109 == 0) gam_tot->Fill(gamEn);
 				if (g197 == 0 && g109 == 0) gam_tot2->Fill(gamEn);
 				//Fill the gated gammasphere histograms here:
@@ -896,13 +1024,13 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 					Ex_v_Gam->Fill(gamEn,ExVec[v]);
 
-					for (int ex = 40; ex < ExLoopEnd; ex++){
-						int ele = ex-40;
+					for (int ex = ExLoopBegin; ex < ExLoopEnd; ex++){
+						int ele = ex-ExLoopBegin;
 
 						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10){
 
 							QQQExvGam[ele]->Fill(gamEn);
-							if (g238 > 0){
+							if (g238 > 0 && g109 == 0 && g197 == 0){
 								GamGated_QQQ[ele][0]->Fill(gamEn);
 								if (g1297 > 0) DblGamGated_QQQ[ele][0]->Fill(gamEn);
 								if (g2556 > 0) DblGamGated_QQQ[ele][1]->Fill(gamEn);
@@ -918,7 +1046,7 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 								if (g2632 > 0) DblGamGated_QQQ[ele][7]->Fill(gamEn);
 							}
 
-							if (g1233 > 0){
+							if (g1233 > 0 && g109 == 0){
 								GamGated_QQQ[ele][2]->Fill(gamEn);
 							}
 
@@ -948,8 +1076,17 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 				for (unsigned int v = 0; v < ExVecWithSX3.size(); v++){
 
-					for (int ex = 40; ex < ExLoopEnd; ex++){
-						int ele = ex-40;
+					SiAll_Ex_v_Gam->Fill(gamEn,ExVecWithSX3[v]);
+					if (glt6175 == 0) SiAll_Ex_v_Gam_0->Fill(gamEn,ExVecWithSX3[v]);
+					if (timegate == 1) SiAll_Ex_v_Gam_1->Fill(gamEn,ExVecWithSX3[v]);
+					//if (glt6175 == 2) SiAll_Ex_v_Gam_2->Fill(gamEn,ExVecWithSX3[v]);
+					//if (glt6175 == 3) SiAll_Ex_v_Gam_3->Fill(gamEn,ExVecWithSX3[v]);
+					//if (glt6175 == 4) SiAll_Ex_v_Gam_4->Fill(gamEn,ExVecWithSX3[v]);
+
+					if (ExVecWithSX3[v] >=6.3 && ExVecWithSX3[v] <=6.5 && timegate == 1) GamTestHist->Fill(gamEn);
+
+					for (int ex = ExLoopBegin; ex < ExLoopEnd; ex++){
+						int ele = ex-ExLoopBegin;
 
 						if (ExVecWithSX3[v] >= (double)ex/10 && ExVecWithSX3[v] < (double)ex/10+(double)ExWidth/10){
 
@@ -960,6 +1097,16 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 								if (g4362 > 0) DblGamGated_Si[ele][2]->Fill(gamEn);
 								if (g1840 > 0) DblGamGated_Si[ele][3]->Fill(gamEn);
 								if (g4140 > 0) DblGamGated_Si[ele][4]->Fill(gamEn);
+
+								if (gamEn > 3470 && gamEn < 3500 && ex >= 60 && ex <=65){
+									g3500_theta->Fill(GamAng[gam2->at(i).num][0]);
+									g3500_phi->Fill(GamAng[gam2->at(i).num][1]);
+								}  
+
+								if (gamEn > 4720 && gamEn < 4760 && ex >= 60 && ex <=65){
+									g4740_theta->Fill(GamAng[gam2->at(i).num][0]);
+									g4740_phi->Fill(GamAng[gam2->at(i).num][1]);
+								}  
 							}
 
 							if (g275 > 0){
@@ -995,33 +1142,57 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 					}
 	
 				}
+			
+				for (unsigned int p = 0; p < 3; p++){
+
+					for (unsigned int m = 0; m < ExVec2D[p].size(); m++){
+						double gamEnOffset = gamEn;
+						if (p == 0 && m == 0) gamEnOffset = gamEnOffset;
+						if (p == 1 && m == 0) gamEnOffset += 30;
+						if (p == 2 && m == 0) gamEnOffset += 60;
+
+						Ex_v_GamOffset->Fill(gamEnOffset,ExVec2D[p][m]);
+					}
+
+				}
+
+
+
+
 			}//Closes if GamEn and TimingGammaIndex
 	
 //		}//Close Triton Gate
 
-			if (gamEn != 0 && TimingGammaIndex[i] > 0){
+			if (gamEn != 0 && TimingGammaIndex[i] > 0  && g109 == 0 && g197 == 0 && timegate < gmult){
 
 				for (unsigned int ex = 0; ex < ExVec.size(); ex++){//WithSX3
 
 					if (g238 > 0) gam238vEx->Fill(gamEn,ExVec[ex]);
-					if (g275 > 0 && g197 == 0 && g109 == 0 && g890 == 0) gam275vEx->Fill(gamEn,ExVec[ex]);
+					if (g275 > 0) gam275vEx->Fill(gamEn,ExVec[ex]);
 //if (g238 > 0 && g197 == 0 && g109 == 0 && g890 == 0)
+				}
+
+				for (unsigned int ex = 0; ex < ExVecWithSX3.size(); ex++){//WithSX3
+
+					if (g238 > 0) Sigam238vEx->Fill(gamEn,ExVecWithSX3[ex]);
+					if (g275 > 0) Sigam275vEx->Fill(gamEn,ExVecWithSX3[ex]);
+					if (g1840 > 0) Sigam1840vEx->Fill(gamEn,ExVecWithSX3[ex]);
 				}
 
 			}
 
-			if (gamEn != 0 && BackgroundTiming[i] > 0){
-					if (g238 > 0) gam238_Back->Fill(gamEn);
+			if (gamEn != 0 && BackgroundTiming[i] > 0  && g109 == 0 && g197 == 0 && timegate < gmult){
+					if (g238 > 0 && g109 == 0 && g197 == 0) gam238_Back->Fill(gamEn);
 					if (g275 > 0) gam275_Back->Fill(gamEn);
-					if (g1233 > 0) gam1233_Back->Fill(gamEn);
+					if (g1233 > 0 && g109 == 0) gam1233_Back->Fill(gamEn);
 					if (g1297 > 0) gam1297_Back->Fill(gamEn);
 					if (g1840 > 0) gam1840_Back->Fill(gamEn);
 					if (g2556 > 0) gam2556_Back->Fill(gamEn);
 
 				for (unsigned int v = 0; v < ExVec.size(); v++){
 
-					for (int ex = 40; ex < ExLoopEnd; ex++){
-						int ele = ex-40;
+					for (int ex = ExLoopBegin; ex < ExLoopEnd; ex++){
+						int ele = ex-ExLoopBegin;
 
 						if (ExVec[v] >= (double)ex/10 && ExVec[v] < (double)ex/10+(double)ExWidth/10){
 
@@ -1070,8 +1241,8 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 
 				for (unsigned int v = 0; v < ExVecWithSX3.size(); v++){
 
-					for (int ex = 40; ex < ExLoopEnd; ex++){
-						int ele = ex-40;
+					for (int ex = ExLoopBegin; ex < ExLoopEnd; ex++){
+						int ele = ex-ExLoopBegin;
 
 						if (ExVecWithSX3[v] >= (double)ex/10 && ExVecWithSX3[v] < (double)ex/10+(double)ExWidth/10){
 
@@ -1130,6 +1301,11 @@ if (Ex19Ne > 3.7 && Ex19Ne < 7.5) DCtestgate2++;
 		ExVec.clear();
 		ExVecWithSX3.clear();
 
+		DAExVec.clear();
+		DCExVec.clear();
+		SX3ExVec.clear();
+		ExVec2D.clear();
+
 	}
 
 
@@ -1155,7 +1331,7 @@ void MakeMyHists(){
 	gcount2 = 0;
 	int stripnum = 32;
 	//the hist file is opened here for writing
-	string RootFile = "SiQQQHists.root";
+	string RootFile = "SiQQQHists10step_revgate_testdeleteme.root";
 	hist = TFile::Open(TString(RootFile),"RECREATE");
 	std::ofstream logFile("GoddessAnalysis.log");
 
@@ -1197,6 +1373,15 @@ void MakeMyHists(){
 			Gamma_Gated_Background = hist->mkdir("Silicon_Detectors/SX3_Hists/Gamma_Gated_Background");
 			Gamma_Gated = hist->mkdir("Silicon_Detectors/SX3_Hists/Gamma_Gated");
 
+	AngDistTest = new TH1D("AngDistTest","AngDistTest",30,0,90);
+	AngDistTest2 = new TH1D("AngDistTest2","AngDistTest",30,0,90);
+	AngDistTest_back = new TH1D("AngDistTest_back","AngDistTest",30,0,90);
+
+	GMultHist = new TH1D("GMultHist","GMultHist",20,0,20);
+
+	g238v2556Mult = new TH1D("g238v2556Mult","g238v2556Mult",20,0,20);
+	g238v1840Mult = new TH1D("g238v1840Mult","g238v1840Mult",20,0,20);
+
 	Gamma_Hists = hist->mkdir("Gamma_Hists");
 		Gammasphere_Hists = hist->mkdir("Gamma_Hists/Gammasphere_Histograms");
 		Gamma_Gated_Hists = hist->mkdir("Gamma_Hists/Gamma_Gated_Histograms");
@@ -1205,6 +1390,7 @@ void MakeMyHists(){
 		Excitation_Energy_Gated = hist->mkdir("Gamma_Hists/Excitation_Energy_Gated");
 		Triton_Gated = hist->mkdir("Gamma_Hists/Triton_Gated");
 		Gams_vs_Run = hist->mkdir("Gamma_Hists/Gams_vs_Run");
+		Gams_vs_Angle = hist->mkdir("Gamma_Hists/Gams_vs_Angle");
 	Timing_Spectra = hist->mkdir("Timing_Spectra");
 
 	Ex_vs_Gammas_Hists = hist->mkdir("Ex_vs_Gammas_Hists");
@@ -1240,8 +1426,8 @@ void MakeMyHists(){
 		DAvRunCheck = new TH2D("DAvRunCheck","Run Number vs E1 Energy",4096,0,4096,100,400,500);
 
 	hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam");
-		Ex_v_Gam = new TH2D("Ex_v_Gam","Ex vs Gamma Energy for QQQ Detectors",8000,0,8000,30,4,7);
-	for (int i = 40; i < ExLoopEnd; i++){ //66 because we are doing .5 MeV bin widths for the Si detectors, the last bin then gives 6.5-7.
+		Ex_v_Gam = new TH2D("Ex_v_Gam","Ex vs Gamma Energy for QQQ Detectors",8000,0,8000,40,3,7);
+	for (int i = ExLoopBegin; i < ExLoopEnd; i++){ //66 because we are doing .5 MeV bin widths for the Si detectors, the last bin then gives 6.5-7.
 		hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam/1D_Hists");
 		int Ex_BinLow = i;
 		//double Ex_BinHi = (double)i/10+(double)ExWidth/10;
@@ -1354,15 +1540,31 @@ void MakeMyHists(){
 		QQQ_SiExvDblGam_BkgUnScale.clear();
 		QQQ_SiExvDblGam_Bkg.clear();
 
-		hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam/Si_SingleGammaGated");
-
 		
 		
 
 	}
+		hist->cd("Ex_vs_Gammas_Hists/Si_v_Gam");
+		SiAll_Ex_v_Gam = new TH2D("SiAll_Ex_v_Gam","Ex vs Gamma Energy for Si Detectors",8000,0,8000,40,3,7);
+		SiAll_Ex_v_Gam_0 = new TH2D("SiAll_Ex_v_Gam_0","Ex vs Gamma Energy for Si Detectors mult 0",8000,0,8000,40,3,7);
+		SiAll_Ex_v_Gam_1 = new TH2D("SiAll_Ex_v_Gam_1","Ex vs Gamma Energy for Si Detectors mult 1",8000,0,8000,40,3,7);
+		SiAll_Ex_v_Gam_2 = new TH2D("SiAll_Ex_v_Gam_2","Ex vs Gamma Energy for Si Detectors mult 2",8000,0,8000,40,3,7);
+		SiAll_Ex_v_Gam_3 = new TH2D("SiAll_Ex_v_Gam_3","Ex vs Gamma Energy for Si Detectors mult 3",8000,0,8000,40,3,7);
+		SiAll_Ex_v_Gam_4 = new TH2D("SiAll_Ex_v_Gam_4","Ex vs Gamma Energy for Si Detectors mult 4",8000,0,8000,40,3,7);
 
-	std::cout << GamGated_QQQ.size() << " " << GamGated_QQQ[1].size() << std::endl;
+		GamTestHist = new TH1D("GamTestHist","GamTestHist",1000,0,8000);
+		GamTestHistback = new TH1D("GamTestHistback","GamTestHistback",1000,0,8000);
 
+
+
+		Ex_v_GamOffset = new TH2D("Ex_v_GamOffset","Ex vs Gamma Energy for Si Detectors Offset",8000,0,8000,40,3,7);
+		Sigam238vEx = new TH2D("Sigam238vEx","238 keV Gamma Gated on Tritons",8000,0,8000,40,3,7);
+		Sigam275vEx = new TH2D("Sigam275vEx","275 keV Gamma Gated on Tritons",8000,0,8000,40,3,7);
+		Sigam1840vEx = new TH2D("Sigam1840vEx","1840 keV Gamma Gated on Tritons",8000,0,8000,40,3,7);
+
+
+
+		hist->cd("Ex_vs_Gammas_Hists/QQQ_v_Gam");
 		gam238vEx = new TH2D("gam238vEx","238 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
 		gam275vEx = new TH2D("gam275vEx","275 keV Gamma Gated on Tritons",8000,0,8000,30,4,7);
 
@@ -1401,6 +1603,13 @@ void MakeMyHists(){
 	QQQDCQ = new TH2D("QQQDCQ","Strip Number vs Reaction Q-Value Spectrum",2048,-15,0,19,0,19);
 	QQQDCEx = new TH2D("QQQDCEx","Strip Number vs Excitation Energy",2048,0,15,19,0,19);
 	QQQDCExTot = new TH1D("QQQDCExTot","Excitation Energy of 19Ne",2048,0,15);
+
+	hist->cd("Gamma_Hists/Gams_vs_Angle");
+	g3500_theta = new TH1D("g3500_theta","Gamma Angle for 3500 keV Gamma Theta",180,0,180);
+	g3500_phi = new TH1D("g3500_phi","Gamma Angle for 3500 keV Gamma Phi",360,0,360);
+
+	g4740_theta = new TH1D("g4740_theta","Gamma Angle for 4740 keV Gamma Theta",180,0,180);
+	g4740_phi = new TH1D("g4740_phi","Gamma Angle for 4740 keV Gamma Phi",360,0,360);
 
 	hist->cd("Gamma_Hists/Gammasphere_Histograms");
 	gam_ind = new TH2D("gam_ind","Individual Gammasphere Detectors",10000,0,10000,111,0,111);
@@ -1645,6 +1854,11 @@ void MakeMyHists(){
 
 	Timing_Spectra->cd();
 
+	TimingvRunnumDA = new TH2D("TimingvRunnumDA","Timing Difference vs Run Number DA",1000,-500,500,100,400,500);
+	TimingvRunnumDC = new TH2D("TimingvRunnumDC","Timing Difference vs Run Number DC",1000,-500,500,100,400,500);
+	TimingDA2D = new TH2D("TimingDA2D","Timing Difference DA: dE 0-31",1000,-500,500,64,0,64);
+	TimingDC2D = new TH2D("TimingDC2D","Timing Difference DC: dE 0-31",1000,-500,500,64,0,64);
+
 	TDiffDA = new TH1D("TDiffDA","Timing Difference Between Gammasphere and QQQ5 DA",1000,-500,500);
 	TDiffDC = new TH1D("TDiffDC","Timing Difference Between Gammasphere and QQQ5 DC",1000,-500,500);
 	TDiffSX3 = new TH1D("TDiffSX3","Timing Difference Between Gammasphere and SX3",1000,-500,500);
@@ -1867,6 +2081,8 @@ void MakeMyHists(){
 
 	ifstream inFile25("textfiles/DCtoTotalE.txt");
 
+	ifstream inFile26("textfiles/gAngle.txt");
+
 	for (int i = 0; i<20; i++){
 
 		inFile0 >> AandEloss[i][0] >> AandEloss[i][1] >> AandEloss[i][2] >> AandEloss[i][3] >> AandEloss[i][4] >> AandEloss[i][5];
@@ -1919,6 +2135,8 @@ void MakeMyHists(){
 		inFile21 >> gamcorr[i];
 
 		inFile24 >> GamNorm[i][0] >> GamNorm[i][1] >> GamNorm[i][2];
+
+		inFile26 >> GamAng[i][0] >> GamAng[i][1];
 
 	}
 
@@ -2023,7 +2241,7 @@ void MakeMyHists(){
 
 	double BinConts;
 	//RealExLoopEnd is the actual endpoint number of the for loops calculated with the ExWidth variable.
-	int RealExLoopEnd = 30-ExWidth+1;
+	int RealExLoopEnd = 72-ExLoopBegin-ExWidth+1;
 	//Set the scale factors here for the histograms that go from 0 to 4000 and 4000 to 8000.
 	//Also do the scaling here before the contents get transfered to the final 8000 bin background hist.
 //	for (int ex = 0; ex < RealExLoopEnd; ex++){
@@ -2088,7 +2306,7 @@ void MakeMyHists(){
 //					cout << "*********** RESET ************" << endl;
 				}
 				CombinedConts += QQQExvGam_Bkg[ex]->GetBinContent(bin);
-				cout << QQQExvGam_Bkg[ex]->GetBinContent(bin) << endl;
+				//cout << QQQExvGam_Bkg[ex]->GetBinContent(bin) << endl;
 				
 				if (bin % 2 == 0){//on the even values of bin, calculate the average and feed it into the Background hist.
 					ContsAvg = CombinedConts/2 * scaling2;
@@ -2157,10 +2375,29 @@ void MakeMyHists(){
 //Put normalizations for the Gamma Gated Background Histograms here!
 		for (int i = 0; i < 7; i++){
 
+			g1 = GatedGams[i];
+
 			for (int bin = 1; bin <= 8000; bin++){ 
 
 				if (bin < 3001){
 
+					if ((bin == 1 || (bin-1) % 200 == 0)){
+
+						if (bin < g1 && bin+200 > g1){
+							QQQscalingGamSingle = (GamGated_QQQ[ex][i]->Integral(bin,g1-50)+GamGated_QQQ[ex][i]->Integral(g1+50,bin+200))/(GamGated_QQQ_BkgUnScale[ex][i]->Integral(bin,g1-50)+GamGated_QQQ_BkgUnScale[ex][i]->Integral(g1+50,bin+200));
+
+							SiscalingGamSingle = (GamGated_Si[ex][i]->Integral(bin,g1-50)+GamGated_Si[ex][i]->Integral(g1+50,bin+200))/(GamGated_Si_BkgUnScale[ex][i]->Integral(bin,g1-50)+GamGated_Si_BkgUnScale[ex][i]->Integral(g1+50,bin+200));
+
+						}
+						else{
+							QQQscalingGamSingle = GamGated_QQQ[ex][i]->Integral(bin,bin+200)/GamGated_QQQ_BkgUnScale[ex][i]->Integral(bin,bin+200);
+
+							SiscalingGamSingle = GamGated_Si[ex][i]->Integral(bin,bin+200)/GamGated_Si_BkgUnScale[ex][i]->Integral(bin,bin+200);
+
+						}
+	
+					}
+/*
 					if ((bin == 1 || (bin-1) % 200 == 0)){
 
 						if (bin < 238 && (bin+200) > 238) SiscalingGamSingle = GamGated_Si[ex][i]->Integral(bin+200,bin+400)/GamGated_Si_BkgUnScale[ex][i]->Integral(bin+200,bin+400);
@@ -2175,6 +2412,7 @@ void MakeMyHists(){
 						
 					
 					}
+*/
 
 					if ((bin-1) % 5 == 0){
 						CombinedContsQQQ = 0;
@@ -2193,10 +2431,14 @@ void MakeMyHists(){
 										
 						for (int j = bin-4; j < bin+1; j++){
 
-							GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
-							GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
-							GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
-							GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							if (QQQscalingGamSingle > 0){
+								GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+								GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+							}
+							if (SiscalingGamSingle > 0){
+								GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+								GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							}
 
 
 						}
@@ -2232,11 +2474,14 @@ void MakeMyHists(){
 										
 						for (int j = bin-49; j < bin+1; j++){
 
-							GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
-							GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
-
-							GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
-							GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							if (QQQscalingGamSingle > 0){
+								GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+								GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+							}
+							if (SiscalingGamSingle > 0){
+								GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+								GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							}
 
 						}
 
@@ -2271,11 +2516,14 @@ void MakeMyHists(){
 										
 						for (int j = bin-99; j < bin+1; j++){
 
-							GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
-							GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
-
-							GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
-							GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							if (QQQscalingGamSingle > 0){
+								GamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+								GamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+							}
+							if (SiscalingGamSingle > 0){
+								GamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+								GamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							}
 
 
 						}
@@ -2377,10 +2625,14 @@ void MakeMyHists(){
 										
 						for (int j = bin-99; j < bin+1; j++){
 
-							DblGamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
-							DblGamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
-							DblGamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
-							DblGamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							if (QQQscalingGamDouble > 0){
+								DblGamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+								DblGamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+							}
+							if (SiscalingGamDouble > 0){
+								DblGamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+								DblGamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							}
 
 
 						}
@@ -2428,11 +2680,14 @@ void MakeMyHists(){
 										
 						for (int j = bin-199; j < bin+1; j++){
 
-							DblGamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
-							DblGamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
-
-							DblGamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
-							DblGamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							if (QQQscalingGamDouble > 0){
+								DblGamGated_QQQ_Bkg[ex][i]->SetBinContent(j,ContsAvgQQQ);
+								DblGamGated_QQQ_Bkg[ex][i]->SetBinError(j,errorsQQQ);
+							}
+							if (SiscalingGamDouble > 0){
+								DblGamGated_Si_Bkg[ex][i]->SetBinContent(j,ContsAvgSi);
+								DblGamGated_Si_Bkg[ex][i]->SetBinError(j,errorsSi);
+							}
 
 						}
 
@@ -2606,6 +2861,8 @@ void MakeMyHists(){
 	gam1840_Back->Scale(g1840Scale);
 	gam2556_Back->Scale(g2556Scale);
 
+//	AngDistTest->Divide(AngDistTest_back);
+//	AngDistTest2->Divide(AngDistTest_back);
 
 //Probably don't want to do this, if the bin content is negative just say it indicates less background than expected in that region. ***
 //	for (int bin=1; bin<=8000; bin++){
@@ -2620,7 +2877,13 @@ void MakeMyHists(){
 
 	logFile.close();
 
-	std::cout << gcount1 << " * " << gcount2 << std::endl;
+	//std::cout << gcount1 << " * " << gcount2 << std::endl;
+
+	std::cout << "Analog1: " << DACount << " Gamma1: " << DAGam << endl;
+//	std::cout << "Analog2: " << AnalogSi2 << " Gamma2: " << AnalogGam2 << endl;
+
+	std::cout << "Digital1: " << DCCount << " Gamma1: " << DCGam << endl;
+//	std::cout << "Digital2: " << DigitalSi2 << " Gamma2: " << DigitalGam2 << endl;
 
 	t.Stop();
 	t.Print();

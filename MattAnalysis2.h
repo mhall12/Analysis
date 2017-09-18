@@ -1,5 +1,7 @@
-	int ExWidth = 8; //Width of the ex bins in MeV*10.
-	int ExLoopEnd = 70-ExWidth+1;
+	int ExWidth = 10; //Width of the ex bins in MeV*10.
+	int gmult = 20;
+	int ExLoopEnd = 72-ExWidth+1;
+	int ExLoopBegin = 37;
 
 	int BkgBins = 100;
 
@@ -36,6 +38,8 @@
 
 	TDirectory *TripleGammaGated;
 
+	TDirectory *Gams_vs_Angle;
+
 
 	int gcount1;
 	int gcount2;
@@ -58,8 +62,22 @@
 	TH1D *SX3ExBack;
 
 	TH2D *Ex_v_Gam;
+	TH2D *SiAll_Ex_v_Gam;
+
+	TH2D* SiAll_Ex_v_Gam_0;
+	TH2D* SiAll_Ex_v_Gam_1;
+	TH2D* SiAll_Ex_v_Gam_2;
+	TH2D* SiAll_Ex_v_Gam_3;
+	TH2D* SiAll_Ex_v_Gam_4;
+
+	TH2D *Ex_v_GamOffset;
+
 	TH2D *gam238vEx;
 	TH2D *gam275vEx;
+
+	TH2D *Sigam238vEx;
+	TH2D *Sigam275vEx;
+	TH2D *Sigam1840vEx;
 
 	double gamcorr[111];
 
@@ -130,8 +148,36 @@
 	std::vector<std::vector<TH1D*>> DblGamGated_Si_Bkg;
 
 	double DCtoTotalE[32][3];
-	
-	
+
+	TH2D* TimingvRunnumDA;
+	TH2D* TimingvRunnumDC;
+	TH2D* TimingDA2D;
+	TH2D* TimingDC2D;
+
+	TH1D* AngDistTest;
+	TH1D* AngDistTest2;
+	TH1D* AngDistTest_back;
+
+	TH1D* GamTestHistback;
+	TH1D* GamTestHist;
+
+	TH1D* GMultHist;
+
+	TH1D* g238v2556Mult;
+	TH1D* g238v1840Mult;
+
+	double GamAng[111][2];
+
+	TH1D* g3500_theta;
+	TH1D* g3500_phi;
+
+	TH1D* g4740_theta;
+	TH1D* g4740_phi;
+
+	long int DAGam = 0;
+	long int DCGam = 0;
+	long int DACount = 0;
+	long int DCCount = 0;
 /*		
 	TH1D *D5_E;
 	TH1D *D5_E2;
